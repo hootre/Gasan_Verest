@@ -13,12 +13,13 @@
   <dommains/>
   <dialectName>hsqldb</dialectName>
   <logicalMode>false</logicalMode>
-  <jarFile></jarFile>
-  <jdbcDriver>sun.jdbc.odbc.JdbcOdbc</jdbcDriver>
-  <jdbcUrl></jdbcUrl>
-  <jdbcUser></jdbcUser>
-  <jdbcPassword></jdbcPassword>
+  <jarFile>workspace:/Gasan_Verest/lib/ojdbc6.jar</jarFile>
+  <jdbcDriver>oracle.jdbc.driver.OracleDriver</jdbcDriver>
+  <jdbcUrl>jdbc:oracle:thin:@localhost:1521:xe</jdbcUrl>
+  <jdbcUser>c##koo03</jdbcUser>
+  <jdbcPassword>1234</jdbcPassword>
   <jdbcSchema></jdbcSchema>
   <jdbcCatalog></jdbcCatalog>
-  <includeView>false</includeView>
+  <includeView>true</includeView>
+  <fontData></fontData>
 </net.java.amateras.db.visual.model.RootModel>

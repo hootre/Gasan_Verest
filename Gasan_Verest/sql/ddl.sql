@@ -62,7 +62,7 @@ CREATE TABLE usertypeinfo (
 );
 
 -- 프로젝트 게시판
-CREATE TABLE board_project (
+CREATE TABLE project (
 	no         NUMBER         NOT NULL, -- 게시물 번호
 	title      VARCHAR2(100)  NOT NULL, -- 제목
 	content    VARCHAR2(4000) NULL,     -- 내용
@@ -73,21 +73,21 @@ CREATE TABLE board_project (
 );
 
 -- 프로젝트 게시판 기본키
-CREATE UNIQUE INDEX PK_board_project
-	ON board_project ( -- 프로젝트 게시판
+CREATE UNIQUE INDEX PK_project
+	ON project ( -- 프로젝트 게시판
 		no ASC -- 게시물 번호
 	);
 
 -- 프로젝트 게시판
-ALTER TABLE board_project
+ALTER TABLE project
 	ADD
-		CONSTRAINT PK_board_project -- 프로젝트 게시판 기본키
+		CONSTRAINT PK_project -- 프로젝트 게시판 기본키
 		PRIMARY KEY (
 			no -- 게시물 번호
 		);
 
 -- 포트폴리오 게시판
-CREATE TABLE board_port (
+CREATE TABLE port (
 	no         NUMBER         NOT NULL, -- 게시물 번호
 	title      VARCHAR2(100)  NOT NULL, -- 제목
 	content    VARCHAR2(4000) NULL,     -- 내용
@@ -98,21 +98,21 @@ CREATE TABLE board_port (
 );
 
 -- 포트폴리오 게시판 기본키
-CREATE UNIQUE INDEX PK_board_port
-	ON board_port ( -- 포트폴리오 게시판
+CREATE UNIQUE INDEX PK_port
+	ON port ( -- 포트폴리오 게시판
 		no ASC -- 게시물 번호
 	);
 
 -- 포트폴리오 게시판
-ALTER TABLE board_port
+ALTER TABLE port
 	ADD
-		CONSTRAINT PK_board_port -- 포트폴리오 게시판 기본키
+		CONSTRAINT PK_port -- 포트폴리오 게시판 기본키
 		PRIMARY KEY (
 			no -- 게시물 번호
 		);
 
 -- 판매 게시판
-CREATE TABLE board_sale (
+CREATE TABLE sale (
 	no         NUMBER         NOT NULL, -- 게시물 번호
 	title      VARCHAR2(100)  NOT NULL, -- 제목
 	content    VARCHAR2(4000) NULL,     -- 내용
@@ -124,21 +124,21 @@ CREATE TABLE board_sale (
 );
 
 -- 판매 게시판 기본키
-CREATE UNIQUE INDEX PK_board_sale
-	ON board_sale ( -- 판매 게시판
+CREATE UNIQUE INDEX PK_sale
+	ON sale ( -- 판매 게시판
 		no ASC -- 게시물 번호
 	);
 
 -- 판매 게시판
-ALTER TABLE board_sale
+ALTER TABLE sale
 	ADD
-		CONSTRAINT PK_board_sale -- 판매 게시판 기본키
+		CONSTRAINT PK_sale -- 판매 게시판 기본키
 		PRIMARY KEY (
 			no -- 게시물 번호
 		);
 
 -- 판매 게시판 댓글
-CREATE TABLE board_sale_dat (
+CREATE TABLE sale_dat (
 	dat_no     NUMBER         NOT NULL, -- 댓글 번호
 	board_no   NUMBER         NOT NULL, -- 게시물 번호
 	dat_writer NUMBER         NOT NULL, -- 작성자
@@ -147,21 +147,21 @@ CREATE TABLE board_sale_dat (
 );
 
 -- 판매 게시판 댓글 기본키
-CREATE UNIQUE INDEX PK_board_sale_dat
-	ON board_sale_dat ( -- 판매 게시판 댓글
+CREATE UNIQUE INDEX PK_sale_dat
+	ON sale_dat ( -- 판매 게시판 댓글
 		dat_no ASC -- 댓글 번호
 	);
 
 -- 판매 게시판 댓글
-ALTER TABLE board_sale_dat
+ALTER TABLE sale_dat
 	ADD
-		CONSTRAINT PK_board_sale_dat -- 판매 게시판 댓글 기본키
+		CONSTRAINT PK_sale_dat -- 판매 게시판 댓글 기본키
 		PRIMARY KEY (
 			dat_no -- 댓글 번호
 		);
 
 -- 포트폴리오 게시판 댓글
-CREATE TABLE board_port_dat (
+CREATE TABLE port_dat (
 	dat_no     NUMBER         NOT NULL, -- 댓글 번호
 	board_no   NUMBER         NOT NULL, -- 게시물 번호
 	dat_writer NUMBER         NOT NULL, -- 작성자
@@ -170,21 +170,21 @@ CREATE TABLE board_port_dat (
 );
 
 -- 포트폴리오 게시판 댓글 기본키
-CREATE UNIQUE INDEX PK_board_port_dat
-	ON board_port_dat ( -- 포트폴리오 게시판 댓글
+CREATE UNIQUE INDEX PK_port_dat
+	ON port_dat ( -- 포트폴리오 게시판 댓글
 		dat_no ASC -- 댓글 번호
 	);
 
 -- 포트폴리오 게시판 댓글
-ALTER TABLE board_port_dat
+ALTER TABLE port_dat
 	ADD
-		CONSTRAINT PK_board_port_dat -- 포트폴리오 게시판 댓글 기본키
+		CONSTRAINT PK_port_dat -- 포트폴리오 게시판 댓글 기본키
 		PRIMARY KEY (
 			dat_no -- 댓글 번호
 		);
 
 -- 프로젝트 게시판 댓글
-CREATE TABLE board_project_dat (
+CREATE TABLE project_dat (
 	dat_no     NUMBER         NOT NULL, -- 댓글 번호
 	board_no   NUMBER         NOT NULL, -- 게시물 번호
 	dat_writer NUMBER         NOT NULL, -- 작성자
@@ -193,15 +193,15 @@ CREATE TABLE board_project_dat (
 );
 
 -- 프로젝트 게시판 댓글 기본키
-CREATE UNIQUE INDEX PK_board_project_dat
-	ON board_project_dat ( -- 프로젝트 게시판 댓글
+CREATE UNIQUE INDEX PK_project_dat
+	ON project_dat ( -- 프로젝트 게시판 댓글
 		dat_no ASC -- 댓글 번호
 	);
 
 -- 프로젝트 게시판 댓글
-ALTER TABLE board_project_dat
+ALTER TABLE project_dat
 	ADD
-		CONSTRAINT PK_board_project_dat -- 프로젝트 게시판 댓글 기본키
+		CONSTRAINT PK_project_dat -- 프로젝트 게시판 댓글 기본키
 		PRIMARY KEY (
 			dat_no -- 댓글 번호
 		);
@@ -230,7 +230,7 @@ ALTER TABLE backsight
 		);
 
 -- 문의
-CREATE TABLE backsight2 (
+CREATE TABLE question1 (
 	qu_no   NUMBER        NOT NULL, -- 후기 번호
 	writer  NUMBER        NOT NULL, -- 작성자
 	content VARCHAR(2000) NULL,     -- 내용
@@ -239,15 +239,15 @@ CREATE TABLE backsight2 (
 );
 
 -- 문의 기본키
-CREATE UNIQUE INDEX PK_backsight2
-	ON backsight2 ( -- 문의
+CREATE UNIQUE INDEX PK_question1
+	ON question1 ( -- 문의
 		qu_no ASC -- 후기 번호
 	);
 
 -- 문의
-ALTER TABLE backsight2
+ALTER TABLE question1
 	ADD
-		CONSTRAINT PK_backsight2 -- 문의 기본키
+		CONSTRAINT PK_question1 -- 문의 기본키
 		PRIMARY KEY (
 			qu_no -- 후기 번호
 		);
@@ -337,9 +337,9 @@ ALTER TABLE usertypeinfo
 		);
 
 -- 프로젝트 게시판
-ALTER TABLE board_project
+ALTER TABLE project
 	ADD
-		CONSTRAINT FK_userinfo_TO_board_project -- 사용자 -> 프로젝트 게시판
+		CONSTRAINT FK_userinfo_TO_project -- 사용자 -> 프로젝트 게시판
 		FOREIGN KEY (
 			writer -- 작성자
 		)
@@ -348,9 +348,9 @@ ALTER TABLE board_project
 		);
 
 -- 포트폴리오 게시판
-ALTER TABLE board_port
+ALTER TABLE port
 	ADD
-		CONSTRAINT FK_userinfo_TO_board_port -- 사용자 -> 포트폴리오 게시판
+		CONSTRAINT FK_userinfo_TO_port -- 사용자 -> 포트폴리오 게시판
 		FOREIGN KEY (
 			writer -- 작성자
 		)
@@ -359,9 +359,9 @@ ALTER TABLE board_port
 		);
 
 -- 판매 게시판
-ALTER TABLE board_sale
+ALTER TABLE sale
 	ADD
-		CONSTRAINT FK_userinfo_TO_board_sale -- 사용자 -> 판매 게시판
+		CONSTRAINT FK_userinfo_TO_sale -- 사용자 -> 판매 게시판
 		FOREIGN KEY (
 			writer -- 작성자
 		)
@@ -370,20 +370,20 @@ ALTER TABLE board_sale
 		);
 
 -- 판매 게시판 댓글
-ALTER TABLE board_sale_dat
+ALTER TABLE sale_dat
 	ADD
 		CONSTRAINT FK_sale_TO_sale_dat -- 판매 게시판 -> 판매 게시판 댓글
 		FOREIGN KEY (
 			board_no -- 게시물 번호
 		)
-		REFERENCES board_sale ( -- 판매 게시판
+		REFERENCES sale ( -- 판매 게시판
 			no -- 게시물 번호
 		);
 
 -- 판매 게시판 댓글
-ALTER TABLE board_sale_dat
+ALTER TABLE sale_dat
 	ADD
-		CONSTRAINT FK_userinfo_TO_board_sale_dat -- 사용자 -> 판매 게시판 댓글
+		CONSTRAINT FK_userinfo_TO_sale_dat -- 사용자 -> 판매 게시판 댓글
 		FOREIGN KEY (
 			dat_writer -- 작성자
 		)
@@ -392,9 +392,9 @@ ALTER TABLE board_sale_dat
 		);
 
 -- 포트폴리오 게시판 댓글
-ALTER TABLE board_port_dat
+ALTER TABLE port_dat
 	ADD
-		CONSTRAINT FK_userinfo_TO_board_port_dat -- 사용자 -> 포트폴리오 게시판 댓글
+		CONSTRAINT FK_userinfo_TO_port_dat -- 사용자 -> 포트폴리오 게시판 댓글
 		FOREIGN KEY (
 			dat_writer -- 작성자
 		)
@@ -403,18 +403,18 @@ ALTER TABLE board_port_dat
 		);
 
 -- 포트폴리오 게시판 댓글
-ALTER TABLE board_port_dat
+ALTER TABLE port_dat
 	ADD
 		CONSTRAINT FK_port_TO_port_dat -- 포트폴리오 게시판 -> 포트폴리오 게시판 댓글
 		FOREIGN KEY (
 			board_no -- 게시물 번호
 		)
-		REFERENCES board_port ( -- 포트폴리오 게시판
+		REFERENCES port ( -- 포트폴리오 게시판
 			no -- 게시물 번호
 		);
 
 -- 프로젝트 게시판 댓글
-ALTER TABLE board_project_dat
+ALTER TABLE project_dat
 	ADD
 		CONSTRAINT FK_userinfo_TO_project_dat -- 사용자 -> 프로젝트 게시판 댓글
 		FOREIGN KEY (
@@ -425,13 +425,13 @@ ALTER TABLE board_project_dat
 		);
 
 -- 프로젝트 게시판 댓글
-ALTER TABLE board_project_dat
+ALTER TABLE project_dat
 	ADD
 		CONSTRAINT FK_project_TO_project_dat -- 프로젝트 게시판 -> 프로젝트 게시판 댓글
 		FOREIGN KEY (
 			board_no -- 게시물 번호
 		)
-		REFERENCES board_project ( -- 프로젝트 게시판
+		REFERENCES project ( -- 프로젝트 게시판
 			no -- 게시물 번호
 		);
 
@@ -447,9 +447,9 @@ ALTER TABLE backsight
 		);
 
 -- 문의
-ALTER TABLE backsight2
+ALTER TABLE question1
 	ADD
-		CONSTRAINT FK_userinfo_TO_backsight2 -- 사용자 -> 문의
+		CONSTRAINT FK_userinfo_TO_question1 -- 사용자 -> 문의
 		FOREIGN KEY (
 			writer -- 작성자
 		)
@@ -482,11 +482,11 @@ ALTER TABLE basket
 -- 장바구니
 ALTER TABLE basket
 	ADD
-		CONSTRAINT FK_board_sale_TO_basket -- 판매 게시판 -> 장바구니
+		CONSTRAINT FK_sale_TO_basket -- 판매 게시판 -> 장바구니
 		FOREIGN KEY (
 			sale_no -- 게시물 번호
 		)
-		REFERENCES board_sale ( -- 판매 게시판
+		REFERENCES sale ( -- 판매 게시판
 			no -- 게시물 번호
 		);
 
@@ -504,10 +504,10 @@ ALTER TABLE order_list
 -- 주문확인
 ALTER TABLE order_list
 	ADD
-		CONSTRAINT FK_board_sale_TO_order_list -- 판매 게시판 -> 주문확인
+		CONSTRAINT FK_sale_TO_order_list -- 판매 게시판 -> 주문확인
 		FOREIGN KEY (
 			sale_no -- 게시물 번호
 		)
-		REFERENCES board_sale ( -- 판매 게시판
+		REFERENCES sale ( -- 판매 게시판
 			no -- 게시물 번호
 		);

@@ -9,7 +9,6 @@
 <title>Verest</title>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
 	<h1>메인 컨텐츠</h1>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

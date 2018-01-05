@@ -10,7 +10,7 @@
 	<context:component-scan base-package="com.verest" />
 	<!-- http element는 선언 된 순서대로 추가되므로 가장 구체적인 패턴을 먼저 선언 -->
 
-	<!-- Spring Security Login -->
+	<!--Spring Security Login-->
 	<http auto-config="true" use-expressions="true">
 		<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
@@ -27,7 +27,7 @@
 
 	<beans:bean id="bcryptEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
-
+ 
 	<authentication-manager>
 		<authentication-provider user-service-ref="customUserDetailsService">
 			<password-encoder ref="bcryptEncoder" />

@@ -11,6 +11,16 @@
 
 	<context:component-scan base-package="com.verest" />
 	<!-- http element는 선언 된 순서대로 추가되므로 가장 구체적인 패턴을 먼저 선언 -->
+	
+	<http pattern="/rest/**" realm="MY_TEST_REALM"
+		create-session="stateless">
+		<http-basic entry-point-ref="customBasicAuthenticationEntryPoint"/>
+		<intercept-url pattern="/rest/**" access="hasRole('ROLE_ADMIN')"/>
+		<intercept-url method="OPTIONS" pattern="/rest/**"
+			access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+		<csrf disabled="true"/>
+		<cors ref="corsFilter"/>
+	</http>
 
 	<!-- Spring Security Login -->
 	<http auto-config="true" use-expressions="true">
@@ -30,11 +40,11 @@
 	<beans:bean id="bcryptEncoder"
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
-	<!-- <authentication-manager>
+	<authentication-manager>
 		<authentication-provider user-service-ref="customUserDetailsService">
 			<password-encoder ref="bcryptEncoder" />
 		</authentication-provider>
-	</authentication-manager> -->
+	</authentication-manager>
 
 	<!-- JDBC -->
 	<context:property-placeholder location="/WEB-INF/jdbc.properties" />

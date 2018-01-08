@@ -7,4 +7,10 @@
 		<setting name="jdbcTypeForNull" value="NULL" />
 		<setting name="mapUnderscoreToCamelCase" value="true" />
 	</settings>
+	
+	<typeAliases>
+		<typeAlias type="com.koitt.board.model.Board" alias="Board"/>
+		<typeAlias type="com.koitt.board.model.UserInfo" alias="UserInfo"/>
+		<typeAlias type="com.koitt.board.model.UserType" alias="UserType"/>
+	</typeAliases>
 </configuration>

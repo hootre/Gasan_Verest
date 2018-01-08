@@ -12,7 +12,7 @@
 		<springsecurity.version>4.2.3.RELEASE</springsecurity.version>
 	</properties>
 	<dependencies>
-	
+
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -29,7 +29,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${springframework.version}</version>
 		</dependency>
-		
+
 		<!-- JDBC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -46,7 +46,7 @@
 			<artifactId>commons-pool</artifactId>
 			<version>1.6</version>
 		</dependency>
-		
+
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -58,7 +58,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
+
 		<!-- log4j -->
 		<!-- 참고사이트: https://logging.apache.org/log4j/2.x/ -->
 		<dependency>
@@ -66,7 +66,7 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.9.0</version>
 		</dependency>
-		
+
 		<!-- myBatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -78,7 +78,7 @@
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.3.1</version>
 		</dependency>
-		
+
 		<!-- File Upload -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -90,7 +90,7 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.6</version>
 		</dependency>
-		
+
 		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -106,11 +106,6 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${springsecurity.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>2.0</version>
 		</dependency>
 		
 	</dependencies>

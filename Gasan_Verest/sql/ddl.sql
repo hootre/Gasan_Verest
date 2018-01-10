@@ -4,7 +4,6 @@ CREATE TABLE userinfo (
 	v_email    VARCHAR(320) NOT NULL, -- 이메일
 	v_password VARCHAR(20)  NOT NULL, -- 비밀번호
 	v_name     VARCHAR(20)  NOT NULL, -- 이름
-	v_type     NUMBER       NOT NULL  -- 사용자권한
 );
 
 -- 사용자 기본키

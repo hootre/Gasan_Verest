@@ -2,28 +2,29 @@ package com.verest.board.model;
 
 import java.util.Date;
 
-// Java Bean (VO, DTO)
-public class Board {
+public class sale {
 
 	private Integer no;
 	private String title;
 	private String content;
-	private Integer id;
+	private Integer writer;
+	private Integer price;
 	private Date regdate;
 	private String attachment;
-	private UserInfo userInfo;
+	private Integer views;
 	
-	public Board() {}
+	public sale() {}
 
-	public Board(Integer no, String title, String content, Integer id, Date regdate, String attachment,
-			UserInfo userInfo) {
+	public sale(Integer no, String title, String content, Integer writer, Integer price, Date regdate,
+			String attachment, Integer views) {
 		this.no = no;
 		this.title = title;
 		this.content = content;
-		this.id = id;
+		this.writer = writer;
+		this.price = price;
 		this.regdate = regdate;
 		this.attachment = attachment;
-		this.userInfo = userInfo;
+		this.views = views;
 	}
 
 	public Integer getNo() {
@@ -50,12 +51,20 @@ public class Board {
 		this.content = content;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getWriter() {
+		return writer;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setWriter(Integer writer) {
+		this.writer = writer;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
 	}
 
 	public Date getRegdate() {
@@ -74,12 +83,12 @@ public class Board {
 		this.attachment = attachment;
 	}
 
-	public UserInfo getUserInfo() {
-		return userInfo;
+	public Integer getViews() {
+		return views;
 	}
 
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
+	public void setViews(Integer views) {
+		this.views = views;
 	}
 
 	@Override
@@ -88,11 +97,12 @@ public class Board {
 		int result = 1;
 		result = prime * result + ((attachment == null) ? 0 : attachment.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((no == null) ? 0 : no.hashCode());
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + ((userInfo == null) ? 0 : userInfo.hashCode());
+		result = prime * result + ((views == null) ? 0 : views.hashCode());
+		result = prime * result + ((writer == null) ? 0 : writer.hashCode());
 		return result;
 	}
 
@@ -104,7 +114,7 @@ public class Board {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Board other = (Board) obj;
+		sale other = (sale) obj;
 		if (attachment == null) {
 			if (other.attachment != null)
 				return false;
@@ -115,15 +125,15 @@ public class Board {
 				return false;
 		} else if (!content.equals(other.content))
 			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (no == null) {
 			if (other.no != null)
 				return false;
 		} else if (!no.equals(other.no))
+			return false;
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
 			return false;
 		if (regdate == null) {
 			if (other.regdate != null)
@@ -135,10 +145,15 @@ public class Board {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (userInfo == null) {
-			if (other.userInfo != null)
+		if (views == null) {
+			if (other.views != null)
 				return false;
-		} else if (!userInfo.equals(other.userInfo))
+		} else if (!views.equals(other.views))
+			return false;
+		if (writer == null) {
+			if (other.writer != null)
+				return false;
+		} else if (!writer.equals(other.writer))
 			return false;
 		return true;
 	}
@@ -146,21 +161,26 @@ public class Board {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Board [no=");
+		builder.append("sale [no=");
 		builder.append(no);
 		builder.append(", title=");
 		builder.append(title);
 		builder.append(", content=");
 		builder.append(content);
-		builder.append(", id=");
-		builder.append(id);
+		builder.append(", writer=");
+		builder.append(writer);
+		builder.append(", price=");
+		builder.append(price);
 		builder.append(", regdate=");
 		builder.append(regdate);
 		builder.append(", attachment=");
 		builder.append(attachment);
-		builder.append(", userInfo=");
-		builder.append(userInfo);
+		builder.append(", views=");
+		builder.append(views);
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	
+	
 }

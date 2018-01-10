@@ -4,62 +4,52 @@ import java.util.Set;
 
 public class UserInfo {
 	
-	private Integer id;					// 사용자 인덱스 (Primary Key)
-	private String email;				// 이메일
-	private String password;			// 비밀번호
-	private String name;				// 이름
-	private String avatar;				// 아바타 이미지 파일명
+	private Integer v_id;					// 사용자 인덱스 (Primary Key)
+	private String v_email;				// 이메일
+	private String v_password;			// 비밀번호
+	private String v_name;				// 이름
 	private Set<UserType> userTypes;	// ADMIN, USER
 	
 	public UserInfo() {}
 
-	public UserInfo(Integer id, String email, String password, String name, String avatar, Set<UserType> userTypes) {
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.name = name;
-		this.avatar = avatar;
+	public UserInfo(Integer v_id, String v_email, String v_password, String v_name, Set<UserType> userTypes) {
+		this.v_id = v_id;
+		this.v_email = v_email;
+		this.v_password = v_password;
+		this.v_name = v_name;
 		this.userTypes = userTypes;
 	}
 
-	public Integer getId() {
-		return id;
+	public Integer getV_id() {
+		return v_id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setV_id(Integer v_id) {
+		this.v_id = v_id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getV_email() {
+		return v_email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setV_email(String v_email) {
+		this.v_email = v_email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getV_password() {
+		return v_password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setV_password(String v_password) {
+		this.v_password = v_password;
 	}
 
-	public String getName() {
-		return name;
+	public String getV_name() {
+		return v_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAvatar() {
-		return avatar;
-	}
-
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
+	public void setV_name(String v_name) {
+		this.v_name = v_name;
 	}
 
 	public Set<UserType> getUserTypes() {
@@ -74,12 +64,11 @@ public class UserInfo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((avatar == null) ? 0 : avatar.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((userTypes == null) ? 0 : userTypes.hashCode());
+		result = prime * result + ((v_email == null) ? 0 : v_email.hashCode());
+		result = prime * result + ((v_id == null) ? 0 : v_id.hashCode());
+		result = prime * result + ((v_name == null) ? 0 : v_name.hashCode());
+		result = prime * result + ((v_password == null) ? 0 : v_password.hashCode());
 		return result;
 	}
 
@@ -92,35 +81,30 @@ public class UserInfo {
 		if (getClass() != obj.getClass())
 			return false;
 		UserInfo other = (UserInfo) obj;
-		if (avatar == null) {
-			if (other.avatar != null)
-				return false;
-		} else if (!avatar.equals(other.avatar))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
 		if (userTypes == null) {
 			if (other.userTypes != null)
 				return false;
 		} else if (!userTypes.equals(other.userTypes))
+			return false;
+		if (v_email == null) {
+			if (other.v_email != null)
+				return false;
+		} else if (!v_email.equals(other.v_email))
+			return false;
+		if (v_id == null) {
+			if (other.v_id != null)
+				return false;
+		} else if (!v_id.equals(other.v_id))
+			return false;
+		if (v_name == null) {
+			if (other.v_name != null)
+				return false;
+		} else if (!v_name.equals(other.v_name))
+			return false;
+		if (v_password == null) {
+			if (other.v_password != null)
+				return false;
+		} else if (!v_password.equals(other.v_password))
 			return false;
 		return true;
 	}
@@ -128,19 +112,19 @@ public class UserInfo {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("UserInfo [id=");
-		builder.append(id);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append(", password=");
-		builder.append(password);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", avatar=");
-		builder.append(avatar);
+		builder.append("UserInfo [v_id=");
+		builder.append(v_id);
+		builder.append(", v_email=");
+		builder.append(v_email);
+		builder.append(", v_password=");
+		builder.append(v_password);
+		builder.append(", v_name=");
+		builder.append(v_name);
 		builder.append(", userTypes=");
 		builder.append(userTypes);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 }

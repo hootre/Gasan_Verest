@@ -2,8 +2,8 @@ package com.verest.board.service;
 
 import java.util.List;
 
-import com.verest.board.model.Board;
-import com.verest.board.model.CommonException;
+import com.koitt.board.model.Board;
+import com.koitt.board.model.CommonException;
 
 public interface BoardService {
 

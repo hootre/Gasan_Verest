@@ -7,16 +7,27 @@ public class order_list {
 	private Integer or_no;
 	private Integer v_id;
 	private Integer sale_no;
+	private String sale_name;
 	private Date regdate;
 	
 	public order_list() {}
 
-	public order_list(Integer or_no, Integer v_id, Integer sale_no, Date regdate) {
+	public order_list(Integer or_no, Integer v_id, Integer sale_no, String sale_name, Date regdate) {
 		super();
 		this.or_no = or_no;
 		this.v_id = v_id;
 		this.sale_no = sale_no;
 		this.regdate = regdate;
+		this.sale_name = sale_name;
+	}
+
+	
+	public String getSale_name() {
+		return sale_name;
+	}
+
+	public void setSale_name(String sale_name) {
+		this.sale_name = sale_name;
 	}
 
 	public Integer getOr_no() {
@@ -51,12 +62,15 @@ public class order_list {
 		this.regdate = regdate;
 	}
 	
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((or_no == null) ? 0 : or_no.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
+		result = prime * result + ((sale_name == null) ? 0 : sale_name.hashCode());
 		result = prime * result + ((sale_no == null) ? 0 : sale_no.hashCode());
 		result = prime * result + ((v_id == null) ? 0 : v_id.hashCode());
 		return result;
@@ -81,6 +95,11 @@ public class order_list {
 				return false;
 		} else if (!regdate.equals(other.regdate))
 			return false;
+		if (sale_name == null) {
+			if (other.sale_name != null)
+				return false;
+		} else if (!sale_name.equals(other.sale_name))
+			return false;
 		if (sale_no == null) {
 			if (other.sale_no != null)
 				return false;
@@ -103,11 +122,15 @@ public class order_list {
 		builder.append(v_id);
 		builder.append(", sale_no=");
 		builder.append(sale_no);
+		builder.append(", sale_name=");
+		builder.append(sale_name);
 		builder.append(", regdate=");
 		builder.append(regdate);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 	
 	
 }

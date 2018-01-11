@@ -9,6 +9,10 @@ VALUES (userinfo_seq.NEXTVAL, 'hootre@naver.com',
 '$2a$10$nzVjrSL9pWYHOTVHKupv0emeZUNebVvTCmUgoHsy8A4aJov6G44TS',
 '전동준');
 
+INSERT INTO userinfo(v_id, v_email, v_password, v_name)
+VALUES (userinfo_seq.NEXTVAL, 'koo@naver.com', 
+'$2a$10$X62xKKmwFnKiyaL9bm5uv.A0mE4ivbZpiVC9.69Tq/6gKy0sf/PBa',
+'권순우');
 
 
 INSERT INTO userinfotype(user_info_id, user_type_id)
@@ -24,7 +28,7 @@ INSERT INTO port(no, title, content, writer, regdate, attachment, views)
 VALUES (port_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, NULL, 0);
 
 INSERT INTO sale(no, title, content, writer, price, regdate, attachment, views)
-VALUES (sale_seq.NEXTVAL, '첫글', '부레', 1, 500000 , SYSDATE, NULL, 0);
+VALUES (sale_seq.NEXTVAL, '세글', '부레', 2, 500000 , SYSDATE, NULL, 0);
 
 select * from sale_dat;
 INSERT INTO sale_dat(dat_no, board_no, writer, content, regdate)

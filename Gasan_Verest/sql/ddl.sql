@@ -27,12 +27,11 @@ DROP SEQUENCE userinfo_seq;
 CREATE TABLE userinfo(
 	v_id NUMBER NOT NULL,
 	v_email VARCHAR2(320) NOT NULL,
-	v_password VARCHAR2(20) NOT NULL,
+	v_password VARCHAR2(60) NOT NULL,
 	v_name VARCHAR2(20) NOT NULL,
 	CONSTRAINT pk_userinfo PRIMARY KEY (v_id),
 	CONSTRAINT uk_userinfo UNIQUE (v_email)
-	)
-
+);
 
 CREATE SEQUENCE userinfo_seq
 START WITH 1 INCREMENT BY 1;
@@ -173,8 +172,8 @@ START WITH 1 INCREMENT BY 1;
 CREATE TABLE question(
 	qu_no NUMBER NOT NULL, -- 문의 번호
 	writer NUMBER NOT NULL, -- 작성자
-	content VARCHAR(2000), -- 내용
-	title VARCHAR(100) NOT NULL, -- 제목
+	content VARCHAR2(2000), -- 내용
+	title VARCHAR2(100) NOT NULL, -- 제목
 	regdate DATE NOT NULL, -- 작성일
 	CONSTRAINT pk_question PRIMARY KEY (qu_no),
 	CONSTRAINT fk_question_id FOREIGN KEY (writer) REFERENCES userinfo (v_id)
@@ -186,8 +185,8 @@ START WITH 1 INCREMENT BY 1;
 CREATE TABLE backsight(
 	back_no NUMBER NOT NULL, -- 후기 번호
 	writer NUMBER NOT NULL, -- 작성자
-	content VARCHAR(2000), -- 내용
-	title VARCHAR(100) NOT NULL, -- 제목
+	content VARCHAR2(2000), -- 내용
+	title VARCHAR2(100) NOT NULL, -- 제목
 	regdate DATE NOT NULL, -- 작성일
 	CONSTRAINT pk_backsight PRIMARY KEY (back_no),
 	CONSTRAINT fk_backsight_id FOREIGN KEY (writer) REFERENCES userinfo (v_id)

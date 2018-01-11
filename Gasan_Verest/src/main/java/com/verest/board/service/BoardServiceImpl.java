@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.koitt.board.dao.BoardDao;
-import com.koitt.board.model.Board;
-import com.koitt.board.model.CommonException;
+import com.verest.board.dao.BoardDao;
+import com.verest.board.model.Board;
+import com.verest.board.model.CommonException;
 
 @Service
 public class BoardServiceImpl implements BoardService {

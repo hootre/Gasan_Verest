@@ -31,7 +31,8 @@ CREATE TABLE userinfo(
 	v_name VARCHAR2(20) NOT NULL,
 	CONSTRAINT pk_userinfo PRIMARY KEY (v_id),
 	CONSTRAINT uk_userinfo UNIQUE (v_email)
-);
+	)
+
 
 CREATE SEQUENCE userinfo_seq
 START WITH 1 INCREMENT BY 1;

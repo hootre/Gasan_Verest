@@ -37,12 +37,20 @@ FROM userinfo u,
 	WHERE usertype.v_id = userinfotype.user_type_id) ut
 WHERE u.v_id = ut.user_info_id AND u.v_id = 1;
 
+
+-- update 양식
+UPDATE sale 
+SET title = '수정수정', content = 'asdasd', price = 30000, regdate = SYSDATE
+WHERE no = 1;
+
+-- DELETE 양식
+DELETE FROM sale WHERE no = 1;
 -- 게시판 관련
 
 -- sale 전체 개수
 SELECT COUNT(*) FROM sale;
 -- sale 게시판 상세보기
-SELECT s.no, s.title, s.content, u.v_id as "writer", s.attachment, s.views   
+SELECT s.no, s.title, s.content, u.v_id as "writer", s.price, s.attachment, s.views   
 FROM sale s, userinfo u
 WHERE s.writer = u.v_id; --AND s.no = ### (한개만 검색할때)
 -- sale_dat 전체 개수
@@ -105,3 +113,5 @@ SELECT COUNT(*) FROM backsight;
 SELECT bs.back_no, u.v_id as "writer", bs.content, bs.title, bs.regdate
 FROM backsight bs, userinfo u
 WHERE bs.writer = u.v_id; --AND bs.back_no = ### (한개만 검색할때)
+
+

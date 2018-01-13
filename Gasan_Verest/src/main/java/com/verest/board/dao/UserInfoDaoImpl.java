@@ -39,11 +39,11 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	}
 
 	@Override
-	public UserInfo select(Integer id) throws CommonException {
+	public UserInfo select(Integer v_id) throws CommonException {
 		UserInfo userInfo = null;
 
 		try {
-			userInfo = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", id);
+			userInfo = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", v_id);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,9 +78,9 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	}
 
 	@Override
-	public void delete(Integer id) throws CommonException{
+	public void delete(Integer v_id) throws CommonException{
 		try {
-			sqlSession.delete(MAPPER_NAMESPACE+ ".delete", id);
+			sqlSession.delete(MAPPER_NAMESPACE+ ".delete", v_id);
 
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
@@ -127,9 +127,4 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		return userInfo;
 	}
 
-	@Override
-	public UserInfo select(String string) throws CommonException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

@@ -5,7 +5,7 @@
 <mapper namespace="com.koitt.board.dao.UserTypeDaoImpl">
 	
 	<select id="select" parameterType="Integer" resultType="UserType">
-		SELECT * FROM user_type WHERE user_type.id = #{id}
+		SELECT * FROM usertype WHERE usertype.v_id = #{v_id}
 	</select>
 	
 </mapper>

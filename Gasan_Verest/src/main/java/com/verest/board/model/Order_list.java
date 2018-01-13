@@ -2,7 +2,7 @@ package com.verest.board.model;
 
 import java.util.Date;
 
-public class order_list {
+public class Order_list {
 
 	private Integer or_no;
 	private Integer v_id;
@@ -10,9 +10,9 @@ public class order_list {
 	private String sale_name;
 	private Date regdate;
 	
-	public order_list() {}
+	public Order_list() {}
 
-	public order_list(Integer or_no, Integer v_id, Integer sale_no, String sale_name, Date regdate) {
+	public Order_list(Integer or_no, Integer v_id, Integer sale_no, String sale_name, Date regdate) {
 		super();
 		this.or_no = or_no;
 		this.v_id = v_id;
@@ -84,7 +84,7 @@ public class order_list {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		order_list other = (order_list) obj;
+		Order_list other = (Order_list) obj;
 		if (or_no == null) {
 			if (other.or_no != null)
 				return false;

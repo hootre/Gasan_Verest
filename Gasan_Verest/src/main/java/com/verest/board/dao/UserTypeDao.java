@@ -5,6 +5,6 @@ import com.verest.board.model.UserType;
 
 public interface UserTypeDao {
 	
-	public UserType select(Integer id) throws CommonException;
+	public UserType select(Integer v_id) throws CommonException;
 
 }

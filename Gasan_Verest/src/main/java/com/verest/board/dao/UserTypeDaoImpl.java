@@ -22,11 +22,11 @@ public class UserTypeDaoImpl implements UserTypeDao {
 	public UserTypeDaoImpl() {}
 
 	@Override
-	public UserType select(Integer id) throws CommonException {
+	public UserType select(Integer v_id) throws CommonException {
 		UserType userType = null;
 
 		try {
-			userType = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", id);
+			userType = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", v_id);
 
 		} catch (Exception e) {
 			logger.debug(e.getMessage());

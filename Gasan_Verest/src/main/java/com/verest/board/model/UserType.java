@@ -2,38 +2,38 @@ package com.verest.board.model;
 
 public class UserType {
 	
-	private Integer id;		// 타입의 인덱스 번호 (Primary key)
-	private String type;	// 타입명
+	private Integer v_id;		// 타입의 인덱스 번호 (Primary key)
+	private String v_type;	// 타입명
 	
 	public UserType() {}
 
-	public UserType(Integer id, String type) {
-		this.id = id;
-		this.type = type;
+	public UserType(Integer v_id, String v_type) {
+		this.v_id = v_id;
+		this.v_type = v_type;
 	}
 
 	public Integer getId() {
-		return id;
+		return v_id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Integer v_id) {
+		this.v_id = v_id;
 	}
 
 	public String getType() {
-		return type;
+		return v_type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setType(String v_type) {
+		this.v_type = v_type;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		result = prime * result + ((v_id == null) ? 0 : v_id.hashCode());
+		result = prime * result + ((v_type == null) ? 0 : v_type.hashCode());
 		return result;
 	}
 
@@ -46,15 +46,15 @@ public class UserType {
 		if (getClass() != obj.getClass())
 			return false;
 		UserType other = (UserType) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (v_id == null) {
+			if (other.v_id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!v_id.equals(other.v_id))
 			return false;
-		if (type == null) {
-			if (other.type != null)
+		if (v_type == null) {
+			if (other.v_type != null)
 				return false;
-		} else if (!type.equals(other.type))
+		} else if (!v_type.equals(other.v_type))
 			return false;
 		return true;
 	}
@@ -62,11 +62,13 @@ public class UserType {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("UserType [id=");
-		builder.append(id);
-		builder.append(", type=");
-		builder.append(type);
+		builder.append("UserType [v_id=");
+		builder.append(v_id);
+		builder.append(", v_type=");
+		builder.append(v_type);
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
 }

@@ -35,8 +35,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 		}
 		
 		// username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities
-		return new User(userInfo.getEmail(), 
-				userInfo.getPassword(),
+		return new User(userInfo.getV_email(), 
+				userInfo.getV_password(),
 				true, 
 				true, 
 				true, 

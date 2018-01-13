@@ -161,6 +161,7 @@ CREATE TABLE basket(
 	basket_no NUMBER NOT NULL, -- 장바구니 번호
 	v_id NUMBER NOT NULL, -- 사용자 번호
 	sale_no NUMBER NOT NULL, -- 게시물 번호
+	regdate DATE NOT NULL, 
 	CONSTRAINT pk_basket PRIMARY KEY (basket_no),
 	CONSTRAINT fk_basket_id FOREIGN KEY (v_id) REFERENCES userinfo (v_id),
 	CONSTRAINT fk_basket_no FOREIGN KEY (sale_no) REFERENCES sale (no)

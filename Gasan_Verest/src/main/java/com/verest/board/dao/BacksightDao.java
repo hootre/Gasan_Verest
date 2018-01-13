@@ -12,7 +12,7 @@ public interface BacksightDao {
 	
 	// 후기 글 하나 가져오기
 	public Backsight select(String back_no) throws CommonException;
-	
+  
 	// 후기 글 가져오기
 	public List<Backsight> selectAll() throws CommonException;
 	

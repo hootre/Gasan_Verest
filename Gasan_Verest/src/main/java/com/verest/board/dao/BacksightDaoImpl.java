@@ -1,5 +1,4 @@
 package com.verest.board.dao;
-
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,12 +11,10 @@ import com.verest.board.model.CommonException;
 
 public class BacksightDaoImpl implements BacksightDao{
 
-
 	private Logger logger = LogManager.getLogger(this.getClass());
 	
-
 	private static final String MAPPER_NAMESPACE = BacksightDaoImpl.class.getName();
-	
+
 	@Autowired
 	private SqlSession sqlSession;
 	

@@ -36,10 +36,10 @@
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT COUNT(*) cnt FROM question WHERE 1=1
+		SELECT COUNT(*) cnt FROM question
 	</select>
 	
-	<update id="update" parameterType="Backsight">
+	<update id="update" parameterType="Question">
 		UPDATE question 
 		SET  content = #{content}, title = #{title}, regdate = SYSDATE
 		WHERE qu_no = #{qu_no}

@@ -9,7 +9,10 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.koitt.board.model.Board" alias="Board"/>
+		<typeAlias type="com.koitt.board.model.Backsight" alias="Backsight"/>
+		<typeAlias type="com.koitt.board.model.Basket" alias="Basket"/>
+		<typeAlias type="com.koitt.board.model.Order_list" alias="Order_list"/>
+		<typeAlias type="com.koitt.board.model.Question" alias="Question"/>
 		<typeAlias type="com.koitt.board.model.UserInfo" alias="UserInfo"/>
 		<typeAlias type="com.koitt.board.model.UserType" alias="UserType"/>
 	</typeAliases>

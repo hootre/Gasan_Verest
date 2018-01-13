@@ -2,9 +2,8 @@ package com.verest.board.dao;
 
 import java.util.List;
 
-import javax.sound.sampled.Port;
-
 import com.verest.board.model.CommonException;
+import com.verest.board.model.Port;
 
 public interface PortDao {
 
@@ -16,6 +15,9 @@ public interface PortDao {
 
 	// 전체 포트 개수 가져오기
 	public List<Port> selectAll() throws CommonException;
+
+	// 전체 글 개수 가져오기
+	public int boardCount() throws CommonException;
 
 	// 후기 수정하기
 	public void update(Port port) throws CommonException;

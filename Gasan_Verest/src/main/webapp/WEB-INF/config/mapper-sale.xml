@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.verest.board.dao.ProjectDaoImpl">
+<mapper namespace="com.verest.board.dao.SaleDaoImpl">
 
-	<insert id="insert" parameterType="Project">
+	<insert id="insert" parameterType="Sale">
 		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
 			SELECT sale_seq.NEXTVAL no FROM DUAL
 		</selectKey>
@@ -12,7 +12,7 @@
 		VALUES (#{no}, #{title}, #{content}, #{writer}, #{price}, SYSDATE, #{attachment}, 0)
 	</insert>
 	
-	<resultMap type="Project" id="projectResultMap">
+	<resultMap type="Sale" id="saleResultMap">
 		<id property="no" column="no" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
@@ -24,13 +24,13 @@
 		<result property="userInfo.name" column="name" />
 	</resultMap>
 	
-	<select id="select" parameterType="String" resultMap="projectResultMap">
+	<select id="select" parameterType="String" resultMap="saleResultMap">
 		SELECT p.no, p.title, p.content, p.writer, p.price, p.regdate, p.attachment, u.v_id, u.v_name
 		FROM userinfo u, port p
 		WHERE p.writer = u.v_id AND no = #{no}
 	</select>
 	
-	<select id="selectAll" resultMap="projectResultMap">
+	<select id="selectAll" resultMap="saleResultMap">
 		SELECT p.no, p.title, p.content, p.writer, p.price, p.regdate, p.attachment, u.v_id, u.v_name
 		FROM userinfo u, port p
 		WHERE p.writer = u.v_id ORDER BY p.no DESC
@@ -40,7 +40,7 @@
 		SELECT COUNT(*) cnt FROM sale WHERE 1=1
 	</select>
 	
-	<update id="update" parameterType="Project">
+	<update id="update" parameterType="Sale">
 		UPDATE sale 
 		SET title = #{title}, content = #{content}, price = #{price}, regdate = SYSDATE, attachment = #{attachment}
 		WHERE no = #{no}

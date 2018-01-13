@@ -43,6 +43,7 @@ public class ProjectServiceImpl implements ProjectService {
 	public String modify(Project project) throws CommonException {
 		Project item = dao.select(Integer.toString(project.getNo()));
 		String oldFilename = item.getAttachment();
+		dao.update(project);
 		return oldFilename;
 	}
 	

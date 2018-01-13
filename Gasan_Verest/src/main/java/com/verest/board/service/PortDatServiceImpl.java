@@ -6,30 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.verest.board.dao.PortDao;
+import com.verest.board.dao.PortDatDao;
 import com.verest.board.model.CommonException;
-import com.verest.board.model.Port;
+import com.verest.board.model.PortDat;
 
 @Service
-public class PortServiceImpl implements PortService {
+public class PortDatServiceImpl implements PortDatService {
 	
 	@Autowired
-	private PortDao dao;
+	private PortDatDao dao;
 	
-	public PortServiceImpl() {}
+	public PortDatServiceImpl() {}
 
 	@Override
-	public void newBoard(Port port) throws CommonException {
-		dao.insert(port);
+	public void newBoard(PortDat portDat) throws CommonException {
+		dao.insert(portDat);
 	}
 
 	@Override
-	public Port detail(String no) throws CommonException {
+	public PortDat detail(String no) throws CommonException {
 		return dao.select(no);
 	}
 
 	@Override
-	public List<Port> list() throws CommonException {
+	public List<PortDat> list() throws CommonException {
 		return dao.selectAll();
 	}
 
@@ -40,20 +40,16 @@ public class PortServiceImpl implements PortService {
 	
 	@Transactional
 	@Override
-	public String modify(Port port) throws CommonException {
-		Port item = dao.select(Integer.toString(port.getNo()));
-		String oldFilename = item.getAttachment();
-		dao.update(port);
-		return oldFilename;
+	public String modify(PortDat portDat) throws CommonException {
+		dao.update(portDat);
+		return null;
 	}
 	
 	@Transactional
 	@Override
 	public String remove(String no) throws CommonException {
-		Port item = dao.select(no);
-		String filename = item.getAttachment();
 		dao.delete(no);
-		return filename;
+		return null;
 	}
 
 }

@@ -2,7 +2,7 @@ package com.verest.board.model;
 
 import java.util.Date;
 
-public class port {
+public class Port {
 
 	private Integer no;
 	private String title;
@@ -12,9 +12,9 @@ public class port {
 	private String attachment;
 	private Integer views;
 	
-	public port() {}
+	public Port() {}
 
-	public port(Integer no, String title, String content, Integer writer, Date regdate, String attachment,
+	public Port(Integer no, String title, String content, Integer writer, Date regdate, String attachment,
 			Integer views) {
 		this.no = no;
 		this.title = title;
@@ -103,7 +103,7 @@ public class port {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		port other = (port) obj;
+		Port other = (Port) obj;
 		if (attachment == null) {
 			if (other.attachment != null)
 				return false;

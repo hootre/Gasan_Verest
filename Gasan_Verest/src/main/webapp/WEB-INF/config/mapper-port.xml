@@ -8,7 +8,7 @@
 		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
 			SELECT port_seq.NEXTVAL no FROM DUAL
 		</selectKey>
-		INSERT INTO board (no, title, content, writer, regdate, attachment, views)
+		INSERT INTO port (no, title, content, writer, regdate, attachment, views)
 		VALUES (#{no}, #{title}, #{content}, #{writer}, SYSDATE, #{attachment}, 0)
 	</insert>
 	
@@ -16,7 +16,7 @@
 		<id property="no" column="no" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<result property="writer" column="id" />
+		<result property="writer" column="writer" />
 		<result property="regdate" column="regdate" />
 		<result property="attachment" column="attachment" />
 		<result property="userInfo.id" column="id" />
@@ -26,17 +26,17 @@
 	<select id="select" parameterType="String" resultMap="portResultMap">
 		SELECT p.no, p.title, p.content, p.writer, p.regdate, p.attachment, u.v_id, u.v_name
 		FROM userinfo u, port p
-		WHERE p.no = u.id AND no = #{no}
+		WHERE p.writer = u.v_id AND no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="portResultMap">
-		SELECT p.no, p.title, p.content, p.id, p.regdate, p.attachment, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, p.regdate, p.attachment, u.v_id, u.v_name
 		FROM userinfo u, port p
-		WHERE p.no = u.v_id ORDER BY p.no DESC
+		WHERE p.writer = u.v_id ORDER BY p.no DESC
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT COUNT(*) cnt FROM board WHERE 1=1
+		SELECT COUNT(*) cnt FROM port WHERE 1=1
 	</select>
 	
 	<update id="update" parameterType="Port">

@@ -6,10 +6,10 @@
 
 	<insert id="insert" parameterType="Project">
 		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
-			SELECT project_seq.NEXTVAL no FROM DUAL
+			SELECT sale_seq.NEXTVAL no FROM DUAL
 		</selectKey>
-		INSERT INTO project (no, title, content, writer, regdate, attachment, views)
-		VALUES (#{no}, #{title}, #{content}, #{writer}, SYSDATE, #{attachment}, 0)
+		INSERT INTO sale (no, title, content, writer, price, regdate, attachment, views)
+		VALUES (#{no}, #{title}, #{content}, #{writer}, #{price}, SYSDATE, #{attachment}, 0)
 	</insert>
 	
 	<resultMap type="Project" id="projectResultMap">
@@ -17,6 +17,7 @@
 		<result property="title" column="title" />
 		<result property="content" column="content" />
 		<result property="writer" column="writer" />
+		<result property="price" column="price" />
 		<result property="regdate" column="regdate" />
 		<result property="attachment" column="attachment" />
 		<result property="userInfo.id" column="id" />
@@ -24,29 +25,29 @@
 	</resultMap>
 	
 	<select id="select" parameterType="String" resultMap="projectResultMap">
-		SELECT p.no, p.title, p.content, p.writer, p.regdate, p.attachment, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, p.price, p.regdate, p.attachment, u.v_id, u.v_name
 		FROM userinfo u, port p
 		WHERE p.writer = u.v_id AND no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="projectResultMap">
-		SELECT p.no, p.title, p.content, p.writer, p.regdate, p.attachment, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, p.price, p.regdate, p.attachment, u.v_id, u.v_name
 		FROM userinfo u, port p
 		WHERE p.writer = u.v_id ORDER BY p.no DESC
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT COUNT(*) cnt FROM project WHERE 1=1
+		SELECT COUNT(*) cnt FROM sale WHERE 1=1
 	</select>
 	
 	<update id="update" parameterType="Project">
-		UPDATE project 
-		SET title = #{title}, content = #{content}, regdate = SYSDATE, attachment = #{attachment}
+		UPDATE sale 
+		SET title = #{title}, content = #{content}, price = #{price}, regdate = SYSDATE, attachment = #{attachment}
 		WHERE no = #{no}
 	</update>
 	
 	<delete id="delete" parameterType="String">
-		DELETE FROM project WHERE no = #{no}
+		DELETE FROM sale WHERE no = #{no}
 	</delete>
 	
 </mapper>

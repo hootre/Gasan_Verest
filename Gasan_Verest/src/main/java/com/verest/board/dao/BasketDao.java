@@ -8,7 +8,7 @@ import com.verest.board.model.CommonException;
 public interface BasketDao {
 
 		// 장바구니 등록
-		public void insert(Basket Basket) throws CommonException;
+		public void insert(Basket basket) throws CommonException;
 		
 		// 장바구니 하나 가져오기
 		public Basket select(String basket_no) throws CommonException;

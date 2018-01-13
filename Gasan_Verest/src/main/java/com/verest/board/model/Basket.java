@@ -1,14 +1,14 @@
 package com.verest.board.model;
 
-public class basket {
+public class Basket {
 
 	private Integer basket_no;
 	private Integer v_id;
 	private Integer sale_no;
 	
-	public basket() {}
+	public Basket() {}
 
-	public basket(Integer basket_no, Integer v_id, Integer sale_no) {
+	public Basket(Integer basket_no, Integer v_id, Integer sale_no) {
 		this.basket_no = basket_no;
 		this.v_id = v_id;
 		this.sale_no = sale_no;
@@ -56,7 +56,7 @@ public class basket {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		basket other = (basket) obj;
+		Basket other = (Basket) obj;
 		if (basket_no == null) {
 			if (other.basket_no != null)
 				return false;

@@ -2,7 +2,7 @@ package com.verest.board.model;
 
 import java.util.Date;
 
-public class SaleDat {
+public class saleDat {
 	
 	private Integer dat_no;
 	private Integer board_no;
@@ -10,9 +10,9 @@ public class SaleDat {
 	private String content;
 	private Date regdate;
 	
-	public SaleDat() { }
+	public saleDat() { }
 
-	public SaleDat(Integer dat_no, Integer board_no, Integer dat_writer, String content, Date regdate) {
+	public saleDat(Integer dat_no, Integer board_no, Integer dat_writer, String content, Date regdate) {
 		super();
 		this.dat_no = dat_no;
 		this.board_no = board_no;
@@ -81,7 +81,7 @@ public class SaleDat {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		SaleDat other = (SaleDat) obj;
+		saleDat other = (saleDat) obj;
 		if (board_no == null) {
 			if (other.board_no != null)
 				return false;

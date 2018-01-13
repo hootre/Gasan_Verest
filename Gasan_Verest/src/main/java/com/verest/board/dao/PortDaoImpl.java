@@ -37,7 +37,6 @@ public class PortDaoImpl implements PortDao {
 
 	@Override
 	public Port select(String no) throws CommonException {
-		Port
 		return null;
 	}
 

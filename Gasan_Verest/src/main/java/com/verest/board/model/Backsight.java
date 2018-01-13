@@ -2,30 +2,30 @@ package com.verest.board.model;
 
 import java.util.Date;
 
-public class question1 {
-	
-	private Integer qu_no;
+public class Backsight {
+
+	private Integer back_no;
 	private Integer writer;
 	private String content;
 	private String title;
 	private Date regdate;
 	
-	public question1() {}
+	public Backsight() {}
 
-	public question1(Integer qu_no, Integer writer, String content, String title, Date regdate) {
-		this.qu_no = qu_no;
+	public Backsight(Integer back_no, Integer writer, String content, String title, Date regdate) {
+		this.back_no = back_no;
 		this.writer = writer;
 		this.content = content;
 		this.title = title;
 		this.regdate = regdate;
 	}
 
-	public Integer getQu_no() {
-		return qu_no;
+	public Integer getBack_no() {
+		return back_no;
 	}
 
-	public void setQu_no(Integer qu_no) {
-		this.qu_no = qu_no;
+	public void setBack_no(Integer back_no) {
+		this.back_no = back_no;
 	}
 
 	public Integer getWriter() {
@@ -64,8 +64,8 @@ public class question1 {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((back_no == null) ? 0 : back_no.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
-		result = prime * result + ((qu_no == null) ? 0 : qu_no.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((writer == null) ? 0 : writer.hashCode());
@@ -80,16 +80,16 @@ public class question1 {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		question1 other = (question1) obj;
+		Backsight other = (Backsight) obj;
+		if (back_no == null) {
+			if (other.back_no != null)
+				return false;
+		} else if (!back_no.equals(other.back_no))
+			return false;
 		if (content == null) {
 			if (other.content != null)
 				return false;
 		} else if (!content.equals(other.content))
-			return false;
-		if (qu_no == null) {
-			if (other.qu_no != null)
-				return false;
-		} else if (!qu_no.equals(other.qu_no))
 			return false;
 		if (regdate == null) {
 			if (other.regdate != null)
@@ -112,8 +112,8 @@ public class question1 {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("question1 [qu_no=");
-		builder.append(qu_no);
+		builder.append("backsight [back_no=");
+		builder.append(back_no);
 		builder.append(", writer=");
 		builder.append(writer);
 		builder.append(", content=");

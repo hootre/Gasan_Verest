@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.verest.board.dao.backsightDaoImpl">
+  
+  	<insert id="insert" parameterType="Board">
+		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
+			SELECT board_seq.NEXTVAL no FROM DUAL
+		</selectKey>
+		INSERT INTO board (no, title, content, id, regdate, attachment)
+		VALUES (#{no}, #{title}, #{content}, #{id}, SYSDATE, #{attachment})
+	</insert>
+  
+  	<resultMap type="backsight" id="backsightResultMap">
+		<id property="back_no" column="back_no" />
+		<result property="writer" column="writer" />
+		<result property="content" column="content" />
+		<result property="title" column="title" />
+		<result property="regdate" column="regdate" />
+		<result property="attachment" column="attachment" />
+		<result property="userInfo.email" column="email" />
+		<result property="userInfo.name" column="name" />
+		<result property="userInfo.avatar" column="avatar" />
+	</resultMap>
+	
+  </mapper>

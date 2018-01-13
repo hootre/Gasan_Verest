@@ -2,17 +2,17 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.koitt.board.dao.BoardDaoImpl">
+<mapper namespace="com.verest.board.dao.PortDaoImpl">
 
-	<insert id="insert" parameterType="Board">
+	<insert id="insert" parameterType="Port">
 		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
-			SELECT board_seq.NEXTVAL no FROM DUAL
+			SELECT port_seq.NEXTVAL no FROM DUAL
 		</selectKey>
-		INSERT INTO board (no, title, content, id, regdate, attachment)
-		VALUES (#{no}, #{title}, #{content}, #{id}, SYSDATE, #{attachment})
+		INSERT INTO board (no, title, content, writer, regdate, attachment, views)
+		VALUES (#{no}, #{title}, #{content}, #{writer}, SYSDATE, #{attachment}, 0)
 	</insert>
 	
-	<resultMap type="Board" id="boardResultMap">
+	<resultMap type="Port" id="portResultMap">
 		<id property="no" column="no" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />

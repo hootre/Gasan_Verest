@@ -37,6 +37,7 @@ public class PortDaoImpl implements PortDao {
 
 	@Override
 	public Port select(String no) throws CommonException {
+
 		Port port = null;
 		try {
 			port = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", no);
@@ -45,6 +46,7 @@ public class PortDaoImpl implements PortDao {
 			throw new CommonException("E04: 포트 게시물 검색 실패");
 		}
 		return port;
+
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class BasketDaoImpl implements BasketDao{
 	private Logger logger = LogManager.getLogger(this.getClass());
 	
 
-	private static final String MAPPER_NAMESPACE = BacksightDaoImpl.class.getName();
+	private static final String MAPPER_NAMESPACE = BasketDaoImpl.class.getName();
 	
 	@Autowired
 	private SqlSession sqlSession;

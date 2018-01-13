@@ -41,7 +41,7 @@ public class BacksightDaoImpl implements BacksightDao{
 			backsight = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", back_no);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("H02 : 후기 단일 검색 실패");
+			throw new CommonException("H02 : 후기 상세보기 실패");
 		}
 		return backsight;
 	}

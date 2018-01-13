@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.verest.board.dao.Order_listDaoImpl">
+  
+  	<insert id="insert" parameterType="Order_list">
+		<selectKey keyProperty="or_no" resultType="Integer" order="BEFORE">
+			SELECT Order_list_seq.NEXTVAL or_no FROM DUAL
+		</selectKey>
+		INSERT INTO order_list (or_no, v_id, sale_no, regdate)
+		VALUES (#{or_no}, #{v_id}, #{sale_no}, SYSDATE)
+	</insert>
+  
+  	<resultMap type="Order_list" id="order_listResultMap">
+		<id property="or_no" column="or_no" />
+		<result property="v_id" column="id" />
+		<result property="sale_no" column="sale_no" />
+		<result property="regdate" column="regdate" />
+		<result property="userInfo.v_id" column="v_id" />
+		<result property="userInfo.v_email" column="v_email" />
+		<result property="userInfo.v_name" column="v_name" />
+	</resultMap>
+	
+	<select id="select" parameterType="String" resultMap="order_listResultMap">
+		SELECT o.or_no, o.v_id, o.sale_no, o.regdate, u.v_email, u.v_name
+		FROM userinfo u, order_list o
+		WHERE o.v_id = u.v_id AND or_no = #{or_no}
+	</select>
+	
+	<select id="selectAll" resultMap="order_listResultMap">
+		SELECT o.or_no, o.v_id, o.sale_no, o.regdate, u.v_email, u.v_name
+		FROM userinfo u, order_list o
+		WHERE o.v_id = u.v_id  ORDER BY b.or_no DESC
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) cnt FROM order_list WHERE 1=1
+	</select>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM order_list WHERE or_no = #{or_no}
+	</delete>
+	
+	
+  </mapper>

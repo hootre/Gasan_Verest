@@ -10,7 +10,7 @@ import com.verest.board.model.Backsight;
 import com.verest.board.model.CommonException;
 
 @Service
-public class backsightServiceImpl implements backsightService{
+public class BacksightServiceImpl implements BacksightService{
 
 	@Autowired
 	private BacksightDao backDao;

@@ -4,9 +4,8 @@ import java.util.List;
 
 import com.verest.board.model.Backsight;
 import com.verest.board.model.CommonException;
-import com.verest.board.model.Port;
 
-public interface backsightService {
+public interface BacksightService {
 
 		// 게시물 번호를 1 증가하고 게시물을 등록한다.
 		public void newBoard(Backsight backsight) throws CommonException;

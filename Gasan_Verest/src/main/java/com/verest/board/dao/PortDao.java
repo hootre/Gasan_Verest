@@ -19,10 +19,10 @@ public interface PortDao {
 	// 전체 글 개수 가져오기
 	public int boardCount() throws CommonException;
 
-	// 후기 수정하기
+	// 수정하기
 	public void update(Port port) throws CommonException;
 
-	// 후기 삭제하기
+	// 삭제하기
 	public void delete(String no) throws CommonException;
 
 }

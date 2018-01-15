@@ -43,6 +43,7 @@ public class SaleServiceImpl implements SaleService {
 	public String modify(Sale sale) throws CommonException {
 		Sale item = dao.select(Integer.toString(sale.getNo()));
 		String oldFilename = item.getAttachment();
+		dao.update(sale);
 		return oldFilename;
 	}
 	

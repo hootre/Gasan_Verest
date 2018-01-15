@@ -43,6 +43,7 @@ public class PortServiceImpl implements PortService {
 	public String modify(Port port) throws CommonException {
 		Port item = dao.select(Integer.toString(port.getNo()));
 		String oldFilename = item.getAttachment();
+		dao.update(port);
 		return oldFilename;
 	}
 	

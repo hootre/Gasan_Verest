@@ -2,13 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Footer</title>
-<link rel="stylesheet" href="css/footer.css" />
+	<meta charset="UTF-8">
+	<title>Footer</title>
+	<link rel="stylesheet" href="footer.css">
 </head>
-<div class="footer">
+<body>
+
+	<div class="footer">
 		<div class="footer_container">
 			<div class="footer_content">
 				<div class="footer_card">

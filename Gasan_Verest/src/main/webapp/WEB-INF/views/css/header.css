@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+.t_container {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.top_top .t_container > p {
+    float: left;
+    color: #999;
+    line-height: 30px;
+}
+
+.top_top .t_container > p:last-child {
+    float: right;
+}
+
+.top_border {
+    clear: both;
+    max-width: 100%;
+    border: 1px solid #eee;
+}
+.top_mid a {
+    display: inline-block;
+}
+
+.top_mid .top_left {
+    display: inline-block;
+    margin-left: 200px;
+    line-height: 30px;
+}
+
+.top_mid .top_left li {
+    display: inline-block;
+    font-size: 25px;
+    padding: 14px 30px 10px 30px;
+}

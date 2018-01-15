@@ -8,7 +8,7 @@
 		<selectKey keyProperty="basket_no" resultType="Integer" order="BEFORE">
 			SELECT Basket_seq.NEXTVAL basket_no FROM DUAL
 		</selectKey>
-		INSERT INTO basket (basket_no, v_id, sale_no, regdate)
+		INSERT INTO basket (basket_no, v_id, sale_no,regdate)
 		VALUES (#{basket_no}, #{v_id}, #{sale_no}, SYSDATE)
 	</insert>
   

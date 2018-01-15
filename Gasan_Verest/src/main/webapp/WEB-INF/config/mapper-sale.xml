@@ -26,7 +26,7 @@
 	
 	<select id="select" parameterType="String" resultMap="saleResultMap">
 		SELECT p.no, p.title, p.content, p.writer, p.price, p.regdate, p.attachment, u.v_id, u.v_name
-		FROM userinfo u, port p
+		FROM userinfo u, sale p
 		WHERE p.writer = u.v_id AND no = #{no}
 	</select>
 	

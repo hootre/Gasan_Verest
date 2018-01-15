@@ -6,9 +6,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<%@ include file="css/style.css" %>
+<%@ include file="css/header.css" %>
+<%@ include file="css/footer.css" %>
+</style>
 <title>Verest</title>
-<link rel="stylesheet" href="css/footer.css" />
 </head>
 <body>
-	<h1>메인 컨텐츠</h1>
+	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
+</body>
+</html>

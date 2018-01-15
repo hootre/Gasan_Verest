@@ -1,19 +1,4 @@
-@charset "UTF-8";
-*{
-	padding: 0;
-	margin: 0;
-	text-decoration: none;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: "배달의민족 한나는 열한살";
-}
-body{
-	background:url('https://static.pexels.com/photos/33688/delicate-arch-night-stars-landscape.jpg') no-repeat;
-	-webkit-background-size: cover;
-	background-size: cover;
-}
+
 .clearfix:after{
 	content: '';
 	clear: both;

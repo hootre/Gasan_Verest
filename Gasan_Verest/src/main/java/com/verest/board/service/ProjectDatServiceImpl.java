@@ -6,30 +6,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.verest.board.dao.PortDatDao;
+import com.verest.board.dao.ProjectDatDao;
 import com.verest.board.model.CommonException;
-import com.verest.board.model.PortDat;
+import com.verest.board.model.ProjectDat;
 
 @Service
-public class PortDatServiceImpl implements PortDatService {
+public class ProjectDatServiceImpl implements ProjectDatService {
 	
 	@Autowired
-	private PortDatDao dao;
+	private ProjectDatDao dao;
 	
-	public PortDatServiceImpl() {}
+	public ProjectDatServiceImpl() {}
 
 	@Override
-	public void newBoard(PortDat portDat) throws CommonException {
-		dao.insert(portDat);
+	public void newBoard(ProjectDat projectDat) throws CommonException {
+		dao.insert(projectDat);
 	}
 
 	@Override
-	public PortDat detail(String no) throws CommonException {
+	public ProjectDat detail(String no) throws CommonException {
 		return dao.select(no);
 	}
 
 	@Override
-	public List<PortDat> list() throws CommonException {
+	public List<ProjectDat> list() throws CommonException {
 		return dao.selectAll();
 	}
 
@@ -40,8 +40,8 @@ public class PortDatServiceImpl implements PortDatService {
 	
 	@Transactional
 	@Override
-	public void modify(PortDat portDat) throws CommonException {
-		dao.update(portDat);
+	public void modify(ProjectDat projectDat) throws CommonException {
+		dao.update(projectDat);
 	}
 	
 	@Transactional

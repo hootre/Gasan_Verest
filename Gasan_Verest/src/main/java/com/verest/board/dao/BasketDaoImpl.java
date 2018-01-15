@@ -6,11 +6,13 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.verest.board.model.Backsight;
 import com.verest.board.model.Basket;
 import com.verest.board.model.CommonException;
 
+@Repository
 public class BasketDaoImpl implements BasketDao{
 
 	private Logger logger = LogManager.getLogger(this.getClass());

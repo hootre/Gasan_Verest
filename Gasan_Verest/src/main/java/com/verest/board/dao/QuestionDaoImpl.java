@@ -6,10 +6,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Question;
 
+@Repository
 public class QuestionDaoImpl implements QuestionDao{
 
 	private Logger logger = LogManager.getLogger(this.getClass());

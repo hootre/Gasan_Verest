@@ -3,16 +3,11 @@ package com.verest.board.service;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.verest.board.dao.BoardDao;
 import com.verest.board.dao.UserInfoDao;
-import com.verest.board.model.Board;
 import com.verest.board.model.CommonException;
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.UserType;
@@ -21,13 +16,8 @@ import com.verest.board.model.UserTypeId;
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
 	
-	private Logger logger = LogManager.getLogger(this.getClass());
-	
 	@Autowired
 	private UserInfoDao userInfoDao;
-	
-	@Autowired
-	private BoardDao boardDao;
 
 	@Autowired
 	private PasswordEncoder encoder;
@@ -41,7 +31,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	@Override
 	public void newUser(UserInfo userInfo) throws CommonException {
 
-		userInfo.setPassword(encoder.encode(userInfo.getPassword()));
+		userInfo.setV_password(encoder.encode(userInfo.getV_password()));
 
 		UserType userType = new UserType(UserTypeId.USER.getUserTypeId(), UserTypeId.USER.name());
 		Set<UserType> userTypes = new HashSet<>();
@@ -55,30 +45,22 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Transactional
 	@Override
-	public String delete(Integer id, String password) throws CommonException {
+	public void delete(Integer id, String password) throws CommonException {
 		
 		UserInfo item = userInfoDao.select(id);
 		
-		boolean isMatched = encoder.matches(password, item.getPassword());
+		boolean isMatched = encoder.matches(password, item.getV_password());
 		if (isMatched) {
 			userInfoDao.deleteUserTypes(id);
 			userInfoDao.delete(id);
-			
 		} else {
 			throw new CommonException("E60: 비밀번호가 동일하지 않아 삭제 실패");
 		}
-
-		return item.getAvatar();
 	}
 
 	@Override
-	public String modify(UserInfo userInfo) throws CommonException {
-		
-		UserInfo item = userInfoDao.select(userInfo.getId());
-		String oldFilename = item.getAvatar();
+	public void modify(UserInfo userInfo) throws CommonException {
 		userInfoDao.update(userInfo);
-
-		return oldFilename;
 	}
 
 	@Override
@@ -86,7 +68,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		
 		// 데이터베이스로부터 현재 사용자의 암호화된 비밀번호를 가져온다.
 		UserInfo item = userInfoDao.select(id);
-		return encoder.matches(rawPassword, item.getPassword());
+		return encoder.matches(rawPassword, item.getV_password());
 	}
 	
 	@Override
@@ -94,7 +76,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		
 		// 데이터베이스로부터 현재 사용자의 암호화된 비밀번호를 가져온다.
 		UserInfo item = userInfoDao.selectByEmail(email);
-		return encoder.matches(rawPassword, item.getPassword());
+		return encoder.matches(rawPassword, item.getV_password());
 	}
 
 	@Override
@@ -104,12 +86,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 		 *  게시물의 작성자 email값을 획득한 후,
 		 *  획득한 email값으로 사용자 정보를 가져와
 		 *  해당 사용자의 비밀번호를 가져온다.
-		 */
+		 *//*
 		Board board = boardDao.select(no.toString());
 		UserInfo userInfo = userInfoDao.select(board.getId());
 		
 		// 해당 사용자의 비밀번호와 입력한 비밀번호 비교한 결과 리턴
-		return encoder.matches(rawPassword, userInfo.getPassword());
+		return encoder.matches(rawPassword, userInfo.getV_password());*/
+		return true;
 	}
 
 	@Override
@@ -118,18 +101,16 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public String delete(String email, String password) throws CommonException {
+	public void delete(String email, String password) throws CommonException {
 		UserInfo item = userInfoDao.selectByEmail(email);
 		
-		boolean isMatched = encoder.matches(password, item.getPassword());
+		boolean isMatched = encoder.matches(password, item.getV_password());
 		if (isMatched) {
-			userInfoDao.deleteUserTypes(item.getId());
-			userInfoDao.delete(item.getId());
+			userInfoDao.deleteUserTypes(item.getV_id());
+			userInfoDao.delete(item.getV_id());
 			
 		} else {
 			throw new CommonException("E61: 비밀번호가 동일하지 않아 삭제 실패");
 		}
-
-		return item.getAvatar();
 	}
 }

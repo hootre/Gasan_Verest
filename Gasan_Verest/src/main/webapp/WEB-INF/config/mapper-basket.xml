@@ -35,7 +35,7 @@
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT COUNT(*) cnt FROM basket WHERE 1=1
+		SELECT COUNT(*) cnt FROM basket
 	</select>
 	
 	<delete id="delete" parameterType="String">

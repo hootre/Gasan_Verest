@@ -1,17 +1,30 @@
 package com.verest.board.model;
 
+import java.util.Date;
+
 public class Basket {
 
 	private Integer basket_no;
 	private Integer v_id;
 	private Integer sale_no;
+	private Date regdate;
 	
 	public Basket() {}
 
-	public Basket(Integer basket_no, Integer v_id, Integer sale_no) {
+	public Basket(Integer basket_no, Integer v_id, Integer sale_no, Date regdate) {
 		this.basket_no = basket_no;
 		this.v_id = v_id;
 		this.sale_no = sale_no;
+		this.regdate = regdate;
+	}
+
+	
+	public Date getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
 	}
 
 	public Integer getBasket_no() {
@@ -43,6 +56,7 @@ public class Basket {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((basket_no == null) ? 0 : basket_no.hashCode());
+		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
 		result = prime * result + ((sale_no == null) ? 0 : sale_no.hashCode());
 		result = prime * result + ((v_id == null) ? 0 : v_id.hashCode());
 		return result;
@@ -62,6 +76,11 @@ public class Basket {
 				return false;
 		} else if (!basket_no.equals(other.basket_no))
 			return false;
+		if (regdate == null) {
+			if (other.regdate != null)
+				return false;
+		} else if (!regdate.equals(other.regdate))
+			return false;
 		if (sale_no == null) {
 			if (other.sale_no != null)
 				return false;
@@ -78,15 +97,17 @@ public class Basket {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("basket [basket_no=");
+		builder.append("Basket [basket_no=");
 		builder.append(basket_no);
 		builder.append(", v_id=");
 		builder.append(v_id);
 		builder.append(", sale_no=");
 		builder.append(sale_no);
+		builder.append(", regdate=");
+		builder.append(regdate);
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 	
 }

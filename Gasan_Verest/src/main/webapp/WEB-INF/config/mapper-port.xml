@@ -36,7 +36,7 @@
 	</select>
 	
 	<select id="count" resultType="int">
-		SELECT COUNT(*) cnt FROM port WHERE 1=1
+		SELECT COUNT(*) cnt FROM board
 	</select>
 	
 	<update id="update" parameterType="Port">

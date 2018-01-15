@@ -9,9 +9,9 @@ public interface UserInfoService {
 
 	public void newUser(UserInfo userInfo) throws CommonException;
 
-	public String delete(Integer id, String password) throws CommonException;
+	public void delete(Integer id, String password) throws CommonException;
 
-	public String modify(UserInfo userInfo) throws CommonException;
+	public void modify(UserInfo userInfo) throws CommonException;
 	
 	// 게시물 번호를 이용하여 게시물 작성자의 비밀번호와 입력한 비밀번호 비교
 	public boolean isBoardMatched(Integer no, String rawPassword) throws CommonException;
@@ -23,7 +23,7 @@ public interface UserInfoService {
 	public UserInfo detail(String email) throws CommonException;
 
 	// email 값을 이용하여 사용자 삭제
-	public String delete(String email, String password) throws CommonException;
+	public void delete(String email, String password) throws CommonException;
 
 	// 사용자의 email 값을 이용하여 비밀번호를 불러온 다음, 입력한 비밀번호와 비교
 	boolean isPasswordMatched(String email, String rawPassword) throws CommonException;

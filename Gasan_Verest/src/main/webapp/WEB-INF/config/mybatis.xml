@@ -9,11 +9,14 @@
 	</settings>
 	
 	<typeAliases>
-		<typeAlias type="com.koitt.board.model.Backsight" alias="Backsight"/>
-		<typeAlias type="com.koitt.board.model.Basket" alias="Basket"/>
-		<typeAlias type="com.koitt.board.model.Order_list" alias="Order_list"/>
-		<typeAlias type="com.koitt.board.model.Question" alias="Question"/>
-		<typeAlias type="com.koitt.board.model.UserInfo" alias="UserInfo"/>
-		<typeAlias type="com.koitt.board.model.UserType" alias="UserType"/>
+		<typeAlias type="com.verest.board.model.Port" alias="Port"/>
+		<typeAlias type="com.verest.board.model.Project" alias="Project"/>
+		<typeAlias type="com.verest.board.model.Sale" alias="Sale"/>
+		<typeAlias type="com.verest.board.model.Backsight" alias="Backsight"/>
+		<typeAlias type="com.verest.board.model.Basket" alias="Basket"/>
+		<typeAlias type="com.verest.board.model.Order_list" alias="Order_list"/>
+		<typeAlias type="com.verest.board.model.Question" alias="Question"/>
+		<typeAlias type="com.verest.board.model.UserInfo" alias="UserInfo"/>
+		<typeAlias type="com.verest.board.model.UserType" alias="UserType"/>
 	</typeAliases>
 </configuration>

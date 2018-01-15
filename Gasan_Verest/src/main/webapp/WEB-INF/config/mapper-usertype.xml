@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.koitt.board.dao.UserTypeDaoImpl">
+<mapper namespace="com.verest.board.dao.UserTypeDaoImpl">
 	
 	<select id="select" parameterType="Integer" resultType="UserType">
 		SELECT * FROM usertype WHERE usertype.v_id = #{v_id}

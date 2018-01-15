@@ -23,12 +23,12 @@ public interface UserInfoDao {
 	public void delete(Integer v_id) throws CommonException;
 
 	// 사용자 권한 삭제
-	public void deleteUserTypes(Integer id) throws CommonException;
+	public void deleteUserTypes(Integer v_id) throws CommonException;
 
 	// 사용자 데이터 수정
 	public void update(UserInfo user) throws CommonException;
 
 	// 사용자 이메로일 검색
-	public UserInfo selectByEmail(String email) throws CommonException;
+	public UserInfo selectByEmail(String v_email) throws CommonException;
 
 }

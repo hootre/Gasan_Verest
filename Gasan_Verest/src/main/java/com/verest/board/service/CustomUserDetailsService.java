@@ -26,8 +26,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 	private UserInfoService service;
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		UserInfo userInfo = service.detail(email);
+	public UserDetails loadUserByUsername(String v_email) throws UsernameNotFoundException {
+		UserInfo userInfo = service.detail(v_email);
 		logger.debug("UserInfo: " + userInfo);
 		
 		if (userInfo == null) {

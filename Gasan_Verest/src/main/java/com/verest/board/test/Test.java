@@ -1,13 +1,14 @@
 package com.verest.board.test;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import com.verest.board.dao.UserInfoDaoImpl;
+import com.verest.board.model.UserInfo;
 
 public class Test {
 	public static void main(String[] args) {
-		String password = "1234";
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		String encoding = encoder.encode(password);
-		System.out.println(encoding);
+		UserInfoDaoImpl dao = new UserInfoDaoImpl();
+		UserInfo data = dao.select(1);
+		System.out.println(data.getV_email());
+		System.out.println(data.getV_password());
 	}
 }
 

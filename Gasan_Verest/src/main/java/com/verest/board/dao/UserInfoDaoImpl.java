@@ -16,8 +16,9 @@ public class UserInfoDaoImpl implements UserInfoDao {
 
 	private Logger logger = LogManager.getLogger(this.getClass());
 
-	private static final String MAPPER_NAMESPACE = UserInfoDaoImpl.class.getName();
-
+	/*private static final String MAPPER_NAMESPACE = UserInfoDaoImpl.class.getName();*/
+	private static final String MAPPER_NAMESPACE = "com.verest.board.dao.UserInfoDaoImpl";
+	
 	@Autowired
 	private SqlSession sqlSession;
 
@@ -47,7 +48,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			//logger.debug(e.getMessage());
+			logger.debug(e.getMessage());
 			throw new CommonException("E31: 사용자 검색 실패");
 		}
 
@@ -112,11 +113,12 @@ public class UserInfoDaoImpl implements UserInfoDao {
 	}
 
 	@Override
-	public UserInfo selectByEmail(String email) throws CommonException {
+	public UserInfo selectByEmail(String v_email) throws CommonException {
 		UserInfo userInfo = null;
 
 		try {
-			userInfo = sqlSession.selectOne(MAPPER_NAMESPACE + ".selectByEmail", email);
+			System.out.println(MAPPER_NAMESPACE);
+			userInfo = sqlSession.selectOne(MAPPER_NAMESPACE + ".selectByEmail", v_email);
 
 		} catch (Exception e) {
 			e.printStackTrace();

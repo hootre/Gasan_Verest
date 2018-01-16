@@ -17,4 +17,16 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
+	<!-- Spring Security -->
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean id="roleToUserType"
+					class="com.verest.board.util.RoleToUserTypeConverter" />
+			</list>
+		</property>
+	</bean>
+	<mvc:resources location="/" mapping="/**" />
+	<mvc:annotation-driven conversion-service="conversionService"/>
 </beans>

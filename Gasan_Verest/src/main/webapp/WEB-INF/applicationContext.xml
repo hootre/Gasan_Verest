@@ -23,7 +23,7 @@
 			login-page="/login" 
 			login-processing-url="/login-processing"
 			authentication-failure-url="/login?action=error" 
-			default-target-url="/index"   
+			default-target-url="/"   
 			username-parameter="v_email"
 			password-parameter="v_password" 
 			always-use-default-target='true'/>

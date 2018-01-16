@@ -52,4 +52,15 @@ public class UserWebController {
 
 		return "list";
 	}
+	
+	// 글 목록 화면
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	public String  user(Model model) throws CommonException {
+		UserInfo list = null;
+
+		list = userInfoService.detail("hootre@naver.com");
+		model.addAttribute("list", list);
+
+		return "user";
+	}
 }

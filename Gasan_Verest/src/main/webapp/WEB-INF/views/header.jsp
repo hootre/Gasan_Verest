@@ -4,7 +4,7 @@
 <div class="top_top">
     <div class="t_container">
         <p>상담 +82 10-3119-6195</p>
-        <p><a href="#">로그인</a> / <a href="#">회원가입</a></p>
+        <p><a href='<c:url value="/login"></c:url>'>로그인</a> / <a href="#">회원가입</a></p>
     </div>
 </div>
 <div class="top_border"></div>

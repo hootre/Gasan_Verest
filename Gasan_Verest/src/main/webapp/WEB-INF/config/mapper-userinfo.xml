@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.koitt.board.dao.UserInfoDaoImpl">
+<mapper namespace="com.verest.board.dao.UserInfoDaoImpl">
 
 	<select id="selectAll" resultType="UserInfo">
 		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, ut.v_id, ut.v_type
@@ -19,8 +19,8 @@
 		<result property="v_password" column="v_password" />
 		<result property="v_name" column="v_name" />
 		<collection property="userTypes" ofType="UserType">
-			<id property="v_id" column="id" />
-			<result property="v_type" column="type"/>
+			<id property="v_id" column="vid" />
+			<result property="v_type" column="vtype"/>
 		</collection>
 	</resultMap>
 	
@@ -70,6 +70,6 @@
 			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 			FROM userinfotype, usertype
 			WHERE usertype.v_id = userinfotype.user_type_id) ut
-		WHERE u.v_id = ut.user_info_id AND u.v_email = 'hootre@naver.com'
+		WHERE u.v_id = ut.user_info_id AND u.v_email = #{v_email}
 	</select>
 </mapper>

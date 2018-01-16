@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Port;
+import com.verest.board.model.UserInfo;
 import com.verest.board.service.FileService;
 import com.verest.board.service.PortService;
 import com.verest.board.service.UserInfoService;
@@ -50,5 +51,16 @@ public class UserWebController {
 		model.addAttribute("list", list);
 
 		return "list";
+	}
+	
+	// 글 목록 화면
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
+	public String  user(Model model) throws CommonException {
+		UserInfo list = null;
+
+		list = userInfoService.detail("hootre@naver.com");
+		model.addAttribute("list", list);
+
+		return "user";
 	}
 }

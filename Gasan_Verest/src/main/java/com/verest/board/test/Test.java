@@ -1,7 +1,5 @@
 package com.verest.board.test;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import com.verest.board.dao.UserInfoDaoImpl;
 import com.verest.board.model.UserInfo;
 

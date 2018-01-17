@@ -6,7 +6,7 @@ VALUES (usertype_seq.NEXTVAL, 'USER');
 
 INSERT INTO userinfo(v_id, v_email, v_password, v_name)
 VALUES (userinfo_seq.NEXTVAL, 'hootre@naver.com', 
-'$2a$10$nzVjrSL9pWYHOTVHKupv0emeZUNebVvTCmUgoHsy8A4aJov6G44TS',
+'$2a$10$YEE7Qz8rWRx1D7NdqvDO9eI3nrY9FGjuzmDaMFBcS7rparEygUz7y',
 '전동준');
 
 INSERT INTO userinfo(v_id, v_email, v_password, v_name)
@@ -20,6 +20,9 @@ VALUES (1, 1);
 
 INSERT INTO userinfotype(user_info_id, user_type_id)
 VALUES (1, 2);
+
+INSERT INTO userinfotype(user_info_id, user_type_id)
+VALUES (2, 2);
 
 INSERT INTO project(no, title, content, writer, regdate, attachment, views)
 VALUES (project_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, NULL, 0);

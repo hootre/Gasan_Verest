@@ -108,6 +108,11 @@
 			<version>${springsecurity.version}</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>Gasan_Verest</finalName>

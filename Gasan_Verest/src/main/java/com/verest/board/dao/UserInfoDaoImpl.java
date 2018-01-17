@@ -117,7 +117,6 @@ public class UserInfoDaoImpl implements UserInfoDao {
 		UserInfo userInfo = null;
 
 		try {
-			System.out.println(MAPPER_NAMESPACE);
 			userInfo = sqlSession.selectOne(MAPPER_NAMESPACE + ".selectByEmail", v_email);
 
 		} catch (Exception e) {

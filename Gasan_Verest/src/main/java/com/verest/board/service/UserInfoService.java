@@ -20,7 +20,7 @@ public interface UserInfoService {
 	public boolean isPasswordMatched(Integer id, String oldPassword) throws CommonException;
 
 	// CustomUserDetailsService에서 이메일 값으로 사용자를 검색할 때 사용
-	public UserInfo detail(String email) throws CommonException;
+	public UserInfo detail(String v_email) throws CommonException;
 
 	// email 값을 이용하여 사용자 삭제
 	public void delete(String email, String password) throws CommonException;

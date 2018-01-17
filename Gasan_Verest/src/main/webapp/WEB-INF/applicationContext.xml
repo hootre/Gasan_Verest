@@ -18,15 +18,10 @@
 		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/board/**"
 			access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" />
-
-		<form-login 
-			login-page="/login" 
-			login-processing-url="/login-processing"
-			authentication-failure-url="/login?action=error" 
-			default-target-url="/index"   
-			username-parameter="v_email"
-			password-parameter="v_password" 
-			always-use-default-target='true'/>
+			
+		<form-login login-page="/login" login-processing-url="/login-processing"
+			authentication-failure-url="/login?action=error" username-parameter="v_email"
+			password-parameter="v_password" />
 		<access-denied-handler error-page="/access-denied" />
 		<csrf />
 	</http>

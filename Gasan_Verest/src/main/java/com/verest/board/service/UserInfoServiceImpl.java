@@ -96,8 +96,8 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public UserInfo detail(String email) throws CommonException {
-		return userInfoDao.selectByEmail(email);
+	public UserInfo detail(String v_email) throws CommonException {
+		return userInfoDao.selectByEmail(v_email);
 	}
 
 	@Override

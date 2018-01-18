@@ -12,7 +12,7 @@ FROM userinfo u,
 	(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 	FROM userinfotype, usertype
 	WHERE usertype.v_id = userinfotype.user_type_id) ut
-WHERE u.v_id = ut.user_info_id;
+WHERE u.v_id = ut.user_info_id ;
 
 -- 회원 이메일로 검색
 SELECT u.v_id, u.v_email, u.v_password, u.v_name, ut.v_id, ut.v_type
@@ -37,6 +37,7 @@ FROM userinfo u,
 	WHERE usertype.v_id = userinfotype.user_type_id) ut
 WHERE u.v_id = ut.user_info_id AND u.v_id = 1;
 
+select * from userinfo where userinfo.v_id = 1;
 
 -- update 양식
 UPDATE sale 

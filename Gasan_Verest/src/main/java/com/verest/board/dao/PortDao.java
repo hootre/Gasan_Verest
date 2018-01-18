@@ -24,5 +24,8 @@ public interface PortDao {
 
 	// 후기 삭제하기
 	public void delete(String no) throws CommonException;
+	
+	// 조회수 1씩 증가
+	public void viewsaction(Integer no) throws CommonException;
 
 }

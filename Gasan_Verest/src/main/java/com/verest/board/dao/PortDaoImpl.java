@@ -101,4 +101,15 @@ public class PortDaoImpl implements PortDao {
 		return count;
 	}
 
+	@Override
+	public void viewsaction(Integer no) throws CommonException {
+		try {
+			sqlSession.update(MAPPER_NAMESPACE + ".views",no);
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+			throw new CommonException("E05: 조회수 증가 실패");
+		}
+		
+	}
+
 }

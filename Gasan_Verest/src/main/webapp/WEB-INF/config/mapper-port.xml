@@ -49,4 +49,10 @@
 		DELETE FROM port WHERE no = #{no}
 	</delete>
 	
+	<update id="views" parameterType="Port">
+		UPDATE port 
+		SET views = #{views}
+		WHERE no = #{no}
+	</update>
+	
 </mapper>

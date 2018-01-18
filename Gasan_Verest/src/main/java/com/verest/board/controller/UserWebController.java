@@ -91,6 +91,18 @@ public class UserWebController {
 
 		return "detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 	}
+	
+	// 글 상세 화면
+	@RequestMapping(value = "/views", method = RequestMethod.GET)
+	public String views(Model model, 
+			@RequestParam(value = "no", required=true) String no)
+					throws CommonException, Exception {
+		Port port = portService.detail(no);
+		portService.viewsup(Integer.parseInt(no)+1);
+		model.addAttribute("item", port);
+
+		return "detail?no="+ no;	// /WEB-INF/views/detail.jsp 페이지로 이동
+	}
 
 	// 글 수정하기 화면
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)

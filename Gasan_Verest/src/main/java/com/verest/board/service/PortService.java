@@ -24,5 +24,8 @@ public interface PortService {
 
 	// 게시물을 삭제한다. (삭제하는 파일명을 리턴)
 	public String remove(String no) throws CommonException;
+	
+	// 게시물 조회수 증가
+	public void viewsup(Integer no) throws CommonException;
 
 }

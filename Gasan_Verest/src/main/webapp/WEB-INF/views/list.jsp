@@ -22,7 +22,7 @@
 		<c:forEach items="${ list }" var="item">
 			<tr>
 				<td>${ item.no }</td>
-				<td><a href="<c:url value='/detail?no=${ item.no }'/>">${ item.title }</a></td>
+				<td><a href="<c:url value='/views?no=${ item.no }'/>">${ item.title }</a></td>
 				<td>${ item.content }</td>
 				<td>${ item.writer }</td>
 				<td>${ item.regdate }</td>

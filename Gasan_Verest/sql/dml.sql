@@ -14,7 +14,7 @@ VALUES (userinfo_seq.NEXTVAL, 'koo@naver.com',
 '$2a$10$X62xKKmwFnKiyaL9bm5uv.A0mE4ivbZpiVC9.69Tq/6gKy0sf/PBa',
 '권순우');
 
-
+DELETE FROM userinfotype WHERE user_type_id = 2;
 INSERT INTO userinfotype(user_info_id, user_type_id)
 VALUES (1, 1);
 

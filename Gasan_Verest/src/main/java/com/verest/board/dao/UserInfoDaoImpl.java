@@ -16,8 +16,7 @@ public class UserInfoDaoImpl implements UserInfoDao {
 
 	private Logger logger = LogManager.getLogger(this.getClass());
 
-	/*private static final String MAPPER_NAMESPACE = UserInfoDaoImpl.class.getName();*/
-	private static final String MAPPER_NAMESPACE = "com.verest.board.dao.UserInfoDaoImpl";
+	private static final String MAPPER_NAMESPACE = UserInfoDaoImpl.class.getName();
 	
 	@Autowired
 	private SqlSession sqlSession;

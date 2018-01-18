@@ -25,7 +25,7 @@
 		<property name="converters">
 			<list>
 				<bean id="roleToUserType"
-					class="com.verest.board.util.RoleToUserTypeConverter" />
+					class="com.verest.util.RoleToUserTypeConverter" />
 			</list>
 		</property>
 	</bean>

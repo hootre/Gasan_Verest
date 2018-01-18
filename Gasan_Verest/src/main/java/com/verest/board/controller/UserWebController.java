@@ -97,6 +97,24 @@ public class UserWebController {
 	public String modify(Model model,
 			@RequestParam(value = "no", required = true) String no)
 					throws CommonException {
+		@RequestMapping(value = "/detail", method = RequestMethod.GET)
+		public String detail(Model model, 
+				@RequestParam(value = "no", required=true) String no)
+						throws CommonException, Exception {
+			Port port = null;
+			String filename = null;
+
+			port = portService.detail(no);
+			filename = port.getAttachment();
+			if (filename != null && !filename.trim().isEmpty()) {
+				filename = URLDecoder.decode(filename, "UTF-8");
+			}
+
+			model.addAttribute("item", port);
+			model.addAttribute("filename", filename);
+
+			return "detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
+		}
 
 		Port port = null;
 

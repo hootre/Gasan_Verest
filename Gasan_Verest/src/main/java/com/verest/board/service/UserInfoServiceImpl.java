@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.verest.board.dao.PortDao;
 import com.verest.board.dao.UserInfoDao;
 import com.verest.board.model.CommonException;
+import com.verest.board.model.Port;
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.UserType;
 import com.verest.board.model.UserTypeId;
@@ -21,6 +24,9 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Autowired
 	private PasswordEncoder encoder;
+	
+	@Autowired
+	private PortDao pdao;
 
 	@Override
 	public UserInfo detail(Integer id) throws CommonException {
@@ -86,13 +92,12 @@ public class UserInfoServiceImpl implements UserInfoService {
 		 *  게시물의 작성자 email값을 획득한 후,
 		 *  획득한 email값으로 사용자 정보를 가져와
 		 *  해당 사용자의 비밀번호를 가져온다.
-		 *//*
-		Board board = boardDao.select(no.toString());
-		UserInfo userInfo = userInfoDao.select(board.getId());
+		 */
+		Port port = pdao.select(no.toString());
+		UserInfo userInfo = userInfoDao.select(port.getWriter());
 		
 		// 해당 사용자의 비밀번호와 입력한 비밀번호 비교한 결과 리턴
-		return encoder.matches(rawPassword, userInfo.getV_password());*/
-		return true;
+		return encoder.matches(rawPassword, userInfo.getV_password());
 	}
 
 	@Override

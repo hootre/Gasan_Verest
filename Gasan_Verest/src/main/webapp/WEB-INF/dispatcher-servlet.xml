@@ -19,6 +19,7 @@
 	<!-- MultipartFile 클래스를 사용하기 위한 bean 객체 선언 -->
 	<bean id="multipartResolver" 
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+		
 	<!-- Spring Security -->
 	<bean id="conversionService"
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
@@ -30,5 +31,5 @@
 		</property>
 	</bean>
 	<mvc:resources location="/" mapping="/**" />
-	<mvc:annotation-driven conversion-service="conversionService"/>
+	<mvc:annotation-driven />
 </beans>

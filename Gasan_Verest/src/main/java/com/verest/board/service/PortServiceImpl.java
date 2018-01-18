@@ -7,14 +7,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.verest.board.dao.PortDao;
+import com.verest.board.dao.UserInfoDao;
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Port;
+import com.verest.board.model.UserInfo;
 
 @Service
 public class PortServiceImpl implements PortService {
 	
 	@Autowired
 	private PortDao dao;
+	
+	@Autowired
+	private UserInfoDao userinfo;
 	
 	public PortServiceImpl() {}
 
@@ -25,7 +30,9 @@ public class PortServiceImpl implements PortService {
 
 	@Override
 	public Port detail(String no) throws CommonException {
-		return dao.select(no);
+		Port port = dao.select(no);
+		port.setUserInfo((userinfo.select(port.getWriter())));
+		return port;
 	}
 
 	@Override

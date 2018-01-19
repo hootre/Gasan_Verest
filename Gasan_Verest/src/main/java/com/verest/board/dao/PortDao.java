@@ -26,6 +26,6 @@ public interface PortDao {
 	public void delete(String no) throws CommonException;
 	
 	// 조회수 1씩 증가
-	public void viewsaction(Integer no) throws CommonException;
+	public void viewsaction(Port port) throws CommonException;
 
 }

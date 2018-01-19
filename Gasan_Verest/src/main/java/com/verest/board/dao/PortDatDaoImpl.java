@@ -37,7 +37,6 @@ public class PortDatDaoImpl implements PortDatDao {
 
 	@Override
 	public PortDat select(String portDat) throws CommonException {
-
 		PortDat port = null;
 		try {
 			port = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", portDat);

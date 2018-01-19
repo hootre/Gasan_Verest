@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>수정하기</h1>
-	<form action="<c:url value='/modify'/>" method="post" enctype="multipart/form-data">
+	<form action="<c:url value='/port/modify'/>" method="post" enctype="multipart/form-data">
 		<c:if test="${ param.action == 'error-password' }">
 			<p>비밀번호가 일치하지 않습니다.</p>
 		</c:if>

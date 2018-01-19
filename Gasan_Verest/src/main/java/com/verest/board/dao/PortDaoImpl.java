@@ -1,5 +1,8 @@
 package com.verest.board.dao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -102,9 +105,9 @@ public class PortDaoImpl implements PortDao {
 	}
 
 	@Override
-	public void viewsaction(Integer no) throws CommonException {
+	public void viewsaction(Port port) throws CommonException {
 		try {
-			sqlSession.update(MAPPER_NAMESPACE + ".views",no);
+			sqlSession.update(MAPPER_NAMESPACE + ".views",port);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			throw new CommonException("E05: 조회수 증가 실패");

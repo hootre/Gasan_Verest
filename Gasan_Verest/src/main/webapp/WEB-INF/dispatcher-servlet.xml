@@ -20,6 +20,16 @@
 	<bean id="multipartResolver" 
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 		
+	<!-- Spring Security -->
+	<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean id="roleToUserType"
+					class="com.verest.util.RoleToUserTypeConverter" />
+			</list>
+		</property>
+	</bean>
 	<mvc:resources location="/" mapping="/**" />
 	<mvc:annotation-driven />
 </beans>

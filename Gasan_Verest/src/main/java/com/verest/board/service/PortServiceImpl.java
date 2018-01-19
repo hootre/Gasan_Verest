@@ -18,9 +18,6 @@ public class PortServiceImpl implements PortService {
 	@Autowired
 	private PortDao dao;
 	
-	@Autowired
-	private UserInfoDao userinfo;
-	
 	public PortServiceImpl() {}
 
 	@Override
@@ -30,9 +27,8 @@ public class PortServiceImpl implements PortService {
 
 	@Override
 	public Port detail(String no) throws CommonException {
-		Port port = dao.select(no);
-		port.setUserInfo((userinfo.select(port.getWriter())));
-		return port;
+		return dao.select(no);
+		
 	}
 
 	@Override
@@ -50,6 +46,7 @@ public class PortServiceImpl implements PortService {
 	public String modify(Port port) throws CommonException {
 		Port item = dao.select(Integer.toString(port.getNo()));
 		String oldFilename = item.getAttachment();
+		dao.update(port);
 		return oldFilename;
 	}
 	
@@ -60,6 +57,11 @@ public class PortServiceImpl implements PortService {
 		String filename = item.getAttachment();
 		dao.delete(no);
 		return filename;
+	}
+
+	@Override
+	public void viewsup(Port port) throws CommonException {
+		dao.viewsaction(port);
 	}
 
 }

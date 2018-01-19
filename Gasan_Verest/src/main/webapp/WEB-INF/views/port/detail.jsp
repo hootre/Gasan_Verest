@@ -19,13 +19,15 @@
 		<dd>${ item.title }</dd>
 		<dt>내용</dt>
 		<dd>${ item.content }</dd>
+		<dt>조회수</dt>
+		<dd>${ item.views }</dd>
 		<c:if test="${ !empty filename }">
 			<dt>첨부파일</dt>
-			<dd><a href="<c:url value='/board/download.do?filename=${ item.attachment }'/>">${ filename }</a></dd>
+			<dd><a href="<c:url value='/port/download.do?filename=${ item.attachment }'/>">${ filename }</a></dd>
 		</c:if>
 	</dl>
-	<a href="<c:url value='/board/list.do'/>">게시판 목록으로 이동</a>
-	<a href="<c:url value='/board/modify.do?no=${ item.no }'/>">수정하기</a>
-	<a href="<c:url value='/board/remove.do?no=${ item.no }'/>">삭제하기</a>
+	<a href="<c:url value='/port/list'/>">게시판 목록으로 이동</a>
+	<a href="<c:url value='/port/modify.do?no=${ item.no }'/>">수정하기</a>
+	<a href="<c:url value='/port/remove.do?no=${ item.no }'/>">삭제하기</a>
 </body>
 </html>

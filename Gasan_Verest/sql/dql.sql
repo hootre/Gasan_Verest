@@ -63,9 +63,17 @@ WHERE sd.board_no = s.no AND sd.writer = u.v_id; --AND sd.dat_no = ### (한개�
 
 -- port 전체 개수
 SELECT COUNT(*) FROM port;
+UPDATE port 
+SET  views = 2
+WHERE no = 1;
+
+SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.views, u.v_id, u.v_name
+FROM userinfo u, port p
+WHERE p.writer = u.v_id ORDER BY p.no DESC;
+
 -- port 게시판 상세보기
-SELECT p.no, p.title, p.content, u.v_id as "writer", p.attachment, p.views   
-FROM port p, userinfo u
+SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy/mm/dd hh:mi'), p.attachment, p.views, u.v_id, u.v_name
+FROM userinfo u, port p
 WHERE p.writer = u.v_id; --AND p.no = ### (한개만 검색할때)
 -- port_dat 전체 개수
 SELECT COUNT(*) FROM port_dat;

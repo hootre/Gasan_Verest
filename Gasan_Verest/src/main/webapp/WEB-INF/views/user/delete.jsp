@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>정말로 탈퇴하시겠습니까?</h1>
-	<form action='<c:url value='/delete'/>' method="post">
+	<form action='<c:url value='/user/delete'/>' method="post">
 		<c:if test="${ param.action == 'error-password' }">
 			<p>기존 비밀번호를 잘못 입력했습니다.</p>
 		</c:if>

@@ -17,7 +17,7 @@
 		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/port/new" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/port/delete" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/port/remove" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/port/modify" access="hasRole('ROLE_ADMIN')" />
 			
 		<form-login login-page="/login" login-processing-url="/login-processing"

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>수정</h1>
-	<form action='<c:url value='/modify'/>' method="post">
+	<form action='<c:url value='/user/modify'/>' method="post">
 		<c:if test="${ param.action == 'error-password' }">
 			<p>기존 비밀번호를 잘못 입력했습니다.</p>
 		</c:if>
@@ -28,7 +28,7 @@
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="submit">
 		<input type="reset">
-		<a href="<c:url value='/setting'/>">설정화면으로 이동</a>
+		<a href="<c:url value='/user/mypage'/>">마이페이지로 이동</a>
 	</form>
 </body>
 </html>

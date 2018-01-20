@@ -10,7 +10,7 @@
 	</sec:authorize>
 	<sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
 		<p>이메일: <span>${ userInfo.v_email }</span>/ 이름: <span>${ userInfo.v_name }</span>
-			  <a href='<c:url value="/mypage"></c:url>'>마이페이지</a></p>
+			  <a href='<c:url value="/user/mypage"></c:url>'>마이페이지</a></p>
 	</sec:authorize>
         
     </div>

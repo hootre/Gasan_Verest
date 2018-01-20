@@ -42,29 +42,29 @@ public class UserWebController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 
-		return "login";
+		return "user/login";
 	}
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(Model model) {
 		model.addAttribute("userInfo", this.getPrincipal());
-		return "admin";
+		return "user/admin";
 	}
 	
 	// 사용자정보
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	@RequestMapping(value = "/user/mypage", method = RequestMethod.GET)
 	public String myPage(Model model) {
 		
 		UserInfo userinfo = userInfoService.detail(this.getPrincipal());
 		model.addAttribute("item", userinfo);
 		
-		return "mypage";
+		return "user/mypage";
 	}
 
 	@RequestMapping(value = "/access-denied", method = RequestMethod.GET)
 	public String accessDeniedPage(Model model) {
 		model.addAttribute("email", this.getPrincipal());
-		return "access-denied";
+		return "user/access-denied";
 	}
 
 	@RequestMapping(value = "/logout" , method = RequestMethod.GET)
@@ -79,7 +79,7 @@ public class UserWebController {
 	}
 	
 		// 사용자 수정하기 화면
-		@RequestMapping(value = "/modify", method = RequestMethod.GET)
+		@RequestMapping(value = "/user/modify", method = RequestMethod.GET)
 		public String modify(Model model) throws CommonException {
 
 			UserInfo item = null;
@@ -89,11 +89,11 @@ public class UserWebController {
 
 			model.addAttribute("item", item);
 
-			return "modify";
+			return "user/modify";
 		}
 		
 		// 사용자 수정 후, 사용자 설정 화면으로 이동
-		@RequestMapping(value = "/modify", method = RequestMethod.POST)
+		@RequestMapping(value = "/user/modify", method = RequestMethod.POST)
 		public String modify(HttpServletRequest request,
 				Integer id,
 				String oldPassword,
@@ -114,22 +114,22 @@ public class UserWebController {
 			
 			userInfoService.modify(user);
 
-			return "redirect:/mypage";
+			return "redirect:/user/mypage";
 		}
 	
-		@RequestMapping(value = "/delete" , method = RequestMethod.GET)
+		@RequestMapping(value = "/user/delete" , method = RequestMethod.GET)
 		public String delete() {
-			return "delete";
+			return "user/delete";
 		}
 
-		@RequestMapping(value = "/delete" , method = RequestMethod.POST)
+		@RequestMapping(value = "/user/delete" , method = RequestMethod.POST)
 		public String delete(HttpServletRequest request, HttpServletResponse response, String password) throws CommonException {
 			String email = this.getPrincipal();
 			UserInfo item = userInfoService.detail(email);
 			// 기존 비밀번호 검사 후 수정할지 결정
 			boolean isMatched = userInfoService.isPasswordMatched(item.getV_id(), password);
 			if (!isMatched) {
-				return "redirect:/delete?action=error-password";
+				return "redirect:/user/delete?action=error-password";
 			}
 			userInfoService.delete(email, password);
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -143,7 +143,7 @@ public class UserWebController {
 		
 		@RequestMapping(value = "/join", method = RequestMethod.GET)
 		public String joinPage() {
-			return "join";
+			return "user/join";
 		}
 
 		@RequestMapping(value = "/join", method = RequestMethod.POST)

@@ -19,8 +19,8 @@
 				<div>${ list.type }</div>
 			</c:forEach>
 		</p>
-		<a href="<c:url value='/modify'/>">수정하기</a>
-		<a href="<c:url value='/delete'/>">회원 탈퇴</a>
+		<a href="<c:url value='/user/modify'/>">수정하기</a>
+		<a href="<c:url value='/user/delete'/>">회원 탈퇴</a>
 		<a href="<c:url value='/logout'/>">로그아웃</a>
 		<a href = "<c:url value = '/'/>">홈으로</a>
 	</div>

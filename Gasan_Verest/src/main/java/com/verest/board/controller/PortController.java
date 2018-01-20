@@ -1,6 +1,7 @@
 package com.verest.board.controller;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.DateFormat;
@@ -36,11 +37,6 @@ public class PortController {
 
 	@Autowired
 	private PortService portService;
-	
-	@Autowired
-	private FileService fileService;
-	
-	private static final String UPLOAD_FOLDER = "/upload";
 
 	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -48,7 +44,6 @@ public class PortController {
 		
 		String v_email = this.getPrincipal();
 		UserInfo item = userInfoService.detail(v_email);
-		System.out.println(item.getV_id());
 		
 		model.addAttribute("writer", item.getV_id());
 		model.addAttribute("email", item.getV_email());
@@ -62,43 +57,18 @@ public class PortController {
 				Integer writer,
 				String title,
 				String content,
-				@RequestParam("attachment") MultipartFile attachment)
+				String attachment)
 						throws CommonException, Exception {
 
 			Port port = new Port();
 			port.setWriter(writer);
 			port.setTitle(title);
 			port.setContent(content);
-
-			// 최상위 경로 밑에 upload 폴더의 경로를 가져온다.
-			String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
-
-			// MultipartFile 객체에서 파일명을 가져온다.
-			String originalName = attachment.getOriginalFilename();
-
-			// upload 폴더가 없다면, upload 폴더 생성
-			File directory = new File(path);
-			if (!directory.exists()) {
-				directory.mkdir();
-			}
-
-			// attachment 객체를 이용하여, 파일을 서버에 전송
-			if (attachment != null && !attachment.isEmpty()) {
-				int idx = originalName.lastIndexOf(".");
-				String name = originalName.substring(0, idx);
-				String ext = originalName.substring(idx, originalName.length());
-				String uploadFilename = name
-						+ Long.toHexString(System.currentTimeMillis())
-						+ ext;
-				attachment.transferTo(new File(path, uploadFilename));
-				uploadFilename = URLEncoder.encode(uploadFilename, "UTF-8");
-				port.setAttachment(uploadFilename);
-				System.out.println(uploadFilename);
-			}
-
-			System.out.println(writer);
-			System.out.println(title);
-			System.out.println(content);
+			String s = attachment;
+			String address = s.replace("watch?v=", "embed/");
+			System.out.println(address);
+			port.setAttachment(address);
+			
 			portService.newBoard(port);
 
 			return "redirect:/port/list";
@@ -108,10 +78,8 @@ public class PortController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) throws CommonException {
 		List<Port> list = null;
-		
+    
 		list = portService.list();
-		
-		
 		
 		model.addAttribute("list", list);
 
@@ -124,19 +92,13 @@ public class PortController {
 			@RequestParam(value = "no", required=true) String no)
 					throws CommonException, Exception {
 		Port port = null;
-		String filename = null;
 
 		port = portService.detail(no);
-		filename = port.getAttachment();
-		if (filename != null && !filename.trim().isEmpty()) {
-			filename = URLDecoder.decode(filename, "UTF-8");
-		}
 
 		port.setViews(port.getViews()+1);
 		portService.viewsup(port);
 		
 		model.addAttribute("item", port);
-		model.addAttribute("filename", filename);
 
 		return "port/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 	}
@@ -162,7 +124,7 @@ public class PortController {
 				int no,
 				String title,
 				String content,
-				@RequestParam("attachment") MultipartFile attachment,
+				String attachment,
 				String password)
 						throws CommonException, Exception {
 			
@@ -176,30 +138,43 @@ public class PortController {
 			port.setNo(no);
 			port.setTitle(title);
 			port.setContent(content);
-
-			String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
-			String originalName = attachment.getOriginalFilename();
-
-			// attachment 객체를 이용하여, 파일을 서버에 전송
-			if (attachment != null && !attachment.isEmpty()) {
-				int idx = originalName.lastIndexOf(".");
-				String name = originalName.substring(0, idx);
-				String ext = originalName.substring(idx, originalName.length());
-				String uploadFilename = name
-						+ Long.toHexString(System.currentTimeMillis())
-						+ ext;
-				attachment.transferTo(new File(path, uploadFilename));
-				uploadFilename = URLEncoder.encode(uploadFilename, "UTF-8");
-				port.setAttachment(uploadFilename);
-			}
-
-			String oldFilename = portService.modify(port);
-			if (oldFilename != null && !oldFilename.trim().isEmpty()) {
-				fileService.remove(request, UPLOAD_FOLDER, oldFilename);
-			}
+			String s = attachment;
+			String address = s.replace("watch?v=", "embed/");
+			
+			port.setAttachment(address);
+			
+			portService.modify(port);
+			
 
 			return "redirect:/port/list";
 		}
+	
+		// 글 삭제 확인 화면
+		@RequestMapping(value = "/remove", method = RequestMethod.GET)
+		public String removeConfirm(Model model,
+				@RequestParam(value = "no", required = true) String no) {
+
+			model.addAttribute("no", no);
+
+			return "port/remove-confirm";
+		}
+
+		// 글 삭제 후, 글 목록 화면으로 이동
+		@RequestMapping(value = "/remove", method = RequestMethod.POST)
+		public String remove(HttpServletRequest request,
+				@RequestParam(value = "no", required = true) String no,
+				String v_password)
+						throws CommonException, UnsupportedEncodingException {
+			
+			boolean isMatched = userInfoService.isBoardMatched(Integer.parseInt(no), v_password);
+			if (!isMatched) {
+				return "redirect:/port/remove?no=" + no + "&action=error-password";
+			}
+			portService.remove(no);
+			
+			return "redirect:list";
+		}
+		
 	// 현재 접속한 사용자의 email 리턴
 	private String getPrincipal() {
 		String username = null;

@@ -9,14 +9,14 @@ public class Port {
 	private String title;
 	private String content;
 	private Integer writer;
-	private Date regdate;
+	private String regdate;
 	private String attachment;
 	private Integer views;
 	private UserInfo userInfo;
 	
 	public Port() {}
 
-	public Port(Integer no, String title, String content, Integer writer, Date regdate, String attachment,
+	public Port(Integer no, String title, String content, Integer writer, String regdate, String attachment,
 			Integer views, com.verest.board.model.UserInfo userInfo) {
 		this.no = no;
 		this.title = title;
@@ -70,11 +70,11 @@ public class Port {
 		this.writer = writer;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 

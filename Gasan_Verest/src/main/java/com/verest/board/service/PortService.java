@@ -22,8 +22,8 @@ public interface PortService {
 	// 게시물을 수정한다. (수정되기 전 파일명을 리턴)
 	public String modify(Port port) throws CommonException;
 
-	// 게시물을 삭제한다. (삭제하는 파일명을 리턴)
-	public String remove(String no) throws CommonException;
+	// 게시물을 삭제한다. 
+	public void remove(String no) throws CommonException;
 	
 	// 게시물 조회수 증가
 	public void viewsup(Port port) throws CommonException;

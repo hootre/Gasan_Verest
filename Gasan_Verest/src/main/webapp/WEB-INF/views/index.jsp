@@ -8,8 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <style type="text/css">
 <%@ include file="css/style.css"%>
-<%@ include file="css/header_big.css" %>
-<%@ include file="css/header_small.css" %>
+<%@ include file="css/header.css" %>
 <%@ include file="css/footer.css" %>
 </style>
 <title>Verest</title>

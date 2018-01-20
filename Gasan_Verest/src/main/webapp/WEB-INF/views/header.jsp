@@ -20,7 +20,7 @@
             $(".bggrey").css("display","block");
         });
         $(".menu_close, .bggrey").click(function () {
-            $(".t_right").stop().css({right : "-35%"});
+            $(".t_right").stop().css({right : "-300px"});
             $(".bggrey").css("display","none");
         });
     });

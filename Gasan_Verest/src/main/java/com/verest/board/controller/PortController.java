@@ -25,7 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Port;
-import com.verest.board.service.FileService;
 import com.verest.board.service.PortService;
 import com.verest.board.service.UserInfoService;
 

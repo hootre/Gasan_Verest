@@ -44,6 +44,7 @@ public class PortDaoImpl implements PortDao {
 		Port port = null;
 		try {
 			port = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", no);
+			
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			throw new CommonException("E04: 포트 게시물 검색 실패");

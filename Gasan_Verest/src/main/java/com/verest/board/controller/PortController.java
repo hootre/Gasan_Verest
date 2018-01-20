@@ -78,7 +78,7 @@ public class PortController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) throws CommonException {
 		List<Port> list = null;
-
+    
 		list = portService.list();
 		
 		model.addAttribute("list", list);

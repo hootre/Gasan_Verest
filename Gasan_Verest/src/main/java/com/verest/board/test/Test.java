@@ -1,14 +1,11 @@
 package com.verest.board.test;
 
-import com.verest.board.dao.UserInfoDaoImpl;
-import com.verest.board.model.UserInfo;
 
 public class Test {
 	public static void main(String[] args) {
-		UserInfoDaoImpl dao = new UserInfoDaoImpl();
-		UserInfo data = dao.select(1);
-		System.out.println(data.getV_email());
-		System.out.println(data.getV_password());
+		String s = "https://www.youtube.com/watch?v=WXybWlcE2JE";
+		String address = s.replace("watch?v=", "embed/");
+		System.out.println(address);
 	}
 }
 

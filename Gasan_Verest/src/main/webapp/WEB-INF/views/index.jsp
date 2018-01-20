@@ -14,6 +14,9 @@
 <title>Verest</title>
 </head>
 <body>
+	<c:if test="${ param.type == 'delete' }">
+		<script>alert("탈퇴완료")</script>
+	</c:if>
 	<jsp:include page="header.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

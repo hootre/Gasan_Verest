@@ -24,12 +24,14 @@
 				<td>${ item.no }</td>
 				<td><a href="<c:url value='/port/detail?no=${ item.no }'/>">${ item.title }</a></td>
 				<td>${ item.content }</td>
-				<td>${ item.writer }</td>
+				<td>${ item.userInfo.v_name  }</td>
 				<td>${ item.regdate }</td>
 				<td>${ item.attachment}</td>
 				<td>${ item.views}</td>
 			</tr>
 		</c:forEach>
 	</table>
+	<a href='<c:url value='/port/new'></c:url>'>글쓰기</a>
+	<a href='<c:url value='/'></c:url>'>메인으로 돌아가기</a>
 </body>
 </html>

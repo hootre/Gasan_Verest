@@ -20,5 +20,6 @@
 		<input type="submit" value="로그인">
 	</form>
 	<a href="<c:url value='/join'/>">회원가입</a>
+	<a href="<c:url value='/'/>">메인 화면으로</a>
 </body>
 </html>

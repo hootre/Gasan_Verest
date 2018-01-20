@@ -6,7 +6,7 @@
     <div class="t_container">
         <p>상담 +82 10-3119-6195</p>
     <sec:authorize access="!hasRole('ADMIN') and !hasRole('USER')">
-		<p><a href='<c:url value="/login"></c:url>'>로그인</a> / <a href="#">회원가입</a></p>
+		<p><a href='<c:url value="/login"></c:url>'>로그인</a> / <a href="<c:url value="/join"></c:url>">회원가입</a></p>
 	</sec:authorize>
 	<sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
 		<p>이메일: <span>${ userInfo.v_email }</span>/ 이름: <span>${ userInfo.v_name }</span>

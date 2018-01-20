@@ -21,13 +21,16 @@
 		<dd>${ item.content }</dd>
 		<dt>조회수</dt>
 		<dd>${ item.views }</dd>
-		<c:if test="${ !empty filename }">
+		<c:if test="${ !empty item.attachment }">
 			<dt>첨부파일</dt>
-			<dd><a href="<c:url value='/port/download.do?filename=${ item.attachment }'/>">${ filename }</a></dd>
+			<dd>
+			<iframe width="640" height="360" src="${ item.attachment }" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+			</iframe>
+			</dd>
 		</c:if>
 	</dl>
-	<a href="<c:url value='/port/list'/>">게시판 목록으로 이동</a>
-	<a href="<c:url value='/port/modify.do?no=${ item.no }'/>">수정하기</a>
-	<a href="<c:url value='/port/remove.do?no=${ item.no }'/>">삭제하기</a>
+	<a href='<c:url value='/'></c:url>'>메인으로 돌아가기</a>
+	<a href="<c:url value='/port/modify?no=${ item.no }'/>">수정하기</a>
+	<a href="<c:url value='/port/remove?no=${ item.no }'/>">삭제하기</a>
 </body>
 </html>

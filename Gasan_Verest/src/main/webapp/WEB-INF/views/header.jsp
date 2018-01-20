@@ -16,11 +16,11 @@
 <script>
     $(function () {
         $(".menu_open").click(function () {
-            $(".t_right").animate({right : 0});
+            $(".t_right").animate({right : 0}, 300);
             $(".bggrey").css("display","block");
         });
-        $(".menu_close").click(function () {
-            $(".t_right").css({right : "-100%"});
+        $(".menu_close, .bggrey").click(function () {
+            $(".t_right").stop().css({right : "-35%"});
             $(".bggrey").css("display","none");
         });
     });

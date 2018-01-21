@@ -21,9 +21,9 @@
         <a href="#"><h1>로고</h1></a>
         <ul class="top_left">
             <li>ABOUT US</li>
-            <li>PROJECT</li>
+            <li><a href='<c:url value="/pro/list"></c:url>'>PROJECT</a></li>
             <li><a href='<c:url value="/port/list"></c:url>'>PORTFOLIO</a></li>
-            <li>SALE</li>
+            <li><a href='<c:url value="/sale/list"></c:url>'>SALE</a></li>
         </ul>
     </div>
 </div>

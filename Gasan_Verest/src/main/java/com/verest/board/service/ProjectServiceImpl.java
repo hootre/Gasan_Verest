@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.verest.board.dao.ProjectDao;
 import com.verest.board.model.CommonException;
+import com.verest.board.model.Port;
 import com.verest.board.model.Project;
 
 @Service
@@ -24,7 +25,7 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Project detail(String no) throws CommonException {
+	public Project detail(Integer no) throws CommonException {
 		return dao.select(no);
 	}
 
@@ -38,21 +39,20 @@ public class ProjectServiceImpl implements ProjectService {
 		return dao.boardCount();
 	}
 	
-	@Transactional
 	@Override
-	public String modify(Project project) throws CommonException {
-		Project item = dao.select(Integer.toString(project.getNo()));
-		String oldFilename = item.getAttachment();
-		return oldFilename;
+	public void modify(Project project) throws CommonException {
+		dao.update(project);
 	}
 	
-	@Transactional
 	@Override
-	public String remove(String no) throws CommonException {
-		Project item = dao.select(no);
-		String filename = item.getAttachment();
+	public void remove(Integer no) throws CommonException {
 		dao.delete(no);
-		return filename;
+	}
+
+	@Override
+	public void viewsup(Project project) throws CommonException {
+		dao.viewsaction(project);
+		
 	}
 
 }

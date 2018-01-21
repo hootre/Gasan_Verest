@@ -24,10 +24,10 @@
 		<result property="userInfo.v_name" column="v_name" />
 	</resultMap>
 	
-	<select id="select" parameterType="String" resultMap="portResultMap">
+	<select id="select" parameterType="Integer" resultMap="portResultMap">
 		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.views, u.v_id, u.v_name
 		FROM userinfo u, port p
-		WHERE p.writer = u.v_id AND no = #{no}
+		WHERE p.writer = u.v_id AND p.no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="portResultMap">
@@ -46,7 +46,7 @@
 		WHERE no = #{no}
 	</update>
 	
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="Integer">
 		DELETE FROM port WHERE no = #{no}
 	</delete>
 	

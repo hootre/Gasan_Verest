@@ -93,7 +93,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		 *  획득한 email값으로 사용자 정보를 가져와
 		 *  해당 사용자의 비밀번호를 가져온다.
 		 */
-		Port port = pdao.select(no.toString());
+		Port port = pdao.select(no);
 		UserInfo userInfo = userInfoDao.select(port.getWriter());
 		
 		// 해당 사용자의 비밀번호와 입력한 비밀번호 비교한 결과 리턴

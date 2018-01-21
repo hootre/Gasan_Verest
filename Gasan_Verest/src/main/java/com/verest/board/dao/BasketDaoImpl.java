@@ -36,7 +36,7 @@ public class BasketDaoImpl implements BasketDao{
 	}
 
 	@Override
-	public Basket select(String basket_no) throws CommonException {
+	public Basket select(Integer basket_no) throws CommonException {
 		Basket basket = null;
 		try {
 			basket = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", basket_no);
@@ -72,7 +72,7 @@ public class BasketDaoImpl implements BasketDao{
 	}
 
 	@Override
-	public void delete(String basket_no) throws CommonException {
+	public void delete(Integer basket_no) throws CommonException {
 		try {
 			sqlSession.update(MAPPER_NAMESPACE + ".delete", basket_no);
 		} catch (Exception e) {

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>수정하기</h1>
-	<form action="<c:url value='/port/modify'/>" method="post">
+	<form action="<c:url value='/pro/modify'/>" method="post">
 		<c:if test="${ param.action == 'error-password' }">
 			<p>비밀번호가 일치하지 않습니다.</p>
 		</c:if>
@@ -25,7 +25,7 @@
 			<label>내용 <textarea name="content">${ item.content }</textarea></label>
 		</div>
 		<div>
-			<label>첨부파일 <input type="text" value="${item.attachment} name="attachment"></label>
+			<label>첨부파일 <input type="text" value="${item.attachment}"name="attachment"></label>
 		</div>
 		<div>
 			<label>비밀번호 <input type="password" name="password"></label>

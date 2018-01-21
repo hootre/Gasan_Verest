@@ -18,17 +18,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Port;
+import com.verest.board.model.Project;
+import com.verest.board.model.Sale;
 import com.verest.board.service.PortService;
+import com.verest.board.service.ProjectService;
+import com.verest.board.service.SaleService;
 import com.verest.board.service.UserInfoService;
 
 @Controller
-@RequestMapping("/port")
-public class PortController {
+@RequestMapping("/sale")
+public class SaleController {
 	@Autowired
 	private UserInfoService userInfoService;
 
 	@Autowired
-	private PortService portService;
+	private SaleService SaleService;
 
 	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -40,42 +44,43 @@ public class PortController {
 		model.addAttribute("writer", item.getV_id());
 		model.addAttribute("email", item.getV_email());
 
-		return "port/new";
+		return "sale/new";
 	}
 	
 	// 글 작성 후, 글 목록 화면으로 이동
 		@RequestMapping(value = "/new", method = RequestMethod.POST)
 		public String newBoard(HttpServletRequest request,
 				Integer writer,
+				Integer price,
 				String title,
 				String content,
 				String attachment)
 						throws CommonException, Exception {
 
-			Port port = new Port();
-			port.setWriter(writer);
-			port.setTitle(title);
-			port.setContent(content);
+			Sale sale = new Sale();
+			sale.setWriter(writer);
+			sale.setPrice(price);
+			sale.setTitle(title);
+			sale.setContent(content);
 			String s = attachment;
 			String address = s.replace("watch?v=", "embed/");
-			System.out.println(address);
-			port.setAttachment(address);
+			sale.setAttachment(address);
 			
-			portService.newBoard(port);
+			SaleService.newBoard(sale);
 
-			return "redirect:/port/list";
+			return "redirect:/sale/list";
 		}
 	
 	// 글 목록 화면
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) throws CommonException {
-		List<Port> list = null;
+		List<Sale> list = null;
     
-		list = portService.list();
+		list = SaleService.list();
 		
 		model.addAttribute("list", list);
 
-		return "port/list";
+		return "sale/list";
 	}
 	
 	// 글 상세 화면
@@ -83,16 +88,16 @@ public class PortController {
 	public String detail(Model model, 
 			@RequestParam(value = "no", required=true) Integer no)
 					throws CommonException, Exception {
-		Port port = null;
+		Sale sale = null;
 
-		port = portService.detail(no);
+		sale = SaleService.detail(no);
 
-		port.setViews(port.getViews()+1);
-		portService.viewsup(port);
+		sale.setViews(sale.getViews()+1);
+		SaleService.viewsup(sale);
 		
-		model.addAttribute("item", port);
+		model.addAttribute("item", sale);
 
-		return "port/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
+		return "sale/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 	}
 
 	// 글 수정하기 화면
@@ -101,13 +106,13 @@ public class PortController {
 			@RequestParam(value = "no", required = true) Integer no)
 					throws CommonException {
 
-		Port port = null;
+		Sale sale = null;
 
-		port = portService.detail(no);
+		sale = SaleService.detail(no);
 
-		model.addAttribute("item", port);
+		model.addAttribute("item", sale);
 
-		return "port/modify";
+		return "sale/modify";
 	}
 	
 	// 글 수정 후, 글 목록 화면으로 이동
@@ -115,6 +120,7 @@ public class PortController {
 		public String modify(HttpServletRequest request,
 				int no,
 				String title,
+				Integer price,
 				String content,
 				String attachment,
 				String password)
@@ -123,22 +129,21 @@ public class PortController {
 			// 비밀번호 비교해서 같지 않다면 오류메시지 출력
 			boolean isMatched = userInfoService.isBoardMatched(no, password);
 			if (!isMatched) {
-				return "redirect:/port/modify?no=" + no + "&action=error-password";
+				return "redirect:/sale/modify?no=" + no + "&action=error-password";
 			}
 
-			Port port = new Port();
-			port.setNo(no);
-			port.setTitle(title);
-			port.setContent(content);
+			Sale sale = new Sale();
+			sale.setPrice(price);
+			sale.setTitle(title);
+			sale.setContent(content);
 			String s = attachment;
 			String address = s.replace("watch?v=", "embed/");
+			sale.setAttachment(address);
 			
-			port.setAttachment(address);
-			
-			portService.modify(port);
+			SaleService.modify(sale);
 			
 
-			return "redirect:/port/list";
+			return "redirect:/sale/list";
 		}
 	
 		// 글 삭제 확인 화면
@@ -148,7 +153,7 @@ public class PortController {
 
 			model.addAttribute("no", no);
 
-			return "port/remove-confirm";
+			return "sale/remove-confirm";
 		}
 
 		// 글 삭제 후, 글 목록 화면으로 이동
@@ -160,11 +165,11 @@ public class PortController {
 			
 			boolean isMatched = userInfoService.isBoardMatched(no, v_password);
 			if (!isMatched) {
-				return "redirect:/port/remove?no=" + no + "&action=error-password";
+				return "redirect:/sale/remove?no=" + no + "&action=error-password";
 			}
-			portService.remove(no);
+			SaleService.remove(no);
 			
-			return "redirect:list";
+			return "redirect:/sale/list";
 		}
 		
 	// 현재 접속한 사용자의 email 리턴

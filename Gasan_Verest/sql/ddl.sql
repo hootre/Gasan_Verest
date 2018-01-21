@@ -5,16 +5,10 @@ DROP TABLE basket;
 DROP SEQUENCE basket_seq;
 DROP TABLE order_list;
 DROP SEQUENCE order_list_seq;
-DROP TABLE sale_dat;
-DROP SEQUENCE sale_dat_seq;
 DROP TABLE sale;
 DROP SEQUENCE sale_seq;
-DROP TABLE port_dat;
-DROP SEQUENCE port_dat_seq;
 DROP TABLE port;
 DROP SEQUENCE port_seq;
-DROP TABLE project_dat;
-DROP SEQUENCE project_dat_seq;
 DROP TABLE project;
 DROP SEQUENCE project_seq;
 DROP TABLE question;
@@ -69,20 +63,6 @@ CREATE TABLE sale (
 CREATE SEQUENCE sale_seq
 START WITH 1 INCREMENT BY 1;
 
-CREATE TABLE sale_dat(
-	dat_no NUMBER NOT NULL,
-	board_no NUMBER  NOT NULL,
-	writer NUMBER NOT NULL,
-	content VARCHAR2(2000),
-	regdate DATE NOT NULL,
-	CONSTRAINT pk_sale_dat PRIMARY KEY (dat_no),
-	CONSTRAINT fk_sale_dat_no FOREIGN KEY (board_no)  REFERENCES sale(no),
-	CONSTRAINT fk_sale_dat_writer FOREIGN KEY (writer) REFERENCES userinfo(v_id)
-);
-
-CREATE SEQUENCE sale_dat_seq
-START WITH 1 INCREMENT BY 1;
-
 -- 포토폴리오 게시판
 CREATE TABLE port (
    no NUMBER NOT NULL,
@@ -99,20 +79,6 @@ CREATE TABLE port (
 CREATE SEQUENCE port_seq
 START WITH 1 INCREMENT BY 1;
 
-CREATE TABLE port_dat(
-	dat_no NUMBER NOT NULL,
-	board_no NUMBER  NOT NULL,
-	writer NUMBER NOT NULL,
-	content VARCHAR2(2000),
-	regdate DATE NOT NULL,
-	CONSTRAINT pk_port_dat PRIMARY KEY (dat_no),
-	CONSTRAINT fk_port_dat_no FOREIGN KEY (board_no)  REFERENCES port(no),
-	CONSTRAINT fk_port_dat_writer FOREIGN KEY (writer) REFERENCES userinfo(v_id)
-);
-
-CREATE SEQUENCE port_dat_seq
-START WITH 1 INCREMENT BY 1;
-
 -- 프로젝트 게시판
 CREATE TABLE project (
    no NUMBER NOT NULL,
@@ -127,20 +93,6 @@ CREATE TABLE project (
 );
 
 CREATE SEQUENCE project_seq
-START WITH 1 INCREMENT BY 1;
-
-CREATE TABLE project_dat(
-	dat_no NUMBER NOT NULL,
-	board_no NUMBER  NOT NULL,
-	writer NUMBER NOT NULL,
-	content VARCHAR2(2000),
-	regdate DATE NOT NULL,
-	CONSTRAINT pk_project_dat PRIMARY KEY (dat_no),
-	CONSTRAINT fk_project_dat_no FOREIGN KEY (board_no)  REFERENCES project(no),
-	CONSTRAINT fk_project_dat_writer FOREIGN KEY (writer) REFERENCES userinfo(v_id)
-);
-
-CREATE SEQUENCE project_dat_seq
 START WITH 1 INCREMENT BY 1;
 
 -- 주문확인 게시판

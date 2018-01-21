@@ -1,8 +1,4 @@
 package com.verest.board.dao;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -33,13 +29,13 @@ public class PortDaoImpl implements PortDao {
 			sqlSession.insert(MAPPER_NAMESPACE + ".insert", port);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트폴리오 게시물 등록 실패");
+			throw new CommonException("PORT 01: 포트폴리오 게시물 등록 실패");
 		}
 
 	}
 
 	@Override
-	public Port select(String no) throws CommonException {
+	public Port select(Integer no) throws CommonException {
 
 		Port port = null;
 		try {
@@ -47,7 +43,7 @@ public class PortDaoImpl implements PortDao {
 			
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 게시물 검색 실패");
+			throw new CommonException("PORT 02: 포트 게시물 검색 실패");
 		}
 		return port;
 
@@ -60,7 +56,7 @@ public class PortDaoImpl implements PortDao {
 			list = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll");
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 게시물 전체 검색 실패");
+			throw new CommonException("PORT 03: 포트 게시물 전체 검색 실패");
 		}
 		return list;
 	}
@@ -72,20 +68,20 @@ public class PortDaoImpl implements PortDao {
 
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 게시물 수정 실패");
+			throw new CommonException("PORT 04: 포트 게시물 수정 실패");
 		}
 
 	}
 
 	@Override
-	public void delete(String no) throws CommonException {
+	public void delete(Integer no) throws CommonException {
 
 		try {
 			sqlSession.delete(MAPPER_NAMESPACE + ".delete", no);
 
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 게시물 삭제 실패");
+			throw new CommonException("PORT 05: 포트 게시물 삭제 실패");
 		}
 
 	}
@@ -99,7 +95,7 @@ public class PortDaoImpl implements PortDao {
 
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 글 개수 가져오기 실패");
+			throw new CommonException("PORT 06: 포트 글 개수 가져오기 실패");
 		}
 
 		return count;
@@ -111,7 +107,7 @@ public class PortDaoImpl implements PortDao {
 			sqlSession.update(MAPPER_NAMESPACE + ".views",port);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E05: 조회수 증가 실패");
+			throw new CommonException("PORT 07: 조회수 증가 실패");
 		}
 		
 	}

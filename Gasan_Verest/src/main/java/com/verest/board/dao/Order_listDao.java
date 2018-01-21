@@ -11,7 +11,7 @@ public interface Order_listDao {
 		public void insert(Order_list order_list) throws CommonException;
 		
 		// 주문확인 상세보기
-		public Order_list select(String or_no) throws CommonException;
+		public Order_list select(Integer or_no) throws CommonException;
 		
 		// 주문확인 목록
 		public List<Order_list> selectAll() throws CommonException;
@@ -20,5 +20,5 @@ public interface Order_listDao {
 		public int Order_listCount() throws CommonException;
 		
 		// 주문 취소하기
-		public void delete(String or_no) throws CommonException;
+		public void delete(Integer or_no) throws CommonException;
 }

@@ -21,7 +21,7 @@ public class BasketServiceImpl implements BasketService{
 	}
 
 	@Override
-	public Basket detail(String basket_no) throws CommonException {
+	public Basket detail(Integer basket_no) throws CommonException {
 		return basketDao.select(basket_no);
 	}
 
@@ -36,7 +36,7 @@ public class BasketServiceImpl implements BasketService{
 	}
 
 	@Override
-	public void remove(String basket_no) throws CommonException {
+	public void remove(Integer basket_no) throws CommonException {
 		basketDao.delete(basket_no);
 	}
 

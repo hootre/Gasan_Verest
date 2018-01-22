@@ -5,8 +5,8 @@ INSERT INTO usertype(v_id, v_type)
 VALUES (usertype_seq.NEXTVAL, 'USER');
 
 INSERT INTO userinfo(v_id, v_email, v_password, v_name)
-VALUES (userinfo_seq.NEXTVAL, 'hootre@naver.com', 
-'$2a$10$YEE7Qz8rWRx1D7NdqvDO9eI3nrY9FGjuzmDaMFBcS7rparEygUz7y',
+VALUES (userinfo_seq.NEXTVAL, 'hootre@nate.com', 
+'$2a$10$5UUYVdv8u4ktDRwR5SCLGuRHfEnGGUMdvQn4iJsB14N8tQk2oi97u',
 '전동준');
 
 INSERT INTO userinfo(v_id, v_email, v_password, v_name)
@@ -16,7 +16,7 @@ VALUES (userinfo_seq.NEXTVAL, 'koo@naver.com',
 
 DELETE FROM userinfotype WHERE user_type_id = 2;
 INSERT INTO userinfotype(user_info_id, user_type_id)
-VALUES (1, 1);
+VALUES (22, 1);
 
 INSERT INTO userinfotype(user_info_id, user_type_id)
 VALUES (1, 2);

@@ -21,7 +21,7 @@ public class Order_listServiceImpl implements Order_listService{
 	}
 
 	@Override
-	public Order_list detail(String or_no) throws CommonException {
+	public Order_list detail(Integer or_no) throws CommonException {
 		return ordDao.select(or_no);
 	}
 
@@ -36,7 +36,7 @@ public class Order_listServiceImpl implements Order_listService{
 	}
 
 	@Override
-	public void remove(String or_no) throws CommonException {
+	public void remove(Integer or_no) throws CommonException {
 		ordDao.delete(or_no);
 		
 	}

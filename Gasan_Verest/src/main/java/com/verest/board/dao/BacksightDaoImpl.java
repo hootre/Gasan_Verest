@@ -34,7 +34,7 @@ public class BacksightDaoImpl implements BacksightDao{
 	}
 
 	@Override
-	public Backsight select(String back_no) throws CommonException {
+	public Backsight select(Integer back_no) throws CommonException {
 		Backsight backsight = null;
 		try {
 			backsight = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", back_no);
@@ -81,7 +81,7 @@ public class BacksightDaoImpl implements BacksightDao{
 	}
 
 	@Override
-	public void delete(String back_no) throws CommonException {
+	public void delete(Integer back_no) throws CommonException {
 		try {
 			sqlSession.update(MAPPER_NAMESPACE + ".delete", back_no);
 		} catch (Exception e) {

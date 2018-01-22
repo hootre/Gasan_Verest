@@ -11,7 +11,7 @@ public interface Order_listService {
 			public void newBoard(Order_list order_list) throws CommonException;
 
 			// 게시물 하나를 가져온다.
-			public Order_list detail(String or_no) throws CommonException;
+			public Order_list detail(Integer or_no) throws CommonException;
 
 			// 게시물 전체를 가져온다.
 			public List<Order_list> list() throws CommonException;
@@ -20,5 +20,5 @@ public interface Order_listService {
 			public int count() throws CommonException;
 
 			// 게시물을 삭제한다. (삭제하는 파일명을 리턴)
-			public void remove(String or_no) throws CommonException;
+			public void remove(Integer or_no) throws CommonException;
 }

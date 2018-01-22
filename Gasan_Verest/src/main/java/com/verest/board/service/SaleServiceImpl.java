@@ -24,7 +24,7 @@ public class SaleServiceImpl implements SaleService {
 	}
 
 	@Override
-	public Sale detail(String no) throws CommonException {
+	public Sale detail(Integer no) throws CommonException {
 		return dao.select(no);
 	}
 
@@ -40,19 +40,19 @@ public class SaleServiceImpl implements SaleService {
 	
 	@Transactional
 	@Override
-	public String modify(Sale sale) throws CommonException {
-		Sale item = dao.select(Integer.toString(sale.getNo()));
-		String oldFilename = item.getAttachment();
-		return oldFilename;
+	public void modify(Sale sale) throws CommonException {
+		dao.select(sale.getNo());
 	}
 	
 	@Transactional
 	@Override
-	public String remove(String no) throws CommonException {
-		Sale item = dao.select(no);
-		String filename = item.getAttachment();
+	public void remove(Integer no) throws CommonException {
 		dao.delete(no);
-		return filename;
+	}
+
+	@Override
+	public void viewsup(Sale sale) throws CommonException {
+		dao.viewsaction(sale);
 	}
 
 }

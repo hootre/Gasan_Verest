@@ -11,7 +11,7 @@ public interface BacksightDao {
 	public void insert(Backsight backsight) throws CommonException;
 	
 	// 후기 글 하나 가져오기
-	public Backsight select(String back_no) throws CommonException;
+	public Backsight select(Integer back_no) throws CommonException;
   
 	// 후기 글 가져오기
 	public List<Backsight> selectAll() throws CommonException;
@@ -23,5 +23,5 @@ public interface BacksightDao {
 	public void update(Backsight backsight) throws CommonException;
 	
 	// 후기 삭제하기
-	public void delete(String back_no) throws CommonException;
+	public void delete(Integer back_no) throws CommonException;
 }

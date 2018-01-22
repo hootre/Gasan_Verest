@@ -12,7 +12,7 @@ public interface QuestionDao {
 		public void insert(Question question) throws CommonException;
 		
 		// 문의 글 상세보기
-		public Question select(String qu_no) throws CommonException;
+		public Question select(Integer qu_no) throws CommonException;
 		
 		// 문의 글목록 가져오기
 		public List<Question> selectAll() throws CommonException;
@@ -24,5 +24,5 @@ public interface QuestionDao {
 		public void update(Question question) throws CommonException;
 		
 		// 문의 삭제하기
-		public void delete(String qu_no) throws CommonException;
+		public void delete(Integer qu_no) throws CommonException;
 }

@@ -18,17 +18,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Port;
+import com.verest.board.model.Project;
 import com.verest.board.service.PortService;
+import com.verest.board.service.ProjectService;
 import com.verest.board.service.UserInfoService;
 
 @Controller
-@RequestMapping("/port")
-public class PortController {
+@RequestMapping("/pro")
+public class ProController {
 	@Autowired
 	private UserInfoService userInfoService;
 
 	@Autowired
-	private PortService portService;
+	private ProjectService proService;
 
 	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
@@ -40,7 +42,7 @@ public class PortController {
 		model.addAttribute("writer", item.getV_id());
 		model.addAttribute("email", item.getV_email());
 
-		return "port/new";
+		return "pro/new";
 	}
 	
 	// 글 작성 후, 글 목록 화면으로 이동
@@ -52,30 +54,29 @@ public class PortController {
 				String attachment)
 						throws CommonException, Exception {
 
-			Port port = new Port();
-			port.setWriter(writer);
-			port.setTitle(title);
-			port.setContent(content);
+			Project pro = new Project();
+			pro.setWriter(writer);
+			pro.setTitle(title);
+			pro.setContent(content);
 			String s = attachment;
 			String address = s.replace("watch?v=", "embed/");
-			System.out.println(address);
-			port.setAttachment(address);
+			pro.setAttachment(address);
 			
-			portService.newBoard(port);
+			proService.newBoard(pro);
 
-			return "redirect:/port/list";
+			return "redirect:/pro/list";
 		}
 	
 	// 글 목록 화면
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) throws CommonException {
-		List<Port> list = null;
+		List<Project> list = null;
     
-		list = portService.list();
+		list = proService.list();
 		
 		model.addAttribute("list", list);
 
-		return "port/list";
+		return "pro/list";
 	}
 	
 	// 글 상세 화면
@@ -83,16 +84,16 @@ public class PortController {
 	public String detail(Model model, 
 			@RequestParam(value = "no", required=true) Integer no)
 					throws CommonException, Exception {
-		Port port = null;
+		Project pro = null;
 
-		port = portService.detail(no);
+		pro = proService.detail(no);
 
-		port.setViews(port.getViews()+1);
-		portService.viewsup(port);
+		pro.setViews(pro.getViews()+1);
+		proService.viewsup(pro);
 		
-		model.addAttribute("item", port);
+		model.addAttribute("item", pro);
 
-		return "port/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
+		return "pro/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 	}
 
 	// 글 수정하기 화면
@@ -101,13 +102,13 @@ public class PortController {
 			@RequestParam(value = "no", required = true) Integer no)
 					throws CommonException {
 
-		Port port = null;
+		Project pro = null;
 
-		port = portService.detail(no);
+		pro = proService.detail(no);
 
-		model.addAttribute("item", port);
+		model.addAttribute("item", pro);
 
-		return "port/modify";
+		return "pro/modify";
 	}
 	
 	// 글 수정 후, 글 목록 화면으로 이동
@@ -123,22 +124,21 @@ public class PortController {
 			// 비밀번호 비교해서 같지 않다면 오류메시지 출력
 			boolean isMatched = userInfoService.isBoardMatched(no, password);
 			if (!isMatched) {
-				return "redirect:/port/modify?no=" + no + "&action=error-password";
+				return "redirect:/pro/modify?no=" + no + "&action=error-password";
 			}
 
-			Port port = new Port();
-			port.setNo(no);
-			port.setTitle(title);
-			port.setContent(content);
+			Project pro = new Project();
+			pro.setNo(no);
+			pro.setTitle(title);
+			pro.setContent(content);
 			String s = attachment;
 			String address = s.replace("watch?v=", "embed/");
+			pro.setAttachment(address);
 			
-			port.setAttachment(address);
-			
-			portService.modify(port);
+			proService.modify(pro);
 			
 
-			return "redirect:/port/list";
+			return "redirect:/pro/list";
 		}
 	
 		// 글 삭제 확인 화면
@@ -148,7 +148,7 @@ public class PortController {
 
 			model.addAttribute("no", no);
 
-			return "port/remove-confirm";
+			return "pro/remove-confirm";
 		}
 
 		// 글 삭제 후, 글 목록 화면으로 이동
@@ -160,11 +160,11 @@ public class PortController {
 			
 			boolean isMatched = userInfoService.isBoardMatched(no, v_password);
 			if (!isMatched) {
-				return "redirect:/port/remove?no=" + no + "&action=error-password";
+				return "redirect:/pro/remove?no=" + no + "&action=error-password";
 			}
-			portService.remove(no);
+			proService.remove(no);
 			
-			return "redirect:list";
+			return "redirect:/pro/list";
 		}
 		
 	// 현재 접속한 사용자의 email 리턴

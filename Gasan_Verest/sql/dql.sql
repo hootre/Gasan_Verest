@@ -1,3 +1,11 @@
+-- test
+
+SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.views, u.v_id, u.v_name
+		FROM userinfo u, sale s
+		WHERE s.writer = u.v_id;
+
+
+
 -- 회원관련 
 SELECT * FROM userinfo;
 SELECT * FROM usertype;

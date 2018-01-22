@@ -32,7 +32,7 @@ public class Order_listDaoImpl implements Order_listDao{
 	}
 
 	@Override
-	public Order_list select(String or_no) throws CommonException {
+	public Order_list select(Integer or_no) throws CommonException {
 		Order_list order_list = null;
 		try {
 			order_list = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", or_no);
@@ -68,7 +68,7 @@ public class Order_listDaoImpl implements Order_listDao{
 	}
 
 	@Override
-	public void delete(String or_no) throws CommonException {
+	public void delete(Integer or_no) throws CommonException {
 		try {
 			sqlSession.update(MAPPER_NAMESPACE + ".delete", or_no);
 		} catch (Exception e) {

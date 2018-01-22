@@ -18,22 +18,23 @@
 		<result property="content" column="content" />
 		<result property="writer" column="writer" />
 		<result property="price" column="price" />
-		<result property="regdate" column="regdate" />
+		<result property="regdate" column="regdate" />		
 		<result property="attachment" column="attachment" />
-		<result property="userInfo.id" column="id" />
-		<result property="userInfo.name" column="name" />
+		<result property="views" column="views" />
+		<result property="userInfo.v_id" column="v_id" />
+		<result property="userInfo.v_name" column="v_name" />
 	</resultMap>
 	
-	<select id="select" parameterType="String" resultMap="saleResultMap">
-		SELECT p.no, p.title, p.content, p.writer, p.price, p.regdate, p.attachment, u.v_id, u.v_name
-		FROM userinfo u, sale p
-		WHERE p.writer = u.v_id AND no = #{no}
+	<select id="select" parameterType="Integer" resultMap="saleResultMap">
+		SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.views, u.v_id, u.v_name
+		FROM userinfo u, sale s
+		WHERE s.writer = u.v_id AND s.no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="saleResultMap">
-		SELECT p.no, p.title, p.content, p.writer, p.price, p.regdate, p.attachment, u.v_id, u.v_name
-		FROM userinfo u, port p
-		WHERE p.writer = u.v_id ORDER BY p.no DESC
+		SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.views, u.v_id, u.v_name
+		FROM userinfo u, sale s
+		WHERE s.writer = u.v_id ORDER BY s.no DESC
 	</select>
 	
 	<select id="count" resultType="int">
@@ -46,8 +47,14 @@
 		WHERE no = #{no}
 	</update>
 	
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="Integer">
 		DELETE FROM sale WHERE no = #{no}
 	</delete>
+	
+	<update id="views" parameterType="Sale">
+		UPDATE project 
+		SET views = #{views}
+		WHERE no = #{no}
+	</update>
 	
 </mapper>

@@ -21,7 +21,7 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
-	public Question detail(String qu_no) throws CommonException {
+	public Question detail(Integer qu_no) throws CommonException {
 		return queDao.select(qu_no);
 	}
 
@@ -41,7 +41,7 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
-	public void remove(String qu_no) throws CommonException {
+	public void remove(Integer qu_no) throws CommonException {
 		queDao.delete(qu_no);
 	}
 }

@@ -10,7 +10,7 @@ public interface BasketService {
 			public void newBoard(Basket basket) throws CommonException;
 
 			// 게시물 하나를 가져온다.
-			public Basket detail(String basket_no) throws CommonException;
+			public Basket detail(Integer basket_no) throws CommonException;
 
 			// 게시물 전체를 가져온다.
 			public List<Basket> list() throws CommonException;
@@ -19,5 +19,5 @@ public interface BasketService {
 			public int count() throws CommonException;
 
 			// 게시물을 삭제한다.
-			public void remove(String basket_no) throws CommonException;
+			public void remove(Integer basket_no) throws CommonException;
 }

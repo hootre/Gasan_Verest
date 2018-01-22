@@ -34,7 +34,7 @@ public class QuestionDaoImpl implements QuestionDao{
 	}
 
 	@Override
-	public Question select(String qu_no) throws CommonException {
+	public Question select(Integer qu_no) throws CommonException {
 		Question question = null;
 		try {
 			question = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", qu_no);
@@ -81,7 +81,7 @@ public class QuestionDaoImpl implements QuestionDao{
 	}
 
 	@Override
-	public void delete(String qu_no) throws CommonException {
+	public void delete(Integer qu_no) throws CommonException {
 		try {
 			sqlSession.update(MAPPER_NAMESPACE + ".delete", qu_no);
 		} catch (Exception e) {

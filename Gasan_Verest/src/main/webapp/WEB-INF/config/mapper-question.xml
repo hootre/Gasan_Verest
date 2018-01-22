@@ -23,7 +23,7 @@
 		<result property="userInfo.v_name" column="v_name" />
 	</resultMap>
 	
-	<select id="select" parameterType="String" resultMap="questionResultMap">
+	<select id="select" parameterType="Integer" resultMap="questionResultMap">
 		SELECT q.qu_no, q.writer, q.content, q.title, q.regdate, u.v_email, u.v_name
 		FROM userinfo u, question q
 		WHERE q.writer = u.v_id AND qu_no = #{qu_no}
@@ -45,7 +45,7 @@
 		WHERE qu_no = #{qu_no}
 	</update>
 	
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="Integer">
 		DELETE FROM question WHERE qu_no = #{qu_no}
 	</delete>
 	

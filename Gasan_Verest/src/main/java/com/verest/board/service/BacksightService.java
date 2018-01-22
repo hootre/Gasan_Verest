@@ -11,7 +11,7 @@ public interface BacksightService {
 		public void newBoard(Backsight backsight) throws CommonException;
 
 		// 게시물 하나를 가져온다.
-		public Backsight detail(String back_no) throws CommonException;
+		public Backsight detail(Integer back_no) throws CommonException;
 
 		// 게시물 전체를 가져온다.
 		public List<Backsight> list() throws CommonException;
@@ -23,5 +23,5 @@ public interface BacksightService {
 		public void modify(Backsight backsight) throws CommonException;
 
 		// 게시물을 삭제한다. (삭제하는 파일명을 리턴)
-		public void remove(String back_no) throws CommonException;
+		public void remove(Integer back_no) throws CommonException;
 }

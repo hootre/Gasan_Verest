@@ -11,7 +11,7 @@ public interface PortService {
 	public void newBoard(Port port) throws CommonException;
 
 	// 게시물 하나를 가져온다.
-	public Port detail(String no) throws CommonException;
+	public Port detail(Integer no) throws CommonException;
 
 	// 게시물 전체를 가져온다.
 	public List<Port> list() throws CommonException;
@@ -20,10 +20,10 @@ public interface PortService {
 	public int count() throws CommonException;
 
 	// 게시물을 수정한다. (수정되기 전 파일명을 리턴)
-	public String modify(Port port) throws CommonException;
+	public void modify(Port port) throws CommonException;
 
 	// 게시물을 삭제한다. 
-	public void remove(String no) throws CommonException;
+	public void remove(Integer no) throws CommonException;
 	
 	// 게시물 조회수 증가
 	public void viewsup(Port port) throws CommonException;

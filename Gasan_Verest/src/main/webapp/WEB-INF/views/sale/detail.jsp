@@ -34,5 +34,11 @@
 	<a href='<c:url value='/'></c:url>'>메인으로 돌아가기</a>
 	<a href="<c:url value='/sale/modify?no=${ item.no }'/>">수정하기</a>
 	<a href="<c:url value='/sale/remove?no=${ item.no }'/>">삭제하기</a>
+	<form action="<c:url value='/bas/new'/>" method="post">
+		<input type="hidden" name="sale_no" value="${ item.no }">
+		<input type="hidden" name="v_id" value="${ item.userInfo.v_id }">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		<input type="submit" value="장바구니 등록">
+	</form>
 </body>
 </html>

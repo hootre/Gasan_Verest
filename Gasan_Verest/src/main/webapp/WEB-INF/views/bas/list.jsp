@@ -13,27 +13,24 @@
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
-			<th>가격</th>
 			<th>내용</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>첨부파일</th>
-			<th>조회수</th>
+			<th>날짜</th>
 		</tr>
 		<c:forEach items="${ list }" var="item">
 			<tr>
-				<td>${ item.no }</td>
-				<td><a href="<c:url value='/sale/detail?no=${ item.no}'/>">${ item.title}</a></td>
-				<td>${ item.price}</td>
-				<td>${ item.content}</td>
-				<td>${ item.userInfo.v_name}</td>
+				<td>${ item.basket_no }</td>
+				<td><a href="<c:url value='/sale/detail?no=${ item.sale_no}'/>">${ item.sale.title}</a></td>
+				<td>${ item.sale.price}</td>
+				<c:if test="${ !empty item.sale.attachment }">
+					<td>
+					<iframe width="640" height="360" src="${ item.sale.attachment }" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+					</iframe>
+					</td>
+				</c:if>
 				<td>${ item.regdate}</td>
-				<td>${ item.attachment}</td>
-				<td>${ item.views}</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href='<c:url value='/sale/new'></c:url>'>글쓰기</a>
 	<a href='<c:url value='/'></c:url>'>메인으로 돌아가기</a>
 </body>
 </html>

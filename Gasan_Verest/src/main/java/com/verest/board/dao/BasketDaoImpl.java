@@ -31,30 +31,18 @@ public class BasketDaoImpl implements BasketDao{
 			sqlSession.insert(MAPPER_NAMESPACE + ".insert", Basket);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("I01 : 장바구니 작성 실패");
+			throw new CommonException("BAS 01 : 작성 실패");
 		}
 	}
 
 	@Override
-	public Basket select(Integer basket_no) throws CommonException {
-		Basket basket = null;
-		try {
-			basket = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", basket_no);
-		} catch (Exception e) {
-			logger.debug(e.getMessage());
-			throw new CommonException("I02 : 장바구니 단일 검색 실패");
-		}
-		return basket;
-	}
-
-	@Override
-	public List<Basket> selectAll() throws CommonException {
+	public List<Basket> selectAll(Integer v_id) throws CommonException {
 		List<Basket> basket = null;
 		try {
-			basket = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll");
+			basket = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll",  v_id);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("I03 : 장바구니 전체 검색 실패");
+			throw new CommonException("BAS 03 : 전체 검색 실패");
 		}
 		return basket;
 	}
@@ -66,7 +54,7 @@ public class BasketDaoImpl implements BasketDao{
 			count = sqlSession.selectOne(MAPPER_NAMESPACE + ".count");
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("I04 : 장바구니 전체 개수 검색 실패");
+			throw new CommonException("BAS 04 : 전체 개수 검색 실패");
 		}
 		return count;
 	}
@@ -77,7 +65,7 @@ public class BasketDaoImpl implements BasketDao{
 			sqlSession.update(MAPPER_NAMESPACE + ".delete", basket_no);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("I04 : 장바구니 삭제 실패");
+			throw new CommonException("BAS 04 : 삭제 실패");
 		}
 	}
 

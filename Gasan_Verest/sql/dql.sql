@@ -1,10 +1,8 @@
 -- test
 
-SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.views, u.v_id, u.v_name
-		FROM userinfo u, sale s
-		WHERE s.writer = u.v_id;
-
-
+SELECT b.basket_no, b.v_id as "UID", s.title, s.attachment, s.price, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
+		FROM userinfo u, basket b, sale s
+		WHERE b.v_id = u.v_id AND b.sale_no = s.no  AND b.v_id = 23 ORDER BY b.basket_no DESC;
 
 -- 회원관련 
 SELECT * FROM userinfo;
@@ -58,6 +56,7 @@ DELETE FROM sale WHERE no = 1;
 
 -- sale 전체 개수
 SELECT COUNT(*) FROM sale;
+select * from sale;
 -- sale 게시판 상세보기
 SELECT s.no, s.title, s.content, u.v_id as "writer", s.price, s.attachment, s.views   
 FROM sale s, userinfo u

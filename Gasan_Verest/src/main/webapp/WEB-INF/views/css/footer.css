@@ -91,3 +91,47 @@
         line-height: 60px;
     }
 }
+
+@media (max-width: 625px) {
+    .footer {
+        background: #292929;
+    }
+
+    .footer .f_container {
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .footer .f_container .footer_content {
+        padding-top: 35px;
+    }
+
+    .footer .f_container .footer_content .footer_card {
+        width: 90%;
+        margin-left: 50px;
+    }
+
+    .footer .f_container .footer_content .footer_card h2, span, b {
+        color: #fff;
+    }
+
+    .card_title_bar {
+        margin: 10px auto;
+        width: 50px;
+        height: 3px;
+        background-color: #eee;
+    }
+
+    .footer_line {
+        clear: both;
+        padding-top: 20px;
+        line-height: 50px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .footer_bottom {
+        text-align: center;
+        line-height: 60px;
+    }
+}

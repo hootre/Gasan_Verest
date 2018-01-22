@@ -12,9 +12,6 @@
 		<typeAlias type="com.verest.board.model.Port" alias="Port"/>
 		<typeAlias type="com.verest.board.model.Project" alias="Project"/>
 		<typeAlias type="com.verest.board.model.Sale" alias="Sale"/>
-		<typeAlias type="com.verest.board.model.PortDat" alias="PortDat"/>
-		<typeAlias type="com.verest.board.model.ProjectDat" alias="ProjectDat"/>
-		<typeAlias type="com.verest.board.model.SaleDat" alias="SaleDat"/>
 		<typeAlias type="com.verest.board.model.Backsight" alias="Backsight"/>
 		<typeAlias type="com.verest.board.model.Basket" alias="Basket"/>
 		<typeAlias type="com.verest.board.model.Order_list" alias="Order_list"/>

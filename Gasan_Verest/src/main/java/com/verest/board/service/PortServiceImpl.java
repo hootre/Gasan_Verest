@@ -17,7 +17,7 @@ public class PortServiceImpl implements PortService {
 	
 	@Autowired
 	private PortDao dao;
-	
+
 	public PortServiceImpl() {}
 
 	@Override
@@ -50,13 +50,9 @@ public class PortServiceImpl implements PortService {
 		return oldFilename;
 	}
 	
-	@Transactional
 	@Override
-	public String remove(String no) throws CommonException {
-		Port item = dao.select(no);
-		String filename = item.getAttachment();
-		dao.delete(no);
-		return filename;
+	public void remove(String no) throws CommonException {
+			dao.delete(no);
 	}
 
 	@Override

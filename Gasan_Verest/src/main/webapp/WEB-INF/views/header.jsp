@@ -33,7 +33,7 @@
 		<p><a href='<c:url value="/login"></c:url>'>로그인</a> / <a href="#">회원가입</a></p>
 		</sec:authorize>
 		<sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
-		<p>이메일: <span>${ userInfo.v_email }</span>/ 이름: <span>${ userInfo.v_name }</span>
+		<p>${ userInfo.v_name }님 안녕하세요
 			  <a href='<c:url value="/mypage"></c:url>'>마이페이지</a></p>
 	</sec:authorize>
     </div>

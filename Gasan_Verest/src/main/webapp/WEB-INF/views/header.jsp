@@ -33,8 +33,9 @@
 		<p><a href='<c:url value="/login"></c:url>'>로그인</a> / <a href="#">회원가입</a></p>
 		</sec:authorize>
 		<sec:authorize access="hasRole('ADMIN') or hasRole('USER')">
-		<p>이메일: <span>${ userInfo.v_email }</span>/ 이름: <span>${ userInfo.v_name }</span>
-			  <a href='<c:url value="/mypage"></c:url>'>마이페이지</a></p>
+		<p>이름: <span>${ userInfo.v_name }</span>
+			  <a href='<c:url value="/user/mypage"></c:url>'>마이페이지</a>
+			  <a href="<c:url value='/logout'/>">로그아웃</a></p>
 	</sec:authorize>
     </div>
 </div>
@@ -44,10 +45,9 @@
         <a href="#"><h1>로고</h1></a>
         <ul class="top_left">
             <li><a href="#">ABOUTUS</a></li>
-            <li><a href="#">PROJECT</a></li>
+            <li><a href="<c:url value="/pro/list"></c:url>">PROJECT</a></li>
             <li><a href='<c:url value="/port/list"></c:url>'>PORTFOLIO</a></li>
-            <li><a href="#">SALE</a></li>
-            <li><a href="#">VIEWS</a></li>
+            <li><a href="<c:url value="/sale/list"></c:url>">SALE</a></li>
         </ul>
         <i class="fa fa-bars menu_open"></i>
     </div>

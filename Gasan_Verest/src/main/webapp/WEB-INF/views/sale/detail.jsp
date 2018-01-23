@@ -7,6 +7,9 @@
 <title>글 상세보기</title>
 </head>
 <body>
+	<c:if test="${ param.action == 'newbas' }">
+			<script>alert("장바구니에 등록되었습니다.")</script>	
+	</c:if>
 	<h1>글 상세보기</h1>
 	<dl>
 		<dt>번호</dt>
@@ -36,7 +39,6 @@
 	<a href="<c:url value='/sale/remove?no=${ item.no }'/>">삭제하기</a>
 	<form action="<c:url value='/bas/new'/>" method="post">
 		<input type="hidden" name="sale_no" value="${ item.no }">
-		<input type="hidden" name="v_id" value="${ item.userInfo.v_id }">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="submit" value="장바구니 등록">
 	</form>

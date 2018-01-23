@@ -35,15 +35,15 @@ public class BasController {
 	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String newBoard(HttpServletRequest request,
-			Integer v_id,
 			Integer sale_no
 			) throws CommonException, Exception{
 		Basket bas = new Basket();
-		bas.setV_id(v_id);
+		UserInfo user = userInfoService.detail(this.getPrincipal());
+		bas.setV_id(user.getV_id());
 		bas.setSale_no(sale_no);
 		BasService.newBoard(bas);
 		
-		return "redirect:/sale/detail?no="+ sale_no;
+		return "redirect:/sale/detail?no="+ sale_no + "&action=newbas";
 	}
 	
 	// 글 목록 화면
@@ -65,7 +65,7 @@ public class BasController {
 				
 			BasService.remove(basket_no);
 			
-			return "bas/list";
+			return "redirect:/bas/list";
 		}
 		
 	// 현재 접속한 사용자의 email 리턴

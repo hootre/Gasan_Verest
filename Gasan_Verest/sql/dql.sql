@@ -3,7 +3,7 @@
 SELECT b.basket_no, b.v_id as "UID", s.title, s.attachment, s.price, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, basket b, sale s
 		WHERE b.v_id = u.v_id AND b.sale_no = s.no  AND b.v_id = 23 ORDER BY b.basket_no DESC;
-
+select * from basket;
 -- 회원관련 
 SELECT * FROM userinfo;
 SELECT * FROM usertype;

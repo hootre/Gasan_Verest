@@ -13,6 +13,7 @@
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
+			<th>가격</th>
 			<th>내용</th>
 			<th>날짜</th>
 		</tr>
@@ -28,6 +29,7 @@
 					</td>
 				</c:if>
 				<td>${ item.regdate}</td>
+				<td><a href='<c:url value='/bas/remove?basket_no=${item.basket_no }'></c:url>'>삭제</a></td>
 			</tr>
 		</c:forEach>
 	</table>

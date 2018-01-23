@@ -42,7 +42,7 @@ public class BasketDaoImpl implements BasketDao{
 			basket = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll",  v_id);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("BAS 03 : 전체 검색 실패");
+			throw new CommonException("BAS 02 : 전체 검색 실패");
 		}
 		return basket;
 	}
@@ -54,7 +54,7 @@ public class BasketDaoImpl implements BasketDao{
 			count = sqlSession.selectOne(MAPPER_NAMESPACE + ".count");
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("BAS 04 : 전체 개수 검색 실패");
+			throw new CommonException("BAS 03 : 전체 개수 검색 실패");
 		}
 		return count;
 	}

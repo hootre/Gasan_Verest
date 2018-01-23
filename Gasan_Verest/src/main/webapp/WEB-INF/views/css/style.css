@@ -25,5 +25,6 @@ format('truetype');
     box-sizing: border-box;
     list-style: none;
     color: #333333;
+    font-weight: bold;
     font-family: 'Spoqa Regular';
 }

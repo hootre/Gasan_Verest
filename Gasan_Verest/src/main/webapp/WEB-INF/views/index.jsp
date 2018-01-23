@@ -10,6 +10,7 @@
 <style type="text/css">
 <%@ include file="css/style.css"%>
 <%@ include file="css/header.css" %>
+<%@ include file="css/content.css" %>
 <%@ include file="css/footer.css" %>
 </style>
 <title>Verest</title>
@@ -19,6 +20,7 @@
 		<script>alert("탈퇴완료")</script>
 	</c:if>
 	<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="main.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>

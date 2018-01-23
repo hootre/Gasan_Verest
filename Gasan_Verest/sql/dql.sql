@@ -1,9 +1,7 @@
--- test
-
-SELECT b.basket_no, b.v_id as "UID", s.title, s.attachment, s.price, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
-		FROM userinfo u, basket b, sale s
-		WHERE b.v_id = u.v_id AND b.sale_no = s.no  AND b.v_id = 23 ORDER BY b.basket_no DESC;
-select * from basket;
+-- test		
+	SELECT o.or_no, o.v_id as "UID", o.sale_no ,s.title, s.attachment, s.price, to_char(o.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", o.state, u.v_email, u.v_name
+		FROM userinfo u, order_list o, sale s
+		WHERE o.v_id = u.v_id AND o.sale_no = s.no AND o.or_no = 1;
 -- 회원관련 
 SELECT * FROM userinfo;
 SELECT * FROM usertype;
@@ -101,6 +99,8 @@ SELECT COUNT(*) FROM port_dat;
 SELECT pjd.dat_no, pj.no as "BOARD_NO", u.v_id as "writer", pjd.content, pjd.regdate
 FROM project_dat pjd, userinfo u, project pj
 WHERE pjd.board_no = pj.no AND pjd.writer = u.v_id; --AND pjd.dat_no = ### (한개만 검색할때)
+
+SELECT * FROM ORDER_STATE;
 
 -- order_list 전체 개수
 SELECT COUNT(*) FROM order_list;

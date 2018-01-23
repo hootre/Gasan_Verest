@@ -17,56 +17,80 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.Basket;
 import com.verest.board.model.CommonException;
+import com.verest.board.model.Order_list;
 import com.verest.board.model.Sale;
 import com.verest.board.service.BasketService;
+import com.verest.board.service.Order_listService;
+import com.verest.board.service.Order_stateService;
 import com.verest.board.service.SaleService;
 import com.verest.board.service.UserInfoService;
 
 @Controller
-@RequestMapping("/bas")
-public class BasController {
+@RequestMapping("/order")
+public class OrderController {
 	@Autowired
 	private UserInfoService userInfoService;
 
 	@Autowired
-	private BasketService BasService;
+	private Order_listService OrdService;
 
+	@Autowired
+	private Order_stateService StateService;
+	
+	@Autowired
+	private SaleService SaleService;
 
 	// 글 작성 화면
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public String newBoard(Model model,
+			@RequestParam(value = "sale_no", required = true) Integer sale_no) {
+
+		Order_list ord = new Order_list();
+		UserInfo user = userInfoService.detail(this.getPrincipal());
+		ord.setV_id(user.getV_id());
+		ord.setSale_no(sale_no);
+		OrdService.newBoard(ord);
+		
+		Sale sale = SaleService.detail(sale_no);
+		model.addAttribute("item", sale);
+
+		return "order/Confirm";
+	}
+	
+/*	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String newBoard(HttpServletRequest request,
 			Integer sale_no
 			) throws CommonException, Exception{
-		Basket bas = new Basket();
+		Order_list ord = new Order_list();
 		UserInfo user = userInfoService.detail(this.getPrincipal());
-		bas.setV_id(user.getV_id());
-		bas.setSale_no(sale_no);
-		BasService.newBoard(bas);
+		ord.setV_id(user.getV_id());
+		ord.setSale_no(sale_no);
+		OrdService.newBoard(ord);
 		
-		return "redirect:/sale/detail?no="+ sale_no + "&action=newbas";
-	}
+		return "redirect:/order/Confirm?no="+ sale_no + "&action=neword";
+	}*/
 	
 	// 글 목록 화면
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) throws CommonException {
-		List<Basket> list = null;
+		List<Order_list> list = null;
 		UserInfo user = userInfoService.detail(this. getPrincipal());
-		list = BasService.list(user.getV_id());
-		
+		list = OrdService.list(user.getV_id());
 		model.addAttribute("list", list);
 
-		return "bas/list";
+		return "order/list";
 	}
 	
-	// 글 삭제 확인 화면
-	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	public String removeConfirm(Model model,
-		@RequestParam(value = "basket_no", required = true) Integer basket_no) {
+		// 글 삭제 확인 화면
+		@RequestMapping(value = "/remove", method = RequestMethod.GET)
+		public String removeConfirm(Model model,
+				@RequestParam(value = "or_no", required = true) Integer or_no) {
+				
+			OrdService.remove(or_no);
 			
-		BasService.remove(basket_no);
-		
-		return "redirect:/bas/list";
-	}
+			return "redirect:/order/list";
+		}
 		
 	// 현재 접속한 사용자의 email 리턴
 	private String getPrincipal() {

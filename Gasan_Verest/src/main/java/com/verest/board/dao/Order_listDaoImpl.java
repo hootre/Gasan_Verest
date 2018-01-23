@@ -32,22 +32,10 @@ public class Order_listDaoImpl implements Order_listDao{
 	}
 
 	@Override
-	public Order_list select(Integer or_no) throws CommonException {
-		Order_list order_list = null;
-		try {
-			order_list = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", or_no);
-		} catch (Exception e) {
-			logger.debug(e.getMessage());
-			throw new CommonException("O02 : 주문 검색 실패");
-		}
-		return order_list;
-	}
-
-	@Override
-	public List<Order_list> selectAll() throws CommonException {
+	public List<Order_list> selectAll(Integer v_id) throws CommonException {
 		List<Order_list> order_list = null;
 		try {
-			order_list = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll");
+			order_list = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll", v_id);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
 			throw new CommonException("O03 : 주문 전체검색 실패");
@@ -76,6 +64,18 @@ public class Order_listDaoImpl implements Order_listDao{
 			throw new CommonException("O05 : 주문취소 실패");
 		}
 		
+	}
+
+	@Override
+	public Order_list select(Integer or_no) throws CommonException {
+		Order_list ord = null;
+		try {
+			ord = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", or_no);
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+			throw new CommonException("H02 : 후기 상세보기 실패");
+		}
+		return ord;
 	}
 
 }

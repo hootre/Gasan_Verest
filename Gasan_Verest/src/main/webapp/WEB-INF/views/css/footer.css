@@ -18,7 +18,7 @@
         float: left;
     }
 
-    .footer .f_container .footer_content .footer_card h2, span, b {
+    .footer .f_container .footer_content .footer_card > h2, span, b {
         color: #fff;
     }
 

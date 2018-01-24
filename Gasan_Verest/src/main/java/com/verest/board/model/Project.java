@@ -1,7 +1,5 @@
 package com.verest.board.model;
 
-import java.util.Date;
-
 public class Project {
 
 	private Integer no;

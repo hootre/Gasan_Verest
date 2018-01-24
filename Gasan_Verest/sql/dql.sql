@@ -1,11 +1,5 @@
--- test
-
-SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.views, u.v_id, u.v_name
-		FROM userinfo u, sale s
-		WHERE s.writer = u.v_id;
-
-
-
+-- test		
+DELETE FROM order_list WHERE or_no = 2;
 -- 회원관련 
 SELECT * FROM userinfo;
 SELECT * FROM usertype;
@@ -58,6 +52,7 @@ DELETE FROM sale WHERE no = 1;
 
 -- sale 전체 개수
 SELECT COUNT(*) FROM sale;
+select * from sale;
 -- sale 게시판 상세보기
 SELECT s.no, s.title, s.content, u.v_id as "writer", s.price, s.attachment, s.views   
 FROM sale s, userinfo u
@@ -102,6 +97,8 @@ SELECT COUNT(*) FROM port_dat;
 SELECT pjd.dat_no, pj.no as "BOARD_NO", u.v_id as "writer", pjd.content, pjd.regdate
 FROM project_dat pjd, userinfo u, project pj
 WHERE pjd.board_no = pj.no AND pjd.writer = u.v_id; --AND pjd.dat_no = ### (한개만 검색할때)
+
+SELECT * FROM ORDER_STATE;
 
 -- order_list 전체 개수
 SELECT COUNT(*) FROM order_list;

@@ -5,19 +5,20 @@ DROP TABLE basket;
 DROP SEQUENCE basket_seq;
 DROP TABLE order_list;
 DROP SEQUENCE order_list_seq;
+DROP TABLE question;
+DROP SEQUENCE question_seq;
+DROP TABLE backsight;
+DROP SEQUENCE backsight_seq;
 DROP TABLE sale;
 DROP SEQUENCE sale_seq;
 DROP TABLE port;
 DROP SEQUENCE port_seq;
 DROP TABLE project;
 DROP SEQUENCE project_seq;
-DROP TABLE question;
-DROP SEQUENCE question_seq;
-DROP TABLE backsight;
-DROP SEQUENCE backsight_seq;
 DROP TABLE userinfo;
 DROP SEQUENCE userinfo_seq;
 
+-- 강제삭제 DROP TABLE userinfo CASCADE CONSTRAINTS PURGE;
 CREATE TABLE userinfo(
 	v_id NUMBER NOT NULL,
 	v_email VARCHAR2(320) NOT NULL,
@@ -101,6 +102,7 @@ CREATE TABLE order_list(
 	v_id NUMBER NOT NULL, -- 사용자 번호
 	sale_no NUMBER NOT NULL, -- 게시물 번호
 	regdate DATE NOT NULL, -- 구매일
+	state VARCHAR2(20) NOT NULL,
 	CONSTRAINT pk_order_list PRIMARY KEY (or_no),
 	CONSTRAINT fk_order_list_id FOREIGN KEY (v_id) REFERENCES userinfo (v_id),
 	CONSTRAINT fk_order_list_no FOREIGN KEY (sale_no) REFERENCES sale (no)

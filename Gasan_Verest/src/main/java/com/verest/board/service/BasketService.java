@@ -9,11 +9,8 @@ public interface BasketService {
 			// 게시물 번호를 1 증가하고 게시물을 등록한다.
 			public void newBoard(Basket basket) throws CommonException;
 
-			// 게시물 하나를 가져온다.
-			public Basket detail(Integer basket_no) throws CommonException;
-
 			// 게시물 전체를 가져온다.
-			public List<Basket> list() throws CommonException;
+			public List<Basket> list(Integer v_id) throws CommonException;
 
 			// 게시물의 개수를 가져온다.
 			public int count() throws CommonException;

@@ -10,11 +10,8 @@ public interface BasketDao {
 		// 장바구니 등록
 		public void insert(Basket basket) throws CommonException;
 		
-		// 장바구니 하나 가져오기
-		public Basket select(Integer basket_no) throws CommonException;
-		
 		// 장바구니 가져오기
-		public List<Basket> selectAll() throws CommonException;
+		public List<Basket> selectAll(Integer v_id) throws CommonException;
 		
 		// 장바구니 개수 가져오기
 		public int BasketCount() throws CommonException;

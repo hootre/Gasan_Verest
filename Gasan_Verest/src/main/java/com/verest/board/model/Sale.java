@@ -11,12 +11,12 @@ public class Sale {
 	private String regdate;
 	private String attachment;
 	private Integer views;
-	private UserInfo userinfo;
+	private UserInfo userInfo;
 	
 	public Sale() {}
 
 	public Sale(Integer no, String title, String content, Integer writer, Integer price, String regdate,
-			String attachment, Integer views, UserInfo userinfo) {
+			String attachment, Integer views, UserInfo userInfo) {
 		this.no = no;
 		this.title = title;
 		this.content = content;
@@ -25,7 +25,7 @@ public class Sale {
 		this.regdate = regdate;
 		this.attachment = attachment;
 		this.views = views;
-		this.userinfo = userinfo;
+		this.userInfo = userInfo;
 	}
 
 	public Integer getNo() {
@@ -92,12 +92,12 @@ public class Sale {
 		this.views = views;
 	}
 
-	public UserInfo getUserinfo() {
-		return userinfo;
+	public UserInfo getUserInfo() {
+		return userInfo;
 	}
 
-	public void setUserinfo(UserInfo userinfo) {
-		this.userinfo = userinfo;
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
 	}
 
 	@Override
@@ -110,7 +110,7 @@ public class Sale {
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + ((userinfo == null) ? 0 : userinfo.hashCode());
+		result = prime * result + ((userInfo == null) ? 0 : userInfo.hashCode());
 		result = prime * result + ((views == null) ? 0 : views.hashCode());
 		result = prime * result + ((writer == null) ? 0 : writer.hashCode());
 		return result;
@@ -155,10 +155,10 @@ public class Sale {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (userinfo == null) {
-			if (other.userinfo != null)
+		if (userInfo == null) {
+			if (other.userInfo != null)
 				return false;
-		} else if (!userinfo.equals(other.userinfo))
+		} else if (!userInfo.equals(other.userInfo))
 			return false;
 		if (views == null) {
 			if (other.views != null)
@@ -192,12 +192,11 @@ public class Sale {
 		builder.append(attachment);
 		builder.append(", views=");
 		builder.append(views);
-		builder.append(", userinfo=");
-		builder.append(userinfo);
+		builder.append(", userInfo=");
+		builder.append(userInfo);
 		builder.append("]");
 		return builder.toString();
 	}
-
 	
 	
 }

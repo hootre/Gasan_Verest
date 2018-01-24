@@ -36,11 +36,6 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
-	public void modify(Question question) throws CommonException {
-		queDao.update(question);
-	}
-
-	@Override
 	public void remove(Integer qu_no) throws CommonException {
 		queDao.delete(qu_no);
 	}

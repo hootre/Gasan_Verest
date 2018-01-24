@@ -24,6 +24,7 @@ CREATE TABLE userinfo(
 	v_email VARCHAR2(320) NOT NULL,
 	v_password VARCHAR2(60) NOT NULL,
 	v_name VARCHAR2(20) NOT NULL,
+	v_regdate DATE NOT NULL,
 	CONSTRAINT pk_userinfo PRIMARY KEY (v_id),
 	CONSTRAINT uk_userinfo UNIQUE (v_email)
 );

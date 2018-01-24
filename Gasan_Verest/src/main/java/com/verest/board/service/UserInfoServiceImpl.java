@@ -1,6 +1,7 @@
 package com.verest.board.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -117,5 +118,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 		} else {
 			throw new CommonException("E61: 비밀번호가 동일하지 않아 삭제 실패");
 		}
+	}
+
+	@Override
+	public List<UserInfo> list() throws CommonException {
+		return userInfoDao.selectAll();
 	}
 }

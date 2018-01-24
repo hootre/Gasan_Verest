@@ -27,7 +27,7 @@
 	
 	<select id="select" parameterType="Integer" resultMap="saleResultMap">
 		SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.views, u.v_id, u.v_name
-		FROM userinfo u, sale s
+		FROM sale s, userinfo u
 		WHERE s.writer = u.v_id AND s.no = #{no}
 	</select>
 	
@@ -52,7 +52,7 @@
 	</delete>
 	
 	<update id="views" parameterType="Sale">
-		UPDATE project 
+		UPDATE sale 
 		SET views = #{views}
 		WHERE no = #{no}
 	</update>

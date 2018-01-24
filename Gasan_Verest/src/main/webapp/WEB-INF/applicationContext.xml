@@ -22,6 +22,9 @@
 		<intercept-url pattern="/pro/new" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/pro/remove" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/pro/modify" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/sale/new" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/sale/remove" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/sale/modify" access="hasRole('ROLE_ADMIN')" />
 			
 		<form-login login-page="/login" login-processing-url="/login-processing"
 			authentication-failure-url="/login?action=error" 

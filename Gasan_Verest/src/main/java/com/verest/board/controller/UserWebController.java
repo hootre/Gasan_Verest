@@ -1,5 +1,8 @@
 package com.verest.board.controller;
 
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,10 +19,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
+import com.verest.board.model.Port;
+import com.verest.board.model.Project;
+import com.verest.board.model.Sale;
+import com.verest.board.service.PortService;
+import com.verest.board.service.ProjectService;
+import com.verest.board.service.SaleService;
 import com.verest.board.service.UserInfoService;
 
 @Controller
 public class UserWebController {
+	
+	@Autowired
+	private ProjectService ProService;
+	
+	@Autowired
+	private PortService PortService;
+	
+	@Autowired
+	private SaleService SaleService;
+	
 	@Autowired
 	private UserInfoService userInfoService;
 
@@ -35,6 +54,15 @@ public class UserWebController {
 			UserInfo item = userInfoService.detail(email);
 			model.addAttribute("userInfo", item);
 		}
+		
+		List<Project> pro = ProService.list();
+		List<Port> port = PortService.list();
+		List<Sale> sale = SaleService.list();
+		
+
+		model.addAttribute("pro", pro);
+		model.addAttribute("port", port);
+		model.addAttribute("sale", sale);
 		
 		return "/index";
 	}

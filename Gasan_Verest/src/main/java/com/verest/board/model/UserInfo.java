@@ -8,15 +8,18 @@ public class UserInfo {
 	private String v_email;				// 이메일
 	private String v_password;			// 비밀번호
 	private String v_name;				// 이름
+	private String v_regdate;				// 생성 날짜
 	private Set<UserType> userTypes;	// ADMIN, USER
 	
 	public UserInfo() {}
 
-	public UserInfo(Integer v_id, String v_email, String v_password, String v_name, Set<UserType> userTypes) {
+	public UserInfo(Integer v_id, String v_email, String v_password, String v_name, String v_regdate,
+			Set<UserType> userTypes) {
 		this.v_id = v_id;
 		this.v_email = v_email;
 		this.v_password = v_password;
 		this.v_name = v_name;
+		this.v_regdate = v_regdate;
 		this.userTypes = userTypes;
 	}
 
@@ -52,6 +55,14 @@ public class UserInfo {
 		this.v_name = v_name;
 	}
 
+	public String getV_regdate() {
+		return v_regdate;
+	}
+
+	public void setV_regdate(String v_regdate) {
+		this.v_regdate = v_regdate;
+	}
+
 	public Set<UserType> getUserTypes() {
 		return userTypes;
 	}
@@ -69,6 +80,7 @@ public class UserInfo {
 		result = prime * result + ((v_id == null) ? 0 : v_id.hashCode());
 		result = prime * result + ((v_name == null) ? 0 : v_name.hashCode());
 		result = prime * result + ((v_password == null) ? 0 : v_password.hashCode());
+		result = prime * result + ((v_regdate == null) ? 0 : v_regdate.hashCode());
 		return result;
 	}
 
@@ -106,6 +118,11 @@ public class UserInfo {
 				return false;
 		} else if (!v_password.equals(other.v_password))
 			return false;
+		if (v_regdate == null) {
+			if (other.v_regdate != null)
+				return false;
+		} else if (!v_regdate.equals(other.v_regdate))
+			return false;
 		return true;
 	}
 
@@ -120,6 +137,8 @@ public class UserInfo {
 		builder.append(v_password);
 		builder.append(", v_name=");
 		builder.append(v_name);
+		builder.append(", v_regdate=");
+		builder.append(v_regdate);
 		builder.append(", userTypes=");
 		builder.append(userTypes);
 		builder.append("]");

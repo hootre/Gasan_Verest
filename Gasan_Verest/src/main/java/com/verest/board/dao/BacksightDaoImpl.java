@@ -28,7 +28,7 @@ public class BacksightDaoImpl implements BacksightDao{
 			sqlSession.insert(MAPPER_NAMESPACE + ".insert", backsight);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("H01 : 후기 작성 실패");
+			throw new CommonException("BACKSIGHT 01 : 작성 실패");
 		}
 		
 	}
@@ -40,7 +40,7 @@ public class BacksightDaoImpl implements BacksightDao{
 			backsight = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", back_no);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("H02 : 후기 상세보기 실패");
+			throw new CommonException("BACK 02 : 상세보기 실패");
 		}
 		return backsight;
 	}
@@ -51,8 +51,7 @@ public class BacksightDaoImpl implements BacksightDao{
 		try {
 			backsight = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll");
 		} catch (Exception e) {
-			logger.debug(e.getMessage());
-			throw new CommonException("H03 : 후기 전체 검색 실패");
+			throw new CommonException("BACK 03 : 전체 검색 실패");
 		}
 		return backsight;
 	}
@@ -64,7 +63,7 @@ public class BacksightDaoImpl implements BacksightDao{
 			count = sqlSession.selectOne(MAPPER_NAMESPACE + ".count");
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("H04 : 후기 개수 검색 실패");
+			throw new CommonException("BACK 04 : 개수 검색 실패");
 		}
 		return count;
 	}
@@ -75,7 +74,7 @@ public class BacksightDaoImpl implements BacksightDao{
 			sqlSession.update(MAPPER_NAMESPACE + ".update", backsight);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("H05 : 후기 수정 실패");
+			throw new CommonException("BACK 05 : 수정 실패");
 		}
 		
 	}
@@ -86,7 +85,7 @@ public class BacksightDaoImpl implements BacksightDao{
 			sqlSession.update(MAPPER_NAMESPACE + ".delete", back_no);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("H06 : 후기 삭제 실패");
+			throw new CommonException("BACK 06 : 삭제 실패");
 		}
 		
 	}

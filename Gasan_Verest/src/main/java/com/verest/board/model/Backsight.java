@@ -1,23 +1,23 @@
 package com.verest.board.model;
 
-import java.util.Date;
-
 public class Backsight {
 
 	private Integer back_no;
 	private Integer writer;
 	private String content;
 	private String title;
-	private Date regdate;
+	private String regdate;
+	private UserInfo userInfo;
 	
 	public Backsight() {}
 
-	public Backsight(Integer back_no, Integer writer, String content, String title, Date regdate) {
+	public Backsight(Integer back_no, Integer writer, String content, String title, String regdate, UserInfo userInfo) {
 		this.back_no = back_no;
 		this.writer = writer;
 		this.content = content;
 		this.title = title;
 		this.regdate = regdate;
+		this.userInfo = userInfo;
 	}
 
 	public Integer getBack_no() {
@@ -52,12 +52,20 @@ public class Backsight {
 		this.title = title;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
 	}
 
 	@Override
@@ -68,6 +76,7 @@ public class Backsight {
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((userInfo == null) ? 0 : userInfo.hashCode());
 		result = prime * result + ((writer == null) ? 0 : writer.hashCode());
 		return result;
 	}
@@ -101,6 +110,11 @@ public class Backsight {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (userInfo == null) {
+			if (other.userInfo != null)
+				return false;
+		} else if (!userInfo.equals(other.userInfo))
+			return false;
 		if (writer == null) {
 			if (other.writer != null)
 				return false;
@@ -112,7 +126,7 @@ public class Backsight {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("backsight [back_no=");
+		builder.append("Backsight [back_no=");
 		builder.append(back_no);
 		builder.append(", writer=");
 		builder.append(writer);
@@ -122,9 +136,11 @@ public class Backsight {
 		builder.append(title);
 		builder.append(", regdate=");
 		builder.append(regdate);
+		builder.append(", userInfo=");
+		builder.append(userInfo);
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 	
 }

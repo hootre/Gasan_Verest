@@ -17,8 +17,10 @@
 		<p>
 		<c:forEach var="list" items="${ item.userTypes }">
 				<div>${ list.type }</div>
-			</c:forEach>
+		</c:forEach>
 		</p>
+		<h2>생성일</h2>
+		<p>${ item.v_regdate }</p>
 		<a href="<c:url value='/user/modify'/>">수정하기</a>
 		<a href="<c:url value='/bas/list'/>">장바구니</a>
 		<a href="<c:url value='/order/list'/>">주문확인</a>

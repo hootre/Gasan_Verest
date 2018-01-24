@@ -75,9 +75,24 @@ public class UserWebController {
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(Model model) {
-		model.addAttribute("userInfo", this.getPrincipal());
-		return "user/admin";
+		
+		UserInfo userinfo = userInfoService.detail(this.getPrincipal());
+		
+		model.addAttribute("name", userinfo.getV_name());
+		return "admin/admin";
 	}
+	
+	// 사용자 목록 화면
+		@RequestMapping(value = "/list", method = RequestMethod.GET)
+		public String list(Model model) throws CommonException {
+			List<UserInfo> list = null;
+	    
+			list = userInfoService.list();
+			
+			model.addAttribute("list", list);
+
+			return "admin/list";
+		}
 	
 	// 사용자정보
 	@RequestMapping(value = "/user/mypage", method = RequestMethod.GET)

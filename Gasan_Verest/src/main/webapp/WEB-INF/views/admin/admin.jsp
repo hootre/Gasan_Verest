@@ -9,9 +9,11 @@
 <body>
 	<h1>관리자 페이지</h1>
 	<div>
-		<span>${ email }</span>
+		<span>${ name }</span>
 		<span>님 관리자 페이지에 오신것을 환영합니다.</span>
 		<a href="<c:url value='/logout'/>">로그아웃</a>
+		<a href = "<c:url value = '/que/list'/>">문의 관리</a>
+		<a href = "<c:url value = '/list'/>">회원 관리</a>
 		<a href = "<c:url value = '/'/>">홈으로</a>
 	</div>
 </body>

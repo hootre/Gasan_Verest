@@ -25,6 +25,8 @@
 		<intercept-url pattern="/sale/new" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/sale/remove" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/sale/modify" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/bas/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/order/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
 			
 		<form-login login-page="/login" login-processing-url="/login-processing"
 			authentication-failure-url="/login?action=error" 
@@ -70,11 +72,11 @@
 	</beans:bean>
 
 	<!-- Transaction 적용 -->
-	<beans:bean id="transactionManager"
+<!-- 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 
-	<tx:annotation-driven transaction-manager="transactionManager" />
+	<tx:annotation-driven transaction-manager="transactionManager" /> -->
 
 </beans:beans>

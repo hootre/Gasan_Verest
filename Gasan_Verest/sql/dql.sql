@@ -1,5 +1,16 @@
 -- test		
-DELETE FROM order_list WHERE or_no = 2;
+
+		SELECT b.back_no, b.writer, b.content, b.title, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
+		FROM userinfo u, backsight b
+		WHERE b.writer = u.v_id  ORDER BY b.back_no DESC;
+		
+		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, to_char(u.v_regdate, 'yyyy-mm-dd hh:mi') as "REGDATE",ut.v_id, ut.v_type
+		FROM userinfo u,
+			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
+			FROM userinfotype, usertype
+			WHERE usertype.v_id = userinfotype.user_type_id) ut
+		WHERE u.v_id = ut.user_info_id;
+
 -- 회원관련 
 SELECT * FROM userinfo;
 SELECT * FROM usertype;

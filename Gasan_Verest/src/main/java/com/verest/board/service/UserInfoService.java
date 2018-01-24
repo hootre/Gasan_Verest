@@ -1,5 +1,7 @@
 package com.verest.board.service;
 
+import java.util.List;
+
 import com.verest.board.model.CommonException;
 import com.verest.board.model.UserInfo;
 
@@ -27,5 +29,7 @@ public interface UserInfoService {
 
 	// 사용자의 email 값을 이용하여 비밀번호를 불러온 다음, 입력한 비밀번호와 비교
 	boolean isPasswordMatched(String email, String rawPassword) throws CommonException;
+
+	public List<UserInfo> list() throws CommonException;
 
 }

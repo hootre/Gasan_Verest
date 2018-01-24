@@ -1,3 +1,16 @@
+-- test		
+
+		SELECT b.back_no, b.writer, b.content, b.title, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
+		FROM userinfo u, backsight b
+		WHERE b.writer = u.v_id  ORDER BY b.back_no DESC;
+		
+		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, to_char(u.v_regdate, 'yyyy-mm-dd hh:mi') as "REGDATE",ut.v_id, ut.v_type
+		FROM userinfo u,
+			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
+			FROM userinfotype, usertype
+			WHERE usertype.v_id = userinfotype.user_type_id) ut
+		WHERE u.v_id = ut.user_info_id;
+
 -- 회원관련 
 SELECT * FROM userinfo;
 SELECT * FROM usertype;
@@ -50,6 +63,7 @@ DELETE FROM sale WHERE no = 1;
 
 -- sale 전체 개수
 SELECT COUNT(*) FROM sale;
+select * from sale;
 -- sale 게시판 상세보기
 SELECT s.no, s.title, s.content, u.v_id as "writer", s.price, s.attachment, s.views   
 FROM sale s, userinfo u
@@ -94,6 +108,8 @@ SELECT COUNT(*) FROM port_dat;
 SELECT pjd.dat_no, pj.no as "BOARD_NO", u.v_id as "writer", pjd.content, pjd.regdate
 FROM project_dat pjd, userinfo u, project pj
 WHERE pjd.board_no = pj.no AND pjd.writer = u.v_id; --AND pjd.dat_no = ### (한개만 검색할때)
+
+SELECT * FROM ORDER_STATE;
 
 -- order_list 전체 개수
 SELECT COUNT(*) FROM order_list;

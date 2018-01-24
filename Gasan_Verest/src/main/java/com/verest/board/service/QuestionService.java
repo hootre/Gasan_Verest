@@ -11,7 +11,7 @@ public interface QuestionService {
 			public void newBoard(Question question) throws CommonException;
 
 			// 게시물 하나를 가져온다.
-			public Question detail(String qu_no) throws CommonException;
+			public Question detail(Integer qu_no) throws CommonException;
 
 			// 게시물 전체를 가져온다.
 			public List<Question> list() throws CommonException;
@@ -19,9 +19,6 @@ public interface QuestionService {
 			// 게시물의 개수를 가져온다.
 			public int count() throws CommonException;
 
-			// 게시물을 수정한다. (수정되기 전 파일명을 리턴)
-			public void modify(Question question) throws CommonException;
-
 			// 게시물을 삭제한다. (삭제하는 파일명을 리턴)
-			public void remove(String qu_no) throws CommonException;
+			public void remove(Integer qu_no) throws CommonException;
 }

@@ -1,12 +1,6 @@
 package com.verest.board.controller;
 
-import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
@@ -88,7 +81,7 @@ public class PortController {
 	// 글 상세 화면
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(Model model, 
-			@RequestParam(value = "no", required=true) String no)
+			@RequestParam(value = "no", required=true) Integer no)
 					throws CommonException, Exception {
 		Port port = null;
 
@@ -105,7 +98,7 @@ public class PortController {
 	// 글 수정하기 화면
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public String modify(Model model,
-			@RequestParam(value = "no", required = true) String no)
+			@RequestParam(value = "no", required = true) Integer no)
 					throws CommonException {
 
 		Port port = null;
@@ -151,7 +144,7 @@ public class PortController {
 		// 글 삭제 확인 화면
 		@RequestMapping(value = "/remove", method = RequestMethod.GET)
 		public String removeConfirm(Model model,
-				@RequestParam(value = "no", required = true) String no) {
+				@RequestParam(value = "no", required = true) Integer no) {
 
 			model.addAttribute("no", no);
 
@@ -161,11 +154,11 @@ public class PortController {
 		// 글 삭제 후, 글 목록 화면으로 이동
 		@RequestMapping(value = "/remove", method = RequestMethod.POST)
 		public String remove(HttpServletRequest request,
-				@RequestParam(value = "no", required = true) String no,
+				@RequestParam(value = "no", required = true) Integer no,
 				String v_password)
 						throws CommonException, UnsupportedEncodingException {
 			
-			boolean isMatched = userInfoService.isBoardMatched(Integer.parseInt(no), v_password);
+			boolean isMatched = userInfoService.isBoardMatched(no, v_password);
 			if (!isMatched) {
 				return "redirect:/port/remove?no=" + no + "&action=error-password";
 			}

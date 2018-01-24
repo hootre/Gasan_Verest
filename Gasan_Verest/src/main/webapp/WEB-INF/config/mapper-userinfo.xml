@@ -4,20 +4,21 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.verest.board.dao.UserInfoDaoImpl">
 
-	<select id="selectAll" resultType="UserInfo">
+<!-- 	<select id="selectAll" resultType="UserInfo">
 		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, ut.v_id, ut.v_type
 		FROM userinfo u,
 			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 			FROM userinfotype, usertype
 			WHERE usertype.v_id = userinfotype.user_type_id) ut
 		WHERE u.v_id = ut.user_info_id
-	</select>
+	</select> -->
 	
 	<resultMap type="UserInfo" id="userInfoResultMap">
 		<id property="v_id" column="uid" />
 		<result property="v_email" column="v_email" />
 		<result property="v_password" column="v_password" />
 		<result property="v_name" column="v_name" />
+		<result property="v_regdate" column="v_regdate" />
 		<collection property="userTypes" ofType="UserType">
 			<id property="v_id" column="v_id" />
 			<result property="v_type" column="v_type"/>
@@ -25,7 +26,7 @@
 	</resultMap>
 	
 	<select id="select" parameterType="Integer" resultMap="userInfoResultMap">
-		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, ut.v_id, ut.v_type
+		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, to_char(u.v_regdate, 'yyyy-mm-dd hh:mi') as "V_REGDATE",ut.v_id, ut.v_type
 		FROM userinfo u,
 			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 			FROM userinfotype, usertype
@@ -33,12 +34,21 @@
 		WHERE u.v_id = ut.user_info_id AND u.v_id = #{v_id}
 	</select>
 	
+	<select id="selectAll"  resultMap="userInfoResultMap">
+		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, to_char(u.v_regdate, 'yyyy-mm-dd hh:mi') as "V_REGDATE",ut.v_id, ut.v_type
+		FROM userinfo u,
+			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
+			FROM userinfotype, usertype
+			WHERE usertype.v_id = userinfotype.user_type_id) ut
+		WHERE u.v_id = ut.user_info_id ORDER BY u.v_id DESC
+	</select>
+	
 	<insert id="insert" parameterType="UserInfo">
 		<selectKey keyProperty="v_id" resultType="Integer" order="BEFORE">
 			SELECT userinfo_seq.NEXTVAL v_id FROM DUAL
 		</selectKey>
-		INSERT INTO userinfo(v_id, v_email, v_password, v_name)
-		VALUES (#{v_id}, #{v_email}, #{v_password}, #{v_name})
+		INSERT INTO userinfo(v_id, v_email, v_password, v_name, v_regdate)
+		VALUES (#{v_id}, #{v_email}, #{v_password}, #{v_name}, SYSDATE)
 	</insert>
 	
 	<insert id="insertUserTypes" parameterType="UserInfo">
@@ -60,12 +70,12 @@
 	
 	<update id="update" parameterType="UserInfo">
 		UPDATE userinfo 
-		SET v_name = #{v_name}, v_password = #{v_password}
+		SET v_name = #{v_name}, v_password = #{v_password}, v_regdate = SYSDATE
 		WHERE v_id = #{v_id}
 	</update>
 	
 	<select id="selectByEmail" parameterType="String" resultMap="userInfoResultMap">
-		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, ut.v_id, ut.v_type
+		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, to_char(u.v_regdate, 'yyyy-mm-dd hh:mi') as "REGDATE",ut.v_id, ut.v_type
 		FROM userinfo u,
 			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 			FROM userinfotype, usertype

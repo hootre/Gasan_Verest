@@ -3,6 +3,7 @@ package com.verest.board.service;
 import java.util.List;
 
 import com.verest.board.model.CommonException;
+import com.verest.board.model.Port;
 import com.verest.board.model.Project;
 
 public interface ProjectService {
@@ -11,7 +12,7 @@ public interface ProjectService {
 	public void newBoard(Project project) throws CommonException;
 
 	// 게시물 하나를 가져온다.
-	public Project detail(String no) throws CommonException;
+	public Project detail(Integer no) throws CommonException;
 
 	// 게시물 전체를 가져온다.
 	public List<Project> list() throws CommonException;
@@ -20,9 +21,12 @@ public interface ProjectService {
 	public int count() throws CommonException;
 
 	// 게시물을 수정한다. (수정되기 전 파일명을 리턴)
-	public String modify(Project project) throws CommonException;
+	public void modify(Project project) throws CommonException;
 
 	// 게시물을 삭제한다. (삭제하는 파일명을 리턴)
-	public String remove(String no) throws CommonException;
+	public void remove(Integer no) throws CommonException;
+	
+	// 게시물 조회수 증가
+	public void viewsup(Project project) throws CommonException;
 
 }

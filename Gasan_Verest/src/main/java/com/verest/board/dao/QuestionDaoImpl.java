@@ -29,18 +29,18 @@ public class QuestionDaoImpl implements QuestionDao{
 			sqlSession.insert(MAPPER_NAMESPACE + ".insert", question);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("Q01 : 문의 작성 실패");
+			throw new CommonException("QUESTION 01 : 작성 실패");
 		}
 	}
 
 	@Override
-	public Question select(String qu_no) throws CommonException {
+	public Question select(Integer qu_no) throws CommonException {
 		Question question = null;
 		try {
 			question = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", qu_no);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("Q02 : 문의 상세보기 실패");
+			throw new CommonException("QUESTION 02 : 상세보기 실패");
 		}
 		return question;
 	}
@@ -52,7 +52,7 @@ public class QuestionDaoImpl implements QuestionDao{
 			question = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll");
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("Q03 : 문의 목록불러오기 실패");
+			throw new CommonException("QUESTION 03 : 목록불러오기 실패");
 		}
 		return question;
 	}
@@ -64,29 +64,18 @@ public class QuestionDaoImpl implements QuestionDao{
 			count = sqlSession.selectOne(MAPPER_NAMESPACE + ".count");
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("Q04 : 문의 개수 검색 실패");
+			throw new CommonException("QUESTION 04 : 개수 검색 실패");
 		}
 		return count;
 	}
 
 	@Override
-	public void update(Question question) throws CommonException {
-		try {
-			sqlSession.update(MAPPER_NAMESPACE + ".update", question);
-		} catch (Exception e) {
-			logger.debug(e.getMessage());
-			throw new CommonException("Q05 : 문의 수정 실패");
-		}
-		
-	}
-
-	@Override
-	public void delete(String qu_no) throws CommonException {
+	public void delete(Integer qu_no) throws CommonException {
 		try {
 			sqlSession.update(MAPPER_NAMESPACE + ".delete", qu_no);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("Q06 : 문의 삭제 실패");
+			throw new CommonException("QUESTION 05 : 삭제 실패");
 		}
 		
 	}

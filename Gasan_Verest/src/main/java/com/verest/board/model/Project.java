@@ -1,21 +1,20 @@
 package com.verest.board.model;
 
-import java.util.Date;
-
 public class Project {
 
 	private Integer no;
 	private String title;
 	private String content;
 	private Integer writer;
-	private Date regdate;
+	private String regdate;
 	private String attachment;
 	private Integer views;
+	private UserInfo userInfo;
 	
 	public Project() {}
 
-	public Project(Integer no, String title, String content, Integer writer, Date regdate, String attachment,
-			Integer views) {
+	public Project(Integer no, String title, String content, Integer writer, String regdate, String attachment,
+			Integer views, UserInfo userInfo) {
 		this.no = no;
 		this.title = title;
 		this.content = content;
@@ -23,6 +22,7 @@ public class Project {
 		this.regdate = regdate;
 		this.attachment = attachment;
 		this.views = views;
+		this.userInfo = userInfo;
 	}
 
 	public Integer getNo() {
@@ -57,11 +57,11 @@ public class Project {
 		this.writer = writer;
 	}
 
-	public Date getRegdate() {
+	public String getRegdate() {
 		return regdate;
 	}
 
-	public void setRegdate(Date regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
 
@@ -81,7 +81,14 @@ public class Project {
 		this.views = views;
 	}
 
-	
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -91,6 +98,7 @@ public class Project {
 		result = prime * result + ((no == null) ? 0 : no.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + ((userInfo == null) ? 0 : userInfo.hashCode());
 		result = prime * result + ((views == null) ? 0 : views.hashCode());
 		result = prime * result + ((writer == null) ? 0 : writer.hashCode());
 		return result;
@@ -130,6 +138,11 @@ public class Project {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (userInfo == null) {
+			if (other.userInfo != null)
+				return false;
+		} else if (!userInfo.equals(other.userInfo))
+			return false;
 		if (views == null) {
 			if (other.views != null)
 				return false;
@@ -146,7 +159,7 @@ public class Project {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("port [no=");
+		builder.append("Project [no=");
 		builder.append(no);
 		builder.append(", title=");
 		builder.append(title);
@@ -160,9 +173,11 @@ public class Project {
 		builder.append(attachment);
 		builder.append(", views=");
 		builder.append(views);
+		builder.append(", userInfo=");
+		builder.append(userInfo);
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 	
 }

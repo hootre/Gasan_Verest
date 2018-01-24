@@ -1,11 +1,13 @@
 package com.verest.board.test;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Test {
 	public static void main(String[] args) {
-		String s = "https://www.youtube.com/watch?v=WXybWlcE2JE";
-		String address = s.replace("watch?v=", "embed/");
-		System.out.println(address);
+		String password = "1346156z";
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encoding = encoder.encode(password);
+		System.out.println(encoding);
 	}
 }
 

@@ -27,30 +27,18 @@ public class Order_listDaoImpl implements Order_listDao{
 			sqlSession.insert(MAPPER_NAMESPACE + ".insert", order_list);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("O01 : 주문 작성 실패");
+			throw new CommonException("ORDER 01 : 작성 실패");
 		}
 	}
 
 	@Override
-	public Order_list select(String or_no) throws CommonException {
-		Order_list order_list = null;
-		try {
-			order_list = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", or_no);
-		} catch (Exception e) {
-			logger.debug(e.getMessage());
-			throw new CommonException("O02 : 주문 검색 실패");
-		}
-		return order_list;
-	}
-
-	@Override
-	public List<Order_list> selectAll() throws CommonException {
+	public List<Order_list> selectAll(Integer v_id) throws CommonException {
 		List<Order_list> order_list = null;
 		try {
-			order_list = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll");
+			order_list = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll", v_id);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("O03 : 주문 전체검색 실패");
+			throw new CommonException("ORDER 02 : 전체검색 실패");
 		}
 		return order_list;
 	}
@@ -62,20 +50,32 @@ public class Order_listDaoImpl implements Order_listDao{
 			count = sqlSession.selectOne(MAPPER_NAMESPACE + ".count");
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("O04 : 주문 전체개수 불러오기 실패");
+			throw new CommonException("ORDER 03 : 전체개수 불러오기 실패");
 		}
 		return count;
 	}
 
 	@Override
-	public void delete(String or_no) throws CommonException {
+	public void delete(Integer or_no) throws CommonException {
 		try {
 			sqlSession.update(MAPPER_NAMESPACE + ".delete", or_no);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("O05 : 주문취소 실패");
+			throw new CommonException("ORDER 04 : 취소 실패");
 		}
 		
+	}
+
+	@Override
+	public Order_list select(Integer or_no) throws CommonException {
+		Order_list ord = null;
+		try {
+			ord = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", or_no);
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+			throw new CommonException("ORDER 06 : 상세보기 실패");
+		}
+		return ord;
 	}
 
 }

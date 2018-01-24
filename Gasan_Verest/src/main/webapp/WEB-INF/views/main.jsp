@@ -12,19 +12,6 @@
 <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
 <title>Insert title here</title>
 </head>
-<script>
-$(function () {
-    $(".slick").slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: false,
-        prevArrow:'.prev',
-        nextArrow: '.next'
-    });
-});
-</script>
 <body>
 <div class="content">
     <div class="c_container">
@@ -48,6 +35,17 @@ $(function () {
 					<iframe width="100%" height="100%" src="${ item.attachment}?rel=0&amp;autoplay=1&amp;loop=1;playlist=ZH8BYNwmR5Q&controls=0&showinfo=0&mute=1" data-audio="0" allowfullscreen="1" frameborder="0" allow="autoplay; encrypted-media" title="YouTube video player"></iframe>
 				</c:forEach>
             </div>
+            <div class="content_mid">
+            <button class="prev2"></button>
+            <button class="next2"></button>
+            <div class="slick2">
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+            </div>
+        </div>
         </div>
     </div>
 </div>

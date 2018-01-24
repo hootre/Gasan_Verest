@@ -44,11 +44,11 @@ $(function () {
             <button class="prev"></button>
             <button class="next"></button>
             <div class="slick">
-                <div class="img"><img src="img/sl.jpg"></div>
-                <div class="img"><img src="img/sl.jpg"></div>
-                <div class="img"><img src="img/sl.jpg"></div>
-                <div class="img"><img src="img/sl.jpg"></div>
-                <div class="img"><img src="img/sl.jpg"></div>
+                <div class="img"><img src="img/test.png"></div>
+                <div class="img"><img src="img/test.png"></div>
+                <div class="img"><img src="img/test.png"></div>
+                <div class="img"><img src="img/test.png"></div>
+                <div class="img"><img src="img/test.png"></div>
             </div>
         </div>
     </div>

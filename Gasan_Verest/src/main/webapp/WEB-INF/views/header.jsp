@@ -13,18 +13,6 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<script>
-    $(function () {
-        $(".menu_open").click(function () {
-            $(".t_right").animate({right : 0}, 300);
-            $(".bggrey").css("display","block");
-        });
-        $(".menu_close, .bggrey").click(function () {
-            $(".t_right").stop().css({right : "-300px"});
-            $(".bggrey").css("display","none");
-        });
-    });
-</script>
 <body>
 <div class="top_top">
     <div class="t_container">

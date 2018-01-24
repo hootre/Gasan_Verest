@@ -12,19 +12,6 @@
 <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
 <title>Insert title here</title>
 </head>
-<script>
-$(function () {
-    $(".slick").slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: false,
-        prevArrow:'.prev',
-        nextArrow: '.next'
-    });
-});
-</script>
 <body>
 <div class="content">
     <div class="c_container">
@@ -50,6 +37,17 @@ $(function () {
                 <div class="img"><img src="img/sl.jpg"></div>
                 <div class="img"><img src="img/sl.jpg"></div>
             </div>
+            <div class="content_mid">
+            <button class="prev2"></button>
+            <button class="next2"></button>
+            <div class="slick2">
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+            </div>
+        </div>
         </div>
     </div>
 </div>

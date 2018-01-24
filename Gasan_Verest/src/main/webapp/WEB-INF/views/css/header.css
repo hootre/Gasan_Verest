@@ -1,6 +1,37 @@
-@media (min-width: 850px) {
+@font-face { font-family: 'Spoqa Bold';
+    src: url('Spoqa Han Sans Bold.ttf');
+    format('truetype');
+}
+@font-face { font-family: 'Spoqa Light';
+    src: url('Spoqa Han Sans Light.ttf');
+format('truetype');
+}
+@font-face { font-family: 'Spoqa Regular';
+    src: url('Spoqa Han Sans Regular.ttf');
+format('truetype');
+}
+@font-face { font-family: 'Spoqa Thin';
+    src: url('Spoqa Han Sans Thin.ttf');
+format('truetype');
+}
+
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+    color: #333333;
+    font-weight: bold;
+    font-family: 'Spoqa Regular';
+}
+
+
+@media (min-width: 860px) {
+
     .t_container {
-        width: 60%;
+        max-width: 1070px;
         margin: 0 auto;
     }
 
@@ -60,9 +91,10 @@
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 860px) {
+
     .t_container {
-        width: 90%;
+        max-width: 1070px;
         margin: 0 auto;
     }
 
@@ -88,8 +120,16 @@
     }
 
     .top_mid {
-        padding-top: 15px;
-        padding-bottom: 5px;
+        padding-top: 10px;
+        padding-left: 20px;
+    }
+
+    .shown {
+        position: fixed;
+        width: 100%;
+        background: #fff;
+        z-index: 99999;
+        top: 0;
     }
 
     .top_mid a {
@@ -118,6 +158,7 @@
         font-size: 40px;
         cursor: pointer;
         float: right;
+        margin-right: 15px;
     }
 
     .top_mid .t_right {
@@ -127,7 +168,7 @@
         z-index: 999;
         width: 300px;
         height: 100%;
-        overflow: scroll;
+        overflow: auto;
         background-color: #fff;
     }
 

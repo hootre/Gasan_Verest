@@ -21,7 +21,6 @@ import com.verest.board.model.Order_list;
 import com.verest.board.model.Sale;
 import com.verest.board.service.BasketService;
 import com.verest.board.service.Order_listService;
-import com.verest.board.service.Order_stateService;
 import com.verest.board.service.SaleService;
 import com.verest.board.service.UserInfoService;
 
@@ -33,14 +32,11 @@ public class OrderController {
 
 	@Autowired
 	private Order_listService OrdService;
-
-	@Autowired
-	private Order_stateService StateService;
 	
 	@Autowired
 	private SaleService SaleService;
 
-	// 글 작성 화면
+/*	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newBoard(Model model,
 			@RequestParam(value = "sale_no", required = true) Integer sale_no) {
@@ -55,11 +51,22 @@ public class OrderController {
 		model.addAttribute("item", sale);
 
 		return "order/Confirm";
+	}*/
+	
+	// 글 작성 화면
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public String detail(Model model,
+			@RequestParam(value = "sale_no", required = true) Integer sale_no) {
+		
+		Sale sale = SaleService.detail(sale_no);
+		model.addAttribute("item", sale);
+
+		return "order/Confirm";
 	}
 	
-/*	// 글 작성 화면
+	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public String newBoard(HttpServletRequest request,
+	public String newBoard(Model model, HttpServletRequest request,
 			Integer sale_no
 			) throws CommonException, Exception{
 		Order_list ord = new Order_list();
@@ -67,9 +74,12 @@ public class OrderController {
 		ord.setV_id(user.getV_id());
 		ord.setSale_no(sale_no);
 		OrdService.newBoard(ord);
+
+		Sale sale = SaleService.detail(sale_no);
+		model.addAttribute("item", sale);
 		
-		return "redirect:/order/Confirm?no="+ sale_no + "&action=neword";
-	}*/
+		return "redirect:/order/detail?sale_no=" + sale_no + "&action=neword";
+	}
 	
 	// 글 목록 화면
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -86,7 +96,6 @@ public class OrderController {
 		@RequestMapping(value = "/remove", method = RequestMethod.GET)
 		public String removeConfirm(Model model,
 				@RequestParam(value = "or_no", required = true) Integer or_no) {
-				
 			OrdService.remove(or_no);
 			
 			return "redirect:/order/list";

@@ -5,21 +5,21 @@ public class Order_list {
 	private Integer or_no;
 	private Integer v_id;
 	private Integer sale_no;
-	private Integer state;
 	private Sale sale;
 	private String regdate;
+	private String state;
 	private UserInfo userInfo;
 	
 	public Order_list() {}
 
-	public Order_list(Integer or_no, Integer v_id, Integer sale_no, Integer state, Sale sale, String regdate,
+	public Order_list(Integer or_no, Integer v_id, Integer sale_no, Sale sale, String regdate, String state,
 			UserInfo userInfo) {
 		this.or_no = or_no;
 		this.v_id = v_id;
 		this.sale_no = sale_no;
-		this.state = state;
 		this.sale = sale;
 		this.regdate = regdate;
+		this.state = state;
 		this.userInfo = userInfo;
 	}
 
@@ -47,14 +47,6 @@ public class Order_list {
 		this.sale_no = sale_no;
 	}
 
-	public Integer getState() {
-		return state;
-	}
-
-	public void setState(Integer state) {
-		this.state = state;
-	}
-
 	public Sale getSale() {
 		return sale;
 	}
@@ -69,6 +61,14 @@ public class Order_list {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public UserInfo getUserInfo() {
@@ -149,17 +149,18 @@ public class Order_list {
 		builder.append(v_id);
 		builder.append(", sale_no=");
 		builder.append(sale_no);
-		builder.append(", state=");
-		builder.append(state);
 		builder.append(", sale=");
 		builder.append(sale);
 		builder.append(", regdate=");
 		builder.append(regdate);
+		builder.append(", state=");
+		builder.append(state);
 		builder.append(", userInfo=");
 		builder.append(userInfo);
 		builder.append("]");
 		return builder.toString();
 	}
 
+	
 	
 }

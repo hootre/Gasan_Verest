@@ -1,7 +1,5 @@
 -- test		
-	SELECT o.or_no, o.v_id as "UID", o.sale_no ,s.title, s.attachment, s.price, to_char(o.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", o.state, u.v_email, u.v_name
-		FROM userinfo u, order_list o, sale s
-		WHERE o.v_id = u.v_id AND o.sale_no = s.no AND o.or_no = 1;
+DELETE FROM order_list WHERE or_no = 2;
 -- 회원관련 
 SELECT * FROM userinfo;
 SELECT * FROM usertype;

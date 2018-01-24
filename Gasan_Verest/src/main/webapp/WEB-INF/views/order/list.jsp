@@ -30,8 +30,8 @@
 					</td>
 				</c:if>
 				<td>${ item.regdate}</td>
-				<td>${ item.state}</td>
-				<td><a href='<c:url value='/order/remove?or_no=${item.or_no }'></c:url>'>삭제</a></td>
+				<td><a href='<c:url value='/order/detail?sale_no=${item.sale_no }'></c:url>'>${ item.state}</a></td>
+				<td><a href='<c:url value='/order/remove?or_no=${item.or_no }'></c:url>'>주문취소</a></td>
 			</tr>
 		</c:forEach>
 	</table>

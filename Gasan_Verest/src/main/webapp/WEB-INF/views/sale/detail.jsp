@@ -42,6 +42,10 @@
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="submit" value="장바구니 등록">
 	</form>
-	<a href="<c:url value='/order/new?sale_no=${ item.no }'/>">구매하기</a>
+	<form action="<c:url value='/order/new'/>" method="post">
+		<input type="hidden" name="sale_no" value="${ item.no }">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		<input type="submit" value="구매하기">
+	</form>
 </body>
 </html>

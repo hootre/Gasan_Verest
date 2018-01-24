@@ -33,5 +33,6 @@
 		<dd>카카오뱅크 3333014765852 전동준</dd>
 	</dl>
 	<a href='<c:url value='/'></c:url>'>메인으로 돌아가기</a>
+	<a href="<c:url value='/order/list'/>">주문확인</a>
 </body>
 </html>

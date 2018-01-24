@@ -9,7 +9,7 @@
 			SELECT Order_list_seq.NEXTVAL or_no FROM DUAL
 		</selectKey>
 		INSERT INTO order_list (or_no, v_id, sale_no, regdate, state)
-		VALUES (#{or_no}, #{v_id}, #{sale_no}, SYSDATE, 1)
+		VALUES (#{or_no}, #{v_id}, #{sale_no}, SYSDATE, '미입금')
 	</insert>
   
   	<resultMap type="Order_list" id="order_listResultMap">
@@ -42,9 +42,14 @@
 		SELECT COUNT(*) cnt FROM order_list
 	</select>
 	
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="Integer">
 		DELETE FROM order_list WHERE or_no = #{or_no}
 	</delete>
 	
+	<update id="update" parameterType="Order_list">
+		UPDATE order_list 
+		SET state = #{state}
+		WHERE or_no = #{or_no}
+	</update>
 	
   </mapper>

@@ -43,8 +43,5 @@ INSERT INTO basket (basket_no, v_id, sale_no, regdate)
 VALUES (basket_seq.NEXTVAL, 1, 1, SYSDATE);
 
 INSERT INTO order_list (or_no, v_id, sale_no, regdate, state)
-VALUES (order_list_seq.NEXTVAL, 1, 1, SYSDATE, 1);
-
-INSERT INTO order_state (state_no, ready, finish)
-VALUES (order_state_seq.NEXTVAL, '미입금', '입금완료');
+VALUES (order_list_seq.NEXTVAL, 1, 1, SYSDATE, '미입금');
 

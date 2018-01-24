@@ -5,8 +5,6 @@ DROP TABLE basket;
 DROP SEQUENCE basket_seq;
 DROP TABLE order_list;
 DROP SEQUENCE order_list_seq;
-DROP TABLE order_state;
-DROP SEQUENCE order_state_seq;
 DROP TABLE question;
 DROP SEQUENCE question_seq;
 DROP TABLE backsight;
@@ -104,23 +102,14 @@ CREATE TABLE order_list(
 	v_id NUMBER NOT NULL, -- 사용자 번호
 	sale_no NUMBER NOT NULL, -- 게시물 번호
 	regdate DATE NOT NULL, -- 구매일
-	state NUMBER NOT NULL,
+	state VARCHAR2(20) NOT NULL,
 	CONSTRAINT pk_order_list PRIMARY KEY (or_no),
 	CONSTRAINT fk_order_list_id FOREIGN KEY (v_id) REFERENCES userinfo (v_id),
-	CONSTRAINT fk_order_list_no FOREIGN KEY (sale_no) REFERENCES sale (no),
-	CONSTRAINT fk_order_list_state FOREIGN KEY (state) REFERENCES order_state (state_no)
+	CONSTRAINT fk_order_list_no FOREIGN KEY (sale_no) REFERENCES sale (no)
 );
 CREATE SEQUENCE order_list_seq
 START WITH 1 INCREMENT BY 1;
 
-CREATE TABLE order_state(
-	state_no NUMBER NOT NULL,
-	ready VARCHAR2(20) NOT NULL,
-	finish VARCHAR2(20) NOT NULL,
-	CONSTRAINT pk_order_state PRIMARY KEY (state_no)
-);
-CREATE SEQUENCE order_state_seq
-START WITH 1 INCREMENT BY 1;
 -- 장바구니 게시판
 CREATE TABLE basket(
 	basket_no NUMBER NOT NULL, -- 장바구니 번호

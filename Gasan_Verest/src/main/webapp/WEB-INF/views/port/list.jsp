@@ -24,7 +24,7 @@
 			<tr>
 				<td>${ item.no }</td>
 				<td><a href="<c:url value='/port/detail?no=${ item.no }'/>">${ item.title }</a></td>
-				<td>${ item.content }</td>
+				<td>${ item.content }</td>	
 				<td>${ item.userInfo.v_name  }</td>
 				<td>${ item.regdate }</td>
 				<td>${ item.attachment}</td>

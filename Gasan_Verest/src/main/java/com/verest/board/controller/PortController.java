@@ -118,11 +118,7 @@ public class PortController {
 		List<Port> list = null;
     
 		list = portService.list();
-		
 		model.addAttribute("list", list);
-		for (Port port : list) {
-			String filename = URLDecoder.decode(port.getAttachmentImg());
-		}
 
 		return "port/list";
 	}

@@ -25,7 +25,7 @@
 			<label>내용 <textarea name="content">${ item.content }</textarea></label>
 		</div>
 		<div>
-			<label>첨부파일 <input type="text" value="${item.attachment} name="attachment"></label>
+			<label>첨부파일 <input type="text" value="${item.attachment}" name="attachment"></label>
 		</div>
 		<div>
 			<label>첨부이미지 <input type="file" name="attachmentImg" multiple="multiple"></label>

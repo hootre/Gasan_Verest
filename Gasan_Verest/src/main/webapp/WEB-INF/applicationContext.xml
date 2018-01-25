@@ -25,6 +25,9 @@
 		<intercept-url pattern="/sale/new" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/sale/remove" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/sale/modify" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/que/list" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/que/detail" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/que/remove" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/bas/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/order/**" access="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')" />
 			

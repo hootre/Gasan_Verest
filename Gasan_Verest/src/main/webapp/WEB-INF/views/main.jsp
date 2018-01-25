@@ -39,7 +39,7 @@ $(function () {
         </div>
     </div>
     <div class="t_container">
-        <h2>POTFOLIO</h2>
+        <h2>SALE</h2>
         <div class="content_mid">
             <button class="prev"></button>
             <button class="next"></button>
@@ -50,6 +50,16 @@ $(function () {
             </div>
         </div>
     </div>
+        <h2>PROJECT</h2>
+        <div class="content_mid">
+            <button class="prev"></button>
+            <button class="next"></button>
+            <div class="slick">
+	            <c:forEach items="${ sale }" var="item">
+					<iframe width="100%" height="100%" src="${ item.attachment}?rel=0&amp;autoplay=1&amp;loop=1;playlist=ZH8BYNwmR5Q&controls=0&showinfo=0&mute=1" data-audio="0" allowfullscreen="1" frameborder="0" allow="autoplay; encrypted-media" title="YouTube video player"></iframe>
+				</c:forEach>
+            </div>
+        </div>
 </div>
 </body>
 </html>

@@ -49,6 +49,15 @@
             prevArrow: '.prev2',
             nextArrow: '.next2',
         });
+        $(".slick3").slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            fade: false,
+            prevArrow: '.prev3',
+            nextArrow: '.next3',
+        });
     });
 </script>
 <body>

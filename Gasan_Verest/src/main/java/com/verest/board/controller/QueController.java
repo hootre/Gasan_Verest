@@ -58,7 +58,7 @@ public class QueController {
 		
 		QueService.newBoard(que);
 		
-		return "redirect:/que/list";
+		return "redirect:/";
 	}
 	
 	// 글 목록 화면

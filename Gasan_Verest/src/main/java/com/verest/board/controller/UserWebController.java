@@ -1,5 +1,8 @@
 package com.verest.board.controller;
 
+
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,10 +19,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
+import com.verest.board.model.Port;
+import com.verest.board.model.Project;
+import com.verest.board.model.Sale;
+import com.verest.board.service.PortService;
+import com.verest.board.service.ProjectService;
+import com.verest.board.service.SaleService;
 import com.verest.board.service.UserInfoService;
 
 @Controller
 public class UserWebController {
+	
+	@Autowired
+	private ProjectService ProService;
+	
+	@Autowired
+	private PortService PortService;
+	
+	@Autowired
+	private SaleService SaleService;
+	
 	@Autowired
 	private UserInfoService userInfoService;
 
@@ -36,6 +55,15 @@ public class UserWebController {
 			model.addAttribute("userInfo", item);
 		}
 		
+		List<Project> pro = ProService.list();
+		List<Port> port = PortService.list();
+		List<Sale> sale = SaleService.list();
+		
+
+		model.addAttribute("pro", pro);
+		model.addAttribute("port", port);
+		model.addAttribute("sale", sale);
+		
 		return "/index";
 	}
 
@@ -47,9 +75,24 @@ public class UserWebController {
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(Model model) {
-		model.addAttribute("userInfo", this.getPrincipal());
-		return "user/admin";
+		
+		UserInfo userinfo = userInfoService.detail(this.getPrincipal());
+		
+		model.addAttribute("name", userinfo.getV_name());
+		return "admin/admin";
 	}
+	
+	// 사용자 목록 화면
+		@RequestMapping(value = "/list", method = RequestMethod.GET)
+		public String list(Model model) throws CommonException {
+			List<UserInfo> list = null;
+	    
+			list = userInfoService.list();
+			
+			model.addAttribute("list", list);
+
+			return "admin/list";
+		}
 	
 	// 사용자정보
 	@RequestMapping(value = "/user/mypage", method = RequestMethod.GET)

@@ -31,11 +31,17 @@
             <button class="prev"></button>
             <button class="next"></button>
             <div class="slick">
+<<<<<<< HEAD
                 <div class="img"><img src="sl.jpg"></div>
                 <div class="img"><img src="sl.jpg"></div>
                 <div class="img"><img src="sl.jpg"></div>
                 <div class="img"><img src="sl.jpg"></div>
                 <div class="img"><img src="sl.jpg"></div>
+=======
+	            <c:forEach items="${ sale }" var="item">
+					<iframe width="100%" height="100%" src="${ item.attachment}?rel=0&amp;autoplay=1&amp;loop=1;playlist=ZH8BYNwmR5Q&controls=0&showinfo=0&mute=1" data-audio="0" allowfullscreen="1" frameborder="0" allow="autoplay; encrypted-media" title="YouTube video player"></iframe>
+				</c:forEach>
+>>>>>>> branch 'koo' of https://github.com/hootre/Gasan_Verest.git
             </div>
         </div>
         <h2 class="c_title">PROJECT</h2>

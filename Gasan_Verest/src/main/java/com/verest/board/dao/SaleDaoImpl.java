@@ -30,20 +30,20 @@ public class SaleDaoImpl implements SaleDao {
 			sqlSession.insert(MAPPER_NAMESPACE + ".insert", sale);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트폴리오 게시물 등록 실패");
+			throw new CommonException("SALE 01: 게시물 등록 실패");
 		}
 
 	}
 
 	@Override
-	public Sale select(String no) throws CommonException {
+	public Sale select(Integer no) throws CommonException {
 
 		Sale port = null;
 		try {
 			port = sqlSession.selectOne(MAPPER_NAMESPACE + ".select", no);
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 게시물 검색 실패");
+			throw new CommonException("SALE 02: 게시물 검색 실패");
 		}
 		return port;
 
@@ -56,7 +56,7 @@ public class SaleDaoImpl implements SaleDao {
 			list = sqlSession.selectList(MAPPER_NAMESPACE + ".selectAll");
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 게시물 전체 검색 실패");
+			throw new CommonException("SALE 03: 게시물 전체 검색 실패");
 		}
 		return list;
 	}
@@ -68,20 +68,20 @@ public class SaleDaoImpl implements SaleDao {
 
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 게시물 수정 실패");
+			throw new CommonException("SALE 04: 게시물 수정 실패");
 		}
 
 	}
 
 	@Override
-	public void delete(String no) throws CommonException {
+	public void delete(Integer no) throws CommonException {
 
 		try {
 			sqlSession.delete(MAPPER_NAMESPACE + ".delete", no);
 
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 게시물 삭제 실패");
+			throw new CommonException("SALE 05: 게시물 삭제 실패");
 		}
 
 	}
@@ -95,10 +95,20 @@ public class SaleDaoImpl implements SaleDao {
 
 		} catch (Exception e) {
 			logger.debug(e.getMessage());
-			throw new CommonException("E04: 포트 글 개수 가져오기 실패");
+			throw new CommonException("SALE 06: 글 개수 가져오기 실패");
 		}
 
 		return count;
+	}
+
+	@Override
+	public void viewsaction(Sale sale) throws CommonException {
+		try {
+			sqlSession.update(MAPPER_NAMESPACE + ".views", sale);
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+			throw new CommonException("SALE 07: 조회수 증가 실패");
+		}
 	}
 
 }

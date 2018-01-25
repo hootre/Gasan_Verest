@@ -19,19 +19,20 @@
 		<result property="writer" column="writer" />
 		<result property="regdate" column="regdate" />
 		<result property="attachment" column="attachment" />
-		<result property="userInfo.id" column="id" />
-		<result property="userInfo.name" column="name" />
+		<result property="views" column="views" />
+		<result property="userInfo.v_id" column="v_id" />
+		<result property="userInfo.v_name" column="v_name" />
 	</resultMap>
 	
-	<select id="select" parameterType="String" resultMap="projectResultMap">
-		SELECT p.no, p.title, p.content, p.writer, p.regdate, p.attachment, u.v_id, u.v_name
-		FROM userinfo u, port p
-		WHERE p.writer = u.v_id AND no = #{no}
+	<select id="select" parameterType="Integer" resultMap="projectResultMap">
+		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.views, u.v_id, u.v_name
+		FROM userinfo u, project p
+		WHERE p.writer = u.v_id AND p.no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="projectResultMap">
-		SELECT p.no, p.title, p.content, p.writer, p.regdate, p.attachment, u.v_id, u.v_name
-		FROM userinfo u, port p
+		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.views, u.v_id, u.v_name
+		FROM userinfo u, project p
 		WHERE p.writer = u.v_id ORDER BY p.no DESC
 	</select>
 	
@@ -45,8 +46,14 @@
 		WHERE no = #{no}
 	</update>
 	
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="Integer">
 		DELETE FROM project WHERE no = #{no}
 	</delete>
+	
+	<update id="views" parameterType="Project">
+		UPDATE project 
+		SET views = #{views}
+		WHERE no = #{no}
+	</update>
 	
 </mapper>

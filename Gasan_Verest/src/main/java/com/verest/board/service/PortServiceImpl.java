@@ -26,7 +26,7 @@ public class PortServiceImpl implements PortService {
 	}
 
 	@Override
-	public Port detail(String no) throws CommonException {
+	public Port detail(Integer no) throws CommonException {
 		return dao.select(no);
 		
 	}
@@ -41,17 +41,13 @@ public class PortServiceImpl implements PortService {
 		return dao.boardCount();
 	}
 	
-	@Transactional
 	@Override
-	public String modify(Port port) throws CommonException {
-		Port item = dao.select(Integer.toString(port.getNo()));
-		String oldFilename = item.getAttachment();
+	public void modify(Port port) throws CommonException {
 		dao.update(port);
-		return oldFilename;
 	}
 	
 	@Override
-	public void remove(String no) throws CommonException {
+	public void remove(Integer no) throws CommonException {
 			dao.delete(no);
 	}
 

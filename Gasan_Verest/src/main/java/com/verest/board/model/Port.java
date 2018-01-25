@@ -1,8 +1,5 @@
 package com.verest.board.model;
 
-import java.util.Date;
-
-
 public class Port {
 
 	private Integer no;

@@ -1,6 +1,7 @@
 package com.verest.board.service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +94,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 		 *  획득한 email값으로 사용자 정보를 가져와
 		 *  해당 사용자의 비밀번호를 가져온다.
 		 */
-		Port port = pdao.select(no.toString());
+		Port port = pdao.select(no);
 		UserInfo userInfo = userInfoDao.select(port.getWriter());
 		
 		// 해당 사용자의 비밀번호와 입력한 비밀번호 비교한 결과 리턴
@@ -117,5 +118,10 @@ public class UserInfoServiceImpl implements UserInfoService {
 		} else {
 			throw new CommonException("E61: 비밀번호가 동일하지 않아 삭제 실패");
 		}
+	}
+
+	@Override
+	public List<UserInfo> list() throws CommonException {
+		return userInfoDao.selectAll();
 	}
 }

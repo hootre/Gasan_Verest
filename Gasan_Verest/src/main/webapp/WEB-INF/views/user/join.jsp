@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>회원 가입</h1>
-	<form action='<c:url value='/join'/>' method="post" enctype="multipart/form-data">
+	<form action='<c:url value='/join'/>' method="post" >
 		<label>이메일 <input type="email" name="email"></label>
 		<label>비밀번호 <input type="password" name="password"></label>
 		<label>이름 <input type="text" name="name"></label>

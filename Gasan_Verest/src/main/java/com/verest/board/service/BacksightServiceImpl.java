@@ -22,7 +22,7 @@ public class BacksightServiceImpl implements BacksightService{
 	}
 
 	@Override
-	public Backsight detail(String back_no) throws CommonException {
+	public Backsight detail(Integer back_no) throws CommonException {
 		return  backDao.select(back_no);
 	}
 
@@ -42,7 +42,7 @@ public class BacksightServiceImpl implements BacksightService{
 	}
 
 	@Override
-	public void remove(String back_no) throws CommonException {
+	public void remove(Integer back_no) throws CommonException {
 		backDao.delete(back_no);
 	}
 }

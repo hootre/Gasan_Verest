@@ -26,18 +26,20 @@
         </div>
     </div>
     <div class="t_container">
-        <h2>POTFOLIO</h2>
+        <h2 class="c_title">POTFOLIO</h2>
         <div class="content_mid">
             <button class="prev"></button>
             <button class="next"></button>
             <div class="slick">
-                <div class="img"><img src="img/sl.jpg"></div>
-                <div class="img"><img src="img/sl.jpg"></div>
-                <div class="img"><img src="img/sl.jpg"></div>
-                <div class="img"><img src="img/sl.jpg"></div>
-                <div class="img"><img src="img/sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
             </div>
-            <div class="content_mid">
+        </div>
+        <h2 class="c_title">PROJECT</h2>
+        <div class="content_mid">
             <button class="prev2"></button>
             <button class="next2"></button>
             <div class="slick2">
@@ -48,6 +50,17 @@
                 <div class="img"><img src="sl.jpg"></div>
             </div>
         </div>
+        <h2 class="c_title">PROJECT</h2>
+        <div class="content_mid">
+            <button class="prev3"></button>
+            <button class="next3"></button>
+            <div class="slick3">
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+                <div class="img"><img src="sl.jpg"></div>
+            </div>
         </div>
     </div>
 </div>

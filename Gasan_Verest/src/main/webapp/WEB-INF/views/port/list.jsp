@@ -17,16 +17,18 @@
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>첨부파일</th>
+			<th>첨부이미지</th>
 			<th>조회수</th>
 		</tr>
 		<c:forEach items="${ list }" var="item">
 			<tr>
 				<td>${ item.no }</td>
 				<td><a href="<c:url value='/port/detail?no=${ item.no }'/>">${ item.title }</a></td>
-				<td>${ item.content }</td>
+				<td>${ item.content }</td>	
 				<td>${ item.userInfo.v_name  }</td>
 				<td>${ item.regdate }</td>
 				<td>${ item.attachment}</td>
+				<td>${ item.attachmentImg}</td>
 				<td>${ item.views}</td>
 			</tr>
 		</c:forEach>

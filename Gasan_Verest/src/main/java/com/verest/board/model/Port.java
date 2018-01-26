@@ -8,30 +8,22 @@ public class Port {
 	private Integer writer;
 	private String regdate;
 	private String attachment;
+	private String attachmentImg;
 	private Integer views;
 	private UserInfo userInfo;
 	
 	public Port() {}
 
 	public Port(Integer no, String title, String content, Integer writer, String regdate, String attachment,
-			Integer views, com.verest.board.model.UserInfo userInfo) {
+			String attachmentImg, Integer views, UserInfo userInfo) {
 		this.no = no;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
 		this.regdate = regdate;
 		this.attachment = attachment;
+		this.attachmentImg = attachmentImg;
 		this.views = views;
-		this.userInfo = userInfo;
-	}
-
-
-
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
-
-	public void setUserInfo(UserInfo userInfo) {
 		this.userInfo = userInfo;
 	}
 
@@ -83,6 +75,14 @@ public class Port {
 		this.attachment = attachment;
 	}
 
+	public String getAttachmentImg() {
+		return attachmentImg;
+	}
+
+	public void setAttachmentImg(String attachmentImg) {
+		this.attachmentImg = attachmentImg;
+	}
+
 	public Integer getViews() {
 		return views;
 	}
@@ -91,11 +91,20 @@ public class Port {
 		this.views = views;
 	}
 
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((attachment == null) ? 0 : attachment.hashCode());
+		result = prime * result + ((attachmentImg == null) ? 0 : attachmentImg.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((no == null) ? 0 : no.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
@@ -119,6 +128,11 @@ public class Port {
 			if (other.attachment != null)
 				return false;
 		} else if (!attachment.equals(other.attachment))
+			return false;
+		if (attachmentImg == null) {
+			if (other.attachmentImg != null)
+				return false;
+		} else if (!attachmentImg.equals(other.attachmentImg))
 			return false;
 		if (content == null) {
 			if (other.content != null)
@@ -173,6 +187,8 @@ public class Port {
 		builder.append(regdate);
 		builder.append(", attachment=");
 		builder.append(attachment);
+		builder.append(", attachmentImg=");
+		builder.append(attachmentImg);
 		builder.append(", views=");
 		builder.append(views);
 		builder.append(", userInfo=");
@@ -181,7 +197,5 @@ public class Port {
 		return builder.toString();
 	}
 
-	
-	
 	
 }

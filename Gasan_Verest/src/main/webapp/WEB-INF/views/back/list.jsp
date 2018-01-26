@@ -22,7 +22,7 @@
 				<td>${ item.back_no }</td>
 				<td><a href="<c:url value='/back/detail?back_no=${ item.back_no}'/>">${ item.title}</a></td>
 				<td>${ item.content}</td>
-				<td>${ item.writer}</td>
+				<td>${ item.userInfo.v_name}</td>
 				<td>${ item.regdate}</td>
 			</tr>
 		</c:forEach>

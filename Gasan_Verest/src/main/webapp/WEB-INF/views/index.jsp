@@ -15,57 +15,14 @@
 </style>
 <title>Verest</title>
 </head>
-<script>
-    $(function () {
-        $(".menu_open").click(function () {
-            $(".t_right").animate({right : 0}, 300);
-            $(".bggrey").css("display","block");
-        });
-        $(".menu_close, .bggrey").click(function () {
-            $(".t_right").stop().css({right : "-300px"});
-            $(".bggrey").css("display","none");
-        });
-        $(window).scroll(function() {
-            var $el = $('.top_mid');
-
-            if($(this).scrollTop() >= 200) $el.addClass('shown');
-            else $el.removeClass('shown');
-        });
-        $(".slick").slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            arrows: true,
-            fade: false,
-            prevArrow: '.prev',
-            nextArrow: '.next',
-        });
-        $(".slick2").slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            arrows: true,
-            fade: false,
-            prevArrow: '.prev2',
-            nextArrow: '.next2',
-        });
-        $(".slick3").slick({
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            arrows: true,
-            fade: false,
-            prevArrow: '.prev3',
-            nextArrow: '.next3',
-        });
-    });
-</script>
 <body>
 	<c:if test="${ param.type == 'delete' }">
 		<script>alert("탈퇴완료")</script>
 	</c:if>
 	<jsp:include page="header.jsp"></jsp:include>
+	<div class="container">
 	<jsp:include page="main.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
+	</div>
 </body>
 </html>

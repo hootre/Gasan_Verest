@@ -1,218 +1,142 @@
-@font-face { font-family: 'Spoqa Bold';
-    src: url('Spoqa Han Sans Bold.ttf');
-    format('truetype');
-}
-@font-face { font-family: 'Spoqa Light';
-    src: url('Spoqa Han Sans Light.ttf');
-format('truetype');
-}
-@font-face { font-family: 'Spoqa Regular';
-    src: url('Spoqa Han Sans Regular.ttf');
-format('truetype');
-}
-@font-face { font-family: 'Spoqa Thin';
-    src: url('Spoqa Han Sans Thin.ttf');
-format('truetype');
-}
+@media (min-width: 900px) {
 
-
-* {
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    box-sizing: border-box;
-    list-style: none;
-    color: #333333;
-    font-weight: bold;
-    font-family: 'Spoqa Regular';
-}
-
-body {
-    position: relative;
-}
-
-
-@media (min-width: 860px) {
-
-    .t_container {
-        max-width: 1070px;
-        margin: 0 auto;
+    * {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        box-sizing: border-box;
+        list-style: none;
+        color: #333333;
+        font-weight: bold;
+        font-family: 'Spoqa Regular';
     }
 
-    .top_top .t_container > p {
-        float: left;
-        color: #999;
-        line-height: 35px;
+    body {
+        /*background: rgb(246,233,227);*/
+        background: #3c3c3c;
     }
 
-    .top_top .t_container > p:last-child {
-        float: right;
+    .container {
+        width: 80%;
+        top: 0;
+        left: 346px;
+        overflow: hidden;
+        background: #ffffff;
+        position: relative;
     }
 
-    .max_border {
-        clear: both;
-        width: 100%;
-        border: 1px solid #eee;
-    }
-
-    .min_border {
-        display: none;
-    }
-
-    .top_mid {
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-
-    .top_mid a {
-        display: inline-block;
-    }
-
-    .top_mid .top_left {
-        display: inline-block;
-        text-align: center;
-        line-height: 30px;
-        margin-left: 20px;
-    }
-
-    .top_mid .top_left li {
-        display: inline-block;
-        text-align: center;
-        font-size: 18px;
-        padding: 0px 6px 0px 5px;
-    }
-
-    .top_mid i {
-        display: none;
-    }
-
-    .top_mid .t_right {
-        display: none;
-    }
-
-    .bggrey {
-        display: none;
-    }
-}
-
-@media (max-width: 860px) {
-
-    .t_container {
-        max-width: 1070px;
-        margin: 0 auto;
-    }
-
-    .top_top .t_container > p {
-        float: left;
-        color: #999;
-        line-height: 35px;
-        display: none;
-    }
-
-    .top_top .t_container > p:last-child {
-        float: right;
-    }
-
-    .max_border {
-        display: none;
-    }
-
-    .min_border {
-        clear: both;
-        width: 100%;
-        border: 1px solid #eee;
-    }
-
-    .top_mid {
-        padding-top: 10px;
-        padding-left: 20px;
-    }
-
-    .shown {
+    .mainmenu {
         position: fixed;
-        width: 100%;
-        background: #fff;
-        z-index: 900;
         top: 0;
         left: 0;
-        padding-top: 20px;
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-
-    .top_mid a {
-        display: inline-block;
-    }
-
-    .top_mid .top_left {
-        display: inline-block;
-        float: right;
         text-align: center;
-        width: 85%;
-        line-height: 30px;
-        display: none;
     }
 
-    .top_mid .top_left li {
-        display: inline-block;
-        text-align: center;
-        width: 17%;
-        font-size: 19px;
-        margin: 0px 3px 0px 3px;
+    .mainmenu .logo {
+        margin-top: 80px;
+        margin-left: 45px;
+        margin-bottom: 40px;
     }
 
-    .top_mid .fa {
-        display: block;
-        font-size: 40px;
-        cursor: pointer;
-        float: right;
-        margin-right: 15px;
+    .mainmenu .logo img {
+        width: 250px;
+        height: 110px;
     }
 
-    .top_mid .t_right {
-        position: fixed;
-        top: 0;
-        right: -300px;
-        z-index: 999;
-        width: 300px;
-        height: 100%;
-        overflow: auto;
-        background-color: #fff;
-    }
-
-    .top_mid .t_right .open_header {
-        margin-top: 50px;
+    .mainmenu .login {
         margin-bottom: 20px;
+        margin-left: 55px;
+        padding: 10px;
+        color: #aaa;
+    }
+
+    .mainmenu .login a {
+        color: #aaa;
+    }
+
+    .mainmenu .login a:hover {
+        color: #fff;
+    }
+
+    .mainmenu .menu_top .nav_menu {
+        margin-left: 55px;
+        padding: 10px;
+    }
+
+    .mainmenu .menu_top .nav_menu a {
+        color: #aaa;
+        font-weight: bold;
+    }
+
+    .mainmenu .menu_top .nav_menu a:hover {
+        color: #fff;
+    }
+}
+
+@media (max-width: 900px) {
+    * {
+        padding: 0;
+        margin: 0;
+        text-decoration: none;
+        box-sizing: border-box;
+        list-style: none;
+        color: #333333;
+        font-weight: bold;
+        font-family: 'Spoqa Regular';
+    }
+
+    body {
+        /*background: rgb(246,233,227);*/
+        background: #3c3c3c;
+    }
+
+    .container {
+        width: 100%;
+        top: 0;
+        overflow: hidden;
+        background: #ffffff;
+        position: relative;
+    }
+
+    .mainmenu {
+        background: #3c3c3c;
         text-align: center;
     }
 
-    .top_mid .t_right .open_header a {
-        padding: 7px;
-        margin: 7px;
-        border: 1px solid #999;
-        color: #666;
+    .mainmenu .logo {
+        text-align: center;
+        margin-top: 40px;
     }
 
-    .top_mid .t_right .open_menu li {
-        width: 280px;
-        line-height: 50px;
-        padding-left: 20px;
-        border-bottom: 1.2px solid #eee;
+    .mainmenu .logo img {
+        width: 250px;
+        height: 110px;
     }
 
-    .top_mid .t_right .fa {
-        display: block;
-        margin-right: 15px;
-        margin-top: 5px;
+    .mainmenu .login {
+        color: #aaa;
+        margin-bottom: 32px;
     }
 
-    .bggrey {
-        position: absolute;
-        display: none;
-        background: rgba(0, 0, 0, .7);
-        width: 100%;
-        height: 100%;
-        z-index: 920;
+    .mainmenu .login a {
+        color: #aaa;
+    }
 
+    .mainmenu .login a:hover {
+        color: #fff;
+    }
+
+    .mainmenu .menu_top .nav_menu {
+        display: inline-block;
+        padding: 0px 20px 30px 10px;
+    }
+
+    .mainmenu .menu_top .nav_menu a {
+        color: #aaa;
+        font-weight: bold;
+    }
+
+    .mainmenu .menu_top .nav_menu a:hover {
+        color: #fff;
     }
 }

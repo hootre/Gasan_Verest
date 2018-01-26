@@ -8,8 +8,8 @@
 		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
 			SELECT sale_seq.NEXTVAL no FROM DUAL
 		</selectKey>
-		INSERT INTO sale (no, title, content, writer, price, regdate, attachment, views)
-		VALUES (#{no}, #{title}, #{content}, #{writer}, #{price}, SYSDATE, #{attachment}, 0)
+		INSERT INTO sale (no, title, content, writer, price, regdate, attachment, attachmentImg, views)
+		VALUES (#{no}, #{title}, #{content}, #{writer}, #{price}, SYSDATE, #{attachment}, #{attachmentImg}, 0)
 	</insert>
 	
 	<resultMap type="Sale" id="saleResultMap">
@@ -20,19 +20,20 @@
 		<result property="price" column="price" />
 		<result property="regdate" column="regdate" />		
 		<result property="attachment" column="attachment" />
+		<result property="attachmentImg" column="attachmentImg" />
 		<result property="views" column="views" />
 		<result property="userInfo.v_id" column="v_id" />
 		<result property="userInfo.v_name" column="v_name" />
 	</resultMap>
 	
 	<select id="select" parameterType="Integer" resultMap="saleResultMap">
-		SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.views, u.v_id, u.v_name
+		SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.attachmentImg, s.views, u.v_id, u.v_name
 		FROM sale s, userinfo u
 		WHERE s.writer = u.v_id AND s.no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="saleResultMap">
-		SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.views, u.v_id, u.v_name
+		SELECT s.no, s.title, s.content, s.writer, s.price, to_char(s.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", s.attachment, s.attachmentImg, s.views, u.v_id, u.v_name
 		FROM userinfo u, sale s
 		WHERE s.writer = u.v_id ORDER BY s.no DESC
 	</select>
@@ -43,7 +44,7 @@
 	
 	<update id="update" parameterType="Sale">
 		UPDATE sale 
-		SET title = #{title}, content = #{content}, price = #{price}, regdate = SYSDATE, attachment = #{attachment}
+		SET title = #{title}, content = #{content}, price = #{price}, regdate = SYSDATE, attachment = #{attachment}, attachmentImg= #{attachmentImg}
 		WHERE no = #{no}
 	</update>
 	

@@ -55,8 +55,9 @@ CREATE TABLE sale (
    content 	VARCHAR2(4000),
    writer	 NUMBER NOT NULL,
    price NUMBER NOT NULL,
-   regdate  DATE,
+   regdate  DATE NOT NULL,
    attachment	VARCHAR2(255),
+   attachmentImg	VARCHAR2(255),
    views NUMBER NOT NULL,
    CONSTRAINT pk_sale PRIMARY KEY (no),
    CONSTRAINT fk_sale_writer FOREIGN KEY (writer) REFERENCES userinfo(v_id)
@@ -71,8 +72,9 @@ CREATE TABLE port (
    title  VARCHAR2(100) NOT NULL,
    content 	VARCHAR2(4000),
    writer	 NUMBER NOT NULL,
-   regdate  DATE,
+   regdate  DATE NOT NULL,
    attachment	VARCHAR2(255),
+   attachmentImg	VARCHAR2(255),
    views NUMBER NOT NULL,
    CONSTRAINT pk_port PRIMARY KEY (no),
    CONSTRAINT fk_port_writer FOREIGN KEY (writer) REFERENCES userinfo(v_id)
@@ -87,8 +89,9 @@ CREATE TABLE project (
    title  VARCHAR2(100) NOT NULL,
    content 	VARCHAR2(4000),
    writer	 NUMBER NOT NULL,
-   regdate  DATE,
+   regdate  DATE NOT NULL,
    attachment	VARCHAR2(255),
+   attachmentImg	VARCHAR2(255),
    views NUMBER NOT NULL,
    CONSTRAINT pk_project PRIMARY KEY (no),
    CONSTRAINT fk_project_writer FOREIGN KEY (writer) REFERENCES userinfo(v_id)

@@ -24,20 +24,20 @@ VALUES (1, 2);
 INSERT INTO userinfotype(user_info_id, user_type_id)
 VALUES (2, 2);
 
-INSERT INTO project(no, title, content, writer, regdate, attachment, views)
-VALUES (project_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', 0);
+INSERT INTO project(no, title, content, writer, regdate, attachment, attachmentImg, views)
+VALUES (project_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', null, 0);
 
-INSERT INTO port(no, title, content, writer, regdate, attachment, views)
-VALUES (port_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', 0);
+INSERT INTO port(no, title, content, writer, regdate, attachment, attachmentImg, views)
+VALUES (port_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', null, 0);
 
-INSERT INTO sale(no, title, content, writer, price, regdate, attachment, views)
-VALUES (sale_seq.NEXTVAL, '빵빵', '부레', 2, 500000 , SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', 0);
+INSERT INTO sale(no, title, content, writer, price, regdate, attachment, attachmentImg, views)
+VALUES (sale_seq.NEXTVAL, '빵빵', '부레', 2, 500000 , SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', null, 0);
 
 INSERT INTO question(qu_no, writer, content, title, regdate)
 VALUES (question_seq.NEXTVAL, 1, '콘텐트', '제목', SYSDATE);
 
-INSERT INTO backsight(back_no, writer, content, title, regdate)
-VALUES (backsight_seq.NEXTVAL, 1, '콘텐트', '제목', SYSDATE);
+INSERT INTO backsight(back_no, writer, content, title, password, regdate)
+VALUES (backsight_seq.NEXTVAL, 1, '콘텐트', '제목', 1234, SYSDATE);
 
 INSERT INTO basket (basket_no, v_id, sale_no, regdate)
 VALUES (basket_seq.NEXTVAL, 1, 1, SYSDATE);

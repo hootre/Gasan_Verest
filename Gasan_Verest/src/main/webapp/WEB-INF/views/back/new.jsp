@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>글쓰기</h1>
-	<form action="<c:url value='/pro/new'/>" method="post" >
+	<form action="<c:url value='/back/new'/>" method="post" >
 		<div>
 			<label>작성자 <span>${ email }</span></label>
 		</div>

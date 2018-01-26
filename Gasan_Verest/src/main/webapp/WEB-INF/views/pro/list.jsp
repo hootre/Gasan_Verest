@@ -17,6 +17,7 @@
 			<th>작성자</th>
 			<th>작성일</th>
 			<th>첨부파일</th>
+			<th>첨부이미지</th>
 			<th>조회수</th>
 		</tr>
 		<c:forEach items="${ list }" var="item">
@@ -27,6 +28,7 @@
 				<td>${ item.userInfo.v_name  }</td>
 				<td>${ item.regdate }</td>
 				<td>${ item.attachment}</td>
+				<td>${ item.attachmentImg}</td>
 				<td>${ item.views}</td>
 			</tr>
 		</c:forEach>

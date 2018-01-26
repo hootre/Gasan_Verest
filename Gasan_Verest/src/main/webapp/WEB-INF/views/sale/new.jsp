@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" enctype="multipart/form-data">
 <title>글쓰기</title>
 </head>
 <body>
 	<h1>글쓰기</h1>
-	<form action="<c:url value='/sale/new'/>" method="post" >
+	<form action="<c:url value='/sale/new'/>" method="post" enctype="multipart/form-data">
 		<div>
 			<label>작성자 <span>${ email }</span></label>
 		</div>
@@ -23,6 +23,9 @@
 		</div>
 		<div>
 			<label>첨부파일 <input type="text" name="attachment"></label>
+		</div>
+		<div>
+			<label>첨부이미지 <input type="file" name="attachmentImg" multiple="multiple"></label>
 		</div>
 		<input type="hidden" name="writer" value="${ writer }">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

@@ -8,8 +8,8 @@
 		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
 			SELECT sale_seq.NEXTVAL no FROM DUAL
 		</selectKey>
-		INSERT INTO sale (no, title, content, writer, price, regdate, attachment, views)
-		VALUES (#{no}, #{title}, #{content}, #{writer}, #{price}, SYSDATE, #{attachment}, 0)
+		INSERT INTO sale (no, title, content, writer, price, regdate, attachment, attachmentImg, views)
+		VALUES (#{no}, #{title}, #{content}, #{writer}, #{price}, SYSDATE, #{attachment}, #{attachmentImg}, 0)
 	</insert>
 	
 	<resultMap type="Sale" id="saleResultMap">
@@ -44,7 +44,7 @@
 	
 	<update id="update" parameterType="Sale">
 		UPDATE sale 
-		SET title = #{title}, content = #{content}, price = #{price}, regdate = SYSDATE, attachment = #{attachment}
+		SET title = #{title}, content = #{content}, price = #{price}, regdate = SYSDATE, attachment = #{attachment}, attachmentImg= #{attachmentImg}
 		WHERE no = #{no}
 	</update>
 	

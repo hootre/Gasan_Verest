@@ -10,11 +10,11 @@
 </head>
 <body>
 <div class="mainmenu">
-    <div class="logo"><a href="#"><img src="logo1.png"></a></div>
+    <div class="logo"><a href="#"><img src="<c:url value="/upload/main/logo.png"/>"></a></div>
     <div class="login">
  	    <sec:authorize access="!hasRole('ADMIN') and !hasRole('USER')">
-        <a href="#">Login</a> /
-        <a href="#">Sing Up</a>
+        <a href="<c:url value="/login"/>">Login</a> /
+        <a href="<c:url value="/join"/>">Sing Up</a>
         </sec:authorize>
         <sec:authorize access="hasRole('USER') and !hasRole('ADMIN')">
 		<p>${ userInfo.v_name }님 안녕하세요

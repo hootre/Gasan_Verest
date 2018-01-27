@@ -1,0 +1,94 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    list-style: none;
+    color: #333333;
+    font-family: 'Spoqa Regular';
+}
+
+.login_container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background: #f8f8f8;
+}
+
+.box {
+    width: 370px;
+    height: 564px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -282px;
+    margin-left: -159px;
+}
+
+.box a {
+    margin: 0 auto;
+}
+
+.box .logo {
+    width: 128px;
+    height: 65px;
+    margin-left: 75px;
+}
+
+img {
+    width: 170px;
+    height: 75px;
+}
+
+.login_form {
+    background: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    width: 320px;
+    height: 500px;
+}
+
+.login_form {
+    padding: 40px;
+}
+
+.login_form .title {
+    margin-bottom: 30px;
+}
+
+.login_form .input {
+    width: 100%;
+    margin-top: 30px;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+}
+
+.login_form .submit {
+    width: 100%;
+    margin-top: 30px;
+    line-height: 40px;
+    border: 0;
+    background: #3c3c3c;
+    color: #FFC81E;
+    font-size: 15px;
+    outline: 0;
+    cursor: pointer;
+}
+
+.login_form .bottom {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 15px;
+}
+
+.login_form .bottom a {
+    color: #999;
+}
+
+.login_form .bottom a:hover {
+	color: #000;
+}

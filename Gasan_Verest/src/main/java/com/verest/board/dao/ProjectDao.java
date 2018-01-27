@@ -3,7 +3,6 @@ package com.verest.board.dao;
 import java.util.List;
 
 import com.verest.board.model.CommonException;
-import com.verest.board.model.Port;
 import com.verest.board.model.Project;
 
 public interface ProjectDao {

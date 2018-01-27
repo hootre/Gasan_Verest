@@ -4,13 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.verest.board.dao.PortDao;
-import com.verest.board.dao.UserInfoDao;
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Port;
-import com.verest.board.model.UserInfo;
 
 @Service
 public class PortServiceImpl implements PortService {

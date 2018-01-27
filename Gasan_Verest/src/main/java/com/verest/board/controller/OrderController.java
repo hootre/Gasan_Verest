@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.verest.board.model.UserInfo;
-import com.verest.board.model.Basket;
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Order_list;
 import com.verest.board.model.Sale;
-import com.verest.board.service.BasketService;
 import com.verest.board.service.Order_listService;
 import com.verest.board.service.SaleService;
 import com.verest.board.service.UserInfoService;

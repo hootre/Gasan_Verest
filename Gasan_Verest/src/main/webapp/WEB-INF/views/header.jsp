@@ -19,10 +19,12 @@
         <sec:authorize access="hasRole('USER') and !hasRole('ADMIN')">
 		<p>${ userInfo.v_name }님 안녕하세요
 			  <a href='<c:url value="/user/mypage"></c:url>'>마이페이지</a></p>
+			  <a href="<c:url value='/logout'/>">로그아웃</a>
 		</sec:authorize>
 		<sec:authorize access="hasRole('ADMIN')">
 		<p>${ userInfo.v_name }님 안녕하세요
 			  <a href='<c:url value="/admin"></c:url>'>관리자 페이지</a></p>
+			  <a href="<c:url value='/logout'/>">로그아웃</a>
 		</sec:authorize>
     </div>
     <ul class="menu_top">

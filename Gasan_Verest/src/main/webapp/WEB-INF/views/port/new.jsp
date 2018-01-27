@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <title>글쓰기</title>
 <script type="text/javascript"> 
 function readURL(input) { 
@@ -33,8 +34,8 @@ function readURL(input) {
 			<label>첨부파일 <input type="text" name="attachment"></label>
 		</div>
 		<div>
-			<label>첨부이미지 <input type="file" name="attachmentImg" multiple="multiple"></label>
-			<img id="blah" src="#" alt="your image" />
+			<label>첨부이미지 <input type="file" onchange="readURL(this);"  name="attachmentImg" accept=".gif, .jpg, .png" multiple="multiple"></label>
+			<img id="blah" src="<c:url value="/upload/main/no_image.jpg"/>" alt="your image" />
 		</div>
 		<input type="hidden" name="writer" value="${ writer }">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

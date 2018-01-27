@@ -3,8 +3,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" enctype="multipart/form-data">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <title>글쓰기</title>
+<script type="text/javascript"> 
+function readURL(input) { 
+	if (input.files && input.files[0]) { 
+		var reader = new FileReader(); 
+		reader.onload = function (e) { 
+			$('#blah').attr('src', e.target.result); 
+			} 
+		reader.readAsDataURL(input.files[0]); 
+		} } 
+</script>
 </head>
 <body>
 	<h1>글쓰기</h1>
@@ -25,7 +36,8 @@
 			<label>첨부파일 <input type="text" name="attachment"></label>
 		</div>
 		<div>
-			<label>첨부이미지 <input type="file" name="attachmentImg" multiple="multiple"></label>
+			<label>첨부이미지 <input type="file" onchange="readURL(this);"  name="attachmentImg" accept=".gif, .jpg, .png" multiple="multiple"></label>
+			<img id="blah" src="<c:url value="/upload/main/no_image.jpg"/>" alt="your image" />
 		</div>
 		<input type="hidden" name="writer" value="${ writer }">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

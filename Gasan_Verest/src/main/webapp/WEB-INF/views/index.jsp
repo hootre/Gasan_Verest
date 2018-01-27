@@ -15,6 +15,40 @@
 </style>
 <title>Verest</title>
 </head>
+<script>
+    function initMap() {
+        var uluru = {lat: 37.5664685, lng: 127.04425040000001};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+    $(function () {
+        $(".slide").mouseover(function () {
+           $(".slick-arrow").css("background", "rgba(255, 255, 255, 0.8)");
+           $(".prev").toggleClass('opa');
+           $(".next").toggleClass('opa');
+        });
+        $(".slide").mouseout(function () {
+            $(".slick-arrow").css("background", "rgba(255, 255, 255, 0)");
+            $(".prev").toggleClass('opa');
+            $(".next").toggleClass('opa');
+        });
+        $(".slick").slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            fade: false,
+            prevArrow: '.prev',
+            nextArrow: '.next'
+        });
+    })
+</script>
 <body>
 	<c:if test="${ param.type == 'delete' }">
 		<script>alert("탈퇴완료")</script>

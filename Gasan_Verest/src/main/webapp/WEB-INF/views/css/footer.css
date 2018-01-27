@@ -1,10 +1,11 @@
-@media (min-width: 850px) {
+@media (min-width: 900px) {
     .footer {
         background: #292929;
+        clear: both;
     }
 
     .footer .f_container {
-        width: 60%;
+        max-width: 1070px;
         margin: 0 auto;
     }
 
@@ -13,12 +14,12 @@
     }
 
     .footer .f_container .footer_content .footer_card {
-        width: 25%;
+        width: 17%;
         margin-left: 40px;
         float: left;
     }
 
-    .footer .f_container .footer_content .footer_card > h2, span, b {
+    .footer .f_container .footer_content .footer_card h2, span, b {
         color: #fff;
     }
 
@@ -47,13 +48,13 @@
     }
 }
 
-@media (max-width: 850px) and (min-width: 625px) {
+@media (max-width: 900px) and (min-width: 625px) {
     .footer {
         background: #292929;
     }
 
     .footer .f_container {
-        width: 100%;
+        max-width: 1070px;
         margin: 0 auto;
     }
 
@@ -108,8 +109,7 @@
     }
 
     .footer .f_container .footer_content .footer_card {
-        width: 90%;
-        margin-left: 50px;
+        width: 100%;
     }
 
     .footer .f_container .footer_content .footer_card h2, span, b {

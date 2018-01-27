@@ -36,7 +36,7 @@ import com.verest.board.service.UserInfoService;
 @RequestMapping("/port")
 public class PortController {
 
-	private static final String UPLOAD_FOLDER = "/upload";
+	private static final String UPLOAD_FOLDER = "/upload/port";
 
 	private Logger logger = LogManager.getLogger(this.getClass());
 

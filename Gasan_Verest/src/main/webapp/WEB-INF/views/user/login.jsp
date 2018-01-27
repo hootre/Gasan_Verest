@@ -4,22 +4,28 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<%@ include file="../css/login.css"%>
+</style>
 <title>로그인 페이지</title>
 </head>
 <body>
-	<form action="<c:url value="/login-processing"/>" method="post">
-		<c:if test="${ param.action == 'error' }">
-			<p>이메일 혹은 비밀번호를 잘못 입력하였습니다.</p>
+<div class="login_container">
+    <div class="box">
+        <a href="#"><div class="logo"><img src="<c:url value="/upload/main/logo.png"/>" ></div></a>
+        <form class="login_form" action="<c:url value="/login-processing"/>" method="post">
+        <c:if test="${ param.action == 'error' }">
+			<script>
+				alert("아이디 혹은 비밀번호가 일치하지 않습니다.");
+			</script>
 		</c:if>
-		<c:if test="${ param.action == 'logout' }">
-			<p>로그아웃 하였습니다.</p>
-		</c:if>
-		<input type="email" name="v_email" placeholder="이메일 입력" required>
-		<input type="password" name="v_password" placeholder="비밀번호 입력" required>
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		<input type="submit" value="로그인">
-	</form>
-	<a href="<c:url value='/join'/>">회원가입</a>
-	<a href="<c:url value='/'/>">메인 화면으로</a>
-</body>
+            <div class="title">로그인</div>
+            <input class="input" type="email" name="v_email" placeholder="email" required>
+            <input class="input" type="password" name="v_password" placeholder="password" required>
+            <input class="input" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+            <input class="submit" type="submit" value="로그인">
+            <div class="bottom"><a href="<c:url value='/'/>">메인으로 </a><a href="<c:url value='/join'/>">회원가입</a></div>
+        </form>
+    </div>
+</div>
 </html>

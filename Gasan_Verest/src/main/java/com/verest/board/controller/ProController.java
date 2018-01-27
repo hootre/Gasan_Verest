@@ -36,7 +36,7 @@ import com.verest.board.service.UserInfoService;
 @RequestMapping("/pro")
 public class ProController {
 
-	private static final String UPLOAD_FOLDER = "/upload";
+	private static final String UPLOAD_FOLDER = "/upload/pro";
 
 	private Logger logger = LogManager.getLogger(this.getClass());
 

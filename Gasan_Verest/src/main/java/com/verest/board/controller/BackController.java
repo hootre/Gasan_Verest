@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.Backsight;
 import com.verest.board.model.CommonException;
-import com.verest.board.model.Sale;
 import com.verest.board.service.BacksightService;
 import com.verest.board.service.UserInfoService;
 

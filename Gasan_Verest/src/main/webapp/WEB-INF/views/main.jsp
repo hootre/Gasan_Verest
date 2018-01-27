@@ -25,11 +25,15 @@
             <button class="prev"></button>
             <button class="next"></button>
             <div class="slick">
-                <div class="img"><img src="sl.jpg"></div>
-                <div class="img"><img src="sl.jpg"></div>
-                <div class="img"><img src="sl.jpg"></div>
-                <div class="img"><img src="sl.jpg"></div>
-                <div class="img"><img src="sl.jpg"></div>
+                <c:forEach items="${ port }" var="item">
+            		<c:if test="${ !empty item.attachmentImg }">
+                	<div class="img">
+                	<a href="<c:url value="/port/detail?no=${item.no }"/>">
+                		<img src="<c:url value="/upload/port/${item.attachmentImg }"/>">
+                	</a>
+                	</div>
+                	</c:if>
+				</c:forEach>
             </div>
         </div>
     </div>

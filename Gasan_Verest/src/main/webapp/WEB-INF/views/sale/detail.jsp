@@ -36,6 +36,7 @@
 		<c:if test="${ !empty filename }">
 			<dt>첨부이미지</dt>
 			<dd><a href="<c:url value='/sale/download?filename=${ filename }'/>">${ rfilename }</a></dd>
+			<dd><img src="<c:url value='/upload/sale/${ filename }'/>" alt="이미지실패" /></dd>
 		</c:if>
 	</dl>
 	<a href='<c:url value='/'></c:url>'>메인으로 돌아가기</a>

@@ -36,8 +36,8 @@ VALUES (sale_seq.NEXTVAL, '빵빵', '부레', 2, 500000 , SYSDATE, 'https://www.
 INSERT INTO question(qu_no, writer, content, title, regdate)
 VALUES (question_seq.NEXTVAL, 1, '콘텐트', '제목', SYSDATE);
 
-INSERT INTO backsight(back_no, writer, content, title, password, regdate)
-VALUES (backsight_seq.NEXTVAL, 1, '콘텐트', '제목', 1234, SYSDATE);
+INSERT INTO backsight(back_no, writer, content, title,b_like, regdate)
+VALUES (backsight_seq.NEXTVAL, 1, '콘텐트', '제목', 5, SYSDATE);
 
 INSERT INTO basket (basket_no, v_id, sale_no, regdate)
 VALUES (basket_seq.NEXTVAL, 1, 1, SYSDATE);

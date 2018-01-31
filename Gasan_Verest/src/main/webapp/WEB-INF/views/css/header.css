@@ -1,4 +1,9 @@
-@media (min-width: 900px) {
+@font-face { font-family: 'Spoqa Regular';
+    src: url('Spoqa Han Sans Regular.ttf');
+format('truetype');
+}
+
+@media (min-width: 1050px) {
 
     * {
         padding: 0;
@@ -17,12 +22,13 @@
     }
 
     .container {
-        width: 80%;
+        width: 82%;
         top: 0;
-        left: 346px;
+        left: 343px;
         overflow: hidden;
-        background: #ffffff;
+        background: #eeeeee;
         position: relative;
+        /*box-shadow: 10px 0px 10px inset;*/
     }
 
     .mainmenu {
@@ -44,15 +50,22 @@
     }
 
     .mainmenu .login {
-        margin-bottom: 20px;
         margin-left: 55px;
         padding: 10px;
         color: #aaa;
     }
 
-    .mainmenu .login a {
+.mainmenu .login a {
         color: #aaa;
-    }
+        text-shadow: 0.1em 0.1em 0.15em #262626;
+}
+.mainmenu .login p {
+      	 color: #aaa;
+      	 margin-bottom: 10px;
+}
+.mainmenu .login p span{
+		color: #fff;
+}
 
     .mainmenu .login a:hover {
         color: #fff;
@@ -66,14 +79,16 @@
     .mainmenu .menu_top .nav_menu a {
         color: #aaa;
         font-weight: bold;
+        text-shadow: 0.1em 0.1em 0.15em #262626;
     }
 
     .mainmenu .menu_top .nav_menu a:hover {
         color: #fff;
     }
+
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1050px) {
     * {
         padding: 0;
         margin: 0;
@@ -92,10 +107,8 @@
 
     .container {
         width: 100%;
-        top: 0;
         overflow: hidden;
-        background: #ffffff;
-        position: relative;
+        background: #eeeeee;
     }
 
     .mainmenu {
@@ -117,9 +130,13 @@
         color: #aaa;
         margin-bottom: 32px;
     }
+    .mainmenu .login p {
+    	color: #aaa;
+    }
 
     .mainmenu .login a {
         color: #aaa;
+        text-shadow: 0.1em 0.1em 0.15em #262626;
     }
 
     .mainmenu .login a:hover {
@@ -134,9 +151,11 @@
     .mainmenu .menu_top .nav_menu a {
         color: #aaa;
         font-weight: bold;
+        text-shadow: 0.1em 0.1em 0.15em #262626;
     }
 
     .mainmenu .menu_top .nav_menu a:hover {
         color: #fff;
     }
+
 }

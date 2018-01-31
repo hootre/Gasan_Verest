@@ -1,0 +1,21 @@
+.c_title {
+    background: #FFC81E;
+    margin-top: -6px;
+    padding: 13px;
+}
+
+.c_title h3 {
+    margin-left: 35px;
+    display: inline-block;
+}
+
+.c_title h4 {
+    display: inline-block;
+    float: right;
+    margin-right: 15px;
+}
+
+.c_content {
+    margin-top: 15px;
+    margin-left: 20px;
+}

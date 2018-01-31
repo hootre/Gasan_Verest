@@ -146,6 +146,7 @@ CREATE TABLE backsight(
 	writer NUMBER NOT NULL, -- 작성자
 	content VARCHAR2(2000), -- 내용
 	title VARCHAR2(100) NOT NULL, -- 제목
+	b_like NUMBER NOT NULL,
 	regdate DATE NOT NULL, -- 작성일
 	CONSTRAINT pk_backsight PRIMARY KEY (back_no),
 	CONSTRAINT fk_backsight_id FOREIGN KEY (writer) REFERENCES userinfo (v_id)

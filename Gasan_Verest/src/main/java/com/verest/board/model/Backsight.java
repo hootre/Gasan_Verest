@@ -6,16 +6,19 @@ public class Backsight {
 	private Integer writer;
 	private String content;
 	private String title;
+	private Integer b_like;
 	private String regdate;
 	private UserInfo userInfo;
 	
 	public Backsight() {}
 
-	public Backsight(Integer back_no, Integer writer, String content, String title, String regdate, UserInfo userInfo) {
+	public Backsight(Integer back_no, Integer writer, String content, String title, Integer b_like, String regdate,
+			UserInfo userInfo) {
 		this.back_no = back_no;
 		this.writer = writer;
 		this.content = content;
 		this.title = title;
+		this.b_like = b_like;
 		this.regdate = regdate;
 		this.userInfo = userInfo;
 	}
@@ -52,6 +55,14 @@ public class Backsight {
 		this.title = title;
 	}
 
+	public Integer getB_like() {
+		return b_like;
+	}
+
+	public void setB_like(Integer b_like) {
+		this.b_like = b_like;
+	}
+
 	public String getRegdate() {
 		return regdate;
 	}
@@ -72,6 +83,7 @@ public class Backsight {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((b_like == null) ? 0 : b_like.hashCode());
 		result = prime * result + ((back_no == null) ? 0 : back_no.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
@@ -90,6 +102,11 @@ public class Backsight {
 		if (getClass() != obj.getClass())
 			return false;
 		Backsight other = (Backsight) obj;
+		if (b_like == null) {
+			if (other.b_like != null)
+				return false;
+		} else if (!b_like.equals(other.b_like))
+			return false;
 		if (back_no == null) {
 			if (other.back_no != null)
 				return false;
@@ -134,6 +151,8 @@ public class Backsight {
 		builder.append(content);
 		builder.append(", title=");
 		builder.append(title);
+		builder.append(", b_like=");
+		builder.append(b_like);
 		builder.append(", regdate=");
 		builder.append(regdate);
 		builder.append(", userInfo=");

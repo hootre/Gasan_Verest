@@ -8,8 +8,8 @@
 		<selectKey keyProperty="back_no" resultType="Integer" order="BEFORE">
 			SELECT backsight_seq.NEXTVAL back_no FROM DUAL
 		</selectKey>
-		INSERT INTO backsight(back_no, writer, content, title, regdate)
-		VALUES (#{back_no}, #{writer}, #{content}, #{title}, SYSDATE)
+		INSERT INTO backsight(back_no, writer, content, title, b_like, regdate)
+		VALUES (#{back_no}, #{writer}, #{content}, #{title}, #{b_like}, SYSDATE)
 	</insert>
   
   	<resultMap type="Backsight" id="backsightResultMap">
@@ -17,6 +17,7 @@
 		<result property="writer" column="writer" />
 		<result property="content" column="content" />
 		<result property="title" column="title" />
+		<result property="b_like" column="b_like" />
 		<result property="regdate" column="regdate" />
 		<result property="userInfo.v_email" column="v_email" />
 		<result property="userInfo.v_name" column="v_name" />

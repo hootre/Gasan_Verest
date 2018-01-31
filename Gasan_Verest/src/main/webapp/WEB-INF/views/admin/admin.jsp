@@ -15,6 +15,11 @@
 		<a href = "<c:url value = '/que/list'/>">문의 관리</a>
 		<a href = "<c:url value = '/list'/>">회원 관리</a>
 		<a href = "<c:url value = '/'/>">홈으로</a>
+		
+		
+	<a href="<c:url value='/port/new'/>">폴트 작성</a>
+	<a href="<c:url value='/sale/new'/>">판매 작성</a>
+	<a href="<c:url value='/pro/new'/>">포토폴 작성</a>
 	</div>
 </body>
 </html>

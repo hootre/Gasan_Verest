@@ -19,12 +19,12 @@
     <div class="mid">
         <div class="content_video">
 	        <c:if test="${ !empty item.attachment }">
-				<iframe width="100%" height="600px" src="${ item.attachment }" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				<iframe width="100%" height="600px" src="${ item.attachment }?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			</c:if>
         </div>
         <div class="c_title">
             <h3>${ item.title }</h3>
-            <h4>${ item.views }</h4>
+            <h4>Views ${ item.views }</h4>
         </div>
         <div class="c_content">
            ${ item.content }

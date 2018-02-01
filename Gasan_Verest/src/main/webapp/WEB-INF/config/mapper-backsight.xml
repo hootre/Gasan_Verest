@@ -24,13 +24,13 @@
 	</resultMap>
 	
 	<select id="select" parameterType="Integer" resultMap="backsightResultMap">
-		SELECT b.back_no, b.writer, b.content, b.title, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
+		SELECT b.back_no, b.writer, b.content, b.title, b.b_like, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, backsight b
 		WHERE b.writer = u.v_id AND b.back_no = #{back_no}
 	</select>
 	
 	<select id="selectAll" resultMap="backsightResultMap">
-		SELECT b.back_no, b.writer, b.content, b.title, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
+		SELECT b.back_no, b.writer, b.content, b.title, b.b_like, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, backsight b
 		WHERE b.writer = u.v_id  ORDER BY b.back_no DESC
 	</select>

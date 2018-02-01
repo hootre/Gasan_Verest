@@ -15,10 +15,34 @@
     <div class="content_mid">
         <h2 class="c_title">POTFOLIO</h2>
         <div class="slide">
-            <button class="prev"></button>
-            <button class="next"></button>
             <div class="slick">
-                <c:forEach items="${ port }" var="item">
+            <ul id="lightSlider" class="content-slider lightSlider" style="">
+                <li class="" style="">
+                    <h3>1</h3>
+                </li>
+                <li class="" style="">
+                    <h3>2</h3>
+                </li>
+                <li class="" style="">
+                    <h3>3</h3>
+                </li>
+                <li class="" style="">
+                    <h3>4</h3>
+                </li>
+                <li class="" style="">
+                    <h3>5</h3>
+                </li>
+                <li class="" style="">
+                    <h3>6</h3>
+                </li>
+                <li class="" style="">
+                    <h3>7</h3>
+                </li>
+                <li class="" style="">
+                    <h3>8</h3>
+                </li>
+            </ul>
+                <%-- <c:forEach items="${ port }" var="item">
             		<c:if test="${ !empty item.attachmentImg }">
                 	<div class="img">
                 	<a href="<c:url value="/port/detail?no=${item.no }"/>">
@@ -26,8 +50,37 @@
                 	</a>
                 	</div>
                 	</c:if>
-				</c:forEach>
+				</c:forEach> --%>
             </div>
+             <h2 class="c_title">PROJECT</h2>
+        <div class="slide">
+            <ul id="lightSlider2" class="content-slider lightSlider" style="">
+                <li class="" style="">
+                    <h3>1</h3>
+                </li>
+                <li class="" style="">
+                    <h3>2</h3>
+                </li>
+                <li class="" style="">
+                    <h3>3</h3>
+                </li>
+                <li class="" style="">
+                    <h3>4</h3>
+                </li>
+                <li class="" style="">
+                    <h3>5</h3>
+                </li>
+                <li class="" style="">
+                    <h3>6</h3>
+                </li>
+                <li class="" style="">
+                    <h3>7</h3>
+                </li>
+                <li class="" style="">
+                    <h3>8</h3>
+                </li>
+            </ul>
+        </div>
         </div>
     </div>
    	<div id="map"></div>

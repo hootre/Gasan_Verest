@@ -48,12 +48,14 @@ public class BackController {
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String newBoard(HttpServletRequest request,
 			String content,
-			String title
+			String title,
+			Integer b_like
 			) throws CommonException, Exception{
 		Backsight back = new Backsight();
 		UserInfo user = userInfoService.detail(this.getPrincipal());
 		back.setContent(content);
 		back.setTitle(title);
+		back.setB_like(b_like);
 		back.setWriter(user.getV_id());
 		
 		BackService.newBoard(back);

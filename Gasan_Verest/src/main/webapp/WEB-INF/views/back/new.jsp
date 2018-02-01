@@ -16,6 +16,9 @@
 			<label>제목 <input type="text" name="title"></label>
 		</div>
 		<div>
+			<label>평점 <input type="text" name="b_like"></label>
+		</div>
+		<div>
 			<label>내용 <textarea name="content"></textarea></label>
 		</div>
 		<input type="hidden" name="writer" value="${ writer }">

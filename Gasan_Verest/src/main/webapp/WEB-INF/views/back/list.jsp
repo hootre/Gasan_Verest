@@ -13,6 +13,7 @@
 		<tr>
 			<th>번호</th>
 			<th>제목</th>
+			<th>평점</th>
 			<th>내용</th>
 			<th>작성자</th>
 			<th>날짜</th>
@@ -21,6 +22,7 @@
 			<tr>
 				<td>${ item.back_no }</td>
 				<td><a href="<c:url value='/back/detail?back_no=${ item.back_no}'/>">${ item.title}</a></td>
+				<td>${ item.b_like}</td>
 				<td>${ item.content}</td>
 				<td>${ item.userInfo.v_name}</td>
 				<td>${ item.regdate}</td>

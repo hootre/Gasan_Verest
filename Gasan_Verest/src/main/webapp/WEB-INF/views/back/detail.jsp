@@ -17,6 +17,8 @@
 		<dd>${ item.regdate }</dd>
 		<dt>제목</dt>
 		<dd>${ item.title }</dd>
+		<dt>평점</dt>
+		<dd>${ item.b_like }</dd>
 		<dt>내용</dt>
 		<dd>${ item.content }</dd>
 	</dl>

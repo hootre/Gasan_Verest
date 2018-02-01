@@ -1,5 +1,5 @@
 @font-face { font-family: 'Spoqa Regular';
-    src: url('Spoqa Han Sans Regular.ttf');
+    src: url('../Spoqa Han Sans Regular.ttf');
 format('truetype');
 }
 
@@ -50,22 +50,16 @@ format('truetype');
     }
 
     .mainmenu .login {
+        margin-bottom: 20px;
         margin-left: 55px;
         padding: 10px;
         color: #aaa;
     }
 
-.mainmenu .login a {
+    .mainmenu .login a {
         color: #aaa;
         text-shadow: 0.1em 0.1em 0.15em #262626;
-}
-.mainmenu .login p {
-      	 color: #aaa;
-      	 margin-bottom: 10px;
-}
-.mainmenu .login p span{
-		color: #fff;
-}
+    }
 
     .mainmenu .login a:hover {
         color: #fff;
@@ -129,9 +123,6 @@ format('truetype');
     .mainmenu .login {
         color: #aaa;
         margin-bottom: 32px;
-    }
-    .mainmenu .login p {
-    	color: #aaa;
     }
 
     .mainmenu .login a {

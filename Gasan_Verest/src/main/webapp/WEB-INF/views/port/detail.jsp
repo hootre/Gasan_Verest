@@ -21,6 +21,8 @@
 		<dd>${ item.content }</dd>
 		<dt>조회수</dt>
 		<dd>${ item.views }</dd>
+		<dt>분류</dt>
+		<dd>${ item.p_type }</dd>
 		<c:if test="${ !empty item.attachment }">
 			<dt>첨부파일</dt>
 			<dd>

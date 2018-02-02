@@ -10,9 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.verest.board.dao.PortDao;
+import com.verest.board.dao.ProjectDao;
+import com.verest.board.dao.SaleDao;
 import com.verest.board.dao.UserInfoDao;
 import com.verest.board.model.CommonException;
 import com.verest.board.model.Port;
+import com.verest.board.model.Project;
+import com.verest.board.model.Sale;
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.UserType;
 import com.verest.board.model.UserTypeId;
@@ -27,7 +31,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 	private PasswordEncoder encoder;
 	
 	@Autowired
-	private PortDao pdao;
+	private PortDao portdao;
+	
+	@Autowired
+	private ProjectDao prodao;
+	
+	@Autowired
+	private SaleDao saledao;
 
 	@Override
 	public UserInfo detail(Integer id) throws CommonException {
@@ -87,15 +97,43 @@ public class UserInfoServiceImpl implements UserInfoService {
 	}
 
 	@Override
-	public boolean isBoardMatched(Integer no, String rawPassword) throws CommonException {
+	public boolean isPortMatched(Integer no, String rawPassword) throws CommonException {
 		/*
 		 *  게시물 번호를 이용하여 게시물을 가져온 뒤
 		 *  게시물의 작성자 email값을 획득한 후,
 		 *  획득한 email값으로 사용자 정보를 가져와
 		 *  해당 사용자의 비밀번호를 가져온다.
 		 */
-		Port port = pdao.select(no);
+		Port port = portdao.select(no);
 		UserInfo userInfo = userInfoDao.select(port.getWriter());
+		
+		// 해당 사용자의 비밀번호와 입력한 비밀번호 비교한 결과 리턴
+		return encoder.matches(rawPassword, userInfo.getV_password());
+	}
+	@Override
+	public boolean isProMatched(Integer no, String rawPassword) throws CommonException {
+		/*
+		 *  게시물 번호를 이용하여 게시물을 가져온 뒤
+		 *  게시물의 작성자 email값을 획득한 후,
+		 *  획득한 email값으로 사용자 정보를 가져와
+		 *  해당 사용자의 비밀번호를 가져온다.
+		 */
+		Project pro = prodao.select(no);
+		UserInfo userInfo = userInfoDao.select(pro.getWriter());
+		
+		// 해당 사용자의 비밀번호와 입력한 비밀번호 비교한 결과 리턴
+		return encoder.matches(rawPassword, userInfo.getV_password());
+	}
+	@Override
+	public boolean isSaleMatched(Integer no, String rawPassword) throws CommonException {
+		/*
+		 *  게시물 번호를 이용하여 게시물을 가져온 뒤
+		 *  게시물의 작성자 email값을 획득한 후,
+		 *  획득한 email값으로 사용자 정보를 가져와
+		 *  해당 사용자의 비밀번호를 가져온다.
+		 */
+		Sale sale = saledao.select(no);
+		UserInfo userInfo = userInfoDao.select(sale.getWriter());
 		
 		// 해당 사용자의 비밀번호와 입력한 비밀번호 비교한 결과 리턴
 		return encoder.matches(rawPassword, userInfo.getV_password());

@@ -55,9 +55,13 @@ public class BackController {
 		List<Backsight> list = null;
 		
 		list = BackService.list();
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
 		
 		model.addAttribute("list", list);
-		
 		return "back/list";
 	}
 	

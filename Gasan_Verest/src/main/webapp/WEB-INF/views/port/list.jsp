@@ -19,6 +19,7 @@
 			<th>첨부파일</th>
 			<th>첨부이미지</th>
 			<th>조회수</th>
+			<th>분류</th>
 		</tr>
 		<c:forEach items="${ list }" var="item">
 			<tr>
@@ -30,6 +31,7 @@
 				<td>${ item.attachment}</td>
 				<td>${ item.attachmentImg}</td>
 				<td>${ item.views}</td>
+				<td>${ item.p_type}</td>
 			</tr>
 		</c:forEach>
 	</table>

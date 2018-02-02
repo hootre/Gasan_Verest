@@ -180,7 +180,7 @@ public class ProController {
 					throws CommonException, Exception {
 
 		// 비밀번호 비교해서 같지 않다면 오류메시지 출력
-		boolean isMatched = userInfoService.isBoardMatched(no, password);
+		boolean isMatched = userInfoService.isProMatched(no, password);
 		if (!isMatched) {
 			return "redirect:/pro/modify?no=" + no + "&action=error-password";
 		}
@@ -237,7 +237,7 @@ public class ProController {
 			String v_password)
 					throws CommonException, UnsupportedEncodingException {
 
-		boolean isMatched = userInfoService.isBoardMatched(no, v_password);
+		boolean isMatched = userInfoService.isProMatched(no, v_password);
 		if (!isMatched) {
 			return "redirect:/pro/remove?no=" + no + "&action=error-password";
 		}

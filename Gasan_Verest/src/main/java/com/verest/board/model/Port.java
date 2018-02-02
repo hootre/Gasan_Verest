@@ -10,12 +10,13 @@ public class Port {
 	private String attachment;
 	private String attachmentImg;
 	private Integer views;
+	private String p_type; 
 	private UserInfo userInfo;
 	
 	public Port() {}
 
 	public Port(Integer no, String title, String content, Integer writer, String regdate, String attachment,
-			String attachmentImg, Integer views, UserInfo userInfo) {
+			String attachmentImg, Integer views, String p_type, UserInfo userInfo) {
 		this.no = no;
 		this.title = title;
 		this.content = content;
@@ -24,6 +25,7 @@ public class Port {
 		this.attachment = attachment;
 		this.attachmentImg = attachmentImg;
 		this.views = views;
+		this.p_type = p_type;
 		this.userInfo = userInfo;
 	}
 
@@ -91,6 +93,14 @@ public class Port {
 		this.views = views;
 	}
 
+	public String getP_type() {
+		return p_type;
+	}
+
+	public void setP_type(String p_type) {
+		this.p_type = p_type;
+	}
+
 	public UserInfo getUserInfo() {
 		return userInfo;
 	}
@@ -107,6 +117,7 @@ public class Port {
 		result = prime * result + ((attachmentImg == null) ? 0 : attachmentImg.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((no == null) ? 0 : no.hashCode());
+		result = prime * result + ((p_type == null) ? 0 : p_type.hashCode());
 		result = prime * result + ((regdate == null) ? 0 : regdate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((userInfo == null) ? 0 : userInfo.hashCode());
@@ -143,6 +154,11 @@ public class Port {
 			if (other.no != null)
 				return false;
 		} else if (!no.equals(other.no))
+			return false;
+		if (p_type == null) {
+			if (other.p_type != null)
+				return false;
+		} else if (!p_type.equals(other.p_type))
 			return false;
 		if (regdate == null) {
 			if (other.regdate != null)
@@ -191,6 +207,8 @@ public class Port {
 		builder.append(attachmentImg);
 		builder.append(", views=");
 		builder.append(views);
+		builder.append(", p_type=");
+		builder.append(p_type);
 		builder.append(", userInfo=");
 		builder.append(userInfo);
 		builder.append("]");

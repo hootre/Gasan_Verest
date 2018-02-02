@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +36,24 @@
             }
         });
     });
+
+    function checkForm() {
+        var userId = document.fmField.title;
+        // 아이디 입력 유무 체크
+        if(userId.value == '') {
+            window.alert("제목을 입력하세요");
+            document.fmField.title.focus();
+            document.getElementById('title').select();
+            return false; // 아이디 입력이 안되어 있다면 submint 이벤트를 중지
+        }
+        var uerPw = document.getElementById('txt');
+        // 암호 입력 유무 체크
+        if(document.fmField.txt.value == ''){
+            alert('내용을 입력하세요');
+            txt.focus();
+            return false;
+        }
+    }
 </script>
 <body>
 
@@ -44,37 +63,47 @@
 			<div class="title">
 				<h2>이용 후기</h2>
 			</div>
-			<div class="review_write">
-				<h3>후기 작성하기</h3>
-				<form action="<c:url value='/back/new'/>" method="post">
-					<table>
-						<tr>
-							<th>제목</th>
-							<td><input type="text" placeholder="제목" maxlength="15"
-								name="title" /></td>
-						</tr>
-						<tr>
-							<th>내용</th>
-							<td><textarea id="textarea" placeholder="내용"
-									style="resize: none;" name="content" id="area" cols="30"
-									rows="5" maxlength="50"></textarea></td>
-						</tr>
-						<tr>
-							<th>별점</th>
-							<td><select name="b_like" id="rgood">
-									<option value="1">★ 매우불만족</option>
-									<option value="2">★★ 불만족</option>
-									<option value="3">★★★ 보통</option>
-									<option value="4">★★★★ 만족</option>
-									<option value="5">★★★★★ 매우만족</option>
-							</select> <input type="text" style="display: none;" class="bla" name="gid"
-								value="${gid.gid}" /> <input type="submit" class="submit"
-								value="작성하기"></td>
-						</tr>
-					</table>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-				</form>
-			</div>
+			<sec:authorize access="hasRole('ADMIN') or hasRole('USER') ">
+				<div class="review_write">
+					<h3>후기 작성하기</h3>
+					<form action="<c:url value='/back/new'/>" method="post" id="fmField" name="fmField" onsubmit="return checkForm();">
+						<table>
+							<tr>
+								<th>작성자</th>
+								<td>${userInfo.v_name}</td>
+							</tr>
+							<tr>
+								<th>제목</th>
+								<td><input type="text" id="title"placeholder="제목" maxlength="15"
+									name="title" /></td>
+							</tr>
+							<tr>
+								<th>내용</th>
+								<td><textarea id="txt" placeholder="내용"
+										style="resize: none;" name="content"  cols="30"
+										rows="5" maxlength="50"></textarea></td>
+							</tr>
+							<tr>
+								<th>별점</th>
+								<td><select name="b_like" id="rgood">
+										<option value="1">★ 매우불만족</option>
+										<option value="2">★★ 불만족</option>
+										<option value="3">★★★ 보통</option>
+										<option value="4">★★★★ 만족</option>
+										<option value="5">★★★★★ 매우만족</option>
+								</select><input type="submit" class="submit"
+									value="작성하기"></td>
+							</tr>
+						</table>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+					</form>
+				</div>
+			</sec:authorize>
+			<sec:authorize access="!hasRole('ADMIN') and !hasRole('USER')">
+				 <div class="review_login">
+			         <h3>후기를 남기시려면 <a href="<c:url value='/login'/>">로그인</a>을 하십시오</h3>
+			     </div>
+		    </sec:authorize>
 			<c:forEach items="${ list }" var="item">
 				<div class="review_card">
 					<div class="r_name">
@@ -83,12 +112,32 @@
 					<div class="r_content">
 						<div class="c_title">
 							<h3>${ item.title}</h3>
-							<i class="fa fa-star" aria-hidden="true"></i> <i
-								class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star"
-								aria-hidden="true"></i> <i class="fa fa-star" aria-hidden="true"></i>
-							<i class="fa fa-star" aria-hidden="true"></i>
-							<p>${ item.b_like}</p>
 							<h4>${ item.regdate}</h4>
+							<p>
+								   <c:choose>
+								       <c:when test="${item.b_like== 1}">
+								           매우불만족
+								       </c:when>
+								       <c:when test="${item.b_like== 2}">
+								           불만족
+								       </c:when>
+								       <c:when test="${item.b_like== 3}">
+								           보통
+								       </c:when>
+								       <c:when test="${item.b_like== 4}">
+								           만족
+								       </c:when>
+								       <c:when test="${item.b_like== 5}">
+								           매우만족
+								       </c:when>
+								       <c:otherwise>
+								           오류오류
+								       </c:otherwise>
+								   </c:choose>
+							</p>
+							<c:forEach var="a" begin="1" end="${ item.b_like}" step="1">
+								<i class="fa fa-star" aria-hidden="true"></i>
+							</c:forEach>
 						</div>
 						<div class="c_content">
 							${ item.content}

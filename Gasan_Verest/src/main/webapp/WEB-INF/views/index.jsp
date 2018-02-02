@@ -10,6 +10,9 @@
 <script src="http://maps.googleapis.com/maps/api/js"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoyWSy4PHBpSrKbkCSYQj3jI_CG3RXQ3c&callback=initMap">
+</script>
 <style type="text/css">
 <%@ include file="css/style.css"%>
 <%@ include file="css/header.css" %>

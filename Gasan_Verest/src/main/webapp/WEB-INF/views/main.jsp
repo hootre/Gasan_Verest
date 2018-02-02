@@ -52,7 +52,8 @@
                 	</c:if>
 				</c:forEach> --%>
             </div>
-             <h2 class="c_title">PROJECT</h2>
+        </div>
+        <h2 class="c_title">PROJECT</h2>
         <div class="slide">
             <ul id="lightSlider2" class="content-slider lightSlider" style="">
                 <li class="" style="">
@@ -80,7 +81,6 @@
                     <h3>8</h3>
                 </li>
             </ul>
-        </div>
         </div>
     </div>
    	<div id="map"></div>

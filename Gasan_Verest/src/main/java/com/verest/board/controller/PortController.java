@@ -69,6 +69,7 @@ public class PortController {
 			String title,
 			String content,
 			String attachment,
+			String p_type,
 			@RequestParam("attachmentImg") MultipartFile attachmentImg)
 					throws CommonException, Exception {
 
@@ -80,6 +81,7 @@ public class PortController {
 		String s = attachment;
 		String address = s.replace("watch?v=", "embed/");
 		port.setAttachment(address);
+		port.setP_type(p_type);
 
 		// 최상위 경로 밑에 upload 폴더의 경로를 가져온다.
 		String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
@@ -177,6 +179,7 @@ public class PortController {
 			String title,
 			String content,
 			String attachment,
+			String p_type,
 			@RequestParam("attachmentImg") MultipartFile attachmentImg,
 			String password)
 					throws CommonException, Exception {
@@ -184,7 +187,7 @@ public class PortController {
 
 
 		// 비밀번호 비교해서 같지 않다면 오류메시지 출력
-		boolean isMatched = userInfoService.isBoardMatched(no, password);
+		boolean isMatched = userInfoService.isPortMatched(no, password);
 		if (!isMatched) {
 			return "redirect:/port/modify?no=" + no + "&action=error-password";
 		}
@@ -196,6 +199,7 @@ public class PortController {
 		String s = attachment;
 		String address = s.replace("watch?v=", "embed/");
 		port.setAttachment(address);
+		port.setP_type(p_type);
 
 		String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
 		String originalName = attachmentImg.getOriginalFilename();
@@ -241,7 +245,7 @@ public class PortController {
 			String v_password)
 					throws CommonException, UnsupportedEncodingException {
 
-		boolean isMatched = userInfoService.isBoardMatched(no, v_password);
+		boolean isMatched = userInfoService.isPortMatched(no, v_password);
 		if (!isMatched) {
 			return "redirect:/port/remove?no=" + no + "&action=error-password";
 		}

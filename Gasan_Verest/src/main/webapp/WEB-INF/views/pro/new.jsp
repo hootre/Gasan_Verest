@@ -5,6 +5,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>글쓰기</title>
+<script type="text/javascript"> 
+function readURL(input) { 
+	if (input.files && input.files[0]) { 
+		var reader = new FileReader(); 
+		reader.onload = function (e) { 
+			$('#blah').attr('src', e.target.result); 
+			} 
+		reader.readAsDataURL(input.files[0]); 
+		} } 
+</script>
 </head>
 <body>
 	<h1>글쓰기</h1>
@@ -22,7 +32,8 @@
 			<label>첨부파일 <input type="text" name="attachment"></label>
 		</div>
 		<div>
-			<label>첨부이미지 <input type="file" name="attachmentImg" multiple="multiple"></label>
+			<label>첨부이미지 <input type="file" name="attachmentImg" multiple="multiple" accept=".gif, .jpg, .png"></label>
+			<img id="blah" src="#" alt="your image" />
 		</div>
 		<input type="hidden" name="writer" value="${ writer }">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

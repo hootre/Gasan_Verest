@@ -31,7 +31,8 @@
 			<label>첨부파일 <input type="text" value="${item.attachment}"name="attachment"></label>
 		</div>
 		<div>
-			<label>첨부이미지 <input type="file" name="attachmentImg" multiple="multiple"></label>
+			<label>첨부이미지 <input type="file" name="attachmentImg" multiple="multiple" accept=".gif, .jpg, .png"></label>
+			<img id="blah" src="<c:url value="/upload/sale/${item.attachmentImg}"/>" alt="your image" />
 		</div>
 		<div>
 			<label>비밀번호 <input type="password" name="password"></label>

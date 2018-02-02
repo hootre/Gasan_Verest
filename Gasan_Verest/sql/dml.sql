@@ -27,8 +27,8 @@ VALUES (2, 2);
 INSERT INTO project(no, title, content, writer, regdate, attachment, attachmentImg, views)
 VALUES (project_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', null, 0);
 
-INSERT INTO port(no, title, content, writer, regdate, attachment, attachmentImg, views)
-VALUES (port_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', null, 0);
+INSERT INTO port(no, title, content, writer, regdate, attachment, attachmentImg, views, p_type)
+VALUES (port_seq.NEXTVAL, '첫글', '부레', 1, SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', null, 0, '포로폴리오');
 
 INSERT INTO sale(no, title, content, writer, price, regdate, attachment, attachmentImg, views)
 VALUES (sale_seq.NEXTVAL, '빵빵', '부레', 2, 500000 , SYSDATE, 'https://www.youtube.com/embed/X0dHG-jcTDo', null, 0);

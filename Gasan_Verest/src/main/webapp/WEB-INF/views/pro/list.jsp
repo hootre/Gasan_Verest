@@ -47,12 +47,12 @@
         <div class="content">
 	        <c:forEach items="${ list }" var="item">
 	        		<div class="img">
-	                <img src="<c:url value="/upload/pro/${ item.attachmentImg}"/>">
-	                <a href="<c:url value='/pro/detail?no=${ item.no }'/>">
-	                <div class="grey">
-	                    <h3>${ item.title }</h3>
-	                </div>
-	                </a>
+		                <img src="<c:url value="/upload/pro/${ item.attachmentImg}"/>">
+		                <a href="<c:url value='/pro/detail?no=${ item.no }'/>">
+			                <div class="grey">
+			                    <h3>${ item.title }</h3>
+			                </div>
+		                </a>
 	            </div>
 	        </c:forEach>
    	 	</div>

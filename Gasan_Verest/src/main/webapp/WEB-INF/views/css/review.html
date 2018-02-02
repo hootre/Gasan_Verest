@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="pc.css">
+    <link rel="stylesheet" href="review.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
+</head>
+<script type='text/javaScript'>
+    // textarea 줄바꿈 제한
+    $(function () {
+        $('#textarea').keydown(function(){
+            var rows = $('#textarea').val().split('\n').length;
+            var maxRows = 7;
+            if( rows > maxRows){
+                alert('7줄 까지만 가능합니다');
+                modifiedText = $('#textarea').val().split("\n").slice(0, maxRows);
+                $('#textarea').val(modifiedText.join("\n"));
+            }
+        });
+    });
+</script>
+<body>
+<div class="mainmenu">
+    <div class="logo"><a href="index.html"><img src="logo1.png"></a></div>
+    <div class="login">
+        <a href="login.html">Login</a> /
+        <a href="#">Sing Up</a>
+    </div>
+    <ul class="menu_top">
+        <li class="nav_menu"><a href="detail.html">ABOUT US</a></li>
+        <li class="nav_menu"><a href="#">PROJECT</a></li>
+        <li class="nav_menu"><a href="#">PORTFOLIO</a></li>
+        <li class="nav_menu"><a href="#">SALE</a></li>
+        <li class="nav_menu"><a href="#">REVIEW</a></li>
+    </ul>
+</div>
+<div class="container">
+    <div class="mid">
+        <div class="title">
+            <h2>이용 후기</h2>
+        </div>
+        <div class="review_write">
+            <h3>후기 작성하기</h3>
+            <form action="">
+            <table>
+                <tr>
+                    <th>제목</th>
+                    <td><input type="text" placeholder="제목"  maxlength="15" name="rtitle" /></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td><textarea id="textarea"  placeholder="내용" style="resize: none;" name="rcontent" id="area" cols="30" rows="5" maxlength="50" ></textarea></td>
+                </tr>
+                <tr>
+                    <th>별점</th>
+                    <td>
+                        <select name="rgood" id="rgood">
+                            <option value="1">★ 매우불만족</option>
+                            <option value="2">★★ 불만족</option>
+                            <option value="3">★★★ 보통</option>
+                            <option value="4">★★★★ 만족</option>
+                            <option value="5">★★★★★ 매우만족</option>
+                        </select>
+                        <input type="text" style="display: none;" class="bla" name="gid" value="${gid.gid}"/>
+                        <input type="submit" class="submit" value="작성하기">
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        <div class="review_card">
+            <div class="r_name">
+                <h2>전동준</h2>
+            </div>
+            <div class="r_content">
+                <div class="c_title">
+                    <h3>볼거리가 많은 사이트네요</h3>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <p>매우만족</p>
+                    <h4>2018 / 01 / 31</h4>
+                </div>
+                <div class="c_content">
+                    볼거리가 정말 많고 하나 같이 다 재미있어요 <br/>
+                    자주 들어와서 볼거 같아요
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="review_card">
+            <div class="r_name">
+                <h2>전동준</h2>
+            </div>
+            <div class="r_content">
+                <div class="c_title">
+                    <h3>볼거리가 많은 사이트네요</h3>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <p>매우만족</p>
+                    <h4>2018 / 01 / 31</h4>
+                </div>
+                <div class="c_content">
+                    볼거리가 정말 많고 하나 같이 다 재미있어요 <br/>
+                    자주 들어와서 볼거 같아요
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="review_card">
+            <div class="r_name">
+                <h2>전동준</h2>
+            </div>
+            <div class="r_content">
+                <div class="c_title">
+                    <h3>볼거리가 많은 사이트네요</h3>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                    <p>만족</p>
+                    <h4>2018 / 01 / 31</h4>
+                </div>
+                <div class="c_content">
+                    볼거리가 정말 많고 하나 같이 다 재미있어요 <br/>
+                    자주 들어와서 볼거 같아요
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+
+        <div class="review_card">
+            <div class="r_name">
+                <h2>전동준</h2>
+            </div>
+            <div class="r_content">
+                <div class="c_title">
+                    <h3>볼거리가 많은 사이트네요</h3>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <p>매우만족</p>
+                    <h4>2018 / 01 / 31</h4>
+                </div>
+                <div class="c_content">
+                    볼거리가 정말 많고 하나 같이 다 재미있어요 <br/>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="f_container">
+            <div class="footer_content">
+                <div class="footer_card">
+                    <h2>
+                        Verest
+                        <div class="card_title_bar"></div>
+                    </h2>
+                    <span>Verest 360 VR은 360도 관련 다양한 영상 및 콘텐츠를 기획
+					제작하는 회사입니다.
+				</span>
+                </div>
+                <div class="footer_card">
+                    <h2>
+                        Address
+                        <div class="card_title_bar"></div>
+                    </h2>
+                    <span>Korea 서울특별시 성동구 마장동 782-4, 201호<br />
+				<b>업무 시간</b> <br />월요일—금요일: 9:00AM–19:00PM
+				</span>
+                </div>
+                <div class="footer_card">
+                    <h2>
+                        E-Mail
+                        <div class="card_title_bar"></div>
+                    </h2>
+                    <span>verest@verest.co.kr<br />kwonkh2@naver.com
+				</span>
+                </div>
+                <div class="footer_card">
+                    <h2>
+                        Contact
+                        <div class="card_title_bar"></div>
+                    </h2>
+                    <span>+82 10-3119-6195</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer_line"></div>
+        <div class="footer_bottom">
+            <span><b>Theme: Illdy. © Copyright 2015. All Rights Reserved.</b></span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

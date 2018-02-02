@@ -29,20 +29,6 @@ public class BackController {
 
 	@Autowired
 	private BacksightService BackService;
-
-
-	// 글 작성 화면
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public String newBoard(Model model) {
-		
-		String v_email = this.getPrincipal();
-		UserInfo item = userInfoService.detail(v_email);
-		
-		model.addAttribute("writer", item.getV_id());
-		model.addAttribute("email", item.getV_email());
-
-		return "back/new";
-	}
 	
 	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
@@ -71,7 +57,7 @@ public class BackController {
 		list = BackService.list();
 		
 		model.addAttribute("list", list);
-
+		
 		return "back/list";
 	}
 	

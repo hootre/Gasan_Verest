@@ -118,6 +118,11 @@ public class ProController {
 
 		list = proService.list();
 
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
 		model.addAttribute("list", list);
 
 		return "pro/list";

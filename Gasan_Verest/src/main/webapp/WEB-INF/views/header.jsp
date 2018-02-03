@@ -7,6 +7,9 @@
 <head>
     <meta charset="UTF-8">
     <title>index.jsp</title>
+<script>
+<%@ include file="js/main.js"%>
+</script>
 </head>
 <body>
 <div class="mainmenu">
@@ -25,13 +28,13 @@
 			  <a href='<c:url value="/admin"></c:url>'>관리자 페이지</a>
 		</sec:authorize>
     </div>
+    <div class="toggle_menu"><h3>MENU</h3></div>
     <ul class="menu_top">
-        <li class="nav_menu"><a href="#">ABOUT US</a></li>
-        <li class="nav_menu"><a href="<c:url value="/pro/list"/>">PROJECT</a></li>
-        <li class="nav_menu"><a href="<c:url value="/port/list"/>">PORTFOLIO</a></li>
-        <li class="nav_menu"><a href="<c:url value="/sale/list"/>">SALE</a></li>
-        <li class="nav_menu"><a href="<c:url value="/back/list"/>">REVIEWS</a></li>
-        <li class="nav_menu"><a href="<c:url value='/que/new'/>">QUESTION</a></li>
+        <li class="nav_menu"><a href="#"><h4>ABOUT US</h4></a></li>
+        <li class="nav_menu"><a href="<c:url value="/pro/list"/>"><h4>PROJECT</h4></a></li>
+        <li class="nav_menu"><a href="<c:url value="/port/list"/>"><h4>PORTFOLIO</h4></a></li>
+        <li class="nav_menu"><a href="<c:url value="/sale/list"/>"><h4>SALE</h4></a></li>
+        <li class="nav_menu"><a href="<c:url value="/back/list"/>"><h4>REVIEW</h4></a></li>
     </ul>
 </div>
 </body>

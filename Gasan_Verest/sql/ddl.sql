@@ -145,7 +145,7 @@ START WITH 1 INCREMENT BY 1;
 CREATE TABLE backsight(
 	back_no NUMBER NOT NULL, -- 후기 번호
 	writer NUMBER NOT NULL, -- 작성자
-	content VARCHAR2(2000), -- 내용
+	content VARCHAR2(500), -- 내용
 	title VARCHAR2(100) NOT NULL, -- 제목
 	b_like NUMBER NOT NULL,
 	regdate DATE NOT NULL, -- 작성일

@@ -1,4 +1,4 @@
-@media (min-width: 1050px) {
+@media (min-width: 1100px) {
 
     #map {
         height: 400px;
@@ -83,7 +83,7 @@
 
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1100px) {
 
     #map {
         margin-top: 40px;

@@ -246,7 +246,7 @@
     }
 }
 
-@media (max-width: 840px) {
+@media (max-width: 840px) and (min-width: 380px) {
 
     .mid .title {
         padding: 10px;
@@ -306,6 +306,122 @@
         float: right;
         background: #FFC81E;
         width: 150px;
+    }
+
+    .mid .review_card {
+        margin: 7px auto;
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;
+        background: #f9f9f9;
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
+    }
+
+    .mid .review_card:last-of-type {
+        margin-bottom: 20px;
+    }
+
+    .mid .review_card .r_name h2 {
+        font-size: 18px;
+    }
+
+    .mid .review_card .r_content .c_title i {
+        font-size: 20px;
+        color: #FFC81E;
+    }
+
+    .mid .review_card .r_content .c_title p {
+        display: inline-block;
+    }
+
+    .mid .review_card .r_content .c_title h4 {
+        display: inline-block;
+        padding-left: 30px;
+    }
+
+    .mid .review_card .r_content .c_content {
+        margin: 50px auto 0;
+        padding-bottom: 30px;
+        width: 80%;
+    }
+
+    .mid .review_card .line {
+        clear: both;
+    }
+}
+
+@media (max-width: 380px) {
+
+    .mid .title {
+        padding: 10px;
+        background: #FFC81E;
+        margin-bottom: 3px;
+    }
+
+    .mid .title h2 {
+        margin-left: 50px;
+    }
+
+    .mid .review_login {
+        clear: both;
+        max-width: 900px;
+        margin: 15px auto 30px auto;
+        padding: 100px 15px 100px 0;
+        background: #f9f9f9;
+        text-align: center;
+    }
+
+    .mid .review_login a {
+        color: #ffc91d;
+    }
+
+    .mid .review_login a:hover {
+        color: red;
+    }
+
+    .mid .review_write {
+        clear: both;
+        max-width: 900px;
+        margin: 15px auto 30px auto;
+        padding: 10px 15px 10px 0;
+        background: #f9f9f9;
+    }
+
+    .mid .review_write h3 {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        font-size: 25px;
+    }
+
+    .mid .review_write table {
+        width: 100%;
+        margin-left: 5px;
+    }
+
+    .mid .review_write table th {
+        display: none;
+    }
+
+    .mid .review_write table td input,
+    .mid .review_write table td textarea {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 5px;
+    }
+
+    .mid .review_write table td select {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .mid .review_write table td .submit {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        margin-top: 20px;
+        background: #FFC81E;
+        width: 100%;
+        text-align: center;
     }
 
     .mid .review_card {

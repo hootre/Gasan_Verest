@@ -10,10 +10,24 @@ function initMap() {
     });
 }
 
+$(function () {
+    var toggle = 0;
+    $(".toggle_menu h3").click(function () {
+        if (toggle == 0) {
+            $(".mainmenu .menu_top").css("display", "block");
+            toggle = 1;
+        } else if (toggle == 1) {
+            $(".mainmenu .menu_top").css("display", "none");
+            toggle = 0;
+        }
+
+    });
+});
+
 $(document).ready(function() {
     var autoplaySlider = $('#lightSlider').lightSlider({
         auto:false,
-        loop:true,
+        loop:false,
         pauseOnHover: true,
         item: 4,
         responsive: [{

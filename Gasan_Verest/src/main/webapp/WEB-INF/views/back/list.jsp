@@ -8,20 +8,15 @@
 <meta charset="UTF-8">
 <title>REVIEWS</title>
 <style type="text/css">
+	<%@ include file="../css/style.css"%>
 	<%@ include file="../css/header.css"%>
 	<%@ include file="../css/review.css"%>
 	<%@ include file="../css/footer.css"%>
 </style>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css"
-	href="http://kenwheeler.github.io/slick/slick/slick.css" />
-<link rel="stylesheet" type="text/css"
-	href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
 <script type="text/javascript"
 	src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"
-	src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
 </head>
 <script type='text/javaScript'>
     // textarea 줄바꿈 제한
@@ -86,11 +81,11 @@
 							<tr>
 								<th>별점</th>
 								<td><select name="b_like" id="rgood">
-										<option value="1">★ 매우불만족</option>
-										<option value="2">★★ 불만족</option>
-										<option value="3">★★★ 보통</option>
-										<option value="4">★★★★ 만족</option>
 										<option value="5">★★★★★ 매우만족</option>
+                            			<option value="4">★★★★ 만족</option>
+			                            <option value="3">★★★ 보통</option>
+			                            <option value="2">★★ 불만족</option>
+			                            <option value="1">★ 매우불만족</option>
 								</select><input type="submit" class="submit"
 									value="작성하기"></td>
 							</tr>

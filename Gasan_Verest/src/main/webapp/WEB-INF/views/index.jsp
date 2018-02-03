@@ -23,7 +23,6 @@
 <title>Verest</title>
 </head>
 <script>
-<%@ include file="js/main.js"%>
 <%@ include file="js/lightslider.js"%>
 </script>
 <body>

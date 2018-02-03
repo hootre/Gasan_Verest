@@ -155,7 +155,7 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 800px) and (min-width: 610px) {
     .mid .title {
         padding: 10px;
         background: #FFC81E;
@@ -225,6 +225,102 @@
         text-align: center;
         margin-top: 45%;
         font-size: 21px;
+        opacity: 0;
+        transition: opacity 0.7s;
+        color: #fff;
+    }
+
+}
+
+@media (max-width: 610px) and (min-width: 300px) {
+
+    .mid .title {
+        padding: 10px;
+        background: #FFC81E;
+        margin-bottom: 3px;
+    }
+
+    .mid .title h2 {
+        margin-left: 50px;
+    }
+
+    .mid .content {
+        background: #eeeeee;
+    }
+
+    .mid .content .img {
+        position: relative;
+        float: left;
+        width: 49.9%;
+        padding-left: 3px;
+    }
+
+    .mid .content .img img {
+        width: 100%;
+    }
+
+    .mid .content .grey {
+        position: absolute;
+        top: 0px;
+        background: rgba(0, 0, 0, 0);
+        transition: all 0.5s;
+        width: 98.8%;
+        height: 97.5%;
+        cursor: pointer;
+    }
+
+    .mid .content .img .grey h3 {
+        text-align: center;
+        margin-top: 30%;
+        font-size: 17px;
+        opacity: 0;
+        transition: opacity 0.7s;
+        color: #fff;
+    }
+
+}
+
+@media (max-width: 300px) {
+
+    .mid .title {
+        padding: 10px;
+        background: #FFC81E;
+        margin-bottom: 3px;
+    }
+
+    .mid .title h2 {
+        margin-left: 50px;
+    }
+
+    .mid .content {
+        background: #eeeeee;
+    }
+
+    .mid .content .img {
+        position: relative;
+        float: left;
+        width: 99%;
+        padding-left: 3px;
+    }
+
+    .mid .content .img img {
+        width: 100%;
+    }
+
+    .mid .content .grey {
+        position: absolute;
+        top: 0px;
+        background: rgba(0, 0, 0, 0);
+        transition: all 0.5s;
+        width: 98.4%;
+        height: 97.5%;
+        cursor: pointer;
+    }
+
+    .mid .content .img .grey h3 {
+        text-align: center;
+        font-size: 17px;
+        margin-top: 30%;
         opacity: 0;
         transition: opacity 0.7s;
         color: #fff;

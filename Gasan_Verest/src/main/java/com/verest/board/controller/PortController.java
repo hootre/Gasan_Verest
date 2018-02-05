@@ -56,10 +56,16 @@ public class PortController {
 		String v_email = this.getPrincipal();
 		UserInfo item = userInfoService.detail(v_email);
 
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
+		
 		model.addAttribute("writer", item.getV_id());
 		model.addAttribute("email", item.getV_email());
 
-		return "port/new";
+		return "admin/adminportfolio";
 	}
 
 	// 글 작성 후, 글 목록 화면으로 이동
@@ -137,6 +143,12 @@ public class PortController {
 					throws CommonException, Exception {
 		Port port = portService.detail(no);
 
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
+		
 		String filename = port.getAttachmentImg();
 		if (filename != null && !filename.trim().isEmpty()) {
 			filename = URLDecoder.decode(filename, "UTF-8");

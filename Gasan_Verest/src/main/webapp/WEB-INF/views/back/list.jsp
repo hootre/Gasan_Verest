@@ -70,13 +70,13 @@
 							<tr>
 								<th>제목</th>
 								<td><input type="text" id="title"placeholder="제목" maxlength="15"
-									name="title" /></td>
+									name="title" required/></td>
 							</tr>
 							<tr>
 								<th>내용</th>
 								<td><textarea id="txt" placeholder="내용"
 										style="resize: none;" name="content"  cols="30"
-										rows="5" maxlength="50"></textarea></td>
+										rows="5" maxlength="50" required></textarea></td>
 							</tr>
 							<tr>
 								<th>별점</th>

@@ -13,7 +13,7 @@
 <body>
 <div class="login_container">
     <div class="box">
-        <a href="#"><div class="logo"><img src="<c:url value="/upload/main/logo.png"/>" ></div></a>
+        <a href="<c:url value="/"/>"><div class="logo"><img src="<c:url value="/upload/main/logo.png"/>" ></div></a>
         <form class="login_form" action="<c:url value="/login-processing"/>" method="post">
         <c:if test="${ param.action == 'error' }">
 			<script>
@@ -21,7 +21,7 @@
 			</script>
 		</c:if>
             <div class="title">로그인</div>
-            <input class="input" type="email" name="v_email" placeholder="email" required>
+            <input class="input" type="email" name="v_email" placeholder="email" style="ime-mode:inactive" required>
             <input class="input" type="password" name="v_password" placeholder="password" required>
             <input class="input" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             <input class="submit" type="submit" value="로그인">

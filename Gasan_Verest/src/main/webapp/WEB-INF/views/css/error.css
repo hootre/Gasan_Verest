@@ -1,0 +1,48 @@
+.error_container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background: #f8f8f8;
+    overflow: hidden;
+}
+
+.box {
+    width: 370px;
+    height: 564px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    margin-top: -282px;
+    margin-left: -177px;
+}
+
+.box .logo {
+    width: 128px;
+    height: 65px;
+}
+
+.box .logo img {
+    width: 350px;
+    height: 175px;
+}
+
+
+.message {
+    padding-top: 100px;
+    width: 290px;
+    margin-left: 31px;
+    text-align: center;
+}
+
+.message h1 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.message h3 {
+    margin-top: 30px;
+    background: #ffc91d;
+}

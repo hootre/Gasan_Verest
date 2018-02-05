@@ -1,0 +1,37 @@
+.mid .title {
+    padding: 10px;
+    background: #FFC81E;
+    margin-bottom: 3px;
+}
+
+.mid .title h2 {
+    margin-left: 50px;
+}
+
+.mid .m_top {
+    padding: 30px;
+}
+
+.mid .user_list {
+    clear: both;
+    max-width: 1100px;
+    margin: 50px auto 30px auto;
+}
+
+.mid .user_list table {
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+.mid .user_list .list_top {
+    background: #FFC81E;
+}
+
+.mid .user_list td {
+    padding: 7px;
+}
+
+.mid .user_list tr:nth-child(2n) {
+    background: #e6e6e6;
+}

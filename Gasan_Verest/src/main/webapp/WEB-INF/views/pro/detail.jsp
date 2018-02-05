@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>PORJECT</title>
     <style type="text/css">
 		<%@ include file="../css/header.css"%>

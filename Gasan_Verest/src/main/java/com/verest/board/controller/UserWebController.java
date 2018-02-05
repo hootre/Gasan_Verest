@@ -45,6 +45,12 @@ public class UserWebController {
 	@Autowired
 	private PasswordEncoder encoder;
 
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String error(Model model) {
+
+		return "/error";
+	}
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage(Model model) {
 
@@ -120,20 +126,6 @@ public class UserWebController {
 
 		return "redirect:/login?action=logout";
 	}
-	
-		// 사용자 수정하기 화면
-		@RequestMapping(value = "/user/modify", method = RequestMethod.GET)
-		public String modify(Model model) throws CommonException {
-
-			UserInfo item = null;
-
-			String email = this.getPrincipal();
-			item = userInfoService.detail(email);
-
-			model.addAttribute("item", item);
-
-			return "user/modify";
-		}
 		
 		// 사용자 수정 후, 사용자 설정 화면으로 이동
 		@RequestMapping(value = "/user/modify", method = RequestMethod.POST)
@@ -141,38 +133,37 @@ public class UserWebController {
 				Integer id,
 				String oldPassword,
 				String newPassword,
-				String name)
+				String okPassword)
 						throws CommonException,Exception {
 
+			if (!newPassword.equals(okPassword)) {
+				return "redirect:/user/mypage?action=notok-password";
+			}
+			
 			// 기존 비밀번호 검사 후 수정할지 결정
 			boolean isMatched = userInfoService.isPasswordMatched(id, oldPassword);
 			if (!isMatched) {
-				return "redirect:/modify?action=error-password";
+				return "redirect:/user/mypage?action=error-password";
 			}
 
 			UserInfo user = new UserInfo();
 			user.setV_id(id);
 			user.setV_password(encoder.encode(newPassword));
-			user.setV_name(name);
 			
 			userInfoService.modify(user);
 
-			return "redirect:/user/mypage";
-		}
-	
-		@RequestMapping(value = "/user/delete" , method = RequestMethod.GET)
-		public String delete() {
-			return "user/delete";
+			return "redirect:/user/mypage?action=ok-modify";
 		}
 
 		@RequestMapping(value = "/user/delete" , method = RequestMethod.POST)
 		public String delete(HttpServletRequest request, HttpServletResponse response, String password) throws CommonException {
 			String email = this.getPrincipal();
 			UserInfo item = userInfoService.detail(email);
+			
 			// 기존 비밀번호 검사 후 수정할지 결정
 			boolean isMatched = userInfoService.isPasswordMatched(item.getV_id(), password);
 			if (!isMatched) {
-				return "redirect:/user/delete?action=error-password";
+				return "redirect:/user/mypage?action=delete-password";
 			}
 			userInfoService.delete(email, password);
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();

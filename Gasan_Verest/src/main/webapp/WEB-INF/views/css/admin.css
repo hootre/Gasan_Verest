@@ -1,0 +1,81 @@
+.footer {
+    margin-top: 150px;
+}
+
+.mid .title {
+    padding: 10px;
+    background: #FFC81E;
+    margin-bottom: 3px;
+}
+
+.mid .title h2 {
+    margin-left: 50px;
+}
+
+.mid .m_top {
+    padding: 30px;
+}
+
+.m_top .write {
+    margin-top: 30px;
+    width: 100%;
+}
+
+.m_top .write li {
+    float: left;
+    padding: 20px 30px 20px 30px;
+    background: #FFC81E;
+    margin-right: 40px;
+}
+
+.m_top .write li:hover {
+    background: #ffd24c;
+}
+
+.mid .review_write {
+    clear: both;
+    max-width: 1100px;
+    margin: 100px auto 30px auto;
+    padding: 10px 15px 10px 0;
+    background: #f9f9f9;
+}
+
+.mid .review_write h3 {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.mid .review_write table {
+    width: 100%;
+}
+
+.mid .review_write table td input,
+.mid .review_write table td textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 3px;
+}
+
+.mid .review_write table td .submit {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    float: right;
+    background: #FFC81E;
+    width: 200px;
+}
+
+.mid .review_write table td .reset {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    float: right;
+    background: #FFC81E;
+    width: 150px;
+    margin-right: 15px;
+}
+
+.mid .review_write table td .price {
+    max-width: 200px;
+}

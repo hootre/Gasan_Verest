@@ -55,11 +55,15 @@ public class SaleController {
 
 		String v_email = this.getPrincipal();
 		UserInfo item = userInfoService.detail(v_email);
-
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
 		model.addAttribute("writer", item.getV_id());
 		model.addAttribute("email", item.getV_email());
 
-		return "sale/new";
+		return "admin/adminsale";
 	}
 
 	// 글 작성 후, 글 목록 화면으로 이동

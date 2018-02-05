@@ -55,11 +55,15 @@ public class ProController {
 
 		String v_email = this.getPrincipal();
 		UserInfo item = userInfoService.detail(v_email);
-
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
 		model.addAttribute("writer", item.getV_id());
 		model.addAttribute("email", item.getV_email());
 
-		return "pro/new";
+		return "admin/adminproject";
 	}
 
 	// 글 작성 후, 글 목록 화면으로 이동
@@ -135,6 +139,12 @@ public class ProController {
 					throws CommonException, Exception {
 		Project pro = proService.detail(no);
 
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
+		
 		String filename = pro.getAttachmentImg();
 		if (filename != null && !filename.trim().isEmpty()) {
 			filename = URLDecoder.decode(filename, "UTF-8");

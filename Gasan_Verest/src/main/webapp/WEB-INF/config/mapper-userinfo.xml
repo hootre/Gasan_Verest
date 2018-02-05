@@ -70,7 +70,7 @@
 	
 	<update id="update" parameterType="UserInfo">
 		UPDATE userinfo 
-		SET v_name = #{v_name}, v_password = #{v_password}, v_regdate = SYSDATE
+		SET v_password = #{v_password}, v_regdate = SYSDATE
 		WHERE v_id = #{v_id}
 	</update>
 	

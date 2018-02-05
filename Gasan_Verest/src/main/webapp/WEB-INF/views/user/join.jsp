@@ -16,7 +16,7 @@
         <div class="logo"><a href="<c:url value="/"/>"><img src="<c:url value="/upload/main/logo.png"/>"></a></div>
         <form class="login_form" action="#" method="post">
             <h1 class="title">회원가입</h1>
-            <div class="textbox">이메일 <span>*</span><input type="email" name="email" class="input" placeholder="email" required></div>
+            <div class="textbox">이메일 <span>*</span><input type="email" style="ime-mode:inactive" name="email" class="input" placeholder="email" required></div>
             <div class="textbox">비밀번호 <span>*</span><input type="password" name="password" class="input" placeholder="password" required></div>
             <div class="textbox">이름 <span>*</span><input type="text" name="name" class="input" placeholder="이름" required></div>
             <input class="input" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

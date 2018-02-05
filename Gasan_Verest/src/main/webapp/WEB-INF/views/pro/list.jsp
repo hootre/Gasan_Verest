@@ -4,9 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <script src="http://maps.googleapis.com/maps/api/js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>PROJECT</title>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="http://kenwheeler.github.io/slick/slick/slick-theme.css" />
@@ -32,9 +31,6 @@
         });
     });
 
-</script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoyWSy4PHBpSrKbkCSYQj3jI_CG3RXQ3c&callback=initMap">
 </script>
 <body>
 

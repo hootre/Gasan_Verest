@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>수정하기</title>
+<title>PORTFOLIO</title>
 </head>
 <body>
 	<h1>수정하기</h1>

@@ -25,7 +25,7 @@
 		</sec:authorize>
 		<sec:authorize access="hasRole('ADMIN')">
 				<p><span>${ userInfo.v_name }</span>님 안녕하세요<br /></p>
-			  <a href='<c:url value="/admin"></c:url>'>관리자 페이지</a>
+			  <a href='<c:url value='/pro/new'/>'>관리자 페이지</a>
 		</sec:authorize>
     </div>
     <div class="toggle_menu"><h3>MENU</h3></div>
@@ -35,6 +35,7 @@
         <li class="nav_menu"><a href="<c:url value="/port/list"/>"><h4>PORTFOLIO</h4></a></li>
         <li class="nav_menu"><a href="<c:url value="/sale/list"/>"><h4>SALE</h4></a></li>
         <li class="nav_menu"><a href="<c:url value="/back/list"/>"><h4>REVIEW</h4></a></li>
+        <li class="nav_menu"><a href="<c:url value="/logout"/>"><h4>LOGOUT</h4></a></li>
     </ul>
 </div>
 </body>

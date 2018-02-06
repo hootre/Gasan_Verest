@@ -28,6 +28,10 @@
     background: #FFC81E;
 }
 
+.mid .user_list .list_top td {
+    padding: 10px;
+}
+
 .mid .user_list td {
     padding: 7px;
 }

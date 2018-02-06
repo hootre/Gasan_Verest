@@ -50,6 +50,19 @@ public class PortDaoImpl implements PortDao {
 	}
 
 	@Override
+	public Port selectType(String p_type) throws CommonException {
+		Port port = null;
+		try {
+			port = sqlSession.selectOne(MAPPER_NAMESPACE + ".selectByType", p_type);
+			
+		} catch (Exception e) {
+			logger.debug(e.getMessage());
+			throw new CommonException("PORT 07: 포트 분류 게시물 검색 실패");
+		}
+		return port;
+	}
+	
+	@Override
 	public List<Port> selectAll() throws CommonException {
 		List<Port> list = null;
 		try {

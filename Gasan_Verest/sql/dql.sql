@@ -1,15 +1,11 @@
 -- test		
 
-		SELECT b.back_no, b.writer, b.content, b.title, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
-		FROM userinfo u, backsight b
-		WHERE b.writer = u.v_id  ORDER BY b.back_no DESC;
-		
-		SELECT b.back_no, b.writer, b.content, b.title, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
-		FROM userinfo u, backsight b
-		WHERE b.writer = u.v_id  ORDER BY b.back_no DESC;
+		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
+		FROM userinfo u, port p
+		WHERE p.writer = u.v_id AND p.p_type = 'HER Series';
 
 -- 회원관련 
-SELECT * FROM userinfo;
+SELECT * FROM port;
 SELECT * FROM usertype;
 SELECT * FROM userinfotype;
 

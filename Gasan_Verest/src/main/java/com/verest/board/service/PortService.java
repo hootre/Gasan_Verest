@@ -12,6 +12,9 @@ public interface PortService {
 
 	// 게시물 하나를 가져온다.
 	public Port detail(Integer no) throws CommonException;
+	
+	// 분류 게시물 하나를 가져온다.
+	public Port detailType(String p_type) throws CommonException;
 
 	// 게시물 전체를 가져온다.
 	public List<Port> list() throws CommonException;

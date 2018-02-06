@@ -13,9 +13,12 @@
     <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
     <style type="text/css">
 		<%@ include file="../css/header.css"%>
-		<%@ include file="../css/project.css"%>
+		<%@ include file="../css/portfolio.css"%>
 		<%@ include file="../css/footer.css"%>
 	</style>
+	<script>
+	<%@ include file="../js/list.js"%>
+	</script>
 </head>
 <script>
     $(function () {
@@ -35,25 +38,56 @@
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
-    <div class="mid">
+   	 <div class="mid">
         <div class="title">
-            <h2>PROJECT</h2>
+            <h2>프로젝트</h2>
         </div>
+        <ul class="category">
+            <li title="all" style="color: #fff;">ALL</li>
+            <li title="cate1">HER Series</li>
+            <li title="cate2">360 VR Works</li>
+            <li title="cate3">3D VR Dance</li>
+            <li title="cate4">360 VR with Spatial Audio</li>
+            <li title="cate5">Pocket Girls</li>
+            <li title="cate6">인기 360 VR</li>
+            <li title="cate7">2D M/V&Video works</li>
+        </ul>
         <div class="content">
-	        <c:forEach items="${ list }" var="item">
-	        		<div class="img">
-		                <img src="<c:url value="/upload/port/${ item.attachmentImg}"/>">
+             <c:forEach items="${ list }" var="item">
 		                <a href="<c:url value='/port/detail?no=${ item.no }'/>">
-			                <div class="grey">
-			                    <h3>${ item.title }<br />
-			                    ${ item.p_type}</h3>
-			                </div>
-		                </a>
-	            </div>
+			                <div class="list <c:choose>
+									<c:when test="${ item.p_type eq 'HER Series'}">
+								        cate1
+								    </c:when>
+									<c:when test="${ item.p_type eq '360 VR Works'}">
+								        cate2
+								    </c:when>
+									<c:when test="${ item.p_type eq '3D VR Dance'}">
+								          cate3
+								    </c:when>
+									<c:when test="${ item.p_type eq '360 VR with Spatial Audio'}">
+								          cate4
+								    </c:when>
+									<c:when test="${ item.p_type eq 'Pocket Girls'}">
+								           cate5
+								    </c:when>
+								    <c:when test="${ item.p_type eq '인기 360 VR'}">
+								           cate6
+								    </c:when>
+								    <c:when test="${ item.p_type eq '2D M/V&Video works'}">
+								           cate7
+								    </c:when>
+									<c:otherwise>
+								          
+								    </c:otherwise>
+								</c:choose>">
+	                			<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>"  alt="">
+	                			<p>${item.title }</p>
+	            			</div>
+	            		</a>
 	        </c:forEach>
-   	 	</div>
-   	  </div>
-   	  
+        </div>
+    </div>
 <jsp:include page="../footer.jsp"></jsp:include>
 </div>
 </body>

@@ -64,6 +64,7 @@ public class PortController {
 		
 		model.addAttribute("writer", item.getV_id());
 		model.addAttribute("email", item.getV_email());
+		model.addAttribute("name", item.getV_name());
 
 		return "admin/adminportfolio";
 	}
@@ -179,10 +180,13 @@ public class PortController {
 	public String modify(Model model,
 			@RequestParam(value = "no", required = true) Integer no)
 					throws CommonException {
-
-		Port port = null;
-
-		port = portService.detail(no);
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
+		
+		Port port = portService.detail(no);
 
 		model.addAttribute("item", port);
 
@@ -192,7 +196,7 @@ public class PortController {
 	// 글 수정 후, 글 목록 화면으로 이동
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(HttpServletRequest request,
-			int no,
+			Integer no,
 			String title,
 			String content,
 			String attachment,
@@ -201,14 +205,12 @@ public class PortController {
 			String password)
 					throws CommonException, Exception {
 
-
-
 		// 비밀번호 비교해서 같지 않다면 오류메시지 출력
 		boolean isMatched = userInfoService.isPortMatched(no, password);
 		if (!isMatched) {
 			return "redirect:/port/modify?no=" + no + "&action=error-password";
 		}
-
+		
 		Port port = new Port();
 		port.setNo(no);
 		port.setTitle(title);
@@ -220,9 +222,9 @@ public class PortController {
 
 		String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
 		String originalName = attachmentImg.getOriginalFilename();
-
-		// attachment 객체를 이용하여, 파일을 서버에 전송
-		if (attachmentImg != null && !attachmentImg.isEmpty()) {
+		
+	
+		 if (attachmentImg != null && !attachmentImg.isEmpty()) {
 			int idx = originalName.lastIndexOf(".");
 			String name = originalName.substring(0, idx);
 			String ext = originalName.substring(idx, originalName.length());
@@ -238,7 +240,6 @@ public class PortController {
 		if (oldFilename != null && !oldFilename.trim().isEmpty()) {
 			fileService.remove(request, UPLOAD_FOLDER, oldFilename);
 		}
-
 		portService.modify(port);
 
 

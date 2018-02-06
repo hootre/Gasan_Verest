@@ -30,6 +30,12 @@ public class PortServiceImpl implements PortService {
 		return dao.select(no);
 		
 	}
+	
+	@Override
+	public Port detailType(String p_type) throws CommonException {
+		return dao.selectType(p_type);
+		
+	}
 
 	@Override
 	public List<Port> list() throws CommonException {

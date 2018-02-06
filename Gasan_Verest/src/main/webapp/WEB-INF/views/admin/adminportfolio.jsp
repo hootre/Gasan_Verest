@@ -28,11 +28,15 @@ function readURL(input) {
 <div class="container">
     <div class="mid">
         <div class="title">
-            <h2>프토폴리오 글쓰기</h2>
+            <h2>포트폴리오 글쓰기</h2>
         </div>
         <div class="review_write">
             <form id="fmField" name="fmField" action="<c:url value='/port/new'/>" onsubmit="return checkForm();" method="post" enctype="multipart/form-data">
                 <table>
+                	<tr>
+                        <th>작성자</th>
+                        <td>${name }관리자</td>
+                    </tr>
                     <tr>
                         <th>제목</th>
                         <td><input type="text"  name="title" placeholder="제목"  maxlength="15" required></td>

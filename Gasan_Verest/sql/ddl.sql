@@ -76,7 +76,7 @@ CREATE TABLE port (
    attachment	VARCHAR2(255),
    attachmentImg	VARCHAR2(255),
    views NUMBER NOT NULL,
-   p_type VARCHAR2(20) NOT NULL,
+   p_type VARCHAR2(50) NOT NULL,
    CONSTRAINT pk_port PRIMARY KEY (no),
    CONSTRAINT fk_port_writer FOREIGN KEY (writer) REFERENCES userinfo(v_id)
 );

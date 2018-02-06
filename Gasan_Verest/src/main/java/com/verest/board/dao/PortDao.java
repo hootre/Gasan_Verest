@@ -12,6 +12,9 @@ public interface PortDao {
 
 	// 포트폴리오 글 하나 가져오기
 	public Port select(Integer no) throws CommonException;
+	
+	// 포트폴리오 분류 글 가져오기
+	public Port selectType(String p_type) throws CommonException;
 
 	// 전체 포트 개수 가져오기
 	public List<Port> selectAll() throws CommonException;

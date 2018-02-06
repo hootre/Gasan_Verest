@@ -14,10 +14,10 @@ $(function () {
     var toggle = 0;
     $(".toggle_menu h3").click(function () {
         if (toggle == 0) {
-            $(".mainmenu .menu_top").css("display", "block");
+            $(".mainmenu .menu_top").slideDown(400);
             toggle = 1;
         } else if (toggle == 1) {
-            $(".mainmenu .menu_top").css("display", "none");
+            $(".mainmenu .menu_top").slideUp(400);
             toggle = 0;
         }
 
@@ -25,7 +25,7 @@ $(function () {
 });
 
 $(document).ready(function() {
-    var autoplaySlider = $('#lightSlider').lightSlider({
+    var autoplaySlider = $('.lightSlider').lightSlider({
         auto:false,
         loop:false,
         pauseOnHover: true,
@@ -52,30 +52,8 @@ $(document).ready(function() {
         }]
     });
 
-    var autoplaySlider2 = $('#lightSlider2').lightSlider({
-        auto:false,
-        loop:true,
-        pauseOnHover: true,
-        item: 4,
-        responsive: [{
-            breakpoint: 1067,
-            settings: {
-                item: 3,
-                slideMove: 1,
-                slideMargin: 6,
-            }
-        }, {
-            breakpoint: 681,
-            settings: {
-                item: 2,
-                slideMove: 1
-            }
-        }, {
-            breakpoint: 411,
-            settings: {
-                item: 1,
-                slideMove: 1
-            }
-        }]
-    });
+
+
+
+
 });

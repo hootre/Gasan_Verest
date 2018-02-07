@@ -33,9 +33,9 @@ public class BasController {
 
 
 	// 글 작성 화면
-	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public String newBoard(HttpServletRequest request,
-			Integer sale_no
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public String newBoard(Model model,
+			@RequestParam(value = "sale_no", required = true) Integer sale_no
 			) throws CommonException, Exception{
 		Basket bas = new Basket();
 		UserInfo user = userInfoService.detail(this.getPrincipal());

@@ -1,0 +1,112 @@
+@media (min-width: 800px) {
+
+    .mid .title {
+        padding: 10px;
+        background: #FFC81E;
+        margin-bottom: 3px;
+    }
+
+    .mid .title h2 {
+        margin-left: 50px;
+    }
+
+    .content {
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .content .list {
+        float: left;
+        width: 33.1%;
+        padding: 25px 15px;
+    }
+
+    .content .list img {
+        max-width: 100%;
+    }
+
+    .content .list img:hover {
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,.5);
+    }
+
+
+    .content .list p {
+        text-align: center;
+        border: 1px solid #aaa;
+    }
+
+    .content .list .sale_down {
+        float: left;
+        width: 50%;
+        font-size: 32.5px;
+        border-right: 0;
+        display: none;
+    }
+
+    .content .list .sale_cart {
+        float: right;
+        width: 50%;
+        font-size: 32.5px;
+        border-left: 0;
+        display: none;
+    }
+
+    .content .list .sale_down:hover,
+    .content .list .sale_cart:hover {
+        background: #ccc;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .mid .title {
+        padding: 10px;
+        background: #FFC81E;
+        margin-bottom: 3px;
+    }
+
+    .mid .title h2 {
+        margin-left: 50px;
+    }
+
+    .content {
+        margin: 0 auto;
+        width: 95%;
+    }
+
+    .content .list {
+        float: left;
+        width: 50%;
+        padding: 25px 15px 30px;
+    }
+
+    .content .list img {
+        max-width: 100%;
+    }
+
+    .content .list p {
+        text-align: center;
+        border: 1px solid #aaa;
+    }
+
+    .content .list .sale_down {
+        float: left;
+        width: 50%;
+        font-size: 32.5px;
+        border-right: 0;
+        display: none;
+    }
+
+    .content .list .sale_cart {
+        float: right;
+        width: 50%;
+        font-size: 32.5px;
+        border-left: 0;
+        display: none;
+    }
+
+    .content .list .sale_down:hover,
+    .content .list .sale_cart:hover {
+        background: #ccc;
+    }
+}

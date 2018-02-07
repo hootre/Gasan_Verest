@@ -6,10 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>PORTFOLIO</title>
     <style type="text/css">
+    	<%@ include file="../css/style.css"%>
 		<%@ include file="../css/header.css"%>
 		<%@ include file="../css/detail.css"%>
+		<%@ include file="../css/lightslider.css" %>
 		<%@ include file="../css/footer.css"%>
 	</style>
+	<script>
+		<%@ include file="../js/lightslider.js"%>
+	</script>
 </head>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
@@ -29,6 +34,37 @@
 			<a href="<c:url value='/port/modify?no=${ item.no }'/>">수정하기</a>
 			<a href="<c:url value='/port/remove?no=${ item.no }'/>">삭제하기</a>
         </div>
+        <div class="c_bottom">
+            <h3>PORTFOLIO</h3>
+            <div class="slide">
+                <ul class="content-slider lightSlider">
+                    <li>
+                        <h3>1</h3>
+                    </li>
+                    <li>
+                        <h3>2</h3>
+                    </li>
+                    <li>
+                        <h3>3</h3>
+                    </li>
+                    <li>
+                        <h3>4</h3>
+                    </li>
+                    <li>
+                        <h3>5</h3>
+                    </li>
+                    <li>
+                        <h3>6</h3>
+                    </li>
+                    <li>
+                        <h3>7</h3>
+                    </li>
+                    <li>
+                        <h3>8</h3>
+                    </li>
+                </ul>
+            </div>
+    </div>
     </div>
 	<jsp:include page="../footer.jsp"></jsp:include>
 </div>

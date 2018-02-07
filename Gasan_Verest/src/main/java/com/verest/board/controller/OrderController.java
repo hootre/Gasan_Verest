@@ -36,7 +36,7 @@ public class OrderController {
 	@Autowired
 	private SaleService SaleService;
 
-/*	// 글 작성 화면
+	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newBoard(Model model,
 			@RequestParam(value = "sale_no", required = true) Integer sale_no) {
@@ -51,7 +51,7 @@ public class OrderController {
 		model.addAttribute("item", sale);
 
 		return "order/Confirm";
-	}*/
+	}
 	
 	// 글 작성 화면
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
@@ -62,23 +62,6 @@ public class OrderController {
 		model.addAttribute("item", sale);
 
 		return "order/Confirm";
-	}
-	
-	// 글 작성 화면
-	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public String newBoard(Model model, HttpServletRequest request,
-			Integer sale_no
-			) throws CommonException, Exception{
-		Order_list ord = new Order_list();
-		UserInfo user = userInfoService.detail(this.getPrincipal());
-		ord.setV_id(user.getV_id());
-		ord.setSale_no(sale_no);
-		OrdService.newBoard(ord);
-
-		Sale sale = SaleService.detail(sale_no);
-		model.addAttribute("item", sale);
-		
-		return "redirect:/order/detail?sale_no=" + sale_no + "&action=neword";
 	}
 	
 	// 글 목록 화면

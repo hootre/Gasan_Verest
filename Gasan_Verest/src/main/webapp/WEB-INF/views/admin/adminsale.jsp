@@ -34,6 +34,10 @@ function readURL(input) {
             <form id="fmField" name="fmField" action="<c:url value='/sale/new'/>" onsubmit="return checkForm();" method="post" enctype="multipart/form-data">
                 <table>
                     <tr>
+                        <th>작성자</th>
+                        <td>${userInfo.v_name }관리자</td>
+                    </tr>
+                    <tr>
                         <th>제목</th>
                         <td><input type="text"  name="title" placeholder="제목"  maxlength="15" required></td>
                     </tr>
@@ -47,13 +51,16 @@ function readURL(input) {
                     </tr>
                     <tr>
                         <th>첨부이미지</th>
-                        <td><input class="file"  name="attachmentImg" type="file"  multiple="multiple" accept=".gif, .jpg, .png" required></td>
+                        <td>
+                        <input class="file"  name="attachmentImg" type="file"  onchange="readURL(this)"  multiple="multiple" accept=".gif, .jpg, .png" required>
+                        <img id="blah" src="<c:url value="/upload/main/no_image.jpg"/>" alt="NOT IMG" />
+                        </td>
                     </tr>
                     <tr>
                         <th>가격</th>
                         <td>
                             <input class="price" name="price" type="number" min="1000" required>
-                            <input type="hidden" name="writer" value="${ writer }"> <input
+                            <input type="hidden" name="writer" value="${ userInfo.v_id }"> <input
                                 type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <input type="submit" class="submit" value="작성하기">
                             <input class="reset" type="reset">

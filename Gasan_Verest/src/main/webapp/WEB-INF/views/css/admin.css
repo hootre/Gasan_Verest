@@ -56,9 +56,6 @@
     padding: 5px;
     margin-bottom: 3px;
 }
-.mid .review_write table td span {
-	color: #000;
-}
 .mid .review_write table td .submit {
     border: none;
     outline: none;
@@ -80,4 +77,14 @@
 
 .mid .review_write table td .price {
     max-width: 200px;
+}
+.mid .review_write table tr th{
+	padding: 15px 0;
+}
+.file{
+	margin-top: 20px;
+	padding-top: 10px;
+}
+#pwd{
+	width: 200px;
 }

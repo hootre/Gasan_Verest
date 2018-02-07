@@ -53,18 +53,11 @@ public class PortController {
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newBoard(Model model) {
 
-		String v_email = this.getPrincipal();
-		UserInfo item = userInfoService.detail(v_email);
-
 		UserInfo user  = null;
 		if (!(this.getPrincipal() == null)) {
 			user = userInfoService.detail(this.getPrincipal());
 			model.addAttribute("userInfo", user);
 		}
-		
-		model.addAttribute("writer", item.getV_id());
-		model.addAttribute("email", item.getV_email());
-		model.addAttribute("name", item.getV_name());
 
 		return "admin/adminportfolio";
 	}
@@ -235,11 +228,15 @@ public class PortController {
 			uploadFilename = URLEncoder.encode(uploadFilename, "UTF-8");
 			port.setAttachmentImg(uploadFilename);
 		}
-
-		String oldFilename = portService.detail(no).getAttachmentImg();
-		if (oldFilename != null && !oldFilename.trim().isEmpty()) {
-			fileService.remove(request, UPLOAD_FOLDER, oldFilename);
-		}
+		 Port fileitem = portService.detail(no);
+		 if (port.getAttachmentImg() == null) {
+			 port.setAttachmentImg(fileitem.getAttachmentImg());
+			}else {
+				String oldFilename = portService.detail(no).getAttachmentImg();
+				if (oldFilename != null && !oldFilename.trim().isEmpty()) {
+					fileService.remove(request, UPLOAD_FOLDER, oldFilename);
+				}
+			}
 		portService.modify(port);
 
 

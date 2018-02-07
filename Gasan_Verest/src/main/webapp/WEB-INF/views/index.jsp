@@ -6,12 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script src="http://maps.googleapis.com/maps/api/js"></script>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoyWSy4PHBpSrKbkCSYQj3jI_CG3RXQ3c&callback=initMap">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoyWSy4PHBpSrKbkCSYQj3jI_CG3RXQ3c&callback=initMap">
 </script>
 <style type="text/css">
 <%@ include file="css/style.css"%>
@@ -19,6 +17,7 @@
 <%@ include file="css/content.css" %>
 <%@ include file="css/footer.css" %>
 <%@ include file="css/lightslider.css" %>
+<%@ include file="css/question.css" %>
 </style>
 <title>Verest</title>
 </head>
@@ -28,6 +27,9 @@
 <body>
 	<c:if test="${ param.type == 'delete' }">
 		<script>alert("탈퇴완료")</script>
+	</c:if>
+	<c:if test="${ param.type == 'good' }">
+		<script>alert("문의가 성공적으로 작성되었습니다.")</script>
 	</c:if>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="container">

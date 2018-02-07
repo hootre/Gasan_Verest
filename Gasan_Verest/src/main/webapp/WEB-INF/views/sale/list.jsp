@@ -2,40 +2,45 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>글 목록</title>
+    <meta charset="UTF-8">
+    <title>Sale</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <style type="text/css">
+		<%@ include file="../css/header.css"%>
+		<%@ include file="../css/salelist.css"%>
+		<%@ include file="../css/footer.css"%>
+	</style>
+	<script>
+	<%@ include file="../js/salelist.js"%>
+	</script>
 </head>
-<body>
-	<h1>글 목록</h1>
-	<table border="1">
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>가격</th>
-			<th>내용</th>
-			<th>작성자</th>
-			<th>작성일</th>
-			<th>첨부파일</th>
-			<th>첨부이미지</th>
-			<th>조회수</th>
-		</tr>
-		<c:forEach items="${ list }" var="item">
-			<tr>
-				<td>${ item.no }</td>
-				<td><a href="<c:url value='/sale/detail?no=${ item.no}'/>">${ item.title}</a></td>
-				<td>${ item.price}</td>
-				<td>${ item.content}</td>
-				<td>${ item.userInfo.v_name}</td>
-				<td>${ item.regdate}</td>
-				<td>${ item.attachment}</td>
-				<td>${ item.attachmentImg}</td>
-				<td>${ item.views}</td>
-			</tr>
-		</c:forEach>
-	</table>
-	<a href='<c:url value='/sale/new'></c:url>'>글쓰기</a>
-	<a href='<c:url value='/'></c:url>'>메인으로 돌아가기</a>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+<jsp:include page="../header.jsp"></jsp:include>
+<div class="container">
+    <div class="mid">
+        <div class="title">
+            <h2>영상구매</h2>
+        </div>
+        <div class="content">
+			<c:forEach items="${ list }" var="item">
+	            <div class="list">
+	                <a href="<c:url value='/sale/detail?no=${ item.no}'/>"><img src="<c:url value="/upload/sale/${ item.attachmentImg}"/>" alt=""></a>
+	                <p class="list_content">${ item.title}<br> ${ item.price}원</p>
+	                <a href="<c:url value='/bas/new?sale_no=${item.no }'/>" class="sale_cart">
+	                    <p title="장바구니 추가"><i class="fa fa-shopping-cart"></i></p>
+	                </a>
+	                <a href="<c:url value='/order/new?sale_no=${item.no }'/>" class="sale_down">
+	                    <p title="구매하기"><i class="fa fa-download"></i></p>
+	                </a>
+	            </div>
+            </c:forEach>
+        </div>
+    </div>
+    <jsp:include page="../footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

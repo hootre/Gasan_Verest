@@ -12,75 +12,102 @@
             </div>
         </div>
     </div>
+            <div class="nav_top">
+    </div>
     <div class="content_mid">
-        <h2 class="c_title">POTFOLIO</h2>
+        <h2 class="c_title">HER Series</h2>
+        <div class="slide_line"></div>
         <div class="slide">
-            <div class="slick">
-            <ul id="lightSlider" class="content-slider lightSlider" style="">
-                <li class="" style="">
-                    <h3>1</h3>
-                </li>
-                <li class="" style="">
-                    <h3>2</h3>
-                </li>
-                <li class="" style="">
-                    <h3>3</h3>
-                </li>
-                <li class="" style="">
-                    <h3>4</h3>
-                </li>
-                <li class="" style="">
-                    <h3>5</h3>
-                </li>
-                <li class="" style="">
-                    <h3>6</h3>
-                </li>
-                <li class="" style="">
-                    <h3>7</h3>
-                </li>
-                <li class="" style="">
-                    <h3>8</h3>
-                </li>
+            <ul class="content-slider lightSlider" style="">
+            <c:forEach items="${ port }" var="item">
+            	<c:if test="${ item.p_type eq 'HER Series'}">
+            		<li>
+	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
+	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
+	                    	<p>${item.title}</p>
+	                    </a>
+                	</li>
+            	</c:if>
+			</c:forEach> 
             </ul>
-                <%-- <c:forEach items="${ port }" var="item">
-            		<c:if test="${ !empty item.attachmentImg }">
-                	<div class="img">
-                	<a href="<c:url value="/port/detail?no=${item.no }"/>">
-                		<img src="<c:url value="/upload/port/${item.attachmentImg }"/>">
-                	</a>
-                	</div>
-                	</c:if>
-				</c:forEach> --%>
-            </div>
         </div>
-        <h2 class="c_title">PROJECT</h2>
+        <h2 class="c_title">360 VR Works</h2>
+        <div class="slide_line"></div>
         <div class="slide">
-            <ul id="lightSlider2" class="content-slider lightSlider" style="">
-                <li class="" style="">
-                    <h3>1</h3>
-                </li>
-                <li class="" style="">
-                    <h3>2</h3>
-                </li>
-                <li class="" style="">
-                    <h3>3</h3>
-                </li>
-                <li class="" style="">
-                    <h3>4</h3>
-                </li>
-                <li class="" style="">
-                    <h3>5</h3>
-                </li>
-                <li class="" style="">
-                    <h3>6</h3>
-                </li>
-                <li class="" style="">
-                    <h3>7</h3>
-                </li>
-                <li class="" style="">
-                    <h3>8</h3>
-                </li>
+            <ul class="content-slider lightSlider" style="">
+            <c:forEach items="${ port }" var="item">
+            	<c:if test="${ item.p_type eq '360 VR Works'}">
+            		<li>
+	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
+	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
+	                    	<p>${item.title}</p>
+	                    </a>
+                	</li>
+            	</c:if>
+			</c:forEach> 
             </ul>
+        </div>
+        <h2 class="c_title">3D VR Dance</h2>
+        <div class="slide_line"></div>
+        <div class="slide">
+            <ul class="content-slider lightSlider" style="">
+            <c:forEach items="${ port }" var="item">
+            	<c:if test="${ item.p_type eq '3D VR Dance'}">
+            		<li>
+	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
+	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
+	                    	<p>${item.title}</p>
+	                    </a>
+                	</li>
+            	</c:if>
+			</c:forEach> 
+            </ul>
+        </div>
+        <h2 class="c_title">360 VR with Spatial Audio</h2>
+        <div class="slide_line"></div>
+        <div class="slide">
+            <ul class="content-slider lightSlider" style="">
+            <c:forEach items="${ port }" var="item">
+            	<c:if test="${ item.p_type eq '360 VR with Spatial Audio'}">
+            		<li>
+	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
+	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
+	                    	<p>${item.title}</p>
+	                    </a>
+                	</li>
+            	</c:if>
+			</c:forEach> 
+            </ul>
+        </div>
+    </div>
+        <div class="question">
+        <div class="box">
+            <form class="question_form" action="<c:url value='/que/new'/>" method="post">
+                <div class="title"><h2>문의하기</h2></div>
+                <input class="input" type="text" name="title" placeholder="제목" required>
+                <textarea name="content" class="area" placeholder="메세지" cols="30" rows="8"style="resize: none;" required></textarea>
+				<input type="hidden" name="writer" value="${ userInfo.v_id }">
+                <input class="input" type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                <input class="submit" type="submit" value="문의하기">
+            </form>
+        </div>
+    </div>
+    <div class="map_nav">
+        <div id="map"></div>
+        <div class="map_content">
+            <h2>찾아오시는 길</h2>
+            <h3>주소</h3>
+            <p> 서울특별시 성동구 마장동 782-4 <br> </p>
+            <h3>영업시간</h3>
+            <p>
+                월요일	오전 10:00~오후 7:00 <br>
+                화요일	오전 10:00~오후 7:00 <br>
+                수요일	오전 10:00~오후 7:00 <br>
+                목요일	오전 10:00~오후 7:00 <br>
+                금요일	오전 10:00~오후 7:00 <br>
+                토요일	휴무일 <br>
+                일요일	휴무일 <br>
+            </p>
         </div>
     </div>
    	<div id="map"></div>

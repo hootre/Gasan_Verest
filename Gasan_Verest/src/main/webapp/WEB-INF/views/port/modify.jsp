@@ -5,8 +5,9 @@
 <html lang="ko">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>ADMIN</title>
+    <title>PORT MODIFY</title>
     <style type="text/css">
+    	<%@ include file="../css/style.css"%>
 		<%@ include file="../css/header.css"%>
 		<%@ include file="../css/admin.css"%>
 		<%@ include file="../css/footer.css"%>
@@ -88,10 +89,17 @@
 								</c:if>>
 								2D M/V&Video works</option>
                             </select>
-                            <input type="hidden" name="writer" value="${ writer }"> <input
-                                type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                            <input type="submit" class="submit" value="작성하기">
-                            <input class="reset" type="reset">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호</th>
+                        <td>
+                        <input type="password" id="pwd"name="password"  required>
+                        <input type="hidden" name="writer" value="${ writer }"> 
+                        <input type="hidden" name="no" value="${ item.no }">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                        <input type="submit" class="submit" value="작성하기">
+                        <input class="reset" type="reset">
                         </td>
                     </tr>
                 </table>

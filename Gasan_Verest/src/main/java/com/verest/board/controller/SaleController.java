@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
+import com.verest.board.model.Port;
 import com.verest.board.model.Sale;
 import com.verest.board.service.FileService;
 import com.verest.board.service.SaleService;
@@ -53,15 +54,11 @@ public class SaleController {
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newBoard(Model model) {
 
-		String v_email = this.getPrincipal();
-		UserInfo item = userInfoService.detail(v_email);
 		UserInfo user  = null;
 		if (!(this.getPrincipal() == null)) {
 			user = userInfoService.detail(this.getPrincipal());
 			model.addAttribute("userInfo", user);
 		}
-		model.addAttribute("writer", item.getV_id());
-		model.addAttribute("email", item.getV_email());
 
 		return "admin/adminsale";
 	}
@@ -89,7 +86,7 @@ public class SaleController {
 		// 최상위 경로 밑에 upload 폴더의 경로를 가져온다.
 		String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
 		// MultipartFile 객체에서 파일명을 가져온다.
-		String originalName = attachmentImg.getOriginalFilename();
+		String originalName = attachmentImg.getOriginalFilename().replaceAll("\\p{Z}", "");
 
 		// upload 폴더가 없다면, upload 폴더 생성
 		File directory = new File(path);
@@ -220,10 +217,15 @@ public class SaleController {
 			sale.setAttachmentImg(uploadFilename);
 		}
 
-		String oldFilename = SaleService.detail(no).getAttachmentImg();
-		if (oldFilename != null && !oldFilename.trim().isEmpty()) {
-			fileService.remove(request, UPLOAD_FOLDER, oldFilename);
-		}
+		 Sale fileitem = SaleService.detail(no);
+		 if (sale.getAttachmentImg() == null) {
+			 sale.setAttachmentImg(fileitem.getAttachmentImg());
+			}else {
+				String oldFilename = SaleService.detail(no).getAttachmentImg();
+				if (oldFilename != null && !oldFilename.trim().isEmpty()) {
+					fileService.remove(request, UPLOAD_FOLDER, oldFilename);
+				}
+			}
 
 		SaleService.modify(sale);
 

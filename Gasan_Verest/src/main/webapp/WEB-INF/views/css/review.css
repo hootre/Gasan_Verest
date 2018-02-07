@@ -15,7 +15,8 @@
         max-width: 900px;
         margin: 15px auto 30px auto;
         padding: 100px 15px 100px 0;
-        background: #f9f9f9;
+        background: #fff;
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
         text-align: center;
     }
 
@@ -32,7 +33,8 @@
         max-width: 900px;
         margin: 15px auto 30px auto;
         padding: 10px 15px 10px 0;
-        background: #f9f9f9;
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
+        background: #fff;
     }
 
     .mid .review_write h3 {
@@ -66,7 +68,7 @@
         text-align: center;
         padding-right: 30px;
         padding-top: 20px;
-        background: #f9f9f9;
+        background: #fff;
         box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
     }
 
@@ -139,7 +141,8 @@
         max-width: 900px;
         margin: 15px auto 30px auto;
         padding: 100px 15px 100px 0;
-        background: #f9f9f9;
+        background: #fff;
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
         text-align: center;
     }
 
@@ -156,7 +159,8 @@
         max-width: 900px;
         margin: 15px auto 30px auto;
         padding: 10px 15px 10px 0;
-        background: #f9f9f9;
+        background: #fff;
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
     }
 
     .mid .review_write h3 {
@@ -190,7 +194,7 @@
         text-align: center;
         padding-right: 30px;
         padding-top: 20px;
-        background: #f9f9f9;
+        background: #fff;
         box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
     }
 
@@ -263,7 +267,8 @@
         max-width: 900px;
         margin: 15px auto 30px auto;
         padding: 100px 15px 100px 0;
-        background: #f9f9f9;
+        background: #fff;
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
         text-align: center;
     }
 
@@ -280,7 +285,8 @@
         max-width: 900px;
         margin: 15px auto 30px auto;
         padding: 10px 15px 10px 0;
-        background: #f9f9f9;
+        background: #fff;
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
     }
 
     .mid .review_write h3 {
@@ -313,7 +319,7 @@
         width: 100%;
         text-align: center;
         padding-top: 20px;
-        background: #f9f9f9;
+        background: #fff;
         box-shadow: 1px 2px 4px 0 rgba(0,0,0,.2);
     }
 

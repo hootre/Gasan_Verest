@@ -35,7 +35,7 @@ function readURL(input) {
                 <table>
                 	<tr>
                         <th>작성자</th>
-                        <td>${name }관리자</td>
+                        <td>${userInfo.v_name }관리자</td>
                     </tr>
                     <tr>
                         <th>제목</th>
@@ -51,7 +51,9 @@ function readURL(input) {
                     </tr>
                     <tr>
                         <th>첨부이미지</th>
-                        <td><input class="file"  name="attachmentImg" type="file"  multiple="multiple" accept=".gif, .jpg, .png" required></td>
+                        <td>
+                        <input class="file"  name="attachmentImg" type="file" onchange="readURL(this)"  multiple="multiple" accept=".gif, .jpg, .png" required>
+                        <img id="blah" src="<c:url value="/upload/main/no_image.jpg"/>" alt="NOT IMG" /></td>
                     </tr>
                     <tr>
                         <th>분류</th>
@@ -65,7 +67,7 @@ function readURL(input) {
                                 <option value="인기 360 VR">인기 360 VR</option>
                                 <option value="2D M/V&Video works">2D M/V&Video works</option>
                             </select>
-                            <input type="hidden" name="writer" value="${ writer }"> <input
+                            <input type="hidden" name="writer" value="${ userInfo.v_id }"> <input
                                 type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <input type="submit" class="submit" value="작성하기">
                             <input class="reset" type="reset">

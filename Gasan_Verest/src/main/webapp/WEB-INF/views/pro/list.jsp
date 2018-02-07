@@ -12,8 +12,9 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="http://kenwheeler.github.io/slick/slick/slick.min.js"></script>
     <style type="text/css">
+    	<%@ include file="../css/style.css"%>
 		<%@ include file="../css/header.css"%>
-		<%@ include file="../css/project.css"%>
+		<%@ include file="../css/portfolio.css"%>
 		<%@ include file="../css/footer.css"%>
 	</style>
 </head>
@@ -42,14 +43,12 @@
         </div>
         <div class="content">
 	        <c:forEach items="${ list }" var="item">
-	        		<div class="img">
-		                <img src="<c:url value="/upload/pro/${ item.attachmentImg}"/>">
 		                <a href="<c:url value='/pro/detail?no=${ item.no }'/>">
-			                <div class="grey">
-			                    <h3>${ item.title }</h3>
-			                </div>
-		                </a>
-	            </div>
+			                <div class="list">
+	                			<img src="<c:url value="/upload/pro/${ item.attachmentImg}"/>"  alt="">
+	                			<p>${item.title }</p>
+	            			</div>
+	            		</a>
 	        </c:forEach>
    	 	</div>
    	  </div>

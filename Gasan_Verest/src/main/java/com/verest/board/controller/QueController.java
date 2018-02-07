@@ -29,20 +29,6 @@ public class QueController {
 
 	@Autowired
 	private QuestionService QueService;
-
-
-	// 글 작성 화면
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
-	public String newBoard(Model model) {
-		
-		String v_email = this.getPrincipal();
-		UserInfo item = userInfoService.detail(v_email);
-		
-		model.addAttribute("writer", item.getV_id());
-		model.addAttribute("email", item.getV_email());
-
-		return "que/new";
-	}
 	
 	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
@@ -58,7 +44,7 @@ public class QueController {
 		
 		QueService.newBoard(que);
 		
-		return "redirect:/";
+		return "redirect:/?type=good";
 	}
 	
 	// 글 목록 화면

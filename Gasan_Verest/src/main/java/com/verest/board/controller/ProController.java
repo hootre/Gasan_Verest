@@ -52,16 +52,11 @@ public class ProController {
 	// 글 작성 화면
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String newBoard(Model model) {
-
-		String v_email = this.getPrincipal();
-		UserInfo item = userInfoService.detail(v_email);
 		UserInfo user  = null;
 		if (!(this.getPrincipal() == null)) {
 			user = userInfoService.detail(this.getPrincipal());
 			model.addAttribute("userInfo", user);
 		}
-		model.addAttribute("writer", item.getV_id());
-		model.addAttribute("email", item.getV_email());
 
 		return "admin/adminproject";
 	}
@@ -186,7 +181,7 @@ public class ProController {
 	// 글 수정 후, 글 목록 화면으로 이동
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(HttpServletRequest request,
-			int no,
+			Integer no,
 			String title,
 			String content,
 			String attachment,
@@ -199,7 +194,8 @@ public class ProController {
 		if (!isMatched) {
 			return "redirect:/pro/modify?no=" + no + "&action=error-password";
 		}
-
+		
+		
 		Project pro = new Project();
 		pro.setNo(no);
 		pro.setTitle(title);
@@ -223,12 +219,16 @@ public class ProController {
 			uploadFilename = URLEncoder.encode(uploadFilename, "UTF-8");
 			pro.setAttachmentImg(uploadFilename);
 		}
-
-		String oldFilename = proService.detail(no).getAttachmentImg();
-		if (oldFilename != null && !oldFilename.trim().isEmpty()) {
-			fileService.remove(request, UPLOAD_FOLDER, oldFilename);
+		Project fileitem =  proService.detail(no);
+		if (pro.getAttachmentImg() == null) {
+			pro.setAttachmentImg(fileitem.getAttachmentImg());
+		}else {
+			String oldFilename = proService.detail(no).getAttachmentImg();
+			if (oldFilename != null && !oldFilename.trim().isEmpty()) {
+				fileService.remove(request, UPLOAD_FOLDER, oldFilename);
+			}
 		}
-
+		
 		proService.modify(pro);
 
 

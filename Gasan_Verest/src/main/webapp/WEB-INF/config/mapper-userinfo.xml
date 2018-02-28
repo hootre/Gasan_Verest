@@ -26,7 +26,7 @@
 	</resultMap>
 	
 	<select id="select" parameterType="Integer" resultMap="userInfoResultMap">
-		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, to_char(u.v_regdate, 'yyyy-mm-dd hh:mi') as "V_REGDATE",ut.v_id, ut.v_type
+		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, now() as "V_REGDATE",ut.v_id, ut.v_type
 		FROM userinfo u,
 			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 			FROM userinfotype, usertype
@@ -35,7 +35,7 @@
 	</select>
 	
 	<select id="selectAll"  resultMap="userInfoResultMap">
-		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, to_char(u.v_regdate, 'yyyy-mm-dd hh:mi') as "V_REGDATE",ut.v_id, ut.v_type
+		SELECT u.v_id as "UID", u.v_email, u.v_password, now() as "V_REGDATE",ut.v_id, ut.v_type
 		FROM userinfo u,
 			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 			FROM userinfotype, usertype
@@ -44,11 +44,8 @@
 	</select>
 	
 	<insert id="insert" parameterType="UserInfo">
-		<selectKey keyProperty="v_id" resultType="Integer" order="BEFORE">
-			SELECT userinfo_seq.NEXTVAL v_id FROM DUAL
-		</selectKey>
-		INSERT INTO userinfo(v_id, v_email, v_password, v_name, v_regdate)
-		VALUES (#{v_id}, #{v_email}, #{v_password}, #{v_name}, SYSDATE)
+		INSERT INTO userinfo(v_email, v_password, v_name, v_regdate)
+		VALUES (#{v_email}, #{v_password}, #{v_name}, now())
 	</insert>
 	
 	<insert id="insertUserTypes" parameterType="UserInfo">
@@ -70,12 +67,12 @@
 	
 	<update id="update" parameterType="UserInfo">
 		UPDATE userinfo 
-		SET v_password = #{v_password}, v_regdate = SYSDATE
+		SET v_password = #{v_password}, v_regdate = now()
 		WHERE v_id = #{v_id}
 	</update>
 	
 	<select id="selectByEmail" parameterType="String" resultMap="userInfoResultMap">
-		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, to_char(u.v_regdate, 'yyyy-mm-dd hh:mi') as "REGDATE",ut.v_id, ut.v_type
+		SELECT u.v_id as "UID", u.v_email, u.v_password, u.v_name, now() as "REGDATE",ut.v_id, ut.v_type
 		FROM userinfo u,
 			(SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 			FROM userinfotype, usertype

@@ -5,11 +5,8 @@
 <mapper namespace="com.verest.board.dao.PortDaoImpl">
 
 	<insert id="insert" parameterType="Port">
-		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
-			SELECT port_seq.NEXTVAL no FROM DUAL
-		</selectKey>
-		INSERT INTO port (no, title, content, writer, regdate, attachment, attachmentImg, views, p_type)
-		VALUES (#{no}, #{title}, #{content}, #{writer}, SYSDATE, #{attachment}, #{attachmentImg}, 1, #{p_type})
+		INSERT INTO port (title, content, writer, regdate, attachment, attachmentImg, views, p_type)
+		VALUES (#{title}, #{content}, #{writer}, now(), #{attachment}, #{attachmentImg}, 1, #{p_type})
 	</insert>
 	
 	<resultMap type="Port" id="portResultMap">
@@ -27,19 +24,19 @@
 	</resultMap>
 	
 	<select id="selectByType" parameterType="String" resultMap="portResultMap">
-		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, now() as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
 		FROM userinfo u, port p
 		WHERE p.writer = u.v_id AND p.p_type= #{p_type}
 	</select>
 	
 	<select id="select" parameterType="Integer" resultMap="portResultMap">
-		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, now() as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
 		FROM userinfo u, port p
 		WHERE p.writer = u.v_id AND p.no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="portResultMap">
-		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, now() as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
 		FROM userinfo u, port p
 		WHERE p.writer = u.v_id ORDER BY p.no DESC
 	</select>
@@ -50,7 +47,7 @@
 	
 	<update id="update" parameterType="Port">
 		UPDATE port 
-		SET title = #{title}, content = #{content}, regdate = SYSDATE, attachment = #{attachment} ,attachmentImg = #{attachmentImg}, p_type = #{p_type}
+		SET title = #{title}, content = #{content}, regdate = now(), attachment = #{attachment} ,attachmentImg = #{attachmentImg}, p_type = #{p_type}
 		WHERE no = #{no}
 	</update>
 	

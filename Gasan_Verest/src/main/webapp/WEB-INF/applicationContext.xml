@@ -56,7 +56,6 @@
 		<beans:property name="url" value="${jdbc.url}" />
 		<beans:property name="username" value="${jdbc.username}" />
 		<beans:property name="password" value="${jdbc.password}" />
-		<beans:property name="maxTotal" value="${jdbc.maxActive}" />
 	</beans:bean>
 
 	<!-- myBatis -->

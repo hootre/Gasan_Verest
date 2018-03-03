@@ -14,6 +14,9 @@
 	<%@ include file="../css/review.css"%>
 	<%@ include file="../css/footer.css"%>
 </style>
+<script>
+<%@ include file="../js/main.js"%>
+</script>
 <link rel="stylesheet"
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 <script type="text/javascript"

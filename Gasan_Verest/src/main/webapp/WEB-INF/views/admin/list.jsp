@@ -5,12 +5,16 @@
 <html lang="ko">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
     <title>USER</title>
     <style type="text/css">
 		<%@ include file="../css/header.css"%>
 		<%@ include file="../css/userlist.css"%>
 		<%@ include file="../css/footer.css"%>
 	</style>
+	<script>
+<%@ include file="../js/main.js"%>
+</script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>

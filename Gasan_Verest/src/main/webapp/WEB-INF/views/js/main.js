@@ -10,6 +10,11 @@ function initMap() {
     });
 }
 
+function fnMove(seq){
+    var offset = $("#move" + seq).offset();
+    $('html, body').animate({scrollTop : offset.top + -200}, 500);
+}
+
 $(function () {
     var toggle = 0;
     $(".toggle_menu h3").click(function () {
@@ -23,6 +28,8 @@ $(function () {
 
     });
 });
+
+
 
 $(document).ready(function() {
     var autoplaySlider = $('.lightSlider').lightSlider({

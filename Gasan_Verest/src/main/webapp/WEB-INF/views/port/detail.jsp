@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PORTFOLIO</title>
     <style type="text/css">
     	<%@ include file="../css/style.css"%>
@@ -14,6 +15,7 @@
 	</style>
 	<script>
 		<%@ include file="../js/lightslider.js"%>
+		<%@ include file="../js/main.js"%>
 	</script>
 </head>
 <body>

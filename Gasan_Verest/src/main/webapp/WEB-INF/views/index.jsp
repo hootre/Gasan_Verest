@@ -19,11 +19,22 @@
 <%@ include file="css/footer.css" %>
 <%@ include file="css/lightslider.css" %>
 <%@ include file="css/question.css" %>
+<%@ include file="css/animate.css" %>
 </style>
 <title>Verest</title>
 </head>
 <script>
 <%@ include file="js/lightslider.js"%>
+<%@ include file="js/main.js"%>
+<%@ include file="js/scrolla.jquery.min.js"%>
+</script>
+<script>
+$(function () {
+    $('.animate').scrolla({
+        mobile: false,
+        once: false
+    });
+});
 </script>
 <body>
 	<c:if test="${ param.type == 'delete' }">

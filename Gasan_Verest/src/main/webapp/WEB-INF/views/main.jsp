@@ -14,12 +14,12 @@
         <div class="slide_line"></div>
         <div class="slide">
             <ul class="content-slider lightSlider" style="">
-            <c:forEach items="${ port }" var="item">
+            <c:forEach items="${ port }" var="item" varStatus="status">
             	<c:if test="${ item.p_type eq 'HER Series'}">
-            		<li>
+            		<li class="animate" data-animate="fadeInRight" data-duration="0.5s" data-delay="0.${ status.count }s">
 	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
 	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
-	                    	<p>${item.title}</p>
+	                    	 <span class="list_title">${item.title}</span>
 	                    </a>
                 	</li>
             	</c:if>
@@ -30,12 +30,12 @@
         <div class="slide_line"></div>
         <div class="slide">
             <ul class="content-slider lightSlider" style="">
-            <c:forEach items="${ port }" var="item">
+            <c:forEach items="${ port }" var="item" varStatus="status">
             	<c:if test="${ item.p_type eq '360 VR Works'}">
-            		<li>
+            		<li class="animate" data-animate="fadeInLeft" data-duration="0.5s" data-delay="0.${ status.count }s">
 	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
 	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
-	                    	<p>${item.title}</p>
+	                    	 <span class="list_title">${item.title}</span>
 	                    </a>
                 	</li>
             	</c:if>
@@ -46,12 +46,12 @@
         <div class="slide_line"></div>
         <div class="slide">
             <ul class="content-slider lightSlider" style="">
-            <c:forEach items="${ port }" var="item">
+            <c:forEach items="${ port }" var="item" varStatus="status">
             	<c:if test="${ item.p_type eq '3D VR Dance'}">
-            		<li>
+            		<li class="animate" data-animate="fadeInRight" data-duration="0.5s" data-delay="0.${ status.count }s">
 	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
 	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
-	                    	<p>${item.title}</p>
+	                    	 <span class="list_title">${item.title}</span>
 	                    </a>
                 	</li>
             	</c:if>
@@ -62,12 +62,12 @@
         <div class="slide_line"></div>
         <div class="slide">
             <ul class="content-slider lightSlider" style="">
-            <c:forEach items="${ port }" var="item">
+            <c:forEach items="${ port }" var="item" varStatus="status">
             	<c:if test="${ item.p_type eq '360 VR with Spatial Audio'}">
-            		<li>
+            		<li class="animate" data-animate="fadeInLeft" data-duration="0.5s" data-delay="0.${ status.count }s">
 	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
 	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
-	                    	<p>${item.title}</p>
+	                    	 <span class="list_title">${item.title}</span>
 	                    </a>
                 	</li>
             	</c:if>

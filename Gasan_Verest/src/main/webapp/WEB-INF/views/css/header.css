@@ -1,6 +1,5 @@
-@font-face { font-family: 'Spoqa Regular';
-    src: url('../Spoqa Han Sans Regular.ttf');
-format('truetype');
+.mainmenu {
+    overflow: hidden;
 }
 
 @media (min-width: 1100px) {
@@ -16,17 +15,27 @@ format('truetype');
         font-family: 'Spoqa Regular';
     }
 
+    .cf:after {
+        clear: both;
+    }
+
+    .cf:after,
+    .cf:before {
+        content: '';
+        display: table;
+    }
+
     body {
         /*background: rgb(246,233,227);*/
-        background: #3c3c3c;
+        background: #212121;
     }
 
     .container {
-        width: 82%;
+        max-width: 1320px;
         top: 0;
         left: 343px;
         overflow: hidden;
-        background: #fcfcfc;
+        background: #f1f1f1;
         position: relative;
         /*box-shadow: 10px 0px 10px inset;*/
     }
@@ -59,6 +68,7 @@ format('truetype');
     .mainmenu .login a {
         color: #aaa;
         text-shadow: 0.1em 0.1em 0.15em #262626;
+        padding: 10px;
     }
 
     .mainmenu .toggle_menu {
@@ -88,9 +98,13 @@ format('truetype');
         color: #fff;
     }
 
+    .mainmenu .menu_top {
+        display: block;
+    }
+
 }
 
-@media (max-width: 1100px) and (min-width: 520px) {
+@media (max-width: 1100px) and (min-width: 540px) {
     * {
         padding: 0;
         margin: 0;
@@ -110,7 +124,7 @@ format('truetype');
     .container {
         width: 100%;
         overflow: hidden;
-        background: #eeeeee;
+        background: #f1f1f1;
     }
 
     .mainmenu {
@@ -162,9 +176,13 @@ format('truetype');
         color: #fff;
     }
 
+    .mainmenu .menu_top {
+        display: block;
+    }
+
 }
 
-@media (max-width: 520px) {
+@media (max-width: 540px) {
     * {
         padding: 0;
         margin: 0;
@@ -184,7 +202,7 @@ format('truetype');
     .container {
         width: 100%;
         overflow: hidden;
-        background: #eeeeee;
+        background: #f1f1f1;
     }
 
     .mainmenu {
@@ -228,10 +246,6 @@ format('truetype');
     .mainmenu .menu_top .nav_menu {
         line-height: 50px;
         border-top: 1px solid #343434;
-    }
-
-    .mainmenu .menu_top .nav_menu:last-of-type {
-
     }
 
     .mainmenu .menu_top .nav_menu h4,

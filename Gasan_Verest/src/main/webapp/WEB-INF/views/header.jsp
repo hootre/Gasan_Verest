@@ -7,9 +7,6 @@
 <head>
     <meta charset="UTF-8">
     <title>index.jsp</title>
-<script>
-<%@ include file="js/main.js"%>
-</script>
 </head>
 <body>
 <div class="mainmenu">

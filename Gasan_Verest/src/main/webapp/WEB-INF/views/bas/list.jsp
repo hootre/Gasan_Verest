@@ -11,31 +11,6 @@
 </script>
 </head>
 <body>
-	<h1>글 목록</h1>
-	<table border="1">
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>가격</th>
-			<th>내용</th>
-			<th>날짜</th>
-		</tr>
-		<c:forEach items="${ list }" var="item">
-			<tr>
-				<td>${ item.basket_no }</td>
-				<td><a href="<c:url value='/sale/detail?no=${ item.sale_no}'/>">${ item.sale.title}</a></td>
-				<td>${ item.sale.price}</td>
-				<c:if test="${ !empty item.sale.attachment }">
-					<td>
-					<iframe width="640" height="360" src="${ item.sale.attachment }" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-					</iframe>
-					</td>
-				</c:if>
-				<td>${ item.regdate}</td>
-				<td><a href='<c:url value='/bas/remove?basket_no=${item.basket_no }'></c:url>'>삭제</a></td>
-			</tr>
-		</c:forEach>
-	</table>
-	<a href='<c:url value='/'></c:url>'>메인으로 돌아가기</a>
+	<h1>미구현 상태입니다.</h1>
 </body>
 </html>

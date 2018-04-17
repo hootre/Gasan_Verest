@@ -93,6 +93,13 @@ public class UserWebController {
 		public String list(Model model) throws CommonException {
 			List<UserInfo> list = null;
 	    
+			String email = this.getPrincipal();
+			
+			if (email != null && !email.trim().isEmpty()) {
+				UserInfo item = userInfoService.detail(email);
+				model.addAttribute("userInfo", item);
+			}
+			
 			list = userInfoService.list();
 			
 			model.addAttribute("list", list);

@@ -5,8 +5,11 @@
   <mapper namespace="com.verest.board.dao.Order_listDaoImpl">
   
   	<insert id="insert" parameterType="Order_list">
-		INSERT INTO order_list (v_id, sale_no, regdate, state)
-		VALUES (#{v_id}, #{sale_no}, now(), '미입금')
+		<selectKey keyProperty="or_no" resultType="Integer" order="BEFORE">
+			SELECT Order_list_seq.NEXTVAL or_no FROM DUAL
+		</selectKey>
+		INSERT INTO order_list (or_no, v_id, sale_no, regdate, state)
+		VALUES (#{or_no}, #{v_id}, #{sale_no}, SYSDATE, '미입금')
 	</insert>
   
   	<resultMap type="Order_list" id="order_listResultMap">
@@ -24,13 +27,13 @@
 	</resultMap>
 	
 	<select id="select" resultMap="order_listResultMap" parameterType="Integer">
-		SELECT o.or_no, o.v_id as "UID", o.sale_no ,s.title, s.attachment, s.price, now() as "REGDATE", o.state, u.v_email, u.v_name
+		SELECT o.or_no, o.v_id as "UID", o.sale_no ,s.title, s.attachment, s.price, to_char(o.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", o.state, u.v_email, u.v_name
 		FROM userinfo u, order_list o, sale s
 		WHERE o.v_id = u.v_id AND o.sale_no = s.no AND o.or_no = #{or_no};
 	</select>
 	
 	<select id="selectAll" resultMap="order_listResultMap" parameterType="Integer">
-		SELECT o.or_no, o.v_id as "UID", o.sale_no ,s.title, s.attachment, s.price, now() as "REGDATE", o.state, u.v_email, u.v_name
+		SELECT o.or_no, o.v_id as "UID", o.sale_no ,s.title, s.attachment, s.price, to_char(o.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", o.state, u.v_email, u.v_name
 		FROM userinfo u, order_list o, sale s
 		WHERE o.v_id = u.v_id AND o.sale_no = s.no AND o.v_id = #{v_id} ORDER BY o.or_no DESC
 	</select>

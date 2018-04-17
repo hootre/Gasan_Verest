@@ -74,11 +74,13 @@
 	</beans:bean>
 
 	<!-- Transaction 적용 -->
-<!-- 	<beans:bean id="transactionManager"
+	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<beans:property name="dataSource" ref="dataSource" />
 	</beans:bean>
 
-	<tx:annotation-driven transaction-manager="transactionManager" /> -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+
 
 </beans:beans>

@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>index.jsp</title>
+    <title>index</title>
 </head>
 <body>
 <div class="mainmenu">
@@ -17,22 +17,27 @@
         	<a href="<c:url value="/join"/>">Sing Up</a>
         </sec:authorize>
         <sec:authorize access="hasRole('USER') and !hasRole('ADMIN')">
-				<p><span>${ userInfo.v_name }</span>님 안녕하세요</p>
-			  <a href='<c:url value="/user/mypage"></c:url>'>마이페이지</a>
+				<p><span>${ userInfo.v_name }</span><span style="color : #aaa">님 안녕하세요</span></p>
 		</sec:authorize>
 		<sec:authorize access="hasRole('ADMIN')">
-				<p><span>${ userInfo.v_name }</span>님 안녕하세요<br /></p>
-			  <a href='<c:url value='/pro/new'/>'>관리자 페이지</a>
+				<p><span>${ userInfo.v_name }</span><span style="color : #aaa">님 안녕하세요</span></p>
 		</sec:authorize>
     </div>
     <div class="toggle_menu"><h3>MENU</h3></div>
     <ul class="menu_top">
-        <li class="nav_menu"><a href="#"><h4>ABOUT US</h4></a></li>
+    	<sec:authorize access="hasRole('USER') and !hasRole('ADMIN')">
+			<li class="nav_menu"><a href='<c:url value="/user/mypage"></c:url>'><h4 style="color: #FFC81E;">USER</h4></a></li>
+		</sec:authorize>
+		<sec:authorize access="hasRole('ADMIN')">
+			<li class="nav_menu"><a href='<c:url value='/pro/new'/>'><h4 style="color: #FFC81E;">ADMIN</h4></a></li>
+		</sec:authorize>
         <li class="nav_menu"><a href="<c:url value="/pro/list"/>"><h4>PROJECT</h4></a></li>
         <li class="nav_menu"><a href="<c:url value="/port/list"/>"><h4>PORTFOLIO</h4></a></li>
         <li class="nav_menu"><a href="<c:url value="/sale/list"/>"><h4>SALE</h4></a></li>
         <li class="nav_menu"><a href="<c:url value="/back/list"/>"><h4>REVIEW</h4></a></li>
-        <li class="nav_menu"><a href="<c:url value="/logout"/>"><h4>LOGOUT</h4></a></li>
+        <sec:authorize access="hasRole('USER') and !hasRole('ADMIN')">
+        	<li class="nav_menu"><a href="<c:url value="/logout"/>"><h4>LOGOUT</h4></a></li>
+		</sec:authorize>
     </ul>
 </div>
 </body>

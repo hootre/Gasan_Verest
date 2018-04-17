@@ -5,8 +5,11 @@
   <mapper namespace="com.verest.board.dao.BacksightDaoImpl">
   
   	<insert id="insert" parameterType="Backsight">
-		INSERT INTO backsight(writer, content, title, b_like, regdate)
-		VALUES (#{writer}, #{content}, #{title}, #{b_like}, now())
+		<selectKey keyProperty="back_no" resultType="Integer" order="BEFORE">
+			SELECT backsight_seq.NEXTVAL back_no FROM DUAL
+		</selectKey>
+		INSERT INTO backsight(back_no, writer, content, title, b_like, regdate)
+		VALUES (#{back_no}, #{writer}, #{content}, #{title}, #{b_like}, SYSDATE)
 	</insert>
   
   	<resultMap type="Backsight" id="backsightResultMap">
@@ -21,13 +24,13 @@
 	</resultMap>
 	
 	<select id="select" parameterType="Integer" resultMap="backsightResultMap">
-		SELECT b.back_no, b.writer, b.content, b.title, b.b_like, now() as "REGDATE", u.v_email, u.v_name
+		SELECT b.back_no, b.writer, b.content, b.title, b.b_like, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, backsight b
 		WHERE b.writer = u.v_id AND b.back_no = #{back_no}
 	</select>
 	
 	<select id="selectAll" resultMap="backsightResultMap">
-		SELECT b.back_no, b.writer, b.content, b.title, b.b_like, now() as "REGDATE", u.v_email, u.v_name
+		SELECT b.back_no, b.writer, b.content, b.title, b.b_like, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, backsight b
 		WHERE b.writer = u.v_id  ORDER BY b.back_no DESC
 	</select>
@@ -38,7 +41,7 @@
 	
 	<update id="update" parameterType="Backsight">
 		UPDATE backsight 
-		SET  content = #{content}, title = #{title}, regdate = now()
+		SET  content = #{content}, title = #{title}, regdate = SYSDATE
 		WHERE back_no = #{back_no}
 	</update>
 	

@@ -35,7 +35,7 @@ function readURL(input) {
             <h2>포트폴리오 글쓰기</h2>
         </div>
         <div class="review_write">
-            <form id="fmField" name="fmField" action="<c:url value='/port/new'/>" onsubmit="return checkForm();" method="post" enctype="multipart/form-data">
+            <form id="fmField"  name="fmField" action="<c:url value='/port/new'/>" method="post" enctype="multipart/form-data">
                 <table>
                 	<tr>
                         <th>작성자</th>

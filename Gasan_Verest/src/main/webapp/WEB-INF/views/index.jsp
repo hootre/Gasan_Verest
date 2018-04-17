@@ -22,12 +22,12 @@
 <%@ include file="css/animate.css" %>
 </style>
 <title>Verest</title>
-</head>
 <script>
 <%@ include file="js/lightslider.js"%>
 <%@ include file="js/main.js"%>
 <%@ include file="js/scrolla.jquery.min.js"%>
 </script>
+</head>
 <script>
 $(function () {
     $('.animate').scrolla({

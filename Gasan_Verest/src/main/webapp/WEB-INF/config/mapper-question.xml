@@ -5,8 +5,11 @@
   <mapper namespace="com.verest.board.dao.QuestionDaoImpl">
   
   	<insert id="insert" parameterType="Question">
-		INSERT INTO question(writer, content, title, regdate)
-		VALUES (#{writer}, #{content}, #{title}, now())
+		<selectKey keyProperty="qu_no" resultType="Integer" order="BEFORE">
+			SELECT question_seq.NEXTVAL qu_no FROM DUAL
+		</selectKey>
+		INSERT INTO question(qu_no, writer, content, title, regdate)
+		VALUES (#{qu_no}, #{writer}, #{content}, #{title}, SYSDATE)
 	</insert>
   
   	<resultMap type="Question" id="questionResultMap">
@@ -20,13 +23,13 @@
 	</resultMap>
 	
 	<select id="select" parameterType="Integer" resultMap="questionResultMap">
-		SELECT q.qu_no, q.writer, q.content, q.title,  now() as "REGDATE", u.v_email, u.v_name
+		SELECT q.qu_no, q.writer, q.content, q.title,  to_char(q.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, question q
 		WHERE q.writer = u.v_id AND q.qu_no = #{qu_no}
 	</select>
 	
 	<select id="selectAll" resultMap="questionResultMap">
-		SELECT q.qu_no, q.writer, q.content, q.title,  now() as "REGDATE", u.v_email, u.v_name
+		SELECT q.qu_no, q.writer, q.content, q.title,  to_char(q.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, question q
 		WHERE q.writer = u.v_id  ORDER BY q.qu_no DESC
 	</select>

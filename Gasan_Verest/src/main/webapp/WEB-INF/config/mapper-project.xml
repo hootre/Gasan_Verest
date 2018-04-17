@@ -5,8 +5,11 @@
 <mapper namespace="com.verest.board.dao.ProjectDaoImpl">
 
 	<insert id="insert" parameterType="Project">
-		INSERT INTO project (title, content, writer, regdate, attachment, attachmentImg, views)
-		VALUES (#{title}, #{content}, #{writer}, now(), #{attachment}, #{attachmentImg}, 0)
+		<selectKey keyProperty="no" resultType="Integer" order="BEFORE">
+			SELECT project_seq.NEXTVAL no FROM DUAL
+		</selectKey>
+		INSERT INTO project (no, title, content, writer, regdate, attachment, attachmentImg, views)
+		VALUES (#{no}, #{title}, #{content}, #{writer}, SYSDATE, #{attachment}, #{attachmentImg}, 0)
 	</insert>
 	
 	<resultMap type="Project" id="projectResultMap">
@@ -23,13 +26,13 @@
 	</resultMap>
 	
 	<select id="select" parameterType="Integer" resultMap="projectResultMap">
-		SELECT p.no, p.title, p.content, p.writer, now() as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
 		FROM userinfo u, project p
 		WHERE p.writer = u.v_id AND p.no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="projectResultMap">
-		SELECT p.no, p.title, p.content, p.writer, now() as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
 		FROM userinfo u, project p
 		WHERE p.writer = u.v_id ORDER BY p.no DESC
 	</select>
@@ -40,7 +43,7 @@
 	
 	<update id="update" parameterType="Project">
 		UPDATE project 
-		SET title = #{title}, content = #{content}, regdate = now(), attachment = #{attachment}, attachmentImg = #{attachmentImg}
+		SET title = #{title}, content = #{content}, regdate = SYSDATE, attachment = #{attachment}, attachmentImg = #{attachmentImg}
 		WHERE no = #{no}
 	</update>
 	

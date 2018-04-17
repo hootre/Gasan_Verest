@@ -95,7 +95,7 @@
     }
 
     .mainmenu .menu_top .nav_menu h4:hover {
-        color: #fff;
+        color: #FFC81E;
     }
 
     .mainmenu .menu_top {
@@ -173,7 +173,7 @@
     }
 
     .mainmenu .menu_top .nav_menu h4:hover {
-        color: #fff;
+        color: #FFC81E;
     }
 
     .mainmenu .menu_top {
@@ -259,7 +259,7 @@
 
     .mainmenu .menu_top .nav_menu h4:hover,
     .mainmenu .toggle_menu h3:hover {
-        color: #fff;
+        color: #FFC81E;
         background: #343434;
     }
 

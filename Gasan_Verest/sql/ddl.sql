@@ -35,7 +35,7 @@ START WITH 1 INCREMENT BY 1;
 CREATE TABLE usertype (
 	v_id NUMBER NOT NULL,
 	v_type VARCHAR2(30) NOT NULL,
-	CONSTRAINT pk_usertype PRIMARY KEY (v_id)
+	CONSTRAINT pk_user_type PRIMARY KEY (v_id)
 );
 
 CREATE SEQUENCE usertype_seq

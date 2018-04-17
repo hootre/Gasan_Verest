@@ -5,8 +5,11 @@
   <mapper namespace="com.verest.board.dao.BasketDaoImpl">
   
   	<insert id="insert" parameterType="Basket">
-		INSERT INTO basket (v_id, sale_no,regdate)
-		VALUES (#{v_id}, #{sale_no}, now())
+		<selectKey keyProperty="basket_no" resultType="Integer" order="BEFORE">
+			SELECT Basket_seq.NEXTVAL basket_no FROM DUAL
+		</selectKey>
+		INSERT INTO basket (basket_no, v_id, sale_no,regdate)
+		VALUES (#{basket_no}, #{v_id}, #{sale_no}, SYSDATE)
 	</insert>
   
   	<resultMap type="Basket" id="basketResultMap">
@@ -23,7 +26,7 @@
 	</resultMap>
 	
 	<select id="selectAll" resultMap="basketResultMap" parameterType="Integer">
-		SELECT b.basket_no, b.v_id as "UID", b.sale_no ,s.title, s.attachment, s.price, now() as "REGDATE", u.v_email, u.v_name
+		SELECT b.basket_no, b.v_id as "UID", b.sale_no ,s.title, s.attachment, s.price, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, basket b, sale s
 		WHERE b.v_id = u.v_id AND b.sale_no = s.no  AND b.v_id = #{v_id} ORDER BY b.basket_no DESC
 	</select>

@@ -17,13 +17,8 @@
         	<a href="<c:url value="/login"/>">Login</a> /
         	<a href="<c:url value="/join"/>">Sing Up</a>
         </sec:authorize>
-        <sec:authorize access="hasRole('USER') and !hasRole('ADMIN')">
-				<p><span>${ userInfo.v_name }</span>님 안녕하세요</p>
-			  <a href='<c:url value="/user/mypage"></c:url>'>마이페이지</a>
-		</sec:authorize>
 		<sec:authorize access="hasRole('ADMIN')">
 				<p><span>${ userInfo.v_name }</span>님 안녕하세요<br /></p>
-			  <a href='<c:url value='/pro/new'/>'>관리자 페이지</a>
 		</sec:authorize>
     </div>
     <div class="toggle_menu"><h3>MENU</h3></div>

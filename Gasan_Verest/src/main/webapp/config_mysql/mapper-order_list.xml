@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.verest.board.dao.Order_listDaoImpl">
+  
+  	<insert id="insert" parameterType="Order_list">
+		INSERT INTO order_list (v_id, sale_no, regdate, state)
+		VALUES (#{v_id}, #{sale_no}, CURDATE(), '미입금')
+	</insert>
+  
+  	<resultMap type="Order_list" id="order_listResultMap">
+		<id property="or_no" column="or_no" />
+		<result property="v_id" column="uid" />
+		<result property="sale_no" column="sale_no" />
+		<result property="sale.title" column="title" />
+		<result property="sale.attachment" column="attachment" />
+		<result property="sale.price" column="price" />
+		<result property="regdate" column="regdate" />
+		<result property="state" column="state" />
+		<result property="userInfo.v_id" column="v_id" />
+		<result property="userInfo.v_email" column="v_email" />
+		<result property="userInfo.v_name" column="v_name" />
+	</resultMap>
+	
+	<select id="select" resultMap="order_listResultMap" parameterType="Integer">
+		SELECT o.or_no, o.v_id as "UID", o.sale_no ,s.title, s.attachment, s.price, date_format(regdate,"%Y %c/%e") as "REGDATE", o.state, u.v_email, u.v_name
+		FROM userinfo u, order_list o, sale s
+		WHERE o.v_id = u.v_id AND o.sale_no = s.no AND o.or_no = #{or_no};
+	</select>
+	
+	<select id="selectAll" resultMap="order_listResultMap" parameterType="Integer">
+		SELECT o.or_no, o.v_id as "UID", o.sale_no ,s.title, s.attachment, s.price, date_format(regdate,"%Y %c/%e") as "REGDATE", o.state, u.v_email, u.v_name
+		FROM userinfo u, order_list o, sale s
+		WHERE o.v_id = u.v_id AND o.sale_no = s.no AND o.v_id = #{v_id} ORDER BY o.or_no DESC
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) cnt FROM order_list
+	</select>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM order_list WHERE or_no = #{or_no}
+	</delete>
+	
+	<update id="update" parameterType="Order_list">
+		UPDATE order_list 
+		SET state = #{state}
+		WHERE or_no = #{or_no}
+	</update>
+	
+  </mapper>

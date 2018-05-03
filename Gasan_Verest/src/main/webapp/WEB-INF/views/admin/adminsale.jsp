@@ -43,11 +43,11 @@ function readURL(input) {
                     </tr>
                     <tr>
                         <th>제목</th>
-                        <td><input type="text"  name="title" placeholder="제목"  maxlength="15" required></td>
+                        <td><input type="text"  name="title" placeholder="제목" required></td>
                     </tr>
                     <tr>
                         <th>내용</th>
-                        <td><textarea id="txt"  name="content" placeholder="내용" style="resize: none;"  id="area" cols="30" rows="10" maxlength="50" required></textarea></td>
+                        <td><textarea id="txt"  name="content" placeholder="내용" style="resize: none;"  id="area" cols="30" rows="10" required></textarea></td>
                     </tr>
                     <tr>
                         <th>유튜브링크</th>
@@ -64,8 +64,8 @@ function readURL(input) {
                         <th>가격</th>
                         <td>
                             <input class="price" name="price" type="number" min="1000" required>
-                            <input type="hidden" name="writer" value="${ userInfo.v_id }"> <input
-                                type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                            <input type="hidden" name="writer" value="${ userInfo.v_id }"> 
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                             <input type="submit" class="submit" value="작성하기">
                             <input class="reset" type="reset">
                         </td>

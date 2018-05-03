@@ -1,0 +1,72 @@
+.mid .title {
+    padding: 10px;
+    background: #FFC81E;
+    margin-bottom: 3px;
+}
+
+.mid .title h2 {
+    margin-left: 50px;
+}
+
+.mid .m_top {
+    padding: 30px;
+}
+
+.mid .user_list {
+    clear: both;
+    max-width: 1100px;
+    margin: 50px auto 30px auto;
+}
+
+.mid .user_list table {
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+.mid .user_list .list_top {
+    background: #FFC81E;
+}
+
+.mid .user_list .list_top td {
+    padding: 10px;
+}
+
+.mid .user_list td {
+    padding: 7px;
+}
+
+.mid .user_list tr:nth-child(2n) {
+    background: #e6e6e6;
+}
+#seleteDel{
+	float: right;
+	border-radius :5px;
+	background-color: #3c3c3c;
+	padding: 10px;
+	color: #FFC81E;
+	margin-right: 15px;
+}
+.btn_box{
+	float: right;
+	margin-top: 10px;
+}
+.video_btn{
+	float: left;
+	border-radius :5px;
+	background-color: #3c3c3c;
+	padding: 10px;
+	color: #FFC81E;
+	margin-right: 15px;
+}
+#ports,
+#sales{
+	display: none;
+}
+#title{
+	width: 250px;
+   	display: inline-block;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}

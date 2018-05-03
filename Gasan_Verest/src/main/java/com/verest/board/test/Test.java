@@ -13,7 +13,7 @@ public class Test {
 		String encoding = encoder.encode(password);
 		System.out.println(encoding);*/
 		
-	       String email = "test16131d13f12.jpg", id,domain;
+	       String email = "https://www.youtube.com/watch?v=Y2V6yjjPbX0&list=RDMMY2V6yjjPbX0", id,domain;
 	        int i = email.indexOf("."); 
 	        // 변수 email이 포함하고있는 @ 의 인덱스 값을 변수 i 에 대입.
 	        

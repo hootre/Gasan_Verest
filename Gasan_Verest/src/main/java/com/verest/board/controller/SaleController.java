@@ -1,16 +1,12 @@
 package com.verest.board.controller;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
-import com.verest.board.model.Port;
+import com.verest.board.model.Project;
 import com.verest.board.model.Sale;
 import com.verest.board.service.FileService;
 import com.verest.board.service.SaleService;
@@ -59,7 +55,7 @@ public class SaleController {
 			user = userInfoService.detail(this.getPrincipal());
 			model.addAttribute("userInfo", user);
 		}
-
+		user = null;
 		return "admin/adminsale";
 	}
 
@@ -81,6 +77,7 @@ public class SaleController {
 		sale.setContent(content);
 		String s = attachment;
 		String address = s.replace("watch?v=", "embed/");
+		attachment = attachment.replace("&", "?");
 		sale.setAttachment(address);
 
 		// 최상위 경로 밑에 upload 폴더의 경로를 가져온다.
@@ -91,7 +88,7 @@ public class SaleController {
 		// upload 폴더가 없다면, upload 폴더 생성
 		File directory = new File(path);
 		if (!directory.exists()) {
-			directory.mkdir();
+			directory.mkdirs();
 		}
 
 		// attachment 객체를 이용하여, 파일을 서버에 전송
@@ -108,7 +105,8 @@ public class SaleController {
 		}
 
 		SaleService.newBoard(sale);
-
+		directory = null;
+		sale = null;
 		return "redirect:/sale/list";
 	}
 
@@ -125,7 +123,8 @@ public class SaleController {
 			model.addAttribute("userInfo", user);
 		}
 		model.addAttribute("list", list);
-
+		list = null;
+		user = null;
 		return "sale/list";
 	}
 
@@ -136,6 +135,12 @@ public class SaleController {
 					throws CommonException, Exception {
 		Sale sale = SaleService.detail(no);
 
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
+		
 		String filename = sale.getAttachmentImg();
 		if (filename != null && !filename.trim().isEmpty()) {
 			filename = URLDecoder.decode(filename, "UTF-8");
@@ -156,9 +161,12 @@ public class SaleController {
 		sale.setViews(sale.getViews()+1);
 		SaleService.viewsup(sale);
 
+		List<Sale> list = SaleService.list();
+		model.addAttribute("list", list);
 		model.addAttribute("item", sale);
 		model.addAttribute("filename", filename);
-
+		
+		sale = null;
 		return "sale/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 	}
 
@@ -170,8 +178,14 @@ public class SaleController {
 
 		Sale sale = SaleService.detail(no);
 
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
+		
 		model.addAttribute("item", sale);
-
+		sale = null;
 		return "sale/modify";
 	}
 
@@ -183,23 +197,17 @@ public class SaleController {
 			Integer price,
 			String content,
 			String attachment,
-			@RequestParam("attachmentImg") MultipartFile attachmentImg,
-			String password)
+			@RequestParam("attachmentImg") MultipartFile attachmentImg)
 					throws CommonException, Exception {
 
-		// 비밀번호 비교해서 같지 않다면 오류메시지 출력
-		boolean isMatched = userInfoService.isSaleMatched(no, password);
-		if (!isMatched) {
-			return "redirect:/sale/modify?no=" + no + "&action=error-password";
-		}
-
 		Sale sale = new Sale();
+		sale.setNo(no);
 		sale.setPrice(price);
 		sale.setTitle(title);
 		sale.setContent(content);
-		String s = attachment;
-		String address = s.replace("watch?v=", "embed/");
-		sale.setAttachment(address);
+		attachment = attachment.replace("watch?v=", "embed/");
+		attachment = attachment.replace("&", "?");
+		sale.setAttachment(attachment);
 
 		String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
 		String originalName = attachmentImg.getOriginalFilename();
@@ -228,41 +236,33 @@ public class SaleController {
 			}
 
 		SaleService.modify(sale);
-
+		sale = null;
 		return "redirect:/sale/list";
 	}
 
 	// 글 삭제 확인 화면
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	public String removeConfirm(Model model,
-			@RequestParam(value = "no", required = true) Integer no) {
-
-		model.addAttribute("no", no);
-
-		return "sale/remove-confirm";
-	}
-
-	// 글 삭제 후, 글 목록 화면으로 이동
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String remove(HttpServletRequest request,
-			@RequestParam(value = "no", required = true) Integer no,
-			String v_password)
+	public String removeConfirm(HttpServletRequest request,
+			@RequestParam(value = "no", required = true) String no) 
 					throws CommonException, UnsupportedEncodingException {
 
-		boolean isMatched = userInfoService.isSaleMatched(no, v_password);
-		if (!isMatched) {
-			return "redirect:/sale/remove?no=" + no + "&action=error-password";
-		}
-		String filename =  SaleService.detail(no).getAttachmentImg();
+		String filename =  SaleService.detail(Integer.parseInt(no)).getAttachmentImg();
 		if (filename != null && !filename.trim().isEmpty()) {
 			fileService.remove(request, UPLOAD_FOLDER, filename);
 		}
-		SaleService.remove(no);
+		
+		String[] nos = no.split("-");
 
+		if(nos != null && nos.length>0){
+			for (String bas_id : nos) {
+				System.out.println(bas_id.toString());
+				SaleService.remove(Integer.parseInt(bas_id.toString()));
+			}
+		}  
 		return "redirect:/sale/list";
 	}
 
-	// 파일 내려받기
+	/*// 파일 내려받기
 	@RequestMapping(value = "/download", method = RequestMethod.GET, params="filename")
 	public void download(HttpServletRequest request, 
 			HttpServletResponse response, String filename)
@@ -293,10 +293,10 @@ public class SaleController {
 			response.setHeader("Pragma", "no-cache");
 			response.setHeader("Expires", "-1");
 
-			/*
+			
 			 * Connection Stream: ServletOutputStream
 			 * Chain Stream: BufferedOutputStream
-			 */
+			 
 			bos = new BufferedOutputStream(response.getOutputStream());
 
 			// 서버에 있는 파일을 읽어서 (fis), 클라이언트에게 파일을 전송(bos)
@@ -319,7 +319,7 @@ public class SaleController {
 				logger.debug(e.getMessage());
 			}
 		}
-	}
+	}*/
 	// 현재 접속한 사용자의 email 리턴
 	private String getPrincipal() {
 		String username = null;

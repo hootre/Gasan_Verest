@@ -19,30 +19,16 @@
 		<%@ include file="../css/footer.css"%>
 	</style>
 	<script>
-	<%@ include file="../js/list.js"%>
+		<%@ include file="../js/list.js"%>
 	</script>
 </head>
-<script>
-    $(function () {
-        $(".grey").mouseover(function () {
-            $(this).css("background", "rgba(0, 0, 0, .6");
-            $(this).css("color", "rgba(255, 255, 255, 1");
-            $(this).children("h3").css("opacity", "1");
-        });
-        $(".grey").mouseout(function () {
-            $(this).css("background", "rgba(0, 0, 0, 0");
-            $(this).css("color", "rgba(255, 255, 255, 0");
-            $(this).children("h3").css("opacity", "0");
-        });
-    });
 
-</script>
 <body>
 <jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
    	 <div class="mid">
         <div class="title">
-            <h2>프로젝트</h2>
+            <h2>PORT</h2>
         </div>
         <ul class="category">
             <li title="all" style="color: #fff;">ALL</li>
@@ -83,8 +69,14 @@
 								          
 								    </c:otherwise>
 								</c:choose>">
-	                			<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>"  alt="">
-	                			<p>${item.title }</p>
+	                			<div class="imgbox">
+		                			<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>"  alt="">
+		                			<div class="top_title clearfix">
+			                			<span id="regdate">${item.regdate}</span>
+			                			<span id="views">VIEWS ${item.views}</span>
+			                		</div>	
+			                	</div>
+		                		<p id="title">${item.title }</p>
 	            			</div>
 	            		</a>
 	        </c:forEach>
@@ -92,5 +84,20 @@
     </div>
 <jsp:include page="../footer.jsp"></jsp:include>
 </div>
+<script>
+    $(function () {
+        $(".grey").mouseover(function () {
+            $(this).css("background", "rgba(0, 0, 0, .6");
+            $(this).css("color", "rgba(255, 255, 255, 1");
+            $(this).children("h3").css("opacity", "1");
+        });
+        $(".grey").mouseout(function () {
+            $(this).css("background", "rgba(0, 0, 0, 0");
+            $(this).css("color", "rgba(255, 255, 255, 0");
+            $(this).children("h3").css("opacity", "0");
+        });
+    });
+
+</script>
 </body>
 </html>

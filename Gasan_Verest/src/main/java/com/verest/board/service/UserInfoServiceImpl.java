@@ -162,4 +162,11 @@ public class UserInfoServiceImpl implements UserInfoService {
 	public List<UserInfo> list() throws CommonException {
 		return userInfoDao.selectAll();
 	}
+
+	@Override
+	public void delete(Integer id) throws CommonException {
+		UserInfo item = userInfoDao.select(id);
+		userInfoDao.deleteUserTypes(item.getV_id());
+		userInfoDao.delete(id);
+	}
 }

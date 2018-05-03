@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.verest.board.dao.BacksightDaoImpl">
+  
+  	<insert id="insert" parameterType="Backsight">
+		INSERT INTO backsight(writer, content, title, b_like, regdate)
+		VALUES (#{writer}, #{content}, #{title}, #{b_like}, CURDATE())
+	</insert>
+  
+  	<resultMap type="Backsight" id="backsightResultMap">
+		<id property="back_no" column="back_no" />
+		<result property="writer" column="writer" />
+		<result property="content" column="content" />
+		<result property="title" column="title" />
+		<result property="b_like" column="b_like" />
+		<result property="regdate" column="regdate" />
+		<result property="userInfo.v_email" column="v_email" />
+		<result property="userInfo.v_name" column="v_name" />
+	</resultMap>
+	
+	<select id="select" parameterType="Integer" resultMap="backsightResultMap">
+		SELECT b.back_no, b.writer, b.content, b.title, b.b_like, date_format(regdate,"%Y %c/%e") as "REGDATE", u.v_email, u.v_name
+		FROM userinfo u, backsight b
+		WHERE b.writer = u.v_id AND b.back_no = #{back_no}
+	</select>
+	
+	<select id="selectAll" resultMap="backsightResultMap">
+		SELECT b.back_no, b.writer, b.content, b.title, b.b_like, date_format(regdate,"%Y %c/%e") as "REGDATE", u.v_email, u.v_name
+		FROM userinfo u, backsight b
+		WHERE b.writer = u.v_id  ORDER BY b.back_no DESC
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) cnt FROM backsight
+	</select>
+	
+	<update id="update" parameterType="Backsight">
+		UPDATE backsight 
+		SET  content = #{content}, title = #{title}, regdate = CURDATE()
+		WHERE back_no = #{back_no}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM backsight WHERE back_no = #{back_no}
+	</delete>
+	
+	
+  </mapper>

@@ -26,13 +26,13 @@
 	</resultMap>
 	
 	<select id="select" parameterType="Integer" resultMap="projectResultMap">
-		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd') as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
 		FROM userinfo u, project p
 		WHERE p.writer = u.v_id AND p.no = #{no}
 	</select>
 	
 	<select id="selectAll" resultMap="projectResultMap">
-		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
+		SELECT p.no, p.title, p.content, p.writer, to_char(p.regdate, 'yyyy-mm-dd') as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
 		FROM userinfo u, project p
 		WHERE p.writer = u.v_id ORDER BY p.no DESC
 	</select>

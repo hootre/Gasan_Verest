@@ -1,6 +1,7 @@
 package com.verest.board.controller;
 
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.verest.board.model.UserInfo;
 import com.verest.board.model.CommonException;
@@ -55,21 +57,19 @@ public class UserWebController {
 	public String homePage(Model model) {
 
 		String email = this.getPrincipal();
-		
+		UserInfo item = null;
 		if (email != null && !email.trim().isEmpty()) {
-			UserInfo item = userInfoService.detail(email);
+			 item = userInfoService.detail(email);
 			model.addAttribute("userInfo", item);
 		}
 		
-		List<Project> pro = ProService.list();
 		List<Port> port = PortService.list();
-		List<Sale> sale = SaleService.list();
 		
 
-		model.addAttribute("pro", pro);
 		model.addAttribute("port", port);
-		model.addAttribute("sale", sale);
 		
+		port = null;
+		item = null;
 		return "/index";
 	}
 
@@ -85,25 +85,46 @@ public class UserWebController {
 		UserInfo userinfo = userInfoService.detail(this.getPrincipal());
 		
 		model.addAttribute("name", userinfo.getV_name());
+		userinfo = null;
 		return "admin/admin";
 	}
-	
 	// 사용자 목록 화면
+		@RequestMapping(value = "/video/list", method = RequestMethod.GET)
+		public String videolist(Model model) throws CommonException {
+		   
+			String email = this.getPrincipal();
+			UserInfo item = null;
+			if (email != null && !email.trim().isEmpty()) {
+				item = userInfoService.detail(email);
+				model.addAttribute("userInfo", item);
+			}
+			List<Project> pro = ProService.list();
+			List<Port> port = PortService.list();
+			List<Sale> sale = SaleService.list();
+			
+			model.addAttribute("pro", pro);
+			model.addAttribute("port", port);
+			model.addAttribute("sale", sale);
+			item = null;
+			return "admin/video_list";
+		}
+	
+		// 사용자 목록 화면
 		@RequestMapping(value = "/list", method = RequestMethod.GET)
 		public String list(Model model) throws CommonException {
 			List<UserInfo> list = null;
 	    
 			String email = this.getPrincipal();
-			
+			UserInfo item = null;
 			if (email != null && !email.trim().isEmpty()) {
-				UserInfo item = userInfoService.detail(email);
+				item = userInfoService.detail(email);
 				model.addAttribute("userInfo", item);
 			}
 			
 			list = userInfoService.list();
 			
 			model.addAttribute("list", list);
-
+			item = null;
 			return "admin/list";
 		}
 	
@@ -113,7 +134,7 @@ public class UserWebController {
 		
 		UserInfo userinfo = userInfoService.detail(this.getPrincipal());
 		model.addAttribute("item", userinfo);
-		
+		userinfo  = null;
 		return "user/mypage";
 	}
 
@@ -158,10 +179,27 @@ public class UserWebController {
 			user.setV_password(encoder.encode(newPassword));
 			
 			userInfoService.modify(user);
-
+			user  = null;
 			return "redirect:/user/mypage?action=ok-modify";
 		}
 
+		// 글 삭제 확인 화면
+		@RequestMapping(value = "/user/delete", method = RequestMethod.GET)
+		public String removeConfirm(HttpServletRequest request,
+				@RequestParam(value = "v_id", required = true) String v_id)
+						throws CommonException, UnsupportedEncodingException  {
+				String[] nos = v_id.split("-");
+
+				if(nos != null && nos.length>0){
+					for (String v_ids : nos) {
+						System.out.println(v_ids.toString());
+						userInfoService.delete(Integer.parseInt(v_ids.toString()));
+					}
+				}  
+			
+			return "redirect:/list";
+		}
+		
 		@RequestMapping(value = "/user/delete" , method = RequestMethod.POST)
 		public String delete(HttpServletRequest request, HttpServletResponse response, String password) throws CommonException {
 			String email = this.getPrincipal();
@@ -178,6 +216,7 @@ public class UserWebController {
 			if (auth != null) {
 				new SecurityContextLogoutHandler().logout(request, response, auth);
 			}
+			item  = null;
 			return "redirect:/?type=delete";
 		}
 		
@@ -200,7 +239,7 @@ public class UserWebController {
 			user.setV_name(name);
 
 			userInfoService.newUser(user);
-
+			user = null;
 			return "redirect:login";
 		}
 	// 현재 접속한 사용자의 email 리턴

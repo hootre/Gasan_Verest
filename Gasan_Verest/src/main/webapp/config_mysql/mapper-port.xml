@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.verest.board.dao.PortDaoImpl">
+
+	<insert id="insert" parameterType="Port">
+		INSERT INTO port (title, content, writer, regdate, attachment, attachmentImg, views, p_type)
+		VALUES (#{title}, #{content}, #{writer}, CURDATE(), #{attachment}, #{attachmentImg}, 0, #{p_type})
+	</insert>
+	
+	<resultMap type="Port" id="portResultMap">
+		<id property="no" column="no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="writer" column="writer" />
+		<result property="regdate" column="regdate" />
+		<result property="attachment" column="attachment" />
+		<result property="attachmentImg" column="attachmentImg" />
+		<result property="views" column="views" />
+		<result property="p_type" column="p_type" />
+		<result property="userInfo.v_id" column="v_id" />
+		<result property="userInfo.v_name" column="v_name" />
+	</resultMap>
+	
+	<select id="selectByType" parameterType="String" resultMap="portResultMap">
+		SELECT p.no, p.title, p.content, p.writer, date_format(regdate,"%Y %c/%e") as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
+		FROM userinfo u, port p
+		WHERE p.writer = u.v_id AND p.p_type= #{p_type}
+	</select>
+	
+	<select id="select" parameterType="Integer" resultMap="portResultMap">
+		SELECT p.no, p.title, p.content, p.writer, date_format(regdate,"%Y %c/%e") as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
+		FROM userinfo u, port p
+		WHERE p.writer = u.v_id AND p.no = #{no}
+	</select>
+	
+	<select id="selectAll" resultMap="portResultMap">
+		SELECT p.no, p.title, p.content, p.writer, date_format(regdate,"%Y %c/%e") as "REGDATE", p.attachment, p.attachmentImg, p.views, p.p_type, u.v_id, u.v_name
+		FROM userinfo u, port p
+		WHERE p.writer = u.v_id ORDER BY p.no DESC
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) cnt FROM board
+	</select>
+	
+	<update id="update" parameterType="Port">
+		UPDATE port 
+		SET title = #{title}, content = #{content}, regdate = CURDATE(), attachment = #{attachment} ,attachmentImg = #{attachmentImg}, p_type = #{p_type}
+		WHERE no = #{no}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM port WHERE no = #{no}
+	</delete>
+	
+	<update id="views" parameterType="Port">
+		UPDATE port 
+		SET views = #{views}
+		WHERE no = #{no}
+	</update>
+	
+</mapper>

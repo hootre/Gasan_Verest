@@ -124,6 +124,13 @@ textarea {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+ #title {
+    	width: 250px;
+    	display: inline-block;
+    	overflow: hidden; 
+    	text-overflow: ellipsis;
+    	white-space: nowrap; 
+ }
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

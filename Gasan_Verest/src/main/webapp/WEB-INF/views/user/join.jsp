@@ -13,7 +13,7 @@
 <body>
 <div class="login_container">
     <div class="box">
-        <div class="logo"><a href="<c:url value="/"/>"><img src="<c:url value="/upload/main/logo.png"/>"></a></div>
+        <div class="logo"><a href="<c:url value="/"/>"><img src="<c:url value="/resources/img/logo.png"/>"></a></div>
         <form class="login_form" action="<c:url value="/join"/>" method="post">
             <h1 class="title">회원가입</h1>
             <div class="textbox">이메일 <span>*</span><input type="email" style="ime-mode:inactive" name="email" class="input" placeholder="email" required></div>

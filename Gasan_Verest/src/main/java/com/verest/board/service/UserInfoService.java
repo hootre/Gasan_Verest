@@ -12,7 +12,7 @@ public interface UserInfoService {
 	public void newUser(UserInfo userInfo) throws CommonException;
 
 	public void delete(Integer id, String password) throws CommonException;
-
+	public void delete(Integer id) throws CommonException;
 	public void modify(UserInfo userInfo) throws CommonException;
 	
 	// 게시물 번호를 이용하여 게시물 작성자의 비밀번호와 입력한 비밀번호 비교

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.verest.board.dao.ProjectDaoImpl">
+
+	<insert id="insert" parameterType="Project">
+		INSERT INTO project (title, content, writer, regdate, attachment, attachmentImg, views)
+		VALUES (#{title}, #{content}, #{writer}, CURDATE(), #{attachment}, #{attachmentImg}, 0)
+	</insert>
+	
+	<resultMap type="Project" id="projectResultMap">
+		<id property="no" column="no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="writer" column="writer" />
+		<result property="regdate" column="regdate" />
+		<result property="attachment" column="attachment" />
+		<result property="attachmentImg" column="attachmentImg" />
+		<result property="views" column="views" />
+		<result property="userInfo.v_id" column="v_id" />
+		<result property="userInfo.v_name" column="v_name" />
+	</resultMap>
+	
+	<select id="select" parameterType="Integer" resultMap="projectResultMap">
+		SELECT p.no, p.title, p.content, p.writer, date_format(regdate,"%Y %c/%e") as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
+		FROM userinfo u, project p
+		WHERE p.writer = u.v_id AND p.no = #{no}
+	</select>
+	
+	<select id="selectAll" resultMap="projectResultMap">
+		SELECT p.no, p.title, p.content, p.writer, date_format(regdate,"%Y %c/%e") as "REGDATE", p.attachment, p.attachmentImg, p.views, u.v_id, u.v_name
+		FROM userinfo u, project p
+		WHERE p.writer = u.v_id ORDER BY p.no DESC
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) cnt FROM project WHERE 1=1
+	</select>
+	
+	<update id="update" parameterType="Project">
+		UPDATE project 
+		SET title = #{title}, content = #{content}, regdate = CURDATE(), attachment = #{attachment}, attachmentImg = #{attachmentImg}
+		WHERE no = #{no}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM project WHERE no = #{no}
+	</delete>
+	
+	<update id="views" parameterType="Project">
+		UPDATE project 
+		SET views = #{views}
+		WHERE no = #{no}
+	</update>
+	
+</mapper>

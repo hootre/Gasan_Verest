@@ -28,8 +28,7 @@
             <p>${ item.v_name }</p>
             <h3>아이디</h3>
             <p>${ item.v_email }</p>
-            <div class="bottom"><h5 class="edit">비밀번호수정</h5> / <h5 class="secession">회원탈퇴</h5></div>
-            <a href="<c:url value='/logout'/>">개쩐다</a>
+            <div class="bottom"><a class="edit" href="<c:url value='/bas/list'/>">장바구니</a> / <h5 class="edit">비밀번호수정</h5> / <h5 class="secession">회원탈퇴</h5></div>
         </div>
     </div>
 </div>

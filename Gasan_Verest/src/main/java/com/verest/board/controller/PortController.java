@@ -58,7 +58,7 @@ public class PortController {
 			user = userInfoService.detail(this.getPrincipal());
 			model.addAttribute("userInfo", user);
 		}
-
+		user = null;
 		return "admin/adminportfolio";
 	}
 
@@ -78,9 +78,9 @@ public class PortController {
 		port.setWriter(writer);
 		port.setTitle(title);
 		port.setContent(content);
-		String s = attachment;
-		String address = s.replace("watch?v=", "embed/");
-		port.setAttachment(address);
+		attachment = attachment.replace("watch?v=", "embed/");
+		attachment = attachment.replace("&", "?");
+		port.setAttachment(attachment);
 		port.setP_type(p_type);
 
 		// 최상위 경로 밑에 upload 폴더의 경로를 가져온다.
@@ -91,7 +91,7 @@ public class PortController {
 		// upload 폴더가 없다면, upload 폴더 생성
 		File directory = new File(path);
 		if (!directory.exists()) {
-			directory.mkdir();
+			directory.mkdirs();
 		}
 
 		// attachment 객체를 이용하여, 파일을 서버에 전송
@@ -109,24 +109,23 @@ public class PortController {
 
 
 		portService.newBoard(port);
-
+		port = null;
+		directory = null;
 		return "redirect:/port/list";
 	}
 
 	// 글 목록 화면
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) throws CommonException {
-		List<Port> list = null;
-
-		list = portService.list();
-
+		List<Port> list = portService.list();
 		UserInfo user  = null;
 		if (!(this.getPrincipal() == null)) {
 			user = userInfoService.detail(this.getPrincipal());
 			model.addAttribute("userInfo", user);
 		}
 		model.addAttribute("list", list);
-
+		user = null;
+		list = null;
 		return "port/list";
 	}
 
@@ -161,10 +160,13 @@ public class PortController {
 		}
 		port.setViews(port.getViews()+1);
 		portService.viewsup(port);
-
+		List<Port> list = portService.list();
+		model.addAttribute("list", list);
 		model.addAttribute("item", port);
 		model.addAttribute("filename", filename);
 
+		port = null;
+		user = null;
 		return "port/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 	}
 
@@ -183,6 +185,8 @@ public class PortController {
 
 		model.addAttribute("item", port);
 
+		port = null;
+		user = null;
 		return "port/modify";
 	}
 
@@ -194,23 +198,16 @@ public class PortController {
 			String content,
 			String attachment,
 			String p_type,
-			@RequestParam("attachmentImg") MultipartFile attachmentImg,
-			String password)
+			@RequestParam("attachmentImg") MultipartFile attachmentImg)
 					throws CommonException, Exception {
-
-		// 비밀번호 비교해서 같지 않다면 오류메시지 출력
-		boolean isMatched = userInfoService.isPortMatched(no, password);
-		if (!isMatched) {
-			return "redirect:/port/modify?no=" + no + "&action=error-password";
-		}
 		
 		Port port = new Port();
 		port.setNo(no);
 		port.setTitle(title);
 		port.setContent(content);
-		String s = attachment;
-		String address = s.replace("watch?v=", "embed/");
-		port.setAttachment(address);
+		attachment = attachment.replace("watch?v=", "embed/");
+		attachment = attachment.replace("&", "?");
+		port.setAttachment(attachment);
 		port.setP_type(p_type);
 
 		String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
@@ -238,45 +235,33 @@ public class PortController {
 				}
 			}
 		portService.modify(port);
-
-
+		port = null;
 		return "redirect:/port/list";
 	}
 
 	// 글 삭제 확인 화면
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	public String removeConfirm(Model model,
-			@RequestParam(value = "no", required = true) Integer no) {
-
-		model.addAttribute("no", no);
-
-		return "port/remove-confirm";
-	}
-
-	// 글 삭제 후, 글 목록 화면으로 이동
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String remove(HttpServletRequest request,
-			@RequestParam(value = "no", required = true) Integer no,
-			String v_password)
+	public String removeConfirm(HttpServletRequest request,
+			@RequestParam(value = "no", required = true) String no) 
 					throws CommonException, UnsupportedEncodingException {
 
-		boolean isMatched = userInfoService.isPortMatched(no, v_password);
-		if (!isMatched) {
-			return "redirect:/port/remove?no=" + no + "&action=error-password";
-		}
-		String filename =  portService.detail(no).getAttachmentImg();
+		String filename =  portService.detail(Integer.parseInt(no)).getAttachmentImg();
 		if (filename != null && !filename.trim().isEmpty()) {
 			fileService.remove(request, UPLOAD_FOLDER, filename);
 		}
+		
+		String[] nos = no.split("-");
 
-		portService.remove(no);
-
-		return "redirect:list";
+		if(nos != null && nos.length>0){
+			for (String bas_id : nos) {
+				System.out.println(bas_id.toString());
+				portService.remove(Integer.parseInt(bas_id.toString()));
+			}
+		}  
+		return "redirect:/port/list";
 	}
 
-
-
-	// 파일 내려받기
+/*	// 파일 내려받기
 	@RequestMapping(value = "/download", method = RequestMethod.GET, params="filename")
 	public void download(HttpServletRequest request, 
 			HttpServletResponse response, String filename)
@@ -307,10 +292,10 @@ public class PortController {
 			response.setHeader("Pragma", "no-cache");
 			response.setHeader("Expires", "-1");
 
-			/*
+			
 			 * Connection Stream: ServletOutputStream
 			 * Chain Stream: BufferedOutputStream
-			 */
+			 
 			bos = new BufferedOutputStream(response.getOutputStream());
 
 			// 서버에 있는 파일을 읽어서 (fis), 클라이언트에게 파일을 전송(bos)
@@ -333,7 +318,7 @@ public class PortController {
 				logger.debug(e.getMessage());
 			}
 		}
-	}
+	}*/
 	// 현재 접속한 사용자의 email 리턴
 	private String getPrincipal() {
 		String username = null;

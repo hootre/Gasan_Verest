@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.verest.board.dao.BasketDaoImpl">
+  
+  	<insert id="insert" parameterType="Basket">
+		INSERT INTO basket (v_id, sale_no,regdate)
+		VALUES (#{v_id}, #{sale_no}, CURDATE())
+	</insert>
+  
+  	<resultMap type="Basket" id="basketResultMap">
+		<id property="basket_no" column="basket_no" />
+		<result property="v_id" column="uid" />
+		<result property="sale_no" column="sale_no" />
+		<result property="sale.title" column="title" />
+		<result property="sale.attachment" column="attachment" />
+		<result property="sale.price" column="price" />
+		<result property="regdate" column="regdate" />
+		<result property="userInfo.v_id" column="v_id" />
+		<result property="userInfo.v_email" column="v_email" />
+		<result property="userInfo.v_name" column="v_name" />
+	</resultMap>
+	
+	<select id="selectAll" resultMap="basketResultMap" parameterType="Integer">
+		SELECT b.basket_no, b.v_id as "UID", b.sale_no ,s.title, s.attachment, s.price, date_format(regdate,"%Y %c/%e") as "REGDATE", u.v_email, u.v_name
+		FROM userinfo u, basket b, sale s
+		WHERE b.v_id = u.v_id AND b.sale_no = s.no  AND b.v_id = #{v_id} ORDER BY b.basket_no DESC
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) cnt FROM basket
+	</select>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM basket WHERE basket_no = #{basket_no}
+	</delete>
+	
+	
+  </mapper>

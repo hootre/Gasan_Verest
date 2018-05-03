@@ -15,11 +15,11 @@
     <style type="text/css">
     	<%@ include file="../css/style.css"%>
 		<%@ include file="../css/header.css"%>
-		<%@ include file="../css/portfolio.css"%>
 		<%@ include file="../css/footer.css"%>
+		<%@ include file="../css/portfolio.css"%>
 	</style>
 	<script>
-		<%@ include file="../js/main.js"%>
+		<%@ include file="../js/list.js"%>
 	</script>
 </head>
 <script>
@@ -49,8 +49,14 @@
 	        <c:forEach items="${ list }" var="item">
 		                <a href="<c:url value='/pro/detail?no=${ item.no }'/>">
 			                <div class="list">
-	                			<img src="<c:url value="/upload/pro/${ item.attachmentImg}"/>"  alt="">
-	                			<p>${item.title }</p>
+				                <div class="imgbox">
+		                			<img src="<c:url value="/upload/pro/${ item.attachmentImg}"/>"  alt="">
+		                			<div class="top_title clearfix">
+			                			<span id="regdate">${item.regdate}</span>
+			                			<span id="views">VIEWS ${item.views}</span>
+			                		</div>	
+			                	</div>
+		                		<p id="title">${item.title }</p>
 	            			</div>
 	            		</a>
 	        </c:forEach>

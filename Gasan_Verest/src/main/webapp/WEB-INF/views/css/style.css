@@ -16,6 +16,11 @@ format('truetype');
     src: url('Spoqa Han Sans Thin.ttf');
 format('truetype');
 }
+.clearfix:after{
+  content:'';
+  display: block;
+  clear: both;
+}
 
 
 * {

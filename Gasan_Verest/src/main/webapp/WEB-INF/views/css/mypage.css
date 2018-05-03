@@ -52,7 +52,7 @@ img {
 }
 
 .login_form {
-    padding: 40px;
+    padding: 20px;
 }
 
 .login_form .title {
@@ -92,20 +92,23 @@ img {
 }
 
 .login_form .bottom {
-    margin-top: 20px;
-    text-align: right;
+    margin-top: 60px;
+    text-align: center;
     font-size: 15px;
     color: #999;
+    width: 100%;
 }
 
-.login_form .bottom h5 {
+.login_form .bottom h5,
+.login_form .bottom a {
     color: #999;
     display: inline-block;
     cursor: pointer;
     font-size: 15px;
 }
 
-.login_form .bottom h5:hover {
+.login_form .bottom h5:hover,
+.login_form .bottom a:hover {
     color: #111;
 }
 

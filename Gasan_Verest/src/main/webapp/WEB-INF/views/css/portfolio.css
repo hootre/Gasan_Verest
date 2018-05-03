@@ -43,15 +43,43 @@
         float: left;
         width: 33.1%;
         padding: 25px 15px;
+        text-align: center;
     }
 
     .content .list img {
         max-width: 100%;
+        margin: 0 auto;
     }
 
     .content .list p {
         text-align: center;
-        padding-top: 10px;
+        padding-top: 4px;
+    }
+    
+    #title {
+    	width: 250px;
+    	display: inline-block;
+    	overflow: hidden; 
+    	text-overflow: ellipsis;
+    	white-space: nowrap; 
+    }
+    .imgbox{
+    	position: relative;
+    }
+    .top_title{
+    	position: absolute;
+    	bottom: 10px;
+    	z-index: 10;
+    	padding: 5px;
+    	text-align: center;
+    	background-color: rgba(0,0,0,0.5);
+    	
+    }
+    #regdate {
+    	display: block;
+    }
+    #views{
+    	display: block;
     }
 }
 

@@ -1,0 +1,78 @@
+@charset "EUC-KR";
+*{
+	color: #3c3c3c;
+}
+#logo{
+	position: relative;
+	top: 190px;
+	left: 40%;
+}
+.list_box{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: #fefefe;
+	box-shadow: 1px 3px 5px 1px rgba(0,0,0,.2);
+	transform: translate(-50%, -50%);
+	padding: 10px;
+	width: 1200px;
+}
+.list_top{
+	text-align: center;
+	border-bottom: 1px solid #000;
+	padding-bottom: 10px;
+}
+.menu{
+	border-bottom: 2px solid #FFC81E;
+	padding-bottom: 5px;
+}
+.list_top .top_content span{
+	display: inline-block;
+	padding: 10px;
+	vertical-align: middle;
+	}
+.list_top .top_content{
+	float: left;
+	width: 100%;
+}
+#allCheck{
+	margin-right: 10px;
+	position: relative;
+	left: -10px;
+}
+.list_top .top_content .imgbox{
+	width: 70%;
+	text-align: left;
+}
+.list_top .top_content .img{
+	display: inline-block;
+	width: 20%;
+}
+.list_top .top_content .title{
+	text-align: left;
+	width: 50%;
+}
+.list_top .top_content .price{
+	width: 13%;
+}
+.list_top .top_content .regdate{
+	width: 13%;
+}
+.list_top:last-of-type{
+	border: none;
+}
+#backbtn{
+	float: right;
+	border-radius :5px;
+	background-color: #3c3c3c;
+	padding: 10px;
+	color: #FFC81E;
+}
+#seleteDel{
+	float: right;
+	border-radius :5px;
+	background-color: #3c3c3c;
+	padding: 10px;
+	color: #FFC81E;
+	margin-right: 15px;
+}

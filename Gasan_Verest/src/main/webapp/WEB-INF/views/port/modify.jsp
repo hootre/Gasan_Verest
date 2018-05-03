@@ -19,15 +19,14 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-
-<jsp:include page="../adminheader.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
     <div class="mid">
         <div class="title">
             <h2>포트폴리오 수정하기</h2>
         </div>
         <div class="review_write">
-            <form id="fmField" name="fmField" action="<c:url value='/pro/modify'/>" onsubmit="return checkForm();" method="post" enctype="multipart/form-data">
+            <form id="fmField" name="fmField" action="<c:url value='/port/modify'/>" onsubmit="return checkForm();" method="post" enctype="multipart/form-data">
                 <table>
                 	<tr>
                         <th>번호</th>
@@ -51,7 +50,15 @@
                     </tr>
                     <tr>
                         <th>첨부이미지</th>
-                        <td><input class="file" name="attachmentImg" type="file"  multiple="multiple" accept=".gif, .jpg, .png"><span>#미선택시 기존과 동일</span></td>
+                        <td>
+                        <input class="file" name="attachmentImg"  type="file"  onchange="readURL(this)"  multiple="multiple" accept=".gif, .jpg, .png">
+                        <c:if test="${!empty item.attachmentImg}">
+	                        <img id="blah" src="<c:url value="/upload/port/${item.attachmentImg}"/>" alt="NOT IMG" />
+                        </c:if>
+                        <c:if test="${empty item.attachmentImg}">
+	                        <img id="blah" src="<c:url value="/upload/main/no_image.jpg"/>" alt="NOT IMG" />
+                        </c:if>
+                        </td>
                     </tr>
                     <tr>
                         <th>분류</th>
@@ -96,9 +103,8 @@
                         </td>
                     </tr>
                     <tr>
-                        <th>비밀번호</th>
+                        <th></th>
                         <td>
-                        <input type="password" id="pwd"name="password"  required>
                         <input type="hidden" name="writer" value="${ writer }"> 
                         <input type="hidden" name="no" value="${ item.no }">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -112,5 +118,16 @@
     </div>
     <jsp:include page="../footer.jsp"></jsp:include>
 </div>
+<script type="text/javascript"> 
+function readURL(input) { 
+	if (input.files && input.files[0]) { 
+		var reader = new FileReader(); 
+		reader.onload = function (e) { 
+			$('#blah').attr('src', e.target.result); 
+			} 
+		reader.readAsDataURL(input.files[0]); 
+		} 
+	} 
+</script>
 </body>
 </html>

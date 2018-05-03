@@ -5,21 +5,21 @@
         <div class="grey">
             <h1>V E R E S T</h1>
             <p>Verest 360 VR은 360도 관련 다양한 영상 및 콘텐츠를 기획 제작하는 회사입니다.</p>
-            <div class="move_aboutus" onclick="fnMove('1')">회사소개</div>
-            <div class="move_question" onclick="fnMove('2')">문의하기</div>
+            <div class="move_aboutus" onclick="fnMove(1)">회사소개</div>
+            <div class="move_question" onclick="fnMove(2)">문의하기</div>
         </div>
     </div>
     <div class="content_mid">
         <h2 class="c_title">HER Series</h2>
         <div class="slide_line"></div>
         <div class="slide">
-            <ul class="content-slider lightSlider" style="">
+            <ul class="content-slider lightSlider" >
             <c:forEach items="${ port }" var="item" varStatus="status">
             	<c:if test="${ item.p_type eq 'HER Series'}">
             		<li class="animate" data-animate="fadeInRight" data-duration="0.5s" data-delay="0.${ status.count }s">
 	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
 	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
-	                    	 <span class="list_title">${item.title}</span>
+	                    	 <span class="list_title" id="title">${item.title}</span>
 	                    </a>
                 	</li>
             	</c:if>
@@ -35,7 +35,7 @@
             		<li class="animate" data-animate="fadeInLeft" data-duration="0.5s" data-delay="0.${ status.count }s">
 	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
 	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
-	                    	 <span class="list_title">${item.title}</span>
+	                    	 <span class="list_title" id="title">${item.title}</span>
 	                    </a>
                 	</li>
             	</c:if>
@@ -51,7 +51,7 @@
             		<li class="animate" data-animate="fadeInRight" data-duration="0.5s" data-delay="0.${ status.count }s">
 	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
 	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
-	                    	 <span class="list_title">${item.title}</span>
+	                    	 <span class="list_title" id="title">${item.title}</span>
 	                    </a>
                 	</li>
             	</c:if>
@@ -67,7 +67,7 @@
             		<li class="animate" data-animate="fadeInLeft" data-duration="0.5s" data-delay="0.${ status.count }s">
 	                    <a href="<c:url value='/port/detail?no=${ item.no }'/>">
 	                    	<img src="<c:url value="/upload/port/${ item.attachmentImg}"/>" alt="NOT IMG" />
-	                    	 <span class="list_title">${item.title}</span>
+	                    	 <span class="list_title" id="title">${item.title}</span>
 	                    </a>
                 	</li>
             	</c:if>

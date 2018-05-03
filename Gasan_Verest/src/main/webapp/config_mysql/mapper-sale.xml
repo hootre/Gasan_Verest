@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.verest.board.dao.SaleDaoImpl">
+
+	<insert id="insert" parameterType="Sale">
+		INSERT INTO sale (title, content, writer, price, regdate, attachment, attachmentImg, views)
+		VALUES (#{title}, #{content}, #{writer}, #{price}, CURDATE(), #{attachment}, #{attachmentImg}, 0)
+	</insert>
+	
+	<resultMap type="Sale" id="saleResultMap">
+		<id property="no" column="no" />
+		<result property="title" column="title" />
+		<result property="content" column="content" />
+		<result property="writer" column="writer" />
+		<result property="price" column="price" />
+		<result property="regdate" column="regdate" />		
+		<result property="attachment" column="attachment" />
+		<result property="attachmentImg" column="attachmentImg" />
+		<result property="views" column="views" />
+		<result property="userInfo.v_id" column="v_id" />
+		<result property="userInfo.v_name" column="v_name" />
+	</resultMap>
+	
+	<select id="select" parameterType="Integer" resultMap="saleResultMap">
+		SELECT s.no, s.title, s.content, s.writer, s.price, date_format(regdate,"%Y %c/%e") as "REGDATE", s.attachment, s.attachmentImg, s.views, u.v_id, u.v_name
+		FROM sale s, userinfo u
+		WHERE s.writer = u.v_id AND s.no = #{no}
+	</select>
+	
+	<select id="selectAll" resultMap="saleResultMap">
+		SELECT s.no, s.title, s.content, s.writer, s.price, date_format(regdate,"%Y %c/%e") as "REGDATE", s.attachment, s.attachmentImg, s.views, u.v_id, u.v_name
+		FROM userinfo u, sale s
+		WHERE s.writer = u.v_id ORDER BY s.no DESC
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) cnt FROM sale WHERE 1=1
+	</select>
+	
+	<update id="update" parameterType="Sale">
+		UPDATE sale 
+		SET title = #{title}, content = #{content}, price = #{price}, regdate = CURDATE(), attachment = #{attachment}, attachmentImg= #{attachmentImg}
+		WHERE no = #{no}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		DELETE FROM sale WHERE no = #{no}
+	</delete>
+	
+	<update id="views" parameterType="Sale">
+		UPDATE sale 
+		SET views = #{views}
+		WHERE no = #{no}
+	</update>
+	
+</mapper>

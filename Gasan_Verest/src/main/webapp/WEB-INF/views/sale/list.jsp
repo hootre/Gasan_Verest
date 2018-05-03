@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,8 +17,8 @@
 		<%@ include file="../css/footer.css"%>
 	</style>
 	<script>
-	<%@ include file="../js/salelist.js"%>
-	<%@ include file="../js/main.js"%>
+		<%@ include file="../js/salelist.js"%>
+		<%@ include file="../js/list.js"%>
 	</script>
 </head>
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
@@ -31,11 +32,11 @@
 			<c:forEach items="${ list }" var="item">
 	            <div class="list">
 	                <a href="<c:url value='/sale/detail?no=${ item.no}'/>"><img src="<c:url value="/upload/sale/${ item.attachmentImg}"/>" alt=""></a>
-	                <p class="list_content">${ item.title}<br> ${ item.price}원</p>
+	                <p class="list_content">${ item.title}<br> </span><fmt:formatNumber value="${item.price }" pattern="#,###" />원</p>
 	                <a href="<c:url value='/bas/new?sale_no=${item.no }'/>" class="sale_cart">
 	                    <p title="장바구니 추가"><i class="fa fa-shopping-cart"></i></p>
 	                </a>
-	                <a href="<c:url value='/order/new?sale_no=${item.no }'/>" class="sale_down">
+	                <a href="<c:url value='/order/new?sale_no=${item.no }'/>" onClick="window.open(this.href, '', 'width=1280, height=790'); return false;" class="sale_down">
 	                    <p title="구매하기"><i class="fa fa-download"></i></p>
 	                </a>
 	            </div>

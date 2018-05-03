@@ -1,0 +1,42 @@
+@charset "EUC-KR";
+body{
+	background-color: #eee;
+}
+.video_container{
+	width: 100%;
+	position: relative;
+}
+#warning{
+	position: absolute;
+	top: 80%;
+	color: #000;
+	font-size: 30px;
+	padding: 10px;
+	padding-left: 40px;
+	background-color: #eee;
+}
+.header{
+	display: inline-block;
+	margin-right: 150px;
+	padding-left: 10px;
+	overflow: hidden;
+}
+.header .title{
+	color: #000;
+}
+.header_right{
+	display: inline-block;
+	overflow: hidden;
+}
+.header_right h4{
+	display: inline-block;
+}
+.header_right #price{margin-right: 50px;}
+.header_right #price span{
+	font-size: 30px;
+	padding: 0 5px;
+}
+.header_right #account span{
+	font-size: 30px;
+	padding: 0 5px;
+}

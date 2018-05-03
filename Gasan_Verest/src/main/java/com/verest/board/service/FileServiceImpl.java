@@ -26,7 +26,7 @@ public class FileServiceImpl implements FileService {
 			file.delete();
 			
 		} else {
-			throw new CommonException("E50: " + path + "/" + decodeFilename + "파일이 존재하지 않습니다.");
+			
 		}
 	}
 }

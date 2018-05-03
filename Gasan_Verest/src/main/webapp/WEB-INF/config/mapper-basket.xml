@@ -17,7 +17,7 @@
 		<result property="v_id" column="uid" />
 		<result property="sale_no" column="sale_no" />
 		<result property="sale.title" column="title" />
-		<result property="sale.attachment" column="attachment" />
+		<result property="sale.attachmentImg" column="attachmentImg" />
 		<result property="sale.price" column="price" />
 		<result property="regdate" column="regdate" />
 		<result property="userInfo.v_id" column="v_id" />
@@ -26,7 +26,7 @@
 	</resultMap>
 	
 	<select id="selectAll" resultMap="basketResultMap" parameterType="Integer">
-		SELECT b.basket_no, b.v_id as "UID", b.sale_no ,s.title, s.attachment, s.price, to_char(b.regdate, 'yyyy-mm-dd hh:mi') as "REGDATE", u.v_email, u.v_name
+		SELECT b.basket_no, b.v_id as "UID", b.sale_no ,s.title, s.attachmentImg, s.price, to_char(b.regdate, 'yyyy-mm-dd') as "REGDATE", u.v_email, u.v_name
 		FROM userinfo u, basket b, sale s
 		WHERE b.v_id = u.v_id AND b.sale_no = s.no  AND b.v_id = #{v_id} ORDER BY b.basket_no DESC
 	</select>

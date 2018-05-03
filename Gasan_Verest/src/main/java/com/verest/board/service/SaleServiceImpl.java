@@ -41,7 +41,7 @@ public class SaleServiceImpl implements SaleService {
 	@Transactional
 	@Override
 	public void modify(Sale sale) throws CommonException {
-		dao.select(sale.getNo());
+		dao.update(sale);
 	}
 	
 	@Transactional

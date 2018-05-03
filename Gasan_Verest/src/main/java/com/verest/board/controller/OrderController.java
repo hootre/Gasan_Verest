@@ -49,7 +49,9 @@ public class OrderController {
 		
 		Sale sale = SaleService.detail(sale_no);
 		model.addAttribute("item", sale);
-
+		user = null;
+		sale = null;
+		ord = null;
 		return "order/Confirm";
 	}
 	
@@ -60,7 +62,7 @@ public class OrderController {
 		
 		Sale sale = SaleService.detail(sale_no);
 		model.addAttribute("item", sale);
-
+		sale = null;
 		return "order/Confirm";
 	}
 	
@@ -71,7 +73,8 @@ public class OrderController {
 		UserInfo user = userInfoService.detail(this. getPrincipal());
 		list = OrdService.list(user.getV_id());
 		model.addAttribute("list", list);
-
+		user = null;
+		list = null;
 		return "order/list";
 	}
 	

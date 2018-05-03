@@ -15,25 +15,11 @@
 		<%@ include file="../js/main.js"%>
 	</script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"> 
-function readURL(input) { 
-	if (input.files && input.files[0]) { 
-		var reader = new FileReader(); 
-		reader.onload = function (e) { 
-			$('#blah').attr('src', e.target.result); 
-			} 
-		reader.readAsDataURL(input.files[0]); 
-		} 
-	} 
-</script>
 <style>
 </style>
 </head>
 <body>
-<c:if test="${ param.action == 'error-password' }">
-			<script>alert("비밀번호가 일치하지않습니다.")</script>
-</c:if>
-<jsp:include page="../adminheader.jsp"></jsp:include>
+<jsp:include page="../header.jsp"></jsp:include>
 <div class="container">
     <div class="mid">
         <div class="title">
@@ -75,9 +61,8 @@ function readURL(input) {
                         </td>
                     </tr>
                     <tr>
-                        <th>비밀번호</th>
+                        <th></th>
                         <td>
-                        <input type="password" id="pwd"name="password"  required>
                         <input type="hidden" name="writer" value="${ writer }"> 
                         <input type="hidden" name="no" value="${ item.no }">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
@@ -91,5 +76,16 @@ function readURL(input) {
     </div>
     <jsp:include page="../footer.jsp"></jsp:include>
 </div>
+<script type="text/javascript"> 
+function readURL(input) { 
+	if (input.files && input.files[0]) { 
+		var reader = new FileReader(); 
+		reader.onload = function (e) { 
+			$('#blah').attr('src', e.target.result); 
+			} 
+		reader.readAsDataURL(input.files[0]); 
+		} 
+	} 
+</script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <body>
 <div class="login_container">
     <div class="box">
-        <a href="<c:url value="/"/>"><div class="logo"><img src="<c:url value="/upload/main/logo.png"/>" ></div></a>
+        <a href="<c:url value="/"/>"><div class="logo"><img src="<c:url value="/resources/img/logo.png"/>" ></div></a>
         <form class="login_form" action="<c:url value="/login-processing"/>" method="post">
         <c:if test="${ param.action == 'error' }">
 			<script>

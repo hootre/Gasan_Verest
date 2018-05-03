@@ -15,16 +15,6 @@
 <%@ include file="../js/main.js"%>
 </script>
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript"> 
-function readURL(input) { 
-	if (input.files && input.files[0]) { 
-		var reader = new FileReader(); 
-		reader.onload = function (e) { 
-			$('#blah').attr('src', e.target.result); 
-			} 
-		reader.readAsDataURL(input.files[0]); 
-		} } 
-</script>
 </head>
 <body>
 
@@ -43,11 +33,11 @@ function readURL(input) {
                     </tr>
                     <tr>
                         <th>제목</th>
-                        <td><input type="text"  name="title" placeholder="제목"  maxlength="15" required></td>
+                        <td><input type="text"  name="title" placeholder="제목" required></td>
                     </tr>
                     <tr>
                         <th>내용</th>
-                        <td><textarea id="txt"  name="content" placeholder="내용" style="resize: none;"  id="area" cols="30" rows="10" maxlength="50" required></textarea></td>
+                        <td><textarea id="txt"  name="content" placeholder="내용" style="resize: none;"  id="area" cols="30" rows="10" required></textarea></td>
                     </tr>
                     <tr>
                         <th>유튜브링크</th>
@@ -75,5 +65,15 @@ function readURL(input) {
     </div>
     <jsp:include page="../footer.jsp"></jsp:include>
 </div>
+<script type="text/javascript"> 
+function readURL(input) { 
+	if (input.files && input.files[0]) { 
+		var reader = new FileReader(); 
+		reader.onload = function (e) { 
+			$('#blah').attr('src', e.target.result); 
+			} 
+		reader.readAsDataURL(input.files[0]); 
+		} } 
+</script>
 </body>
 </html>

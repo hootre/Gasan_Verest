@@ -45,7 +45,8 @@ public class BackController {
 		back.setWriter(user.getV_id());
 		
 		BackService.newBoard(back);
-		
+		back = null;
+		user = null;
 		return "redirect:/back/list";
 	}
 	
@@ -62,6 +63,8 @@ public class BackController {
 		}
 		
 		model.addAttribute("list", list);
+		list = null;
+		user = null;
 		return "back/list";
 	}
 	
@@ -75,6 +78,7 @@ public class BackController {
 			back = BackService.detail(back_no);
 			
 			model.addAttribute("item", back);
+			back = null;
 
 			return "back/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 		}

@@ -15,27 +15,20 @@
 <style type="text/css">
 <%@ include file="css/style.css"%>
 <%@ include file="css/header.css" %>
-<%@ include file="css/content.css" %>
 <%@ include file="css/footer.css" %>
 <%@ include file="css/lightslider.css" %>
 <%@ include file="css/question.css" %>
 <%@ include file="css/animate.css" %>
 </style>
+<link rel="stylesheet" href="<c:url value="/resources/css/content.css"/>" />
 <title>Verest</title>
 <script>
 <%@ include file="js/lightslider.js"%>
 <%@ include file="js/main.js"%>
 <%@ include file="js/scrolla.jquery.min.js"%>
 </script>
+
 </head>
-<script>
-$(function () {
-    $('.animate').scrolla({
-        mobile: false,
-        once: false
-    });
-});
-</script>
 <body>
 	<c:if test="${ param.type == 'delete' }">
 		<script>alert("탈퇴완료")</script>
@@ -48,5 +41,33 @@ $(function () {
 	<jsp:include page="main.jsp"></jsp:include>
 	<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+<script>
+$(function () {
+    $('.animate').scrolla({
+        mobile: false,
+        once: false
+    });
+});
+</script>
+<script>
+function fnMove(seq){
+    var offset = $("#move" + seq).offset();
+    $('html, body').animate({scrollTop : offset.top + -200}, 500);
+}
+
+$(function () {
+    var toggle = 0;
+    $(".toggle_menu h3").click(function () {
+        if (toggle == 0) {
+            $(".mainmenu .menu_top").slideDown(400);
+            toggle = 1;
+        } else if (toggle == 1) {
+            $(".mainmenu .menu_top").slideUp(400);
+            toggle = 0;
+        }
+
+    });
+});
+</script>
 </body>
 </html>

@@ -44,6 +44,8 @@ public class QueController {
 		
 		QueService.newBoard(que);
 		
+		user = null;
+		que = null;
 		return "redirect:/?type=good";
 	}
 	
@@ -53,10 +55,15 @@ public class QueController {
 		List<Question> list = null;
 		
 		list = QueService.list();
-		
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
 		model.addAttribute("list", list);
-
-		return "que/list";
+		
+		list = null;
+		return "admin/quelist";
 	}
 	
 	// 글 상세 화면
@@ -67,18 +74,29 @@ public class QueController {
 			Question que = null;
 
 			que = QueService.detail(qu_no);
-			
+			UserInfo user  = null;
+			if (!(this.getPrincipal() == null)) {
+				user = userInfoService.detail(this.getPrincipal());
+				model.addAttribute("userInfo", user);
+			}
 			model.addAttribute("item", que);
-
+			que = null;
 			return "que/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 		}
 	
 	// 글 삭제 확인 화면
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
 	public String removeConfirm(Model model,
-		@RequestParam(value = "qu_no", required = true) Integer qu_no) {
+		@RequestParam(value = "qu_no", required = true) String qu_no) {
 			
-		QueService.remove(qu_no);
+		String[] nos = qu_no.split("-");
+
+		if(nos != null && nos.length>0){
+			for (String bas_id : nos) {
+				System.out.println(bas_id.toString());
+				QueService.remove(Integer.parseInt(bas_id.toString()));
+			}
+		}  
 		
 		return "redirect:/que/list";
 	}

@@ -1,16 +1,12 @@
 package com.verest.board.controller;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -57,10 +53,9 @@ public class ProController {
 			user = userInfoService.detail(this.getPrincipal());
 			model.addAttribute("userInfo", user);
 		}
-
+		user = null;
 		return "admin/adminproject";
 	}
-
 	// 글 작성 후, 글 목록 화면으로 이동
 	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String newBoard(HttpServletRequest request,
@@ -74,10 +69,11 @@ public class ProController {
 		Project pro = new Project();
 		pro.setWriter(writer);
 		pro.setTitle(title);
+		content = content.replace("\r\n", "<br />");
 		pro.setContent(content);
-		String s = attachment;
-		String address = s.replace("watch?v=", "embed/");
-		pro.setAttachment(address);
+		attachment = attachment.replace("watch?v=", "embed/");
+		attachment = attachment.replace("&", "?");
+		pro.setAttachment(attachment);
 
 		// 최상위 경로 밑에 upload 폴더의 경로를 가져온다.
 		String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
@@ -87,7 +83,7 @@ public class ProController {
 		// upload 폴더가 없다면, upload 폴더 생성
 		File directory = new File(path);
 		if (!directory.exists()) {
-			directory.mkdir();
+			directory.mkdirs();
 		}
 
 		// attachment 객체를 이용하여, 파일을 서버에 전송
@@ -106,16 +102,15 @@ public class ProController {
 
 
 		proService.newBoard(pro);
-
+		directory = null;
+		pro = null;
 		return "redirect:/pro/list";
 	}
 
 	// 글 목록 화면
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) throws CommonException {
-		List<Project> list = null;
-
-		list = proService.list();
+		List<Project> list = proService.list();
 
 		UserInfo user  = null;
 		if (!(this.getPrincipal() == null)) {
@@ -123,7 +118,8 @@ public class ProController {
 			model.addAttribute("userInfo", user);
 		}
 		model.addAttribute("list", list);
-
+		list = null;
+		user = null;
 		return "pro/list";
 	}
 
@@ -159,9 +155,14 @@ public class ProController {
 		pro.setViews(pro.getViews()+1);
 		proService.viewsup(pro);
 
+		List<Project> list = proService.list();
+		model.addAttribute("list", list);
 		model.addAttribute("item", pro);
 		model.addAttribute("filename", filename);
-
+		
+		user = null;
+		list = null;
+		pro = null;
 		return "pro/detail";	// /WEB-INF/views/detail.jsp 페이지로 이동
 	}
 
@@ -172,9 +173,14 @@ public class ProController {
 					throws CommonException {
 
 		Project pro =  proService.detail(no);
-
+		UserInfo user  = null;
+		if (!(this.getPrincipal() == null)) {
+			user = userInfoService.detail(this.getPrincipal());
+			model.addAttribute("userInfo", user);
+		}
 		model.addAttribute("item", pro);
-
+		
+		pro = null;
 		return "pro/modify";
 	}
 
@@ -185,24 +191,16 @@ public class ProController {
 			String title,
 			String content,
 			String attachment,
-			@RequestParam("attachmentImg") MultipartFile attachmentImg,
-			String password)
-					throws CommonException, Exception {
-
-		// 비밀번호 비교해서 같지 않다면 오류메시지 출력
-		boolean isMatched = userInfoService.isProMatched(no, password);
-		if (!isMatched) {
-			return "redirect:/pro/modify?no=" + no + "&action=error-password";
-		}
-		
+			@RequestParam("attachmentImg") MultipartFile attachmentImg)
+					throws CommonException, Exception {	
 		
 		Project pro = new Project();
 		pro.setNo(no);
 		pro.setTitle(title);
 		pro.setContent(content);
-		String s = attachment;
-		String address = s.replace("watch?v=", "embed/");
-		pro.setAttachment(address);
+		attachment = attachment.replace("watch?v=", "embed/");
+		attachment = attachment.replace("&", "?");
+		pro.setAttachment(attachment);
 
 		String path = request.getServletContext().getRealPath(UPLOAD_FOLDER);
 		String originalName = attachmentImg.getOriginalFilename();
@@ -231,41 +229,34 @@ public class ProController {
 		
 		proService.modify(pro);
 
-
+		pro = null;
 		return "redirect:/pro/list";
 	}
 
 	// 글 삭제 확인 화면
 	@RequestMapping(value = "/remove", method = RequestMethod.GET)
-	public String removeConfirm(Model model,
-			@RequestParam(value = "no", required = true) Integer no) {
-
-		model.addAttribute("no", no);
-
-		return "pro/remove-confirm";
-	}
-
-	// 글 삭제 후, 글 목록 화면으로 이동
-	@RequestMapping(value = "/remove", method = RequestMethod.POST)
-	public String remove(HttpServletRequest request,
-			@RequestParam(value = "no", required = true) Integer no,
-			String v_password)
+	public String removeConfirm(HttpServletRequest request,
+			@RequestParam(value = "no", required = true) String no) 
 					throws CommonException, UnsupportedEncodingException {
-
-		boolean isMatched = userInfoService.isProMatched(no, v_password);
-		if (!isMatched) {
-			return "redirect:/pro/remove?no=" + no + "&action=error-password";
-		}
-		String filename =  proService.detail(no).getAttachmentImg();
+		String filename =  proService.detail(Integer.parseInt(no)).getAttachmentImg();
 		if (filename != null && !filename.trim().isEmpty()) {
 			fileService.remove(request, UPLOAD_FOLDER, filename);
 		}
-		proService.remove(no);
+		
+		String[] nos = no.split("-");
 
+		if(nos != null && nos.length>0){
+			for (String bas_id : nos) {
+				System.out.println(bas_id.toString());
+				proService.remove(Integer.parseInt(bas_id.toString()));
+			}
+		}  
+
+		
 		return "redirect:/pro/list";
 	}
 
-	// 파일 내려받기
+/*	// 파일 내려받기
 	@RequestMapping(value = "/download", method = RequestMethod.GET, params="filename")
 	public void download(HttpServletRequest request, 
 			HttpServletResponse response, String filename)
@@ -296,10 +287,10 @@ public class ProController {
 			response.setHeader("Pragma", "no-cache");
 			response.setHeader("Expires", "-1");
 
-			/*
+			
 			 * Connection Stream: ServletOutputStream
 			 * Chain Stream: BufferedOutputStream
-			 */
+			 
 			bos = new BufferedOutputStream(response.getOutputStream());
 
 			// 서버에 있는 파일을 읽어서 (fis), 클라이언트에게 파일을 전송(bos)
@@ -322,7 +313,7 @@ public class ProController {
 				logger.debug(e.getMessage());
 			}
 		}
-	}
+	}*/
 
 	// 현재 접속한 사용자의 email 리턴
 	private String getPrincipal() {

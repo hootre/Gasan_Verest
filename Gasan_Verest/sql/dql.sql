@@ -5,9 +5,13 @@
 		WHERE p.writer = u.v_id AND p.p_type = 'HER Series';
 
 -- 회원관련 
-SELECT * FROM port;
+SELECT * FROM sale;
 SELECT * FROM usertype;
 SELECT * FROM userinfotype;
+
+SELECT 
+FROM port p, sale s, project j;
+
 
 SELECT userinfotype.user_info_id, usertype.v_id, usertype.v_type
 FROM userinfotype, usertype
@@ -58,7 +62,7 @@ SET title = '수정수정', content = 'asdasd', price = 30000, regdate = SYSDATE
 WHERE no = 1;
 
 -- DELETE 양식
-DELETE FROM sale WHERE no = 1;
+drop table sale CASCADE CONSTRAINTS PURGE;
 -- 게시판 관련
 
 -- sale 전체 개수

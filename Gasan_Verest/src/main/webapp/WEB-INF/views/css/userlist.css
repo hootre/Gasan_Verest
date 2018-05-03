@@ -39,3 +39,29 @@
 .mid .user_list tr:nth-child(2n) {
     background: #e6e6e6;
 }
+#seleteDel{
+	float: right;
+	border-radius :5px;
+	background-color: #3c3c3c;
+	padding: 10px;
+	color: #FFC81E;
+	margin-right: 15px;
+}
+#qbtn{
+	width: 300px;
+    display: inline-block;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
+#queTd{
+	width: 200px;
+}
+#quetitle{
+	color: #000;
+	width: 200px;
+	display: inline-block;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+}
